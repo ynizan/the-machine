@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InTouch123 — Hypothesis Tree</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+<div id="hdr">
+  <div class="logo">
+    <svg width="32" height="32" viewBox="0 0 48 48" fill="none">
+      <rect x="4" y="4" width="40" height="40" rx="8" fill="#fff"/>
+      <path d="M22 14L28 11V37H22V18L18 20V14H22Z" fill="#0D0D0D"/>
+    </svg>
+    <span class="logo-name">InTouch123</span>
+    <span class="logo-sub">Hypothesis Tree · v0.4</span>
+  </div>
+  <div class="legend">
+    <div class="leg"><div class="leg-sw" style="background:#1A1508;border:1.5px solid #D4A574"></div>Observation</div>
+    <div class="leg"><div class="leg-sw" style="background:#0F1710;border:1px solid #2A2A2A;border-top:2px solid #D4A574"></div>Validated</div>
+    <div class="leg"><div class="leg-sw" style="background:#111;border:1px solid #252525"></div>Active</div>
+    <div class="leg"><div class="leg-sw" style="background:#100E0A;border:1.5px dashed #7A5828"></div>Pending</div>
+    <div class="leg"><div class="leg-sw" style="background:#0E0E0E;border:1.5px dashed #222;opacity:.5"></div>Eliminated</div>
+    <div class="leg" style="margin-left:4px">
+      <div style="width:24px;height:1.5px;background:#333;border-radius:2px"></div>Edge = Test
+    </div>
+  </div>
+</div>
+
+<div id="canvas"><svg id="tree"><g id="G"></g></svg></div>
+
+<div id="ctrl">
+  <button class="cb" id="zi">+</button>
+  <button class="cb" id="zo">&minus;</button>
+  <button class="cb" id="zr" style="font-size:13px">&#8962;</button>
+</div>
+<div id="hint">scroll/pinch to zoom · drag to pan · click node to expand</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="src/renderer.js"></script>
+</body>
+</html>

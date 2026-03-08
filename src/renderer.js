@@ -1,0 +1,403 @@
+// Depth config
+const CFG = {
+  1: { fs:160, efs:52,  tfs:38,  w:2000, pad:64,  gap:2200, lh:1.35, dSz:22 },
+  2: { fs:80,  efs:26,  tfs:19,  w:1100, pad:36,  gap:1100, lh:1.4,  dSz:13 },
+  3: { fs:40,  efs:14,  tfs:11,  w:580,  pad:22,  gap:560,  lh:1.45, dSz:8  },
+  4: { fs:20,  efs:7.5, tfs:6.5, w:300,  pad:13,  gap:280,  lh:1.5,  dSz:5  },
+  5: { fs:10,  efs:5,   tfs:5,   w:155,  pad:7,   gap:140,  lh:1.5,  dSz:3  },
+};
+
+function edgeFontSize(srcDepth, tgtDepth){
+  return Math.min(cfg(srcDepth).fs, cfg(tgtDepth).fs);
+}
+function cfg(d){ return CFG[Math.min(d,5)] || CFG[5]; }
+
+function depthX(depth){
+  let x = 80;
+  for(let d=1;d<depth;d++) x += cfg(d).w + cfg(d).gap;
+  return x;
+}
+
+function cardHeight(node){
+  if(node.data.id==='__root__') return 0;
+  const c   = cfg(node.depth);
+  const usable = c.w - c.pad * 2;
+  const cpl = Math.max(6, Math.floor(usable / (c.fs * 0.54)));
+
+  let h = c.pad * 2;
+
+  h += c.efs * 1.8;
+  h += c.efs * 0.6;
+
+  const tags = node.data.tags || [];
+  if(tags.length){
+    h += c.tfs * 2.4;
+    h += c.tfs * 0.5;
+  }
+
+  const label = node.data.label || '';
+  const lines = Math.ceil(label.length / cpl);
+  h += Math.max(1, lines) * c.fs * c.lh;
+  h += c.fs * 0.5;
+
+  if(node.data.reason){
+    const rlines = Math.ceil(node.data.reason.length / cpl);
+    h += c.efs * 0.5;
+    h += Math.max(1, rlines) * c.fs * 0.85 * c.lh;
+    h += c.fs * 0.3;
+  }
+
+  if(node.data.score){
+    h += c.efs * 0.6;
+    h += c.dSz * 1.6;
+    h += c.efs * 1.4;
+    h += c.dSz * 0.4;
+  }
+
+  const hasKids = !!(node._children && node._children.length);
+  if(hasKids){
+    h += c.efs * 1.8;
+  }
+
+  return Math.ceil(h * 1.08);
+}
+
+// Status helpers
+const FILLS = {
+  observation:'#1A1508', validated:'#0E1710', active:'#0D0D0D',
+  pending:'#100E0A', eliminated:'#0C0C0C'
+};
+const BORDERS = {
+  observation:'#D4A574', validated:'#2A2A2A', active:'#1E1E1E',
+  pending:'#7A5828', eliminated:'#181818'
+};
+const EYE_COLORS = {
+  observation:'#D4A574', validated:'#7FBF95', active:'#555',
+  pending:'#A07840', eliminated:'#383838'
+};
+const LBL_COLORS = {
+  observation:'#FFFFFF', validated:'#E8E8E8', active:'#BBBBBB',
+  pending:'#8A7855', eliminated:'#3A3A3A'
+};
+const TAG_BG = {
+  observation:'rgba(212,165,116,.13)', validated:'rgba(127,191,149,.09)',
+  active:'rgba(255,255,255,.05)', pending:'rgba(212,165,116,.07)',
+  eliminated:'rgba(255,255,255,.03)'
+};
+const EDGE_COLORS = {
+  observation:'#D4A574', validated:'#4A8A60', active:'#383838',
+  pending:'#6A4818', eliminated:'#1E1E1E'
+};
+const EYE_LABELS = {
+  observation:'Observation', validated:'\u2713  Validated',
+  active:'\u25CF  Active', pending:'\u25CC  Pending', eliminated:'\u2715  Eliminated'
+};
+
+const EDGE_WIDTHS = { 1:8, 2:4, 3:2, 4:1, 5:0.5 };
+
+// Card HTML
+function cardHTML(d, c, h){
+  const { status:st, label, tags, reason, score } = d.data;
+  const hasKids = !!(d._children && d._children.length);
+  const ec = EYE_COLORS[st] || '#555';
+  const lc = LBL_COLORS[st] || '#999';
+  const tb = TAG_BG[st] || 'rgba(255,255,255,.04)';
+  const strike = st==='eliminated'
+    ? 'text-decoration:line-through;text-decoration-color:rgba(160,60,40,.55);' : '';
+
+  let h2 = '';
+
+  h2 += `<div style="
+    font-family:'IBM Plex Mono',monospace;font-size:${c.efs}px;line-height:1.2;
+    letter-spacing:.1em;text-transform:uppercase;color:${ec};font-weight:500;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-shrink:0;
+  ">${EYE_LABELS[st]||st}</div>`;
+
+  if(tags && tags.length){
+    h2 += `<div style="display:flex;flex-wrap:wrap;gap:${c.tfs*0.35}px;flex-shrink:0;">`;
+    tags.forEach(t => {
+      h2 += `<span style="
+        font-family:'IBM Plex Mono',monospace;font-size:${c.tfs}px;
+        letter-spacing:.06em;text-transform:uppercase;
+        background:${tb};color:${ec};
+        padding:${c.tfs*0.18}px ${c.tfs*0.5}px;border-radius:3px;white-space:nowrap;
+      ">${t}</span>`;
+    });
+    h2 += `</div>`;
+  }
+
+  h2 += `<div style="
+    font-family:'IBM Plex Serif',serif;font-size:${c.fs}px;line-height:${c.lh};
+    color:${lc};${strike}
+    word-wrap:break-word;overflow-wrap:break-word;hyphens:auto;flex-shrink:0;
+  ">${label}</div>`;
+
+  if(reason){
+    h2 += `<div style="
+      font-family:'IBM Plex Serif',serif;font-size:${c.fs*0.82}px;line-height:${c.lh};
+      color:#8B2E20;font-style:italic;
+      border-top:${Math.max(1,c.fs*0.015)}px solid rgba(139,46,32,.22);
+      padding-top:${c.fs*0.22}px;
+      word-wrap:break-word;overflow-wrap:break-word;flex-shrink:0;
+    ">\u21A9 ${reason}</div>`;
+  }
+
+  if(score){
+    const ds = c.dSz;
+    h2 += `<div style="
+      display:flex;gap:${ds*2}px;
+      border-top:${Math.max(1,c.fs*0.015)}px solid #1E1E1E;
+      padding-top:${ds*1.1}px;flex-shrink:0;
+    ">`;
+    for(const [k,v] of Object.entries(score)){
+      h2 += `<div style="display:flex;flex-direction:column;align-items:center;gap:${ds*0.35}px;">
+        <div style="display:flex;gap:${ds*0.38}px;">
+          ${[1,2,3].map(i=>`<div style="
+            width:${ds}px;height:${ds}px;border-radius:50%;
+            background:${i<=v?'#D4A574':'#1C1C1C'};
+          "></div>`).join('')}
+        </div>
+        <div style="
+          font-family:'IBM Plex Mono',monospace;font-size:${Math.max(5,c.efs*0.6)}px;
+          letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.22);
+          white-space:nowrap;
+        ">${k}</div>
+      </div>`;
+    }
+    h2 += `</div>`;
+  }
+
+  if(hasKids){
+    const n = d._children.length;
+    h2 += `<div style="
+      display:inline-flex;align-items:center;gap:${c.efs*0.28}px;
+      font-family:'IBM Plex Mono',monospace;font-size:${c.efs*0.72}px;
+      letter-spacing:.07em;text-transform:uppercase;
+      color:rgba(255,255,255,.28);background:rgba(255,255,255,.05);
+      padding:${c.efs*0.18}px ${c.efs*0.42}px;border-radius:3px;
+      align-self:flex-start;flex-shrink:0;
+    ">\u25B6 ${n} branch${n===1?'':'es'}</div>`;
+  }
+
+  return h2;
+}
+
+function brighten(hex){
+  const r = parseInt(hex.slice(1,3),16);
+  const g2= parseInt(hex.slice(3,5),16);
+  const b = parseInt(hex.slice(5,7),16);
+  const f = 1.14;
+  return `rgb(${Math.min(255,Math.round(r*f))},${Math.min(255,Math.round(g2*f))},${Math.min(255,Math.round(b*f))})`;
+}
+
+// Main init
+function initTree(DATA){
+  const svgEl = document.getElementById('tree');
+  const gEl   = document.getElementById('G');
+  const svg   = d3.select(svgEl);
+  const g     = d3.select(gEl);
+
+  const zoom = d3.zoom().scaleExtent([0.008, 3])
+    .on('zoom', e => g.attr('transform', e.transform));
+  svg.call(zoom);
+
+  document.getElementById('zi').onclick = () => svg.transition().call(zoom.scaleBy, 1.35);
+  document.getElementById('zo').onclick = () => svg.transition().call(zoom.scaleBy, 0.74);
+  document.getElementById('zr').onclick = resetView;
+
+  const root = d3.hierarchy(DATA);
+  root.descendants().forEach(d => {
+    if(d.depth >= 4){ d._children = d.children; d.children = null; }
+  });
+
+  const treeLayout = d3.tree()
+    .nodeSize([10, 10])
+    .separation((a, b) => {
+      const ah = cardHeight(a);
+      const bh = cardHeight(b);
+      const vgap = Math.max(cfg(a.depth).fs * 0.6, 30);
+      return (ah + bh) / 2 / 10 + vgap / 10;
+    });
+
+  function render(){
+    treeLayout(root);
+    root.descendants().forEach(d => { d.y = depthX(d.depth); });
+    g.selectAll('*').remove();
+
+    const nodes = root.descendants().filter(d => d.data.id !== '__root__');
+    const links = root.links().filter(l => l.source.data.id !== '__root__');
+
+    const edgeG = g.append('g');
+
+    links.forEach(l => {
+      const st  = l.target.data.status;
+      const dash= (st==='pending'||st==='eliminated') ? '8,5' : null;
+      const srcC = cfg(l.source.depth);
+      const tgtC = cfg(l.target.depth);
+
+      const sx = l.source.y + srcC.w;
+      const sy = l.source.x;
+      const tx = l.target.y;
+      const ty = l.target.x;
+      const mx = (sx + tx) / 2;
+
+      edgeG.append('path')
+        .attr('d', `M${sx},${sy} C${mx},${sy} ${mx},${ty} ${tx},${ty}`)
+        .attr('fill','none')
+        .attr('stroke', (st==='pending'||st==='eliminated') ? '#D4A574' : '#FFFFFF')
+        .attr('stroke-width', EDGE_WIDTHS[l.target.depth] || 0.5)
+        .attr('stroke-dasharray', dash)
+        .attr('opacity', st==='eliminated' ? 0.2 : st==='pending' ? 0.45 : 0.6);
+
+      const test = l.target.data.test;
+      if(!test) return;
+
+      const efs  = edgeFontSize(l.source.depth, l.target.depth);
+      const gapW = cfg(l.source.depth).gap * 0.80;
+      const lx   = sx + (tx - sx) / 2 - gapW / 2;
+      const lh   = efs * 1.55;
+      const lines = Math.ceil(test.length / Math.max(6, Math.floor(gapW / (efs * 0.56))));
+      const labelH = Math.max(1, lines) * lh + efs * 0.5;
+      const ly   = ty - labelH / 2;
+
+      const bgPad = efs * 0.45;
+      edgeG.append('rect')
+        .attr('x', lx - bgPad).attr('y', ly - bgPad)
+        .attr('width', gapW + bgPad*2).attr('height', labelH + bgPad*2)
+        .attr('rx', efs * 0.28)
+        .attr('fill', '#060606').attr('opacity', 0.88);
+
+      const fo = edgeG.append('foreignObject')
+        .attr('x', lx).attr('y', ly)
+        .attr('width', gapW).attr('height', labelH + efs);
+
+      fo.append('xhtml:div')
+        .attr('xmlns','http://www.w3.org/1999/xhtml')
+        .style('width','100%')
+        .style('font-family',"'IBM Plex Mono', monospace")
+        .style('font-size', efs + 'px')
+        .style('line-height', lh + 'px')
+        .style('color', '#D4A574')
+        .style('opacity','0.92')
+        .style('text-align','center')
+        .style('word-wrap','break-word')
+        .style('overflow-wrap','break-word')
+        .style('hyphens','auto')
+        .style('pointer-events','none')
+        .text(test);
+    });
+
+    const nodeG = g.append('g');
+
+    nodes.forEach(d => {
+      const h  = cardHeight(d);
+      const c  = cfg(d.depth);
+      const st = d.data.status;
+      const xp = d.y;
+      const yp = d.x - h / 2;
+      const rx = Math.max(4, 12 - d.depth * 2);
+
+      const grp = nodeG.append('g')
+        .attr('transform', `translate(${xp},${yp})`)
+        .style('cursor','pointer')
+        .on('click', () => {
+          if(d._children){ d.children = d._children; d._children = null; }
+          else if(d.children){ d._children = d.children; d.children = null; }
+          render();
+        });
+
+      if(st==='observation'){
+        grp.append('rect')
+          .attr('x',-c.fs*0.05).attr('y',-c.fs*0.05)
+          .attr('width', c.w + c.fs*0.1).attr('height', h + c.fs*0.1)
+          .attr('rx', rx+4)
+          .attr('fill','none')
+          .attr('stroke','#D4A574')
+          .attr('stroke-width', c.fs*0.025)
+          .attr('opacity', 0.1);
+      }
+
+      const bgRect = grp.append('rect')
+        .attr('class','card-bg')
+        .attr('width', c.w).attr('height', h)
+        .attr('rx', rx)
+        .attr('fill', FILLS[st] || '#111')
+        .attr('opacity', st==='eliminated' ? 0.55 : 1);
+
+      grp
+        .on('mouseenter', function(){ bgRect.attr('fill', brighten(FILLS[st]||'#111')); })
+        .on('mouseleave', function(){ bgRect.attr('fill', FILLS[st]||'#111'); });
+
+      if(st==='observation'){
+        grp.append('rect')
+          .attr('width', c.fs*0.18).attr('height', h)
+          .attr('rx', rx)
+          .attr('fill','#D4A574').attr('opacity',0.85);
+      }
+
+      if(st==='validated'){
+        grp.append('rect')
+          .attr('width', c.w).attr('height', c.fs*0.1)
+          .attr('rx', rx)
+          .attr('fill','#D4A574').attr('opacity',0.6);
+      }
+
+      grp.append('rect')
+        .attr('width', c.w).attr('height', h)
+        .attr('rx', rx)
+        .attr('fill','none')
+        .attr('stroke', BORDERS[st]||'#222')
+        .attr('stroke-width', Math.max(1, c.fs*0.012))
+        .attr('stroke-dasharray', (st==='pending'||st==='eliminated')
+          ? `${c.fs*0.25},${c.fs*0.14}` : null)
+        .attr('opacity', st==='eliminated' ? 0.4 : 1);
+
+      const xOff = st==='observation' ? c.fs*0.2 : 0;
+      const fo = grp.append('foreignObject')
+        .attr('x', xOff)
+        .attr('y', 0)
+        .attr('width', c.w - xOff)
+        .attr('height', h);
+
+      fo.append('xhtml:div')
+        .attr('xmlns','http://www.w3.org/1999/xhtml')
+        .style('width','100%')
+        .style('height', h+'px')
+        .style('padding', `${c.pad}px`)
+        .style('display','flex')
+        .style('flex-direction','column')
+        .style('gap', `${c.efs*0.35}px`)
+        .style('box-sizing','border-box')
+        .style('overflow','visible')
+        .html(cardHTML(d, c, h));
+    });
+  }
+
+  function resetView(){
+    treeLayout(root);
+    root.descendants().forEach(d => { d.y = depthX(d.depth); });
+    const nodes = root.descendants().filter(d => d.data.id !== '__root__');
+    if(!nodes.length) return;
+    const W = document.getElementById('canvas').clientWidth;
+    const H = document.getElementById('canvas').clientHeight;
+    const minX = Math.min(...nodes.map(d => d.y)) - 60;
+    const maxX = Math.max(...nodes.map(d => d.y + cfg(d.depth).w)) + 60;
+    const minY = Math.min(...nodes.map(d => d.x - cardHeight(d)/2)) - 80;
+    const maxY = Math.max(...nodes.map(d => d.x + cardHeight(d)/2)) + 80;
+    const tw = maxX-minX, th = maxY-minY;
+    const scale = Math.min(0.92, Math.min((W-80)/tw, (H-80)/th));
+    const tx = (W - tw*scale)/2 - minX*scale;
+    const ty = (H - th*scale)/2 - minY*scale;
+    svg.transition().duration(800)
+      .call(zoom.transform, d3.zoomIdentity.translate(tx,ty).scale(scale));
+  }
+
+  render();
+  setTimeout(resetView, 80);
+  window.addEventListener('resize', resetView);
+}
+
+// Fetch data and boot
+fetch('data/tree.json')
+  .then(r => r.json())
+  .then(data => initTree(data));
