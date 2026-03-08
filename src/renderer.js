@@ -105,13 +105,33 @@ function cardHTML(d, c, h){
   const strike = st==='eliminated'
     ? 'text-decoration:line-through;text-decoration-color:rgba(160,60,40,.55);' : '';
 
+  // Register text for copy
+  const copyId = 'card-' + d.data.id;
+  let copyStr = label || '';
+  if(reason) copyStr += '\n' + reason;
+  if(tags && tags.length) copyStr = tags.join(', ') + '\n' + copyStr;
+  COPY_TEXTS[copyId] = copyStr;
+
+  const btnSz = Math.max(14, Math.round(c.efs * 0.7));
+  const iconSz = Math.max(10, Math.round(btnSz * 0.65));
+
   let h2 = '';
 
-  h2 += `<div style="
-    font-family:'IBM Plex Mono',monospace;font-size:${c.efs}px;line-height:1.2;
-    letter-spacing:.1em;text-transform:uppercase;color:${ec};font-weight:500;
-    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-shrink:0;
-  ">${EYE_LABELS[st]||st}</div>`;
+  h2 += `<div style="display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
+    <div style="
+      font-family:'IBM Plex Mono',monospace;font-size:${c.efs}px;line-height:1.2;
+      letter-spacing:.1em;text-transform:uppercase;color:${ec};font-weight:500;
+      white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+    ">${EYE_LABELS[st]||st}</div>
+    <div data-copy-id="${copyId}" data-size="${iconSz}" onclick="copyText('${copyId}', event)" style="
+      display:flex;align-items:center;justify-content:center;
+      width:${btnSz}px;height:${btnSz}px;border-radius:${Math.max(2,btnSz*0.2)}px;
+      color:rgba(255,255,255,.25);cursor:pointer;flex-shrink:0;
+      transition:all .15s;font-size:${iconSz}px;
+    " onmouseenter="this.style.color='rgba(255,255,255,.7)';this.style.background='rgba(255,255,255,.08)'"
+       onmouseleave="this.style.color='rgba(255,255,255,.25)';this.style.background='transparent'"
+    >${copySVG(iconSz)}</div>
+  </div>`;
 
   if(tags && tags.length){
     h2 += `<div style="display:flex;flex-wrap:wrap;gap:${c.tfs*0.35}px;flex-shrink:0;">`;
@@ -188,6 +208,30 @@ function brighten(hex){
   const b = parseInt(hex.slice(5,7),16);
   const f = 1.14;
   return `rgb(${Math.min(255,Math.round(r*f))},${Math.min(255,Math.round(g2*f))},${Math.min(255,Math.round(b*f))})`;
+}
+
+// Copy-to-clipboard
+const COPY_TEXTS = {};
+function copyText(id, evt){
+  if(evt){ evt.stopPropagation(); evt.preventDefault(); }
+  const text = COPY_TEXTS[id];
+  if(!text) return;
+  navigator.clipboard.writeText(text).then(() => {
+    showCopyToast();
+    const btn = document.querySelector(`[data-copy-id="${id}"]`);
+    if(btn){ btn.innerHTML = '&#10003;'; setTimeout(()=>{ btn.innerHTML = copySVG(btn.dataset.size||12); }, 1200); }
+  });
+}
+function copySVG(size){
+  return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`;
+}
+function showCopyToast(){
+  let t = document.getElementById('copy-toast');
+  if(!t){ t = document.createElement('div'); t.id='copy-toast'; document.body.appendChild(t); }
+  t.textContent = 'Copied!';
+  t.className = 'copy-toast show';
+  clearTimeout(t._tid);
+  t._tid = setTimeout(()=>{ t.className = 'copy-toast'; }, 1400);
 }
 
 // Main init
@@ -271,6 +315,11 @@ function initTree(DATA){
         .attr('x', lx).attr('y', ly)
         .attr('width', gapW).attr('height', labelH + efs);
 
+      const edgeCopyId = 'edge-' + l.target.data.id;
+      COPY_TEXTS[edgeCopyId] = test;
+      const edgeBtnSz = Math.max(10, Math.round(efs * 0.65));
+      const edgeIconSz = Math.max(8, Math.round(edgeBtnSz * 0.65));
+
       fo.append('xhtml:div')
         .attr('xmlns','http://www.w3.org/1999/xhtml')
         .style('width','100%')
@@ -283,8 +332,16 @@ function initTree(DATA){
         .style('word-wrap','break-word')
         .style('overflow-wrap','break-word')
         .style('hyphens','auto')
-        .style('pointer-events','none')
-        .text(test);
+        .style('position','relative')
+        .html(test + `<div data-copy-id="${edgeCopyId}" data-size="${edgeIconSz}" onclick="copyText('${edgeCopyId}', event)" style="
+          position:absolute;top:${-efs*0.15}px;right:${-efs*0.15}px;
+          display:flex;align-items:center;justify-content:center;
+          width:${edgeBtnSz}px;height:${edgeBtnSz}px;border-radius:${Math.max(2,edgeBtnSz*0.2)}px;
+          color:rgba(212,165,116,.3);cursor:pointer;font-size:${edgeIconSz}px;
+          transition:all .15s;
+        " onmouseenter="this.style.color='rgba(212,165,116,.8)';this.style.background='rgba(212,165,116,.12)'"
+           onmouseleave="this.style.color='rgba(212,165,116,.3)';this.style.background='transparent'"
+        >${copySVG(edgeIconSz)}</div>`);
     });
 
     const nodeG = g.append('g');
