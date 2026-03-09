@@ -358,6 +358,46 @@ function initTree(DATA){
           .attr('font-size', efs + 'px')
           .text(line);
       });
+
+      // Edit & Copy icons for edge text
+      const iconSz = Math.max(10, Math.round(efs * 0.85));
+      const iconGap = iconSz * 0.5;
+      const iconsX = lx + gapW + bgPad - iconSz * 2 - iconGap;
+      const iconsY = ly - bgPad + 2;
+
+      const edgeEditG = edgeG.append('g')
+        .attr('transform', `translate(${iconsX},${iconsY})`)
+        .style('cursor','pointer')
+        .attr('opacity', 0.25)
+        .on('mouseenter', function(){ d3.select(this).attr('opacity', 0.8); })
+        .on('mouseleave', function(){ d3.select(this).attr('opacity', 0.25); })
+        .on('click', (evt) => { evt.stopPropagation(); openInlineEdit(l.target.data.id, evt); });
+      edgeEditG.append('svg')
+        .attr('width', iconSz).attr('height', iconSz)
+        .attr('viewBox', '0 0 24 24')
+        .attr('fill', 'none')
+        .attr('stroke', '#D4A574')
+        .attr('stroke-width', 2)
+        .attr('stroke-linecap', 'round')
+        .attr('stroke-linejoin', 'round')
+        .html('<path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/>');
+
+      const edgeCopyG = edgeG.append('g')
+        .attr('transform', `translate(${iconsX + iconSz + iconGap},${iconsY})`)
+        .style('cursor','pointer')
+        .attr('opacity', 0.25)
+        .on('mouseenter', function(){ d3.select(this).attr('opacity', 0.8); })
+        .on('mouseleave', function(){ d3.select(this).attr('opacity', 0.25); })
+        .on('click', (evt) => { evt.stopPropagation(); copyText(edgeCopyId, evt); });
+      edgeCopyG.append('svg')
+        .attr('width', iconSz).attr('height', iconSz)
+        .attr('viewBox', '0 0 24 24')
+        .attr('fill', 'none')
+        .attr('stroke', '#D4A574')
+        .attr('stroke-width', 2)
+        .attr('stroke-linecap', 'round')
+        .attr('stroke-linejoin', 'round')
+        .html('<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>');
     });
 
     const nodeG = g.append('g');
