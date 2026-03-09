@@ -105,13 +105,6 @@ function cardHTML(d, c, h){
   const strike = st==='eliminated'
     ? 'text-decoration:line-through;text-decoration-color:rgba(160,60,40,.55);' : '';
 
-  // Register text for copy
-  const copyId = 'card-' + d.data.id;
-  let copyStr = label || '';
-  if(reason) copyStr += '\n' + reason;
-  if(tags && tags.length) copyStr = tags.join(', ') + '\n' + copyStr;
-  COPY_TEXTS[copyId] = copyStr;
-
   const btnSz = Math.max(14, Math.round(c.efs * 0.7));
   const iconSz = Math.max(10, Math.round(btnSz * 0.65));
 
@@ -132,14 +125,24 @@ function cardHTML(d, c, h){
       " onmouseenter="this.style.color='rgba(255,255,255,.7)';this.style.background='rgba(255,255,255,.08)'"
          onmouseleave="this.style.color='rgba(255,255,255,.25)';this.style.background='transparent'"
       >${pencilSVG(iconSz)}</div>
-      <div data-copy-id="${copyId}" data-size="${iconSz}" onclick="copyText('${copyId}', event)" style="
+      <div onclick="duplicateNode('${d.data.id}', event)" style="
         display:flex;align-items:center;justify-content:center;
         width:${btnSz}px;height:${btnSz}px;border-radius:${Math.max(2,btnSz*0.2)}px;
         color:rgba(255,255,255,.25);cursor:pointer;
         transition:all .15s;font-size:${iconSz}px;
       " onmouseenter="this.style.color='rgba(255,255,255,.7)';this.style.background='rgba(255,255,255,.08)'"
          onmouseleave="this.style.color='rgba(255,255,255,.25)';this.style.background='transparent'"
-      >${copySVG(iconSz)}</div>
+        title="Duplicate"
+      >${duplicateSVG(iconSz)}</div>
+      <div onclick="openNodeRight('${d.data.id}', event)" style="
+        display:flex;align-items:center;justify-content:center;
+        width:${btnSz}px;height:${btnSz}px;border-radius:${Math.max(2,btnSz*0.2)}px;
+        color:rgba(255,255,255,.25);cursor:pointer;
+        transition:all .15s;font-size:${iconSz}px;
+      " onmouseenter="this.style.color='rgba(255,255,255,.7)';this.style.background='rgba(255,255,255,.08)'"
+         onmouseleave="this.style.color='rgba(255,255,255,.25)';this.style.background='transparent'"
+        title="Open to right"
+      >${openRightSVG(iconSz)}</div>
     </div>
   </div>`;
 
@@ -220,28 +223,79 @@ function brighten(hex){
   return `rgb(${Math.min(255,Math.round(r*f))},${Math.min(255,Math.round(g2*f))},${Math.min(255,Math.round(b*f))})`;
 }
 
-// Copy-to-clipboard
-const COPY_TEXTS = {};
-function copyText(id, evt){
+// Duplicate node
+function duplicateNode(nodeId, evt){
   if(evt){ evt.stopPropagation(); evt.preventDefault(); }
-  const text = COPY_TEXTS[id];
-  if(!text) return;
-  navigator.clipboard.writeText(text).then(() => {
-    showCopyToast();
-    const btn = document.querySelector(`[data-copy-id="${id}"]`);
-    if(btn){ btn.innerHTML = '&#10003;'; setTimeout(()=>{ btn.innerHTML = copySVG(btn.dataset.size||12); }, 1200); }
-  });
+  const parent = findParent(CURRENT_DATA, nodeId);
+  if(!parent || !parent.children) return;
+  const idx = parent.children.findIndex(c => c.id === nodeId);
+  if(idx === -1) return;
+  const clone = JSON.parse(JSON.stringify(parent.children[idx]));
+  assignNewIds(clone);
+  parent.children.splice(idx + 1, 0, clone);
+  markDirty();
+  NODE_MAP = {};
+  buildNodeMap(CURRENT_DATA);
+  RENDER_FN(CURRENT_DATA);
+  showToast('Duplicated!');
 }
-function copySVG(size){
-  return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`;
+
+function findParent(obj, targetId){
+  if(!obj || !obj.children) return null;
+  for(const child of obj.children){
+    if(child.id === targetId) return obj;
+    const found = findParent(child, targetId);
+    if(found) return found;
+  }
+  return null;
+}
+
+let _dupCounter = 0;
+function assignNewIds(node){
+  _dupCounter++;
+  node.id = node.id + '-dup-' + _dupCounter;
+  if(node.children) node.children.forEach(c => assignNewIds(c));
+}
+
+// Open to right: create a new child node and open its edit popup
+function openNodeRight(nodeId, evt){
+  if(evt){ evt.stopPropagation(); evt.preventDefault(); }
+  const nodeData = NODE_MAP[nodeId];
+  if(!nodeData) return;
+
+  // Create a new child node
+  _dupCounter++;
+  const newId = 'new-' + _dupCounter;
+  const newNode = {
+    id: newId,
+    status: 'active',
+    label: ''
+  };
+
+  if(!nodeData.children) nodeData.children = [];
+  nodeData.children.push(newNode);
+
+  NODE_MAP[newId] = newNode;
+  markDirty();
+  RENDER_FN(CURRENT_DATA);
+
+  // Open the edit popup for the new node after re-render
+  setTimeout(() => { openInlineEdit(newId); }, 60);
+}
+
+function duplicateSVG(size){
+  return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v1"/><line x1="12" y1="12" x2="12" y2="18"/><line x1="9" y1="15" x2="15" y2="15"/></svg>`;
+}
+function openRightSVG(size){
+  return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/><polyline points="16 10 19 12 16 14"/></svg>`;
 }
 function pencilSVG(size){
   return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>`;
 }
-function showCopyToast(){
+function showToast(msg){
   let t = document.getElementById('copy-toast');
   if(!t){ t = document.createElement('div'); t.id='copy-toast'; document.body.appendChild(t); }
-  t.textContent = 'Copied!';
+  t.textContent = msg;
   t.className = 'copy-toast show';
   clearTimeout(t._tid);
   t._tid = setTimeout(()=>{ t.className = 'copy-toast'; }, 1400);
@@ -324,9 +378,6 @@ function initTree(DATA){
         .attr('rx', efs * 0.28)
         .attr('fill', '#060606').attr('opacity', 0.88);
 
-      const edgeCopyId = 'edge-' + l.target.data.id;
-      COPY_TEXTS[edgeCopyId] = test;
-
       // Use SVG <text> instead of foreignObject for iPad/iOS compatibility
       const cpl = Math.max(6, Math.floor(gapW / (efs * 0.56)));
       const words = test.split(/\s+/);
@@ -345,7 +396,7 @@ function initTree(DATA){
 
       const edgeTextG = edgeG.append('g')
         .style('cursor','pointer')
-        .on('click', () => copyText(edgeCopyId));
+        .on('click', () => { openInlineEdit(l.target.data.id, null, 'test'); });
 
       textLines.forEach((line, i) => {
         edgeTextG.append('text')
@@ -359,10 +410,9 @@ function initTree(DATA){
           .text(line);
       });
 
-      // Edit & Copy icons for edge text
+      // Edit icon for edge text
       const iconSz = Math.max(10, Math.round(efs * 0.85));
-      const iconGap = iconSz * 1.2;
-      const iconsX = lx + gapW + bgPad - iconSz * 2 - iconGap;
+      const iconsX = lx + gapW + bgPad - iconSz;
       const iconsY = ly - bgPad - iconSz - efs * 0.3;
 
       const edgeEditG = edgeG.append('g')
@@ -381,23 +431,6 @@ function initTree(DATA){
         .attr('stroke-linecap', 'round')
         .attr('stroke-linejoin', 'round')
         .html('<path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/>');
-
-      const edgeCopyG = edgeG.append('g')
-        .attr('transform', `translate(${iconsX + iconSz + iconGap},${iconsY})`)
-        .style('cursor','pointer')
-        .attr('opacity', 0.25)
-        .on('mouseenter', function(){ d3.select(this).attr('opacity', 0.8); })
-        .on('mouseleave', function(){ d3.select(this).attr('opacity', 0.25); })
-        .on('click', (evt) => { evt.stopPropagation(); copyText(edgeCopyId, evt); });
-      edgeCopyG.append('svg')
-        .attr('width', iconSz).attr('height', iconSz)
-        .attr('viewBox', '0 0 24 24')
-        .attr('fill', 'none')
-        .attr('stroke', '#D4A574')
-        .attr('stroke-width', 2)
-        .attr('stroke-linecap', 'round')
-        .attr('stroke-linejoin', 'round')
-        .html('<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>');
     });
 
     const nodeG = g.append('g');
