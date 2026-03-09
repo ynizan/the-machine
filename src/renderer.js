@@ -94,10 +94,10 @@ const EYE_LABELS = {
 };
 
 const HYPOTHESIS_TYPES = [
-  'problem', 'solution', 'viral_sending', 'viral_receiving', 'revenue', 'unit_economics'
+  'problem', 'problem_space', 'solution', 'viral_sending', 'viral_receiving', 'revenue', 'unit_economics'
 ];
 const TYPE_LABELS = {
-  problem:'Problem', solution:'Solution', viral_sending:'Viral Sending',
+  problem:'Problem', problem_space:'Problem Space', solution:'Solution', viral_sending:'Viral Sending',
   viral_receiving:'Viral Receiving', revenue:'Revenue', unit_economics:'Unit Economics'
 };
 
@@ -179,10 +179,12 @@ function cardHTML(d, c, h){
   ">${label}</div>`;
 
   if(reason){
+    const reasonColor = st==='validated' ? '#5A9E6F' : st==='eliminated' ? '#8B2E20' : '#777';
+    const reasonBorder = st==='validated' ? 'rgba(90,158,111,.22)' : st==='eliminated' ? 'rgba(139,46,32,.22)' : 'rgba(255,255,255,.08)';
     h2 += `<div style="
       font-family:'IBM Plex Serif',serif;font-size:${c.fs*0.82}px;line-height:${c.lh};
-      color:#8B2E20;font-style:italic;
-      border-top:${Math.max(1,c.fs*0.015)}px solid rgba(139,46,32,.22);
+      color:${reasonColor};font-style:italic;
+      border-top:${Math.max(1,c.fs*0.015)}px solid ${reasonBorder};
       padding-top:${c.fs*0.22}px;
       word-wrap:break-word;overflow-wrap:break-word;flex-shrink:0;
     ">\u21A9 ${reason}</div>`;
@@ -752,7 +754,7 @@ function openInlineEdit(nodeId, evt, focusField){
           <textarea id="ief-test" rows="2">${(nodeData.test||'').replace(/"/g,'&quot;')}</textarea>
         </div>
         <div class="ief-field">
-          <label>Reason</label>
+          <label>Data / Results</label>
           <textarea id="ief-reason" rows="2">${(nodeData.reason||'').replace(/"/g,'&quot;')}</textarea>
         </div>
         ${scoreHtml ? `<div style="margin-top:2px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#666;margin-bottom:8px;">Score</div>${scoreHtml}</div>` : ''}
