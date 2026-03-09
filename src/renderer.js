@@ -443,15 +443,21 @@ function initTree(DATA){
       const yp = d.x - h / 2;
       const rx = Math.max(4, 12 - d.depth * 2);
 
+      let _clickTimer = null;
       const grp = nodeG.append('g')
         .attr('transform', `translate(${xp},${yp})`)
         .style('cursor','pointer')
         .on('click', () => {
-          if(d._children){ d.children = d._children; d._children = null; }
-          else if(d.children){ d._children = d.children; d.children = null; }
-          render();
+          if(_clickTimer) clearTimeout(_clickTimer);
+          _clickTimer = setTimeout(() => {
+            _clickTimer = null;
+            if(d._children){ d.children = d._children; d._children = null; }
+            else if(d.children){ d._children = d.children; d.children = null; }
+            render();
+          }, 250);
         })
         .on('dblclick', (evt) => {
+          if(_clickTimer){ clearTimeout(_clickTimer); _clickTimer = null; }
           evt.stopPropagation();
           openInlineEdit(d.data.id, evt);
         });
