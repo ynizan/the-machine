@@ -105,8 +105,8 @@ function cardHTML(d, c, h){
   const strike = st==='eliminated'
     ? 'text-decoration:line-through;text-decoration-color:rgba(160,60,40,.55);' : '';
 
-  const btnSz = Math.max(14, Math.round(c.efs * 0.7));
-  const iconSz = Math.max(10, Math.round(btnSz * 0.65));
+  const btnSz = Math.max(14, Math.round(c.efs * 1.0));
+  const iconSz = Math.max(10, Math.round(btnSz * 0.75));
 
   let h2 = '';
 
@@ -450,6 +450,10 @@ function initTree(DATA){
           if(d._children){ d.children = d._children; d._children = null; }
           else if(d.children){ d._children = d.children; d.children = null; }
           render();
+        })
+        .on('dblclick', (evt) => {
+          evt.stopPropagation();
+          openInlineEdit(d.data.id, evt);
         });
 
       if(st==='observation'){
