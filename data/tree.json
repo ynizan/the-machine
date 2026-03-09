@@ -11,11 +11,12 @@
       "children": [
         {
           "id": "li-inbox",
-          "status": "validated",
-          "tags": ["problem", "linkedin"],
-          "label": "LinkedIn inbox is a poor networking tool — messages go unread, no prioritization, creates noise not signal",
+          "status": "eliminated",
+          "tags": ["problem"],
+          "label": "LinkedIn inbox is a poor networking tool. Messages go unread, no prioritization, creates noise not signal",
           "test": "Mom tests across AEs, founders, VCs — inbox usage & frustration",
-          "score": { "Freq": 3, "Intensity": 2, "Fit": 3 }
+          "score": { "Freq": 3, "Intensity": 2, "Fit": 3 },
+          "reason": "Most people didn't feel it's an issue. The ones that have a lot of linkedin reachout use external tools for it anyway."
         },
         {
           "id": "mutual-lkg",
@@ -115,7 +116,7 @@
       "id": "obs-c",
       "status": "observation",
       "tags": ["observation"],
-      "label": "Introductions & meetings are a viral product space",
+      "label": "Introductions & intro-meetings are a viral product space",
       "children": [
         {
           "id": "option-a",
