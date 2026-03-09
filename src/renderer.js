@@ -361,9 +361,9 @@ function initTree(DATA){
 
       // Edit & Copy icons for edge text
       const iconSz = Math.max(10, Math.round(efs * 0.85));
-      const iconGap = iconSz * 0.5;
+      const iconGap = iconSz * 1.2;
       const iconsX = lx + gapW + bgPad - iconSz * 2 - iconGap;
-      const iconsY = ly - bgPad + 2;
+      const iconsY = ly - bgPad - iconSz - efs * 0.3;
 
       const edgeEditG = edgeG.append('g')
         .attr('transform', `translate(${iconsX},${iconsY})`)
