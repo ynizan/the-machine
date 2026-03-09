@@ -302,7 +302,7 @@ function showToast(msg){
 }
 
 // Main init
-function initTree(DATA){
+function initTree(DATA, opts){
   const svgEl = document.getElementById('tree');
   const gEl   = document.getElementById('G');
   const svg   = d3.select(svgEl);
@@ -549,7 +549,9 @@ function initTree(DATA){
   }
 
   render();
-  setTimeout(resetView, 80);
+  if(!opts || !opts.skipResetView){
+    setTimeout(resetView, 80);
+  }
   window.addEventListener('resize', resetView);
 }
 
@@ -786,7 +788,7 @@ function openInlineEdit(nodeId, evt, focusField){
 
     overlay.remove();
     markDirty();
-    RENDER_FN(CURRENT_DATA);
+    RENDER_FN(CURRENT_DATA, {skipResetView: true});
   };
 }
 
@@ -797,11 +799,11 @@ fetch('data/tree.json')
     CURRENT_DATA = data;
     buildNodeMap(data);
     initTree(data);
-    setupEditor(data, (newData) => {
+    setupEditor(data, (newData, opts) => {
       CURRENT_DATA = newData;
       NODE_MAP = {};
       buildNodeMap(newData);
       document.getElementById('G').innerHTML = '';
-      initTree(newData);
+      initTree(newData, opts);
     });
   });
