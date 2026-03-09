@@ -630,6 +630,8 @@ function openInlineEdit(nodeId, evt){
         ${scoreHtml ? `<div style="margin-top:2px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#666;margin-bottom:8px;">Score</div>${scoreHtml}</div>` : ''}
       </div>
       <div class="ief-footer">
+        <button class="ep-btn" onclick="downloadJSON()">&#8681; Download JSON</button>
+        <div style="flex:1"></div>
         <button class="ep-btn" onclick="this.closest('.inline-edit-overlay').remove()">Cancel</button>
         <button class="ep-btn primary" id="ief-save">Save</button>
       </div>
