@@ -313,8 +313,8 @@ function initTree(DATA){
       const gapW = cfg(l.source.depth).gap * 0.80;
       const lx   = sx + (tx - sx) / 2 - gapW / 2;
       const lh   = efs * 1.55;
-      const lines = Math.ceil(test.length / Math.max(6, Math.floor(gapW / (efs * 0.56))));
-      const labelH = Math.max(1, lines) * lh + efs * 0.5;
+      const estLines = Math.ceil(test.length / Math.max(6, Math.floor(gapW / (efs * 0.56))));
+      const labelH = Math.max(1, estLines) * lh + efs * 0.5;
       const ly   = ty - labelH / 2;
 
       const bgPad = efs * 0.45;
@@ -324,37 +324,40 @@ function initTree(DATA){
         .attr('rx', efs * 0.28)
         .attr('fill', '#060606').attr('opacity', 0.88);
 
-      const fo = edgeG.append('foreignObject')
-        .attr('x', lx).attr('y', ly)
-        .attr('width', gapW).attr('height', labelH + efs);
-
       const edgeCopyId = 'edge-' + l.target.data.id;
       COPY_TEXTS[edgeCopyId] = test;
-      const edgeBtnSz = Math.max(10, Math.round(efs * 0.65));
-      const edgeIconSz = Math.max(8, Math.round(edgeBtnSz * 0.65));
 
-      fo.append('xhtml:div')
-        .attr('xmlns','http://www.w3.org/1999/xhtml')
-        .style('width','100%')
-        .style('font-family',"'IBM Plex Mono', monospace")
-        .style('font-size', efs + 'px')
-        .style('line-height', lh + 'px')
-        .style('color', '#D4A574')
-        .style('opacity','0.92')
-        .style('text-align','center')
-        .style('word-wrap','break-word')
-        .style('overflow-wrap','break-word')
-        .style('hyphens','auto')
-        .style('position','relative')
-        .html(test + `<div data-copy-id="${edgeCopyId}" data-size="${edgeIconSz}" onclick="copyText('${edgeCopyId}', event)" style="
-          position:absolute;top:${-efs*0.15}px;right:${-efs*0.15}px;
-          display:flex;align-items:center;justify-content:center;
-          width:${edgeBtnSz}px;height:${edgeBtnSz}px;border-radius:${Math.max(2,edgeBtnSz*0.2)}px;
-          color:rgba(212,165,116,.3);cursor:pointer;font-size:${edgeIconSz}px;
-          transition:all .15s;
-        " onmouseenter="this.style.color='rgba(212,165,116,.8)';this.style.background='rgba(212,165,116,.12)'"
-           onmouseleave="this.style.color='rgba(212,165,116,.3)';this.style.background='transparent'"
-        >${copySVG(edgeIconSz)}</div>`);
+      // Use SVG <text> instead of foreignObject for iPad/iOS compatibility
+      const cpl = Math.max(6, Math.floor(gapW / (efs * 0.56)));
+      const words = test.split(/\s+/);
+      const textLines = [];
+      let curLine = '';
+      for(const word of words){
+        const tryLine = curLine ? curLine + ' ' + word : word;
+        if(tryLine.length <= cpl){ curLine = tryLine; }
+        else { if(curLine) textLines.push(curLine); curLine = word; }
+      }
+      if(curLine) textLines.push(curLine);
+
+      const centerX = sx + (tx - sx) / 2;
+      const totalH = textLines.length * lh;
+      const startY = ty - totalH / 2 + efs * 0.38;
+
+      const edgeTextG = edgeG.append('g')
+        .style('cursor','pointer')
+        .on('click', () => copyText(edgeCopyId));
+
+      textLines.forEach((line, i) => {
+        edgeTextG.append('text')
+          .attr('x', centerX)
+          .attr('y', startY + i * lh)
+          .attr('text-anchor', 'middle')
+          .attr('fill', '#D4A574')
+          .attr('opacity', 0.92)
+          .attr('font-family', "'IBM Plex Mono', monospace")
+          .attr('font-size', efs + 'px')
+          .text(line);
+      });
     });
 
     const nodeG = g.append('g');
