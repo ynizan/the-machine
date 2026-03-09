@@ -470,10 +470,42 @@ function initTree(DATA){
 // --- JSON Editor Panel ---
 let CURRENT_DATA = null;
 let RENDER_FN = null;
+let ORIGINAL_JSON = null;
+let _dirty = false;
+
+function markDirty(){
+  if(!_dirty){
+    _dirty = true;
+    window.addEventListener('beforeunload', _beforeUnload);
+  }
+}
+function clearDirty(){
+  _dirty = false;
+  window.removeEventListener('beforeunload', _beforeUnload);
+}
+function _beforeUnload(e){
+  e.preventDefault();
+  e.returnValue = '';
+}
+
+function downloadJSON(){
+  const json = JSON.stringify(CURRENT_DATA, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href = url;
+  a.download = 'tree.json';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  clearDirty();
+}
 
 function setupEditor(data, renderFn){
   CURRENT_DATA = data;
   RENDER_FN = renderFn;
+  ORIGINAL_JSON = JSON.stringify(data);
 
   const panel = document.getElementById('editor-panel');
   const ta    = document.getElementById('ep-textarea');
@@ -508,12 +540,15 @@ function setupEditor(data, renderFn){
       const parsed = JSON.parse(ta.value);
       errEl.classList.remove('show');
       CURRENT_DATA = parsed;
+      if(JSON.stringify(parsed) !== ORIGINAL_JSON) markDirty();
       RENDER_FN(parsed);
     }catch(e){
       errEl.textContent = 'JSON Error: ' + e.message;
       errEl.classList.add('show');
     }
   };
+
+  document.getElementById('ep-dl').onclick = downloadJSON;
 
   // Tab key inserts spaces in textarea
   ta.addEventListener('keydown', e => {
@@ -624,6 +659,7 @@ function openInlineEdit(nodeId, evt){
     if(!nodeData.tags || !nodeData.tags.length) delete nodeData.tags;
 
     overlay.remove();
+    markDirty();
     RENDER_FN(CURRENT_DATA);
   };
 }
