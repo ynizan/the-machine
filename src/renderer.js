@@ -371,7 +371,7 @@ function initTree(DATA){
         .attr('opacity', 0.25)
         .on('mouseenter', function(){ d3.select(this).attr('opacity', 0.8); })
         .on('mouseleave', function(){ d3.select(this).attr('opacity', 0.25); })
-        .on('click', (evt) => { evt.stopPropagation(); openInlineEdit(l.target.data.id, evt); });
+        .on('click', (evt) => { evt.stopPropagation(); openInlineEdit(l.target.data.id, evt, 'test'); });
       edgeEditG.append('svg')
         .attr('width', iconSz).attr('height', iconSz)
         .attr('viewBox', '0 0 24 24')
@@ -613,7 +613,7 @@ function buildNodeMap(obj){
   if(obj.children) obj.children.forEach(c => buildNodeMap(c));
 }
 
-function openInlineEdit(nodeId, evt){
+function openInlineEdit(nodeId, evt, focusField){
   if(evt){ evt.stopPropagation(); evt.preventDefault(); }
   const nodeData = NODE_MAP[nodeId];
   if(!nodeData) return;
@@ -625,6 +625,44 @@ function openInlineEdit(nodeId, evt){
   const overlay = document.createElement('div');
   overlay.className = 'inline-edit-overlay';
   overlay.onclick = (e) => { if(e.target === overlay) overlay.remove(); };
+
+  if(focusField === 'test'){
+    // Simplified edge-text-only editor
+    overlay.innerHTML = `
+      <div class="inline-edit-form">
+        <div class="ief-header">
+          <h3>Edit Edge Text — ${nodeData.id}</h3>
+          <button class="ief-close" onclick="this.closest('.inline-edit-overlay').remove()">&times;</button>
+        </div>
+        <div class="ief-body">
+          <div class="ief-field">
+            <label>Test</label>
+            <textarea id="ief-test" rows="4">${(nodeData.test||'').replace(/"/g,'&quot;')}</textarea>
+          </div>
+        </div>
+        <div class="ief-footer">
+          <button class="ep-btn" onclick="downloadJSON()">&#8681; Download JSON</button>
+          <div style="flex:1"></div>
+          <button class="ep-btn" onclick="this.closest('.inline-edit-overlay').remove()">Cancel</button>
+          <button class="ep-btn primary" id="ief-save">Save</button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    const testEl = document.getElementById('ief-test');
+    testEl.focus();
+
+    document.getElementById('ief-save').onclick = () => {
+      nodeData.test = testEl.value || undefined;
+      if(!nodeData.test) delete nodeData.test;
+      overlay.remove();
+      markDirty();
+      RENDER_FN(CURRENT_DATA);
+    };
+    return;
+  }
 
   const statuses = ['observation','validated','active','pending','eliminated'];
   const statusOpts = statuses.map(s =>
