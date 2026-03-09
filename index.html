@@ -38,6 +38,26 @@
   <button class="cb" id="zo">&minus;</button>
   <button class="cb" id="zr" style="font-size:13px">&#8962;</button>
 </div>
+
+<div id="editor-toggle">
+  <button class="cb" id="et" title="Toggle JSON editor" style="font-size:13px;width:auto;padding:0 10px;">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg>
+  </button>
+</div>
+
+<div id="editor-panel">
+  <div class="ep-header">
+    <h3>tree.json</h3>
+    <div class="ep-actions">
+      <button class="ep-btn" id="ep-fmt">Format</button>
+      <button class="ep-btn primary" id="ep-apply">Apply</button>
+      <button class="ep-btn" id="ep-close">&times;</button>
+    </div>
+  </div>
+  <div class="ep-error" id="ep-error"></div>
+  <textarea id="ep-textarea" spellcheck="false"></textarea>
+</div>
+
 <div id="hint">scroll/pinch to zoom · drag to pan · click node to expand</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>

@@ -123,14 +123,24 @@ function cardHTML(d, c, h){
       letter-spacing:.1em;text-transform:uppercase;color:${ec};font-weight:500;
       white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
     ">${EYE_LABELS[st]||st}</div>
-    <div data-copy-id="${copyId}" data-size="${iconSz}" onclick="copyText('${copyId}', event)" style="
-      display:flex;align-items:center;justify-content:center;
-      width:${btnSz}px;height:${btnSz}px;border-radius:${Math.max(2,btnSz*0.2)}px;
-      color:rgba(255,255,255,.25);cursor:pointer;flex-shrink:0;
-      transition:all .15s;font-size:${iconSz}px;
-    " onmouseenter="this.style.color='rgba(255,255,255,.7)';this.style.background='rgba(255,255,255,.08)'"
-       onmouseleave="this.style.color='rgba(255,255,255,.25)';this.style.background='transparent'"
-    >${copySVG(iconSz)}</div>
+    <div style="display:flex;align-items:center;gap:${Math.max(2,btnSz*0.2)}px;flex-shrink:0;">
+      <div data-edit-id="${d.data.id}" onclick="openInlineEdit('${d.data.id}', event)" style="
+        display:flex;align-items:center;justify-content:center;
+        width:${btnSz}px;height:${btnSz}px;border-radius:${Math.max(2,btnSz*0.2)}px;
+        color:rgba(255,255,255,.25);cursor:pointer;
+        transition:all .15s;font-size:${iconSz}px;
+      " onmouseenter="this.style.color='rgba(255,255,255,.7)';this.style.background='rgba(255,255,255,.08)'"
+         onmouseleave="this.style.color='rgba(255,255,255,.25)';this.style.background='transparent'"
+      >${pencilSVG(iconSz)}</div>
+      <div data-copy-id="${copyId}" data-size="${iconSz}" onclick="copyText('${copyId}', event)" style="
+        display:flex;align-items:center;justify-content:center;
+        width:${btnSz}px;height:${btnSz}px;border-radius:${Math.max(2,btnSz*0.2)}px;
+        color:rgba(255,255,255,.25);cursor:pointer;
+        transition:all .15s;font-size:${iconSz}px;
+      " onmouseenter="this.style.color='rgba(255,255,255,.7)';this.style.background='rgba(255,255,255,.08)'"
+         onmouseleave="this.style.color='rgba(255,255,255,.25)';this.style.background='transparent'"
+      >${copySVG(iconSz)}</div>
+    </div>
   </div>`;
 
   if(tags && tags.length){
@@ -224,6 +234,9 @@ function copyText(id, evt){
 }
 function copySVG(size){
   return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`;
+}
+function pencilSVG(size){
+  return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>`;
 }
 function showCopyToast(){
   let t = document.getElementById('copy-toast');
@@ -454,7 +467,179 @@ function initTree(DATA){
   window.addEventListener('resize', resetView);
 }
 
+// --- JSON Editor Panel ---
+let CURRENT_DATA = null;
+let RENDER_FN = null;
+
+function setupEditor(data, renderFn){
+  CURRENT_DATA = data;
+  RENDER_FN = renderFn;
+
+  const panel = document.getElementById('editor-panel');
+  const ta    = document.getElementById('ep-textarea');
+  const errEl = document.getElementById('ep-error');
+
+  ta.value = JSON.stringify(data, null, 2);
+
+  document.getElementById('et').onclick = () => {
+    panel.classList.toggle('open');
+    if(panel.classList.contains('open')){
+      ta.value = JSON.stringify(CURRENT_DATA, null, 2);
+    }
+  };
+
+  document.getElementById('ep-close').onclick = () => {
+    panel.classList.remove('open');
+  };
+
+  document.getElementById('ep-fmt').onclick = () => {
+    try{
+      const parsed = JSON.parse(ta.value);
+      ta.value = JSON.stringify(parsed, null, 2);
+      errEl.classList.remove('show');
+    }catch(e){
+      errEl.textContent = 'JSON Error: ' + e.message;
+      errEl.classList.add('show');
+    }
+  };
+
+  document.getElementById('ep-apply').onclick = () => {
+    try{
+      const parsed = JSON.parse(ta.value);
+      errEl.classList.remove('show');
+      CURRENT_DATA = parsed;
+      RENDER_FN(parsed);
+    }catch(e){
+      errEl.textContent = 'JSON Error: ' + e.message;
+      errEl.classList.add('show');
+    }
+  };
+
+  // Tab key inserts spaces in textarea
+  ta.addEventListener('keydown', e => {
+    if(e.key === 'Tab'){
+      e.preventDefault();
+      const s = ta.selectionStart, end = ta.selectionEnd;
+      ta.value = ta.value.substring(0,s) + '  ' + ta.value.substring(end);
+      ta.selectionStart = ta.selectionEnd = s + 2;
+    }
+  });
+}
+
+// --- Inline Card Edit ---
+let NODE_MAP = {};
+
+function buildNodeMap(obj){
+  if(!obj) return;
+  if(obj.id) NODE_MAP[obj.id] = obj;
+  if(obj.children) obj.children.forEach(c => buildNodeMap(c));
+}
+
+function openInlineEdit(nodeId, evt){
+  if(evt){ evt.stopPropagation(); evt.preventDefault(); }
+  const nodeData = NODE_MAP[nodeId];
+  if(!nodeData) return;
+
+  // Remove any existing overlay
+  const existing = document.querySelector('.inline-edit-overlay');
+  if(existing) existing.remove();
+
+  const overlay = document.createElement('div');
+  overlay.className = 'inline-edit-overlay';
+  overlay.onclick = (e) => { if(e.target === overlay) overlay.remove(); };
+
+  const statuses = ['observation','validated','active','pending','eliminated'];
+  const statusOpts = statuses.map(s =>
+    `<option value="${s}" ${nodeData.status===s?'selected':''}>${s}</option>`
+  ).join('');
+
+  const scoreHtml = nodeData.score ? Object.entries(nodeData.score).map(([k,v]) =>
+    `<div class="ief-field" style="display:inline-block;width:calc(50% - 6px);margin-right:4px;">
+      <label>${k}</label>
+      <select data-score-key="${k}">
+        <option value="0" ${v===0?'selected':''}>0</option>
+        <option value="1" ${v===1?'selected':''}>1</option>
+        <option value="2" ${v===2?'selected':''}>2</option>
+        <option value="3" ${v===3?'selected':''}>3</option>
+      </select>
+    </div>`
+  ).join('') : '';
+
+  overlay.innerHTML = `
+    <div class="inline-edit-form">
+      <div class="ief-header">
+        <h3>Edit Node — ${nodeData.id}</h3>
+        <button class="ief-close" onclick="this.closest('.inline-edit-overlay').remove()">&times;</button>
+      </div>
+      <div class="ief-body">
+        <div class="ief-field">
+          <label>Status</label>
+          <select id="ief-status">${statusOpts}</select>
+        </div>
+        <div class="ief-field">
+          <label>Label</label>
+          <textarea id="ief-label" rows="3">${(nodeData.label||'').replace(/"/g,'&quot;')}</textarea>
+        </div>
+        <div class="ief-field">
+          <label>Tags (comma-separated)</label>
+          <input id="ief-tags" value="${(nodeData.tags||[]).join(', ')}">
+        </div>
+        <div class="ief-field">
+          <label>Test</label>
+          <textarea id="ief-test" rows="2">${(nodeData.test||'').replace(/"/g,'&quot;')}</textarea>
+        </div>
+        <div class="ief-field">
+          <label>Reason</label>
+          <textarea id="ief-reason" rows="2">${(nodeData.reason||'').replace(/"/g,'&quot;')}</textarea>
+        </div>
+        ${scoreHtml ? `<div style="margin-top:2px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#666;margin-bottom:8px;">Score</div>${scoreHtml}</div>` : ''}
+      </div>
+      <div class="ief-footer">
+        <button class="ep-btn" onclick="this.closest('.inline-edit-overlay').remove()">Cancel</button>
+        <button class="ep-btn primary" id="ief-save">Save</button>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+
+  document.getElementById('ief-save').onclick = () => {
+    nodeData.status = document.getElementById('ief-status').value;
+    nodeData.label  = document.getElementById('ief-label').value;
+    const tagsVal   = document.getElementById('ief-tags').value.trim();
+    nodeData.tags   = tagsVal ? tagsVal.split(',').map(t=>t.trim()).filter(Boolean) : [];
+    nodeData.test   = document.getElementById('ief-test').value || undefined;
+    const reasonVal = document.getElementById('ief-reason').value;
+    nodeData.reason = reasonVal || undefined;
+
+    if(nodeData.score){
+      overlay.querySelectorAll('[data-score-key]').forEach(sel => {
+        nodeData.score[sel.dataset.scoreKey] = parseInt(sel.value);
+      });
+    }
+
+    // Clean up undefined fields
+    if(!nodeData.test) delete nodeData.test;
+    if(!nodeData.reason) delete nodeData.reason;
+    if(!nodeData.tags || !nodeData.tags.length) delete nodeData.tags;
+
+    overlay.remove();
+    RENDER_FN(CURRENT_DATA);
+  };
+}
+
 // Fetch data and boot
 fetch('data/tree.json')
   .then(r => r.json())
-  .then(data => initTree(data));
+  .then(data => {
+    CURRENT_DATA = data;
+    buildNodeMap(data);
+    initTree(data);
+    setupEditor(data, (newData) => {
+      CURRENT_DATA = newData;
+      NODE_MAP = {};
+      buildNodeMap(newData);
+      document.getElementById('G').innerHTML = '';
+      initTree(newData);
+    });
+  });
