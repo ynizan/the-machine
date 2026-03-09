@@ -5,9 +5,9 @@
   "children": [
     {
       "id": "obs-a",
-      "status": "observation",
+      "status": "validated",
       "tags": ["observation"],
-      "label": "LinkedIn is broken",
+      "label": "Many people are unhappy with Linkedin",
       "children": [
         {
           "id": "li-inbox",
@@ -22,7 +22,7 @@
           "id": "mutual-lkg",
           "status": "active",
           "tags": ["problem", "linkedin"],
-          "label": "Mutual connections fail users — they see 300+ but have no intelligence on which paths are real",
+          "label": "Mutual connections is inaccurate — they see 300+ but have no intelligence on which paths are real",
           "test": "Behavioral: how often do people see / click mutual connections? What for?",
           "children": [
             {
@@ -31,7 +31,7 @@
               "tags": ["solution", "low-freq"],
               "label": "Option B: Strategic Reach — find the real intro path to a specific high-value target",
               "test": "Mom tests — how often do you target a specific person for an intro?",
-              "reason": "Frequency too low — ~2× per month. Not a recurring daily pain.",
+              "reason": "Frequency too low — ~2× per Q. Not a recurring daily pain.",
               "children": [
                 {
                   "id": "b-waterfall",
@@ -60,14 +60,14 @@
               "id": "mutual-ca",
               "status": "pending",
               "tags": ["hypothesis"],
-              "label": "Contingency A: People check mutual connections for cold outreach recon — is this person reachable?",
+              "label": "Many mutual connections - helps the user build confidence before the reachout. More chances for him to accept.",
               "test": "Interview: when and why do you look at mutual connections?"
             },
             {
               "id": "mutual-cb",
               "status": "pending",
               "tags": ["hypothesis"],
-              "label": "Contingency B: People check mutuals to validate relationship strength before a big ask",
+              "label": "People check mutual connections as part of understanding the target. What people he associate with.",
               "test": "Interview: what triggers you to check mutual connections?"
             }
           ]
@@ -82,7 +82,7 @@
       "children": [
         {
           "id": "founders",
-          "status": "validated",
+          "status": "active",
           "tags": ["persona", "validated"],
           "label": "Serial founders lose high-value relationships due to relationship drift and missed timing signals",
           "test": "3 serial founder Mom test interviews",
@@ -90,7 +90,7 @@
         },
         {
           "id": "vcs",
-          "status": "validated",
+          "status": "active",
           "tags": ["persona", "validated"],
           "label": "VC principals miss deal flow — can't maintain active signals on 80–150 priority founders",
           "test": "3 VC principal Mom test interviews",
@@ -98,7 +98,7 @@
         },
         {
           "id": "aes",
-          "status": "active",
+          "status": "eliminated",
           "tags": ["persona", "wtp"],
           "label": "AEs will pay out of pocket for personal network CRM — owned by the rep, not the company",
           "test": "AE validation interviews (simulation + real calls) + cold email signal"
