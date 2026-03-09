@@ -105,13 +105,6 @@ function cardHTML(d, c, h){
   const strike = st==='eliminated'
     ? 'text-decoration:line-through;text-decoration-color:rgba(160,60,40,.55);' : '';
 
-  // Register text for copy
-  const copyId = 'card-' + d.data.id;
-  let copyStr = label || '';
-  if(reason) copyStr += '\n' + reason;
-  if(tags && tags.length) copyStr = tags.join(', ') + '\n' + copyStr;
-  COPY_TEXTS[copyId] = copyStr;
-
   const btnSz = Math.max(14, Math.round(c.efs * 0.7));
   const iconSz = Math.max(10, Math.round(btnSz * 0.65));
 
@@ -132,14 +125,24 @@ function cardHTML(d, c, h){
       " onmouseenter="this.style.color='rgba(255,255,255,.7)';this.style.background='rgba(255,255,255,.08)'"
          onmouseleave="this.style.color='rgba(255,255,255,.25)';this.style.background='transparent'"
       >${pencilSVG(iconSz)}</div>
-      <div data-copy-id="${copyId}" data-size="${iconSz}" onclick="copyText('${copyId}', event)" style="
+      <div onclick="duplicateNode('${d.data.id}', event)" style="
         display:flex;align-items:center;justify-content:center;
         width:${btnSz}px;height:${btnSz}px;border-radius:${Math.max(2,btnSz*0.2)}px;
         color:rgba(255,255,255,.25);cursor:pointer;
         transition:all .15s;font-size:${iconSz}px;
       " onmouseenter="this.style.color='rgba(255,255,255,.7)';this.style.background='rgba(255,255,255,.08)'"
          onmouseleave="this.style.color='rgba(255,255,255,.25)';this.style.background='transparent'"
-      >${copySVG(iconSz)}</div>
+        title="Duplicate"
+      >${duplicateSVG(iconSz)}</div>
+      <div onclick="openNodeRight('${d.data.id}', event)" style="
+        display:flex;align-items:center;justify-content:center;
+        width:${btnSz}px;height:${btnSz}px;border-radius:${Math.max(2,btnSz*0.2)}px;
+        color:rgba(255,255,255,.25);cursor:pointer;
+        transition:all .15s;font-size:${iconSz}px;
+      " onmouseenter="this.style.color='rgba(255,255,255,.7)';this.style.background='rgba(255,255,255,.08)'"
+         onmouseleave="this.style.color='rgba(255,255,255,.25)';this.style.background='transparent'"
+        title="Open to right"
+      >${openRightSVG(iconSz)}</div>
     </div>
   </div>`;
 
@@ -220,28 +223,59 @@ function brighten(hex){
   return `rgb(${Math.min(255,Math.round(r*f))},${Math.min(255,Math.round(g2*f))},${Math.min(255,Math.round(b*f))})`;
 }
 
-// Copy-to-clipboard
-const COPY_TEXTS = {};
-function copyText(id, evt){
+// Duplicate node
+function duplicateNode(nodeId, evt){
   if(evt){ evt.stopPropagation(); evt.preventDefault(); }
-  const text = COPY_TEXTS[id];
-  if(!text) return;
-  navigator.clipboard.writeText(text).then(() => {
-    showCopyToast();
-    const btn = document.querySelector(`[data-copy-id="${id}"]`);
-    if(btn){ btn.innerHTML = '&#10003;'; setTimeout(()=>{ btn.innerHTML = copySVG(btn.dataset.size||12); }, 1200); }
-  });
+  const parent = findParent(CURRENT_DATA, nodeId);
+  if(!parent || !parent.children) return;
+  const idx = parent.children.findIndex(c => c.id === nodeId);
+  if(idx === -1) return;
+  const clone = JSON.parse(JSON.stringify(parent.children[idx]));
+  assignNewIds(clone);
+  parent.children.splice(idx + 1, 0, clone);
+  markDirty();
+  NODE_MAP = {};
+  buildNodeMap(CURRENT_DATA);
+  RENDER_FN(CURRENT_DATA);
+  showToast('Duplicated!');
 }
-function copySVG(size){
-  return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`;
+
+function findParent(obj, targetId){
+  if(!obj || !obj.children) return null;
+  for(const child of obj.children){
+    if(child.id === targetId) return obj;
+    const found = findParent(child, targetId);
+    if(found) return found;
+  }
+  return null;
+}
+
+let _dupCounter = 0;
+function assignNewIds(node){
+  _dupCounter++;
+  node.id = node.id + '-dup-' + _dupCounter;
+  if(node.children) node.children.forEach(c => assignNewIds(c));
+}
+
+// Open node to the right (expand + pan)
+function openNodeRight(nodeId, evt){
+  if(evt){ evt.stopPropagation(); evt.preventDefault(); }
+  if(typeof _openNodeRight === 'function') _openNodeRight(nodeId);
+}
+
+function duplicateSVG(size){
+  return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v1"/><line x1="12" y1="12" x2="12" y2="18"/><line x1="9" y1="15" x2="15" y2="15"/></svg>`;
+}
+function openRightSVG(size){
+  return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/><polyline points="16 10 19 12 16 14"/></svg>`;
 }
 function pencilSVG(size){
   return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>`;
 }
-function showCopyToast(){
+function showToast(msg){
   let t = document.getElementById('copy-toast');
   if(!t){ t = document.createElement('div'); t.id='copy-toast'; document.body.appendChild(t); }
-  t.textContent = 'Copied!';
+  t.textContent = msg;
   t.className = 'copy-toast show';
   clearTimeout(t._tid);
   t._tid = setTimeout(()=>{ t.className = 'copy-toast'; }, 1400);
@@ -324,9 +358,6 @@ function initTree(DATA){
         .attr('rx', efs * 0.28)
         .attr('fill', '#060606').attr('opacity', 0.88);
 
-      const edgeCopyId = 'edge-' + l.target.data.id;
-      COPY_TEXTS[edgeCopyId] = test;
-
       // Use SVG <text> instead of foreignObject for iPad/iOS compatibility
       const cpl = Math.max(6, Math.floor(gapW / (efs * 0.56)));
       const words = test.split(/\s+/);
@@ -345,7 +376,7 @@ function initTree(DATA){
 
       const edgeTextG = edgeG.append('g')
         .style('cursor','pointer')
-        .on('click', () => copyText(edgeCopyId));
+        .on('click', () => openNodeRight(l.target.data.id));
 
       textLines.forEach((line, i) => {
         edgeTextG.append('text')
@@ -359,10 +390,10 @@ function initTree(DATA){
           .text(line);
       });
 
-      // Edit & Copy icons for edge text
+      // Edit, Duplicate & Open icons for edge text
       const iconSz = Math.max(10, Math.round(efs * 0.85));
       const iconGap = iconSz * 1.2;
-      const iconsX = lx + gapW + bgPad - iconSz * 2 - iconGap;
+      const iconsX = lx + gapW + bgPad - iconSz * 3 - iconGap * 2;
       const iconsY = ly - bgPad - iconSz - efs * 0.3;
 
       const edgeEditG = edgeG.append('g')
@@ -382,14 +413,14 @@ function initTree(DATA){
         .attr('stroke-linejoin', 'round')
         .html('<path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/>');
 
-      const edgeCopyG = edgeG.append('g')
+      const edgeDupG = edgeG.append('g')
         .attr('transform', `translate(${iconsX + iconSz + iconGap},${iconsY})`)
         .style('cursor','pointer')
         .attr('opacity', 0.25)
         .on('mouseenter', function(){ d3.select(this).attr('opacity', 0.8); })
         .on('mouseleave', function(){ d3.select(this).attr('opacity', 0.25); })
-        .on('click', (evt) => { evt.stopPropagation(); copyText(edgeCopyId, evt); });
-      edgeCopyG.append('svg')
+        .on('click', (evt) => { evt.stopPropagation(); duplicateNode(l.target.data.id, evt); });
+      edgeDupG.append('svg')
         .attr('width', iconSz).attr('height', iconSz)
         .attr('viewBox', '0 0 24 24')
         .attr('fill', 'none')
@@ -397,7 +428,24 @@ function initTree(DATA){
         .attr('stroke-width', 2)
         .attr('stroke-linecap', 'round')
         .attr('stroke-linejoin', 'round')
-        .html('<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>');
+        .html('<rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v1"/><line x1="12" y1="12" x2="12" y2="18"/><line x1="9" y1="15" x2="15" y2="15"/>');
+
+      const edgeOpenG = edgeG.append('g')
+        .attr('transform', `translate(${iconsX + (iconSz + iconGap) * 2},${iconsY})`)
+        .style('cursor','pointer')
+        .attr('opacity', 0.25)
+        .on('mouseenter', function(){ d3.select(this).attr('opacity', 0.8); })
+        .on('mouseleave', function(){ d3.select(this).attr('opacity', 0.25); })
+        .on('click', (evt) => { evt.stopPropagation(); openNodeRight(l.target.data.id, evt); });
+      edgeOpenG.append('svg')
+        .attr('width', iconSz).attr('height', iconSz)
+        .attr('viewBox', '0 0 24 24')
+        .attr('fill', 'none')
+        .attr('stroke', '#D4A574')
+        .attr('stroke-width', 2)
+        .attr('stroke-linecap', 'round')
+        .attr('stroke-linejoin', 'round')
+        .html('<rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/><polyline points="16 10 19 12 16 14"/>');
     });
 
     const nodeG = g.append('g');
@@ -504,6 +552,46 @@ function initTree(DATA){
     svg.transition().duration(800)
       .call(zoom.transform, d3.zoomIdentity.translate(tx,ty).scale(scale));
   }
+
+  // Open node to the right: expand collapsed children and pan to show the node + its subtree
+  window._openNodeRight = function(nodeId){
+    // Find the d3 node in current hierarchy
+    const allNodes = root.descendants();
+    const target = allNodes.find(d => d.data.id === nodeId);
+    if(!target) return;
+
+    // Expand if collapsed
+    if(target._children){
+      target.children = target._children;
+      target._children = null;
+      render();
+    }
+
+    // After render, pan to show the node and its children to the right
+    setTimeout(() => {
+      treeLayout(root);
+      root.descendants().forEach(d => { d.y = depthX(d.depth); });
+
+      const c = cfg(target.depth);
+      const W = document.getElementById('canvas').clientWidth;
+      const H = document.getElementById('canvas').clientHeight;
+
+      // Gather the target and its immediate children for framing
+      const framingNodes = [target];
+      if(target.children) target.children.forEach(ch => framingNodes.push(ch));
+
+      const minX = Math.min(...framingNodes.map(d => d.y)) - 60;
+      const maxX = Math.max(...framingNodes.map(d => d.y + cfg(d.depth).w)) + 60;
+      const minY = Math.min(...framingNodes.map(d => d.x - cardHeight(d)/2)) - 80;
+      const maxY = Math.max(...framingNodes.map(d => d.x + cardHeight(d)/2)) + 80;
+      const tw = maxX - minX, th = maxY - minY;
+      const scale = Math.min(0.92, Math.min((W-80)/tw, (H-80)/th));
+      const tx = (W - tw*scale)/2 - minX*scale;
+      const ty = (H - th*scale)/2 - minY*scale;
+      svg.transition().duration(600)
+        .call(zoom.transform, d3.zoomIdentity.translate(tx,ty).scale(scale));
+    }, 50);
+  };
 
   render();
   setTimeout(resetView, 80);
