@@ -64,40 +64,48 @@ function cardHeight(node){
 
 // Status helpers
 const FILLS = {
-  observation:'#1A1508', validated:'#0E1710', active:'#0D0D0D',
+  validated:'#0E1710', active:'#0D0D0D',
   pending:'#100E0A', eliminated:'#0C0C0C'
 };
 const BORDERS = {
-  observation:'#D4A574', validated:'#2A2A2A', active:'#1E1E1E',
+  validated:'#2A2A2A', active:'#1E1E1E',
   pending:'#7A5828', eliminated:'#181818'
 };
 const EYE_COLORS = {
-  observation:'#D4A574', validated:'#7FBF95', active:'#555',
+  validated:'#7FBF95', active:'#555',
   pending:'#A07840', eliminated:'#383838'
 };
 const LBL_COLORS = {
-  observation:'#FFFFFF', validated:'#E8E8E8', active:'#BBBBBB',
+  validated:'#E8E8E8', active:'#BBBBBB',
   pending:'#8A7855', eliminated:'#3A3A3A'
 };
 const TAG_BG = {
-  observation:'rgba(212,165,116,.13)', validated:'rgba(127,191,149,.09)',
+  validated:'rgba(127,191,149,.09)',
   active:'rgba(255,255,255,.05)', pending:'rgba(212,165,116,.07)',
   eliminated:'rgba(255,255,255,.03)'
 };
 const EDGE_COLORS = {
-  observation:'#D4A574', validated:'#4A8A60', active:'#383838',
+  validated:'#4A8A60', active:'#383838',
   pending:'#6A4818', eliminated:'#1E1E1E'
 };
 const EYE_LABELS = {
-  observation:'Observation', validated:'\u2713  Validated',
+  validated:'\u2713  Validated',
   active:'\u25CF  Active', pending:'\u25CC  Pending', eliminated:'\u2715  Eliminated'
+};
+
+const HYPOTHESIS_TYPES = [
+  'problem', 'solution', 'viral_sending', 'viral_receiving', 'revenue', 'unit_economics'
+];
+const TYPE_LABELS = {
+  problem:'Problem', solution:'Solution', viral_sending:'Viral Sending',
+  viral_receiving:'Viral Receiving', revenue:'Revenue', unit_economics:'Unit Economics'
 };
 
 const EDGE_WIDTHS = { 1:8, 2:4, 3:2, 4:1, 5:0.5 };
 
 // Card HTML
 function cardHTML(d, c, h){
-  const { status:st, label, tags, reason, score } = d.data;
+  const { status:st, label, tags, reason, score, type } = d.data;
   const hasKids = !!(d._children && d._children.length);
   const ec = EYE_COLORS[st] || '#555';
   const lc = LBL_COLORS[st] || '#999';
@@ -116,6 +124,11 @@ function cardHTML(d, c, h){
       letter-spacing:.1em;text-transform:uppercase;color:${ec};font-weight:500;
       white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
     ">${EYE_LABELS[st]||st}</div>
+    ${type ? `<div style="
+      font-family:'IBM Plex Mono',monospace;font-size:${c.efs*0.85}px;line-height:1.2;
+      letter-spacing:.06em;text-transform:uppercase;color:#D4A574;font-weight:400;
+      white-space:nowrap;opacity:0.7;
+    ">${TYPE_LABELS[type]||type}</div>` : ''}
     <div style="display:flex;align-items:center;gap:${Math.max(2,btnSz*0.2)}px;flex-shrink:0;">
       <div data-edit-id="${d.data.id}" onclick="openInlineEdit('${d.data.id}', event)" style="
         display:flex;align-items:center;justify-content:center;
@@ -462,17 +475,6 @@ function initTree(DATA, opts){
           openInlineEdit(d.data.id, evt);
         });
 
-      if(st==='observation'){
-        grp.append('rect')
-          .attr('x',-c.fs*0.05).attr('y',-c.fs*0.05)
-          .attr('width', c.w + c.fs*0.1).attr('height', h + c.fs*0.1)
-          .attr('rx', rx+4)
-          .attr('fill','none')
-          .attr('stroke','#D4A574')
-          .attr('stroke-width', c.fs*0.025)
-          .attr('opacity', 0.1);
-      }
-
       const bgRect = grp.append('rect')
         .attr('class','card-bg')
         .attr('width', c.w).attr('height', h)
@@ -483,13 +485,6 @@ function initTree(DATA, opts){
       grp
         .on('mouseenter', function(){ bgRect.attr('fill', brighten(FILLS[st]||'#111')); })
         .on('mouseleave', function(){ bgRect.attr('fill', FILLS[st]||'#111'); });
-
-      if(st==='observation'){
-        grp.append('rect')
-          .attr('width', c.fs*0.18).attr('height', h)
-          .attr('rx', rx)
-          .attr('fill','#D4A574').attr('opacity',0.85);
-      }
 
       if(st==='validated'){
         grp.append('rect')
@@ -508,11 +503,10 @@ function initTree(DATA, opts){
           ? `${c.fs*0.25},${c.fs*0.14}` : null)
         .attr('opacity', st==='eliminated' ? 0.4 : 1);
 
-      const xOff = st==='observation' ? c.fs*0.2 : 0;
       const fo = grp.append('foreignObject')
-        .attr('x', xOff)
+        .attr('x', 0)
         .attr('y', 0)
-        .attr('width', c.w - xOff)
+        .attr('width', c.w)
         .attr('height', h);
 
       fo.append('xhtml:div')
@@ -709,9 +703,13 @@ function openInlineEdit(nodeId, evt, focusField){
     return;
   }
 
-  const statuses = ['observation','validated','active','pending','eliminated'];
+  const statuses = ['validated','active','pending','eliminated'];
   const statusOpts = statuses.map(s =>
     `<option value="${s}" ${nodeData.status===s?'selected':''}>${s}</option>`
+  ).join('');
+
+  const typeOpts = [''].concat(HYPOTHESIS_TYPES).map(t =>
+    `<option value="${t}" ${(nodeData.type||'')===t?'selected':''}>${t ? TYPE_LABELS[t] : '— None —'}</option>`
   ).join('');
 
   const scoreHtml = nodeData.score ? Object.entries(nodeData.score).map(([k,v]) =>
@@ -736,6 +734,10 @@ function openInlineEdit(nodeId, evt, focusField){
         <div class="ief-field">
           <label>Status</label>
           <select id="ief-status">${statusOpts}</select>
+        </div>
+        <div class="ief-field">
+          <label>Type</label>
+          <select id="ief-type">${typeOpts}</select>
         </div>
         <div class="ief-field">
           <label>Label</label>
@@ -768,6 +770,9 @@ function openInlineEdit(nodeId, evt, focusField){
 
   document.getElementById('ief-save').onclick = () => {
     nodeData.status = document.getElementById('ief-status').value;
+    const typeVal   = document.getElementById('ief-type').value;
+    nodeData.type   = typeVal || undefined;
+    if(!nodeData.type) delete nodeData.type;
     nodeData.label  = document.getElementById('ief-label').value;
     const tagsVal   = document.getElementById('ief-tags').value.trim();
     nodeData.tags   = tagsVal ? tagsVal.split(',').map(t=>t.trim()).filter(Boolean) : [];

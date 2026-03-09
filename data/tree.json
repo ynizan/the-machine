@@ -6,7 +6,7 @@
     {
       "id": "obs-a",
       "status": "validated",
-      "tags": ["observation"],
+      "type": "problem",
       "label": "Many people are unhappy with Linkedin",
       "children": [
         {
@@ -76,8 +76,8 @@
     },
     {
       "id": "obs-b",
-      "status": "observation",
-      "tags": ["observation"],
+      "status": "active",
+      "type": "problem",
       "label": "HubSpot / newsletter approach to nurturing is broken",
       "children": [
         {
@@ -114,8 +114,8 @@
     },
     {
       "id": "obs-c",
-      "status": "observation",
-      "tags": ["observation"],
+      "status": "active",
+      "type": "viral_sending",
       "label": "Introductions & intro-meetings are a viral product space",
       "children": [
         {
