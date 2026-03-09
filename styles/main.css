@@ -39,3 +39,93 @@ html,body{width:100%;height:100%;overflow:hidden;background:#080808;font-family:
   transition:opacity .25s,transform .25s;
 }
 .copy-toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* JSON Editor Panel */
+#editor-toggle{
+  position:fixed;bottom:22px;right:70px;z-index:200;
+  display:flex;gap:6px;
+}
+#editor-panel{
+  position:fixed;top:56px;right:0;bottom:0;width:520px;z-index:400;
+  background:#0C0C0C;border-left:1px solid #1E1E1E;
+  transform:translateX(100%);transition:transform .25s ease;
+  display:flex;flex-direction:column;
+}
+#editor-panel.open{transform:translateX(0);}
+#editor-panel .ep-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 16px;border-bottom:1px solid #1E1E1E;flex-shrink:0;
+}
+#editor-panel .ep-header h3{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:#888;font-weight:500;margin:0;
+}
+#editor-panel .ep-actions{display:flex;gap:6px;}
+#editor-panel .ep-btn{
+  font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;
+  text-transform:uppercase;padding:5px 12px;border-radius:4px;cursor:pointer;
+  border:1px solid #2A2A2A;background:#151515;color:#999;transition:all .15s;
+}
+#editor-panel .ep-btn:hover{background:#1E1E1E;color:#fff;border-color:#444;}
+#editor-panel .ep-btn.primary{border-color:#D4A574;color:#D4A574;}
+#editor-panel .ep-btn.primary:hover{background:#1A1508;color:#fff;}
+#editor-panel .ep-error{
+  font-family:'IBM Plex Mono',monospace;font-size:10px;color:#C0392B;
+  padding:6px 16px;border-bottom:1px solid #1E1E1E;flex-shrink:0;display:none;
+}
+#editor-panel .ep-error.show{display:block;}
+#editor-panel textarea{
+  flex:1;width:100%;border:none;resize:none;outline:none;
+  background:#080808;color:#B0B0B0;
+  font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.6;
+  padding:16px;tab-size:2;
+}
+#editor-panel textarea::selection{background:rgba(212,165,116,.2);}
+
+/* Inline Edit Overlay */
+.inline-edit-overlay{
+  position:fixed;top:0;left:0;right:0;bottom:0;z-index:500;
+  background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;
+  backdrop-filter:blur(2px);
+}
+.inline-edit-form{
+  background:#0E0E0E;border:1px solid #2A2A2A;border-radius:8px;
+  width:480px;max-height:85vh;overflow-y:auto;padding:0;
+  box-shadow:0 16px 48px rgba(0,0,0,.5);
+}
+.inline-edit-form .ief-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 18px;border-bottom:1px solid #1E1E1E;
+}
+.inline-edit-form .ief-header h3{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:#888;font-weight:500;margin:0;
+}
+.inline-edit-form .ief-close{
+  background:none;border:none;color:#555;cursor:pointer;font-size:18px;
+  width:28px;height:28px;display:flex;align-items:center;justify-content:center;
+  border-radius:4px;transition:all .12s;
+}
+.inline-edit-form .ief-close:hover{color:#fff;background:rgba(255,255,255,.08);}
+.inline-edit-form .ief-body{padding:16px 18px;display:flex;flex-direction:column;gap:14px;}
+.inline-edit-form .ief-field label{
+  display:block;font-family:'IBM Plex Mono',monospace;font-size:9px;
+  letter-spacing:.1em;text-transform:uppercase;color:#666;margin-bottom:5px;
+}
+.inline-edit-form .ief-field input,
+.inline-edit-form .ief-field textarea,
+.inline-edit-form .ief-field select{
+  width:100%;background:#0A0A0A;border:1px solid #222;border-radius:4px;
+  color:#ccc;font-family:'IBM Plex Mono',monospace;font-size:12px;
+  padding:8px 10px;outline:none;transition:border-color .15s;
+}
+.inline-edit-form .ief-field input:focus,
+.inline-edit-form .ief-field textarea:focus,
+.inline-edit-form .ief-field select:focus{border-color:#D4A574;}
+.inline-edit-form .ief-field textarea{resize:vertical;min-height:60px;line-height:1.5;}
+.inline-edit-form .ief-field select{cursor:pointer;}
+.inline-edit-form .ief-field select option{background:#111;color:#ccc;}
+.inline-edit-form .ief-footer{
+  display:flex;justify-content:flex-end;gap:8px;
+  padding:12px 18px;border-top:1px solid #1E1E1E;
+}
