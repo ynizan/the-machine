@@ -292,6 +292,21 @@
         "Intensity": 0,
         "Fit": 0
       }
+    },
+    {
+      "id": "network-self-map",
+      "status": "pending",
+      "type": "problem_space",
+      "label": "Network self-map",
+      "children": [
+        {
+          "id": "network-benchmark",
+          "status": "pending",
+          "type": "solution",
+          "label": "Users want to benchmark their network health against peers — how do I compare to my co-founder, or how strong is a friend's network before I ask them for something?",
+          "test": "Pending: validate parent node (network-self-map) first"
+        }
+      ]
     }
   ]
 }
