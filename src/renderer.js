@@ -604,7 +604,6 @@ function initTree(DATA, opts){
     svg.transition().duration(800)
       .call(zoom.transform, d3.zoomIdentity.translate(tx,ty).scale(scale));
   }
-
   render();
   if(!opts || !opts.skipResetView){
     setTimeout(resetView, 80);
@@ -887,6 +886,27 @@ function openInlineEdit(nodeId, evt, focusField){
     markDirty();
     RENDER_FN(CURRENT_DATA, {skipResetView: true});
   };
+}
+
+// Periodically reset visual viewport if the page got accidentally zoomed
+// Remove + re-insert the viewport meta to force iOS Safari to recalculate
+function resetPageZoom(){
+  const vv = window.visualViewport;
+  if(!vv || Math.abs(vv.scale - 1) <= 0.05) return;
+  window.scrollTo(0, 0);
+  const old = document.querySelector('meta[name="viewport"]');
+  if(old){
+    old.parentNode.removeChild(old);
+    const fresh = document.createElement('meta');
+    fresh.name = 'viewport';
+    fresh.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no';
+    document.head.appendChild(fresh);
+  }
+}
+setInterval(resetPageZoom, 5000);
+// Also reset immediately when visualViewport fires resize
+if(window.visualViewport){
+  window.visualViewport.addEventListener('resize', resetPageZoom);
 }
 
 // Fetch data and boot
