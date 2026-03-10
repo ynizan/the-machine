@@ -27,6 +27,13 @@
           "test": "Behavioral: how often do people see / click mutual connections? What for?",
           "children": [
             {
+              "id": "network-self-map",
+              "status": "active",
+              "type": "solution",
+              "label": "Users want a real picture of their own network — active vs dormant connections, response likelihood, and intro balance (favors given vs called) — not a vanity count",
+              "test": "Demo/waitlist test: show a mockup of a network health dashboard — does it generate sign-up intent or 'I want that' reactions? Not a Mom Test — this is a latent need, solution-first."
+            },
+            {
               "id": "option-b",
               "status": "eliminated",
               "tags": [
@@ -305,6 +312,41 @@
           "type": "solution",
           "label": "Users want to benchmark their network health against peers — how do I compare to my co-founder, or how strong is a friend's network before I ask them for something?",
           "test": "Pending: validate parent node (network-self-map) first"
+      "id": "obs-d",
+      "status": "active",
+      "type": "problem_space",
+      "label": "Knowing something personal about a target meaningfully improves cold outreach conversion rates",
+      "test": "A/B test: compare cold outreach with pokemon-sourced personal intel vs generic outreach — does conversion rate differ significantly?",
+      "children": [
+        {
+          "id": "pokemon-cold-mine-common",
+          "status": "active",
+          "type": "problem",
+          "label": "Users doing cold outreach have no scalable way to get public personal intel on targets today — they do it manually or skip it entirely",
+          "test": "Mom test: do people research targets before cold outreach? How long does it take? Have they tried to automate it? Would they pay to get it instantly?"
+        }
+      ]
+    },
+    {
+      "id": "obs-e",
+      "status": "active",
+      "type": "problem_space",
+      "label": "Personal contact intelligence improves nurturing by creating more follow-up opportunities, increasing engagement rates, and ultimately improving win rates",
+      "test": "Behavioral interview: do people who know personal details about contacts report better relationship outcomes? Simulation: compare nurture sequences with vs without personal intel.",
+      "children": [
+        {
+          "id": "pokemon-intros",
+          "status": "active",
+          "type": "hypothesis",
+          "label": "Personal intel on a connector makes intro requests more targeted and more likely to succeed",
+          "test": "Simulation: compare intro request quality and success rate with vs without personal context on the connector"
+        },
+        {
+          "id": "pokemon-mine-rare",
+          "status": "active",
+          "type": "solution",
+          "label": "Users will pay to mine deep personal intel from their own emails, call transcripts, and WhatsApp to fuel warm relationship actions",
+          "test": "Waitlist/credits test: when offered pokemon mining, do users connect their email or transcripts? Measure activation rate and willingness to pay."
         }
       ]
     }
