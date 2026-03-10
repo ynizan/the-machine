@@ -311,6 +311,9 @@ function showToast(msg){
   t._tid = setTimeout(()=>{ t.className = 'copy-toast'; }, 1400);
 }
 
+// Shared zoom state (accessible by edit overlay)
+let _zoom = null, _svg = null, _savedTransform = null, _resetViewFn = null;
+
 // Main init
 function initTree(DATA, opts){
   const svgEl = document.getElementById('tree');
@@ -321,6 +324,8 @@ function initTree(DATA, opts){
   const zoom = d3.zoom().scaleExtent([0.008, 3])
     .on('zoom', e => g.attr('transform', e.transform));
   svg.call(zoom);
+  _zoom = zoom;
+  _svg = svg;
 
   document.getElementById('zi').onclick = () => svg.transition().call(zoom.scaleBy, 1.35);
   document.getElementById('zo').onclick = () => svg.transition().call(zoom.scaleBy, 0.74);
@@ -538,6 +543,7 @@ function initTree(DATA, opts){
     svg.transition().duration(800)
       .call(zoom.transform, d3.zoomIdentity.translate(tx,ty).scale(scale));
   }
+  _resetViewFn = resetView;
 
   render();
   if(!opts || !opts.skipResetView){
@@ -649,6 +655,16 @@ function buildNodeMap(obj){
   if(obj.children) obj.children.forEach(c => buildNodeMap(c));
 }
 
+function _closeEditOverlay(overlay){
+  overlay.remove();
+  // Restore the saved D3 zoom transform
+  if(_savedTransform && _svg && _zoom){
+    _svg.transition().duration(500)
+      .call(_zoom.transform, _savedTransform);
+    _savedTransform = null;
+  }
+}
+
 function openInlineEdit(nodeId, evt, focusField){
   if(evt){ evt.stopPropagation(); evt.preventDefault(); }
   const nodeData = NODE_MAP[nodeId];
@@ -658,9 +674,16 @@ function openInlineEdit(nodeId, evt, focusField){
   const existing = document.querySelector('.inline-edit-overlay');
   if(existing) existing.remove();
 
+  // Save current zoom and animate to fit-view
+  if(_svg && _zoom){
+    const curTransform = d3.zoomTransform(document.getElementById('tree'));
+    _savedTransform = curTransform;
+    if(_resetViewFn) _resetViewFn();
+  }
+
   const overlay = document.createElement('div');
   overlay.className = 'inline-edit-overlay';
-  overlay.onclick = (e) => { if(e.target === overlay) overlay.remove(); };
+  overlay.onclick = (e) => { if(e.target === overlay) _closeEditOverlay(overlay); };
 
   if(focusField === 'test'){
     // Simplified edge-text-only editor
@@ -668,7 +691,7 @@ function openInlineEdit(nodeId, evt, focusField){
       <div class="inline-edit-form">
         <div class="ief-header">
           <h3>Edit Edge Text — ${nodeData.id}</h3>
-          <button class="ief-close" onclick="this.closest('.inline-edit-overlay').remove()">&times;</button>
+          <button class="ief-close" onclick="_closeEditOverlay(this.closest('.inline-edit-overlay'))">&times;</button>
         </div>
         <div class="ief-body">
           <div class="ief-field">
@@ -679,7 +702,7 @@ function openInlineEdit(nodeId, evt, focusField){
         <div class="ief-footer">
           <button class="ep-btn" onclick="downloadJSON()">&#8681; Download JSON</button>
           <div style="flex:1"></div>
-          <button class="ep-btn" onclick="this.closest('.inline-edit-overlay').remove()">Cancel</button>
+          <button class="ep-btn" onclick="_closeEditOverlay(this.closest('.inline-edit-overlay'))">Cancel</button>
           <button class="ep-btn primary" id="ief-save">Save</button>
         </div>
       </div>
@@ -693,7 +716,7 @@ function openInlineEdit(nodeId, evt, focusField){
     document.getElementById('ief-save').onclick = () => {
       nodeData.test = testEl.value || undefined;
       if(!nodeData.test) delete nodeData.test;
-      overlay.remove();
+      _closeEditOverlay(overlay);
       markDirty();
       RENDER_FN(CURRENT_DATA);
     };
@@ -725,7 +748,7 @@ function openInlineEdit(nodeId, evt, focusField){
     <div class="inline-edit-form">
       <div class="ief-header">
         <h3>Edit Node — ${nodeData.id}</h3>
-        <button class="ief-close" onclick="this.closest('.inline-edit-overlay').remove()">&times;</button>
+        <button class="ief-close" onclick="_closeEditOverlay(this.closest('.inline-edit-overlay'))">&times;</button>
       </div>
       <div class="ief-body">
         <div class="ief-field">
@@ -757,7 +780,7 @@ function openInlineEdit(nodeId, evt, focusField){
       <div class="ief-footer">
         <button class="ep-btn" onclick="downloadJSON()">&#8681; Download JSON</button>
         <div style="flex:1"></div>
-        <button class="ep-btn" onclick="this.closest('.inline-edit-overlay').remove()">Cancel</button>
+        <button class="ep-btn" onclick="_closeEditOverlay(this.closest('.inline-edit-overlay'))">Cancel</button>
         <button class="ep-btn primary" id="ief-save">Save</button>
       </div>
     </div>
@@ -788,11 +811,28 @@ function openInlineEdit(nodeId, evt, focusField){
     if(!nodeData.reason) delete nodeData.reason;
     if(!nodeData.tags || !nodeData.tags.length) delete nodeData.tags;
 
-    overlay.remove();
+    _closeEditOverlay(overlay);
     markDirty();
     RENDER_FN(CURRENT_DATA, {skipResetView: true});
   };
 }
+
+// Periodically reset visual viewport if the page got accidentally zoomed
+// (iOS Safari can still zoom despite our prevention in some edge cases)
+setInterval(() => {
+  const vv = window.visualViewport;
+  if(vv && Math.abs(vv.scale - 1) > 0.05){
+    // Force viewport back to 1x by toggling the meta tag
+    const meta = document.querySelector('meta[name="viewport"]');
+    if(meta){
+      meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no';
+      // Brief toggle to force Safari to recalculate
+      setTimeout(() => {
+        meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
+      }, 50);
+    }
+  }
+}, 5000);
 
 // Fetch data and boot
 fetch('data/tree.json')

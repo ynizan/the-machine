@@ -116,7 +116,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#080808;font-family:
 .inline-edit-form .ief-field textarea,
 .inline-edit-form .ief-field select{
   width:100%;background:#0A0A0A;border:1px solid #222;border-radius:4px;
-  color:#ccc;font-family:'IBM Plex Mono',monospace;font-size:12px;
+  color:#ccc;font-family:'IBM Plex Mono',monospace;font-size:16px;
   padding:8px 10px;outline:none;transition:border-color .15s;
 }
 .inline-edit-form .ief-field input:focus,
