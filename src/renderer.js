@@ -133,6 +133,15 @@ function cardHTML(d, c, h){
       " onmouseenter="this.style.color='rgba(255,255,255,.7)';this.style.background='rgba(255,255,255,.08)'"
          onmouseleave="this.style.color='rgba(255,255,255,.25)';this.style.background='transparent'"
       >${pencilSVG(iconSz)}</div>
+      <div onclick="deleteNode('${d.data.id}', event)" style="
+        display:flex;align-items:center;justify-content:center;
+        width:${btnSz}px;height:${btnSz}px;border-radius:${Math.max(2,btnSz*0.2)}px;
+        color:rgba(255,255,255,.25);cursor:pointer;
+        transition:all .15s;font-size:${iconSz}px;
+      " onmouseenter="this.style.color='rgba(230,100,80,.8)';this.style.background='rgba(180,60,40,.15)'"
+         onmouseleave="this.style.color='rgba(255,255,255,.25)';this.style.background='transparent'"
+        title="Delete"
+      >${trashSVG(iconSz)}</div>
       <div onclick="duplicateNode('${d.data.id}', event)" style="
         display:flex;align-items:center;justify-content:center;
         width:${btnSz}px;height:${btnSz}px;border-radius:${Math.max(2,btnSz*0.2)}px;
@@ -250,6 +259,60 @@ function duplicateNode(nodeId, evt){
   showToast('Duplicated!');
 }
 
+function deleteNode(nodeId, evt){
+  if(evt){ evt.stopPropagation(); evt.preventDefault(); }
+  const nodeData = NODE_MAP[nodeId];
+  if(!nodeData) return;
+
+  // Remove any existing overlay first
+  const existingOverlay = document.querySelector('.inline-edit-overlay');
+  if(existingOverlay) existingOverlay.remove();
+
+  const overlay = document.createElement('div');
+  overlay.className = 'inline-edit-overlay';
+  overlay.onclick = (e) => { if(e.target === overlay) overlay.remove(); };
+
+  const childCount = nodeData.children ? nodeData.children.length : 0;
+  const childWarning = childCount > 0
+    ? `<p style="color:#c47a5a;margin-top:8px;">This node has ${childCount} child${childCount===1?'':'ren'} that will also be removed.</p>`
+    : '';
+
+  overlay.innerHTML = `
+    <div class="inline-edit-form" style="max-width:400px;">
+      <div class="ief-header">
+        <h3>Delete Node</h3>
+        <button class="ief-close" onclick="this.closest('.inline-edit-overlay').remove()">&times;</button>
+      </div>
+      <div class="ief-body">
+        <p style="color:#ccc;margin:0;">Are you sure you want to delete <strong style="color:#fff;">${nodeData.label || nodeId}</strong>?</p>
+        ${childWarning}
+      </div>
+      <div class="ief-footer">
+        <div style="flex:1"></div>
+        <button class="ep-btn" onclick="this.closest('.inline-edit-overlay').remove()">Cancel</button>
+        <button class="ep-btn" id="ief-confirm-delete" style="background:rgba(180,60,40,.35);color:#e88;border-color:rgba(180,60,40,.5);">Delete</button>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+
+  document.getElementById('ief-confirm-delete').onclick = () => {
+    const parent = findParent(CURRENT_DATA, nodeId);
+    if(!parent || !parent.children) { overlay.remove(); return; }
+    const idx = parent.children.findIndex(c => c.id === nodeId);
+    if(idx === -1) { overlay.remove(); return; }
+    parent.children.splice(idx, 1);
+    if(!parent.children.length) delete parent.children;
+    overlay.remove();
+    markDirty();
+    NODE_MAP = {};
+    buildNodeMap(CURRENT_DATA);
+    RENDER_FN(CURRENT_DATA);
+    showToast('Deleted!');
+  };
+}
+
 function findParent(obj, targetId){
   if(!obj || !obj.children) return null;
   for(const child of obj.children){
@@ -301,6 +364,9 @@ function openRightSVG(size){
 }
 function pencilSVG(size){
   return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>`;
+}
+function trashSVG(size){
+  return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>`;
 }
 function showToast(msg){
   let t = document.getElementById('copy-toast');
@@ -678,6 +744,7 @@ function openInlineEdit(nodeId, evt, focusField){
         </div>
         <div class="ief-footer">
           <button class="ep-btn" onclick="downloadJSON()">&#8681; Download JSON</button>
+          <button class="ep-btn" onclick="deleteNode('${nodeData.id}', event)" style="color:#e88;border-color:rgba(180,60,40,.5);">Delete</button>
           <div style="flex:1"></div>
           <button class="ep-btn" onclick="this.closest('.inline-edit-overlay').remove()">Cancel</button>
           <button class="ep-btn primary" id="ief-save">Save</button>
@@ -756,6 +823,7 @@ function openInlineEdit(nodeId, evt, focusField){
       </div>
       <div class="ief-footer">
         <button class="ep-btn" onclick="downloadJSON()">&#8681; Download JSON</button>
+        <button class="ep-btn" onclick="deleteNode('${nodeData.id}', event)" style="color:#e88;border-color:rgba(180,60,40,.5);">Delete</button>
         <div style="flex:1"></div>
         <button class="ep-btn" onclick="this.closest('.inline-edit-overlay').remove()">Cancel</button>
         <button class="ep-btn primary" id="ief-save">Save</button>
