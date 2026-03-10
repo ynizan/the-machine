@@ -312,14 +312,16 @@
           "status": "active",
           "type": "problem",
           "label": "Users doing cold outreach have no scalable way to get public personal intel on targets today — they do it manually or skip it entirely",
-          "test": "Mom test: do people research targets before cold outreach? How long does it take? Have they tried to automate it? Would they pay to get it instantly?"
-        },
-        {
-          "id": "pokemon-get-buy",
-          "status": "active",
-          "type": "hypothesis",
-          "label": "Users will pay to access personal intel that others have collected about a target they've never met — fueling better cold outreach and first meetings",
-          "test": "Waitlist/credits test: when shown available pokemons on a target, do users spend credits to unlock them? Measure conversion rate and willingness to pay."
+          "test": "Mom test: do people research targets before cold outreach? How long does it take? Have they tried to automate it? Would they pay to get it instantly?",
+          "children": [
+            {
+              "id": "pokemon-get-buy",
+              "status": "active",
+              "type": "hypothesis",
+              "label": "Users will pay to access personal intel that others have collected about a target they've never met — fueling better cold outreach and first meetings",
+              "test": "Interview: do they feel comfortable with the concept? Show them a mockup — do they want it?"
+            }
+          ]
         }
       ]
     },
@@ -349,7 +351,7 @@
           "status": "active",
           "type": "hypothesis",
           "label": "Users who have gathered deep personal intel about contacts through real relationships are willing to share or trade it with others in exchange for reputation, credits, or reciprocal intel",
-          "test": "Wizard of Oz: manually offer users the ability to contribute intel about contacts — do they engage? What do they want in return?"
+          "test": "Interview: have they shared before? What info are they ok sharing? Who are they willing to share with?"
         }
       ]
     }
