@@ -94,11 +94,11 @@ const EYE_LABELS = {
 };
 
 const HYPOTHESIS_TYPES = [
-  'problem', 'problem_space', 'solution', 'viral_sending', 'viral_receiving', 'revenue', 'unit_economics'
+  'problem', 'problem_space', 'solution', 'viral_sending', 'viral_receiving', 'revenue', 'unit_economics', 'market'
 ];
 const TYPE_LABELS = {
   problem:'Problem', problem_space:'Problem Space', solution:'Solution', viral_sending:'Viral Sending',
-  viral_receiving:'Viral Receiving', revenue:'Revenue', unit_economics:'Unit Economics'
+  viral_receiving:'Viral Receiving', revenue:'Revenue', unit_economics:'Unit Economics', market:'Market'
 };
 
 const EDGE_WIDTHS = { 1:8, 2:4, 3:2, 4:1, 5:0.5 };
@@ -118,12 +118,17 @@ function cardHTML(d, c, h){
 
   let h2 = '';
 
+  const typeBadge = type==='market'
+    ? `<span style="font-family:'IBM Plex Mono',monospace;font-size:${c.efs*0.85}px;letter-spacing:.08em;text-transform:uppercase;color:#5B8A72;background:rgba(91,138,114,.12);padding:${c.efs*0.1}px ${c.efs*0.4}px;border-radius:3px;margin-left:${c.efs*0.5}px;white-space:nowrap;">Market</span>`
+    : '';
+
   h2 += `<div style="display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
     <div style="
+      display:flex;align-items:center;
       font-family:'IBM Plex Mono',monospace;font-size:${c.efs}px;line-height:1.2;
       letter-spacing:.1em;text-transform:uppercase;color:${ec};font-weight:500;
       white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-    ">${EYE_LABELS[st]||st}</div>
+    ">${EYE_LABELS[st]||st}${typeBadge}</div>
     <div style="display:flex;align-items:center;gap:${Math.max(2,btnSz*0.2)}px;flex-shrink:0;">
       <div data-edit-id="${d.data.id}" onclick="openInlineEdit('${d.data.id}', event)" style="
         display:flex;align-items:center;justify-content:center;
@@ -554,6 +559,14 @@ function initTree(DATA, opts){
           .attr('width', c.w).attr('height', c.fs*0.1)
           .attr('rx', rx)
           .attr('fill','#D4A574').attr('opacity',0.6);
+      }
+
+      if(d.data.type==='market'){
+        grp.append('rect')
+          .attr('width', c.w).attr('height', c.fs*0.1)
+          .attr('y', h - c.fs*0.1)
+          .attr('rx', rx)
+          .attr('fill','#5B8A72').attr('opacity',0.6);
       }
 
       grp.append('rect')
