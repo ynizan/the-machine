@@ -64,6 +64,14 @@
 <div id="hint">scroll/pinch to zoom · drag to pan · click node to expand</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script>
+// Prevent iPad/iOS page-level pinch-to-zoom globally (Safari ignores viewport meta)
+document.addEventListener('gesturestart', e => e.preventDefault());
+document.addEventListener('gesturechange', e => e.preventDefault());
+document.addEventListener('touchmove', e => {
+  if(e.touches.length > 1) e.preventDefault();
+}, {passive: false});
+</script>
 <script src="src/renderer.js"></script>
 </body>
 </html>

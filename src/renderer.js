@@ -322,10 +322,6 @@ function initTree(DATA, opts){
     .on('zoom', e => g.attr('transform', e.transform));
   svg.call(zoom);
 
-  // Prevent iPad/Safari page-level zoom (gesturestart/gesturechange are Safari-only)
-  svgEl.addEventListener('gesturestart', e => e.preventDefault());
-  svgEl.addEventListener('gesturechange', e => e.preventDefault());
-
   document.getElementById('zi').onclick = () => svg.transition().call(zoom.scaleBy, 1.35);
   document.getElementById('zo').onclick = () => svg.transition().call(zoom.scaleBy, 0.74);
   document.getElementById('zr').onclick = resetView;
