@@ -6,16 +6,15 @@
     {
       "id": "obs-a",
       "status": "validated",
-      "type": "problem",
+      "type": "problem_space",
       "label": "Many people are unhappy with Linkedin",
       "children": [
         {
           "id": "li-inbox",
           "status": "eliminated",
-          "tags": ["problem"],
           "label": "LinkedIn inbox is a poor networking tool. Messages go unread, no prioritization, creates noise not signal",
           "test": "Mom tests across AEs, founders, VCs — inbox usage & frustration",
-          "score": { "Freq": 3, "Intensity": 2, "Fit": 3 },
+          "score": { "Freq": 0, "Intensity": 0, "Fit": 0 },
           "reason": "Most people didn't feel it's an issue. The ones that have a lot of linkedin reachout use external tools for it anyway."
         },
         {
@@ -72,7 +71,8 @@
             }
           ]
         }
-      ]
+      ],
+      "reason": "**The overwhelming majority expressed dissatisfaction with LinkedIn.** Out of approximately 55 unique interviewees, roughly **40+ expressed negative sentiment**, while only about **8-10 spoke favorably**, with the remainder mixed."
     },
     {
       "id": "obs-b",
