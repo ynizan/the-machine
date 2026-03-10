@@ -106,6 +106,13 @@
               ],
               "label": "People check mutual connections as part of understanding the target. What people he associate with.",
               "test": "Interview: what triggers you to check mutual connections?"
+            },
+            {
+              "id": "market-smallorg-introreq",
+              "status": "active",
+              "type": "market",
+              "label": "Small org front-people (founder, CEO, BD, PR lead) make targeted intro requests far more frequently than enterprise users — option-b's low-frequency elimination may not apply to this segment",
+              "test": "Mom test: how many targeted intro requests does a small org front-person make per month? Compare to the ~2x per quarter found in general population."
             }
           ]
         }
@@ -187,6 +194,13 @@
           ],
           "label": "CSMs need relationship intelligence to prevent churn and surface expansion opportunities",
           "test": "Cold email signal — real call interviews pending"
+        },
+        {
+          "id": "market-smallorg-nurture",
+          "status": "active",
+          "type": "market",
+          "label": "Small org front-people feel the nurturing gap most acutely — they are the sales team, the BD team, and the relationship manager all in one, with no handoff and no system",
+          "test": "Mom test: how do small org front-people currently manage nurturing? Do they have a system or is it ad hoc? What have they lost because of poor nurturing?"
         }
       ],
       "test": "test"
@@ -226,6 +240,13 @@
               ],
               "label": "Giver shares a real map of available connections — turns vague asks into actionable requests",
               "test": "Simulation: does shared map increase intro success rate?"
+            },
+            {
+              "id": "market-smallorg-intromktplace",
+              "status": "active",
+              "type": "market",
+              "label": "The intro marketplace is most valuable for small org front-people — they rely on intros as a primary growth channel, not a secondary one",
+              "test": "Mom test: what % of new clients or deals for small org front-people came through intros vs inbound vs cold outreach?"
             }
           ]
         },
@@ -278,6 +299,13 @@
               ],
               "label": "Post-meeting Gordy follow-up converts successful meetings into new warm user acquisition",
               "test": "Pending: define loop after counterpart email signal confirmed"
+            },
+            {
+              "id": "market-smallorg-gordy",
+              "status": "active",
+              "type": "market",
+              "label": "Option C meeting intro engine is most relevant for small org front-people — every external meeting is a potential relationship asset, and they have no team to help them capitalize on it",
+              "test": "Mom test: how many external meetings does a small org front-person have per week? Do they systematically extract intros from those meetings today?"
             }
           ]
         },
