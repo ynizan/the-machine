@@ -31,7 +31,16 @@
               "status": "active",
               "type": "solution",
               "label": "Users want a real picture of their own network — active vs dormant connections, response likelihood, and intro balance (favors given vs called) — not a vanity count",
-              "test": "Demo/waitlist test: show a mockup of a network health dashboard — does it generate sign-up intent or 'I want that' reactions? Not a Mom Test — this is a latent need, solution-first."
+              "test": "Demo/waitlist test: show a mockup of a network health dashboard — does it generate sign-up intent or 'I want that' reactions? Not a Mom Test — this is a latent need, solution-first.",
+              "children": [
+                {
+                  "id": "network-benchmark",
+                  "status": "pending",
+                  "type": "solution",
+                  "label": "Users want to benchmark their network health against peers — how do I compare to my co-founder, or how strong is a friend's network before I ask them for something?",
+                  "test": "Pending: validate parent node (network-self-map) first"
+                }
+              ]
             },
             {
               "id": "option-b",
