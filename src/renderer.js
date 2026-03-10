@@ -124,11 +124,6 @@ function cardHTML(d, c, h){
       letter-spacing:.1em;text-transform:uppercase;color:${ec};font-weight:500;
       white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
     ">${EYE_LABELS[st]||st}</div>
-    ${type ? `<div style="
-      font-family:'IBM Plex Mono',monospace;font-size:${c.efs*0.85}px;line-height:1.2;
-      letter-spacing:.06em;text-transform:uppercase;color:#D4A574;font-weight:400;
-      white-space:nowrap;opacity:0.7;
-    ">${TYPE_LABELS[type]||type}</div>` : ''}
     <div style="display:flex;align-items:center;gap:${Math.max(2,btnSz*0.2)}px;flex-shrink:0;">
       <div data-edit-id="${d.data.id}" onclick="openInlineEdit('${d.data.id}', event)" style="
         display:flex;align-items:center;justify-content:center;
