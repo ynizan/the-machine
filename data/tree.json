@@ -13,21 +13,31 @@
           "id": "li-inbox",
           "status": "eliminated",
           "label": "LinkedIn inbox is a poor networking tool. Messages go unread, no prioritization, creates noise not signal",
-          "test": "Mom tests across AEs, founders, VCs — inbox usage & frustration",
-          "score": { "Freq": 0, "Intensity": 0, "Fit": 0 },
+          "test": "Behavioural: Do AEs, founders, VCs express inbox usage & frustration",
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          },
           "reason": "Most people didn't feel it's an issue. The ones that have a lot of linkedin reachout use external tools for it anyway."
         },
         {
           "id": "mutual-lkg",
           "status": "active",
-          "tags": ["problem", "linkedin"],
+          "tags": [
+            "problem",
+            "linkedin"
+          ],
           "label": "Mutual connections is inaccurate — they see 300+ but have no intelligence on which paths are real",
           "test": "Behavioral: how often do people see / click mutual connections? What for?",
           "children": [
             {
               "id": "option-b",
               "status": "eliminated",
-              "tags": ["solution", "low-freq"],
+              "tags": [
+                "solution",
+                "low-freq"
+              ],
               "label": "Option B: Strategic Reach — find the real intro path to a specific high-value target",
               "test": "Mom tests — how often do you target a specific person for an intro?",
               "reason": "Frequency too low — ~2× per Q. Not a recurring daily pain.",
@@ -35,21 +45,27 @@
                 {
                   "id": "b-waterfall",
                   "status": "pending",
-                  "tags": ["feature"],
+                  "tags": [
+                    "feature"
+                  ],
                   "label": "Waterfall sequencing: try connector #1 → auto-fallback #2, prevent double-ask",
                   "test": "Pending: validate parent node frequency first"
                 },
                 {
                   "id": "b-filter",
                   "status": "pending",
-                  "tags": ["feature"],
+                  "tags": [
+                    "feature"
+                  ],
                   "label": "Filter 300+ mutuals to 3–5 real paths via active relationship signals",
                   "test": "Pending: validate parent node frequency first"
                 },
                 {
                   "id": "b-rank",
                   "status": "pending",
-                  "tags": ["feature"],
+                  "tags": [
+                    "feature"
+                  ],
                   "label": "Rank connectors by responsiveness to both you and the target",
                   "test": "Pending: validate parent node frequency first"
                 }
@@ -58,14 +74,25 @@
             {
               "id": "mutual-ca",
               "status": "pending",
-              "tags": ["hypothesis"],
+              "label": "Job searchers are asking for many intros",
+              "test": "Interview: when and why do you look at mutual connections?",
+              "type": "problem"
+            },
+            {
+              "id": "mutual-ca-dup-1",
+              "status": "pending",
+              "tags": [
+                "hypothesis"
+              ],
               "label": "Many mutual connections - helps the user build confidence before the reachout. More chances for him to accept.",
               "test": "Interview: when and why do you look at mutual connections?"
             },
             {
               "id": "mutual-cb",
               "status": "pending",
-              "tags": ["hypothesis"],
+              "tags": [
+                "hypothesis"
+              ],
               "label": "People check mutual connections as part of understanding the target. What people he associate with.",
               "test": "Interview: what triggers you to check mutual connections?"
             }
@@ -83,34 +110,53 @@
         {
           "id": "founders",
           "status": "active",
-          "tags": ["persona", "validated"],
-          "label": "Serial founders lose high-value relationships due to relationship drift and missed timing signals",
-          "test": "3 serial founder Mom test interviews",
-          "score": { "Freq": 2, "Intensity": 3, "Fit": 2, "WTP": 1 }
+          "label": "Founders in small companies that are wearing the sales hat are losing deals because of poor nurturing",
+          "test": "Behavioual: founder interviews",
+          "score": {
+            "Freq": 2,
+            "Intensity": 3,
+            "Fit": 2,
+            "WTP": 1
+          },
+          "type": "problem"
         },
         {
           "id": "vcs",
           "status": "active",
-          "tags": ["persona", "validated"],
+          "tags": [
+            "persona",
+            "validated"
+          ],
           "label": "VC principals miss deal flow — can't maintain active signals on 80–150 priority founders",
           "test": "3 VC principal Mom test interviews",
-          "score": { "Freq": 3, "Intensity": 3, "Fit": 2, "WTP": 1 }
+          "score": {
+            "Freq": 3,
+            "Intensity": 3,
+            "Fit": 2,
+            "WTP": 1
+          }
         },
         {
           "id": "aes",
           "status": "eliminated",
-          "tags": ["persona", "wtp"],
+          "tags": [
+            "persona",
+            "wtp"
+          ],
           "label": "AEs will pay out of pocket for personal network CRM — owned by the rep, not the company",
           "test": "AE validation interviews (simulation + real calls) + cold email signal"
         },
         {
           "id": "csm",
           "status": "active",
-          "tags": ["persona"],
+          "tags": [
+            "persona"
+          ],
           "label": "CSMs need relationship intelligence to prevent churn and surface expansion opportunities",
           "test": "Cold email signal — real call interviews pending"
         }
-      ]
+      ],
+      "test": "test"
     },
     {
       "id": "obs-c",
@@ -121,21 +167,30 @@
         {
           "id": "option-a",
           "status": "active",
-          "tags": ["solution", "virality"],
+          "tags": [
+            "solution",
+            "virality"
+          ],
           "label": "Option A: Intro Marketplace — product requires both sides; asker and giver both need network intelligence to complete the workflow",
           "test": "Build two-sided intro flow — does the asker naturally recruit the giver?",
           "children": [
             {
               "id": "a-asker",
               "status": "active",
-              "tags": ["feature", "value"],
+              "tags": [
+                "feature",
+                "value"
+              ],
               "label": "Asker sees which of helper's connections are real & active before asking",
               "test": "Simulation: does seeing the real map change ask behavior?"
             },
             {
               "id": "a-giver",
               "status": "active",
-              "tags": ["feature", "value"],
+              "tags": [
+                "feature",
+                "value"
+              ],
               "label": "Giver shares a real map of available connections — turns vague asks into actionable requests",
               "test": "Simulation: does shared map increase intro success rate?"
             }
@@ -144,36 +199,54 @@
         {
           "id": "option-c",
           "status": "active",
-          "tags": ["solution", "virality", "gordy"],
+          "tags": [
+            "solution",
+            "virality",
+            "gordy"
+          ],
           "label": "Option C: Meeting Intro Engine — pre-meeting briefs create two-sided value; counterpart email is the viral moment of conversion",
           "test": "Counterpart email live test — does it create desire before the product exists?",
           "children": [
             {
               "id": "gordy-brief",
               "status": "validated",
-              "tags": ["feature", "value"],
+              "tags": [
+                "feature",
+                "value"
+              ],
               "label": "Gordy Strategic Ask Brief creates enough value that users want it before every external meeting",
               "test": "Internal: briefs sent to Yaniv, Shaul, Oren — qualitative signal",
-              "score": { "Value": 3, "Freq": 3, "Exchange": 2 }
+              "score": {
+                "Value": 3,
+                "Freq": 3,
+                "Exchange": 2
+              }
             },
             {
               "id": "counterpart",
               "status": "active",
-              "tags": ["virality", "mvt"],
+              "tags": [
+                "virality",
+                "mvt"
+              ],
               "label": "Counterpart email creates desire in someone who's never heard of InTouch — before they have a product to land on",
               "test": "Live emails to real attendees — measuring clicks, replies, sign-up intent"
             },
             {
               "id": "int-share",
               "status": "pending",
-              "tags": ["virality"],
+              "tags": [
+                "virality"
+              ],
               "label": "Users share the pre-meeting brief doc internally — organic adoption spreads within teams",
               "test": "Pending: observe sharing behavior after counterpart email validates"
             },
             {
               "id": "gordy-loop",
               "status": "pending",
-              "tags": ["virality"],
+              "tags": [
+                "virality"
+              ],
               "label": "Post-meeting Gordy follow-up converts successful meetings into new warm user acquisition",
               "test": "Pending: define loop after counterpart email signal confirmed"
             }
@@ -182,21 +255,28 @@
         {
           "id": "namedrop",
           "status": "active",
-          "tags": ["distribution", "gordy"],
+          "tags": [
+            "distribution",
+            "gordy"
+          ],
           "label": "Name drop test: \"Gordy mentioned you know X — may I mention you when I reach out?\" creates warm outreach at scale",
           "test": "Live Gordy outreach to founders, VCs, AEs — tracking Yes/No + follow-up calls",
           "children": [
             {
               "id": "nd-founders",
               "status": "validated",
-              "tags": ["result"],
+              "tags": [
+                "result"
+              ],
               "label": "Name drop works with founders and VCs — strong positive signal confirmed",
               "test": "Name drop test run on founder + investor network"
             },
             {
               "id": "nd-aes",
               "status": "active",
-              "tags": ["result"],
+              "tags": [
+                "result"
+              ],
               "label": "Name drop works with AEs and sales professionals — test running",
               "test": "Name drop test on AE network — running"
             }
