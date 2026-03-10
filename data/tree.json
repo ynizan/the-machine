@@ -161,7 +161,23 @@
             "wtp"
           ],
           "label": "AEs will pay out of pocket for personal network CRM — owned by the rep, not the company",
-          "test": "AE validation interviews (simulation + real calls) + cold email signal"
+          "test": "AE validation interviews (simulation + real calls) + cold email signal",
+          "children": [
+            {
+              "id": "ae-network-ownership",
+              "status": "pending",
+              "type": "problem",
+              "label": "AEs want to own their network and move it with them when they change jobs — their relationships are personal assets, not company property",
+              "test": "Pending: parent node (aes) is eliminated due to WTP blocker. Validate willingness to pay first."
+            },
+            {
+              "id": "ae-attribution",
+              "status": "pending",
+              "type": "problem",
+              "label": "AEs want to claim attribution for deals they influenced through personal relationships — giving them a concrete reason to nurture outside the company CRM",
+              "test": "Pending: parent node (aes) is eliminated due to WTP blocker. Validate willingness to pay first."
+            }
+          ]
         },
         {
           "id": "csm",
