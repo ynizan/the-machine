@@ -368,7 +368,7 @@
       "id": "obs-f",
       "status": "validated",
       "type": "problem_space",
-      "label": "All relationship management tools fail because they require manual data entry — users abandon them within weeks",
+      "label": "Users want to avoid data entry",
       "test": "Validated by market: 25+ predecessor companies failed primarily due to manual data entry abandonment (Contactually, Highrise, Nimble, etc.). Confirmed independently across multiple founder, AE, and VC interviews.",
       "reason": "Historical pattern across $300M+ in failed CRM attempts. Interviewees consistently report starting tools and abandoning them when upkeep becomes too heavy."
     }
