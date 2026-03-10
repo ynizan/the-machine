@@ -29,6 +29,10 @@ function cardHeight(node){
   h += c.efs * 1.8;
   h += c.efs * 0.6;
 
+  if(node.data.type === 'market'){
+    h += c.efs * 1.6;
+  }
+
   const tags = node.data.tags || [];
   if(tags.length){
     h += c.tfs * 2.4;
