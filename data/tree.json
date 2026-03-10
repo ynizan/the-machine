@@ -13,12 +13,7 @@
           "id": "li-inbox",
           "status": "eliminated",
           "label": "LinkedIn inbox is a poor networking tool. Messages go unread, no prioritization, creates noise not signal",
-          "test": "Behavioural: Do AEs, founders, VCs express inbox usage & frustration",
-          "score": {
-            "Freq": 0,
-            "Intensity": 0,
-            "Fit": 0
-          },
+          "test": "Mom tests across AEs, founders, VCs — inbox usage & frustration",
           "reason": "Most people didn't feel it's an issue. The ones that have a lot of linkedin reachout use external tools for it anyway."
         },
         {
@@ -269,7 +264,8 @@
                 "result"
               ],
               "label": "Name drop works with founders and VCs — strong positive signal confirmed",
-              "test": "Name drop test run on founder + investor network"
+              "test": "Name drop test run on founder + investor network",
+              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
             },
             {
               "id": "nd-aes",

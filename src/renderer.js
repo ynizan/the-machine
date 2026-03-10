@@ -47,7 +47,7 @@ function cardHeight(node){
     h += c.fs * 0.3;
   }
 
-  if(node.data.score){
+  if(node.data.score && node.data.status === 'validated'){
     h += c.efs * 0.6;
     h += c.dSz * 1.6;
     h += c.efs * 1.4;
@@ -194,7 +194,7 @@ function cardHTML(d, c, h){
     ">\u21A9 ${reason}</div>`;
   }
 
-  if(score){
+  if(score && st === 'validated'){
     const ds = c.dSz;
     h2 += `<div style="
       display:flex;gap:${ds*2}px;
@@ -776,7 +776,9 @@ function openInlineEdit(nodeId, evt, focusField){
     `<option value="${t}" ${(nodeData.type||'')===t?'selected':''}>${t ? TYPE_LABELS[t] : '— None —'}</option>`
   ).join('');
 
-  const scoreHtml = nodeData.score ? Object.entries(nodeData.score).map(([k,v]) =>
+  const showScore = nodeData.status === 'validated';
+  const scoreObj = nodeData.score || { Freq: 0, Intensity: 0, Fit: 0 };
+  const scoreHtml = showScore ? Object.entries(scoreObj).map(([k,v]) =>
     `<div class="ief-field" style="display:inline-block;width:calc(50% - 6px);margin-right:4px;">
       <label>${k}</label>
       <select data-score-key="${k}">
@@ -819,7 +821,17 @@ function openInlineEdit(nodeId, evt, focusField){
           <label>Data / Results</label>
           <textarea id="ief-reason" rows="2">${(nodeData.reason||'').replace(/"/g,'&quot;')}</textarea>
         </div>
-        ${scoreHtml ? `<div style="margin-top:2px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#666;margin-bottom:8px;">Score</div>${scoreHtml}</div>` : ''}
+        <div id="ief-score-section" style="margin-top:2px;${showScore ? '' : 'display:none;'}"><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#666;margin-bottom:8px;">Score</div>${showScore ? scoreHtml : Object.entries(scoreObj).map(([k,v]) =>
+          `<div class="ief-field" style="display:inline-block;width:calc(50% - 6px);margin-right:4px;">
+            <label>${k}</label>
+            <select data-score-key="${k}">
+              <option value="0" ${v===0?'selected':''}>0</option>
+              <option value="1" ${v===1?'selected':''}>1</option>
+              <option value="2" ${v===2?'selected':''}>2</option>
+              <option value="3" ${v===3?'selected':''}>3</option>
+            </select>
+          </div>`
+        ).join('')}</div>
       </div>
       <div class="ief-footer">
         <button class="ep-btn" onclick="downloadJSON()">&#8681; Download JSON</button>
@@ -833,8 +845,18 @@ function openInlineEdit(nodeId, evt, focusField){
 
   document.body.appendChild(overlay);
 
+  document.getElementById('ief-status').addEventListener('change', function(){
+    const scoreSection = document.getElementById('ief-score-section');
+    if(this.value === 'validated'){
+      scoreSection.style.display = '';
+    } else {
+      scoreSection.style.display = 'none';
+    }
+  });
+
   document.getElementById('ief-save').onclick = () => {
-    nodeData.status = document.getElementById('ief-status').value;
+    const newStatus = document.getElementById('ief-status').value;
+    nodeData.status = newStatus;
     const typeVal   = document.getElementById('ief-type').value;
     nodeData.type   = typeVal || undefined;
     if(!nodeData.type) delete nodeData.type;
@@ -845,10 +867,15 @@ function openInlineEdit(nodeId, evt, focusField){
     const reasonVal = document.getElementById('ief-reason').value;
     nodeData.reason = reasonVal || undefined;
 
-    if(nodeData.score){
+    if(newStatus === 'validated'){
+      // Ensure score exists; update from form if score fields were shown
+      if(!nodeData.score) nodeData.score = { Freq: 0, Intensity: 0, Fit: 0 };
       overlay.querySelectorAll('[data-score-key]').forEach(sel => {
         nodeData.score[sel.dataset.scoreKey] = parseInt(sel.value);
       });
+    } else {
+      // Remove score for non-validated nodes
+      delete nodeData.score;
     }
 
     // Clean up undefined fields
