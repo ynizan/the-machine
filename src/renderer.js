@@ -255,7 +255,7 @@ function duplicateNode(nodeId, evt){
   markDirty();
   NODE_MAP = {};
   buildNodeMap(CURRENT_DATA);
-  RENDER_FN(CURRENT_DATA);
+  RENDER_FN(CURRENT_DATA, {skipResetView: true});
   showToast('Duplicated!');
 }
 
@@ -308,7 +308,7 @@ function deleteNode(nodeId, evt){
     markDirty();
     NODE_MAP = {};
     buildNodeMap(CURRENT_DATA);
-    RENDER_FN(CURRENT_DATA);
+    RENDER_FN(CURRENT_DATA, {skipResetView: true});
     showToast('Deleted!');
   };
 }
@@ -350,7 +350,7 @@ function openNodeRight(nodeId, evt){
 
   NODE_MAP[newId] = newNode;
   markDirty();
-  RENDER_FN(CURRENT_DATA);
+  RENDER_FN(CURRENT_DATA, {skipResetView: true});
 
   // Open the edit popup for the new node after re-render
   setTimeout(() => { openInlineEdit(newId); }, 60);
