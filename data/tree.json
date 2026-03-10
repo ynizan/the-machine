@@ -94,12 +94,18 @@
           ]
         }
       ],
-      "reason": "**The overwhelming majority expressed dissatisfaction with LinkedIn.** Out of approximately 55 unique interviewees, roughly **40+ expressed negative sentiment**, while only about **8-10 spoke favorably**, with the remainder mixed."
+      "reason": "**The overwhelming majority expressed dissatisfaction with LinkedIn.** Out of approximately 55 unique interviewees, roughly **40+ expressed negative sentiment**, while only about **8-10 spoke favorably**, with the remainder mixed.",
+      "test": "Question all transcripts: Are people unhappy with Linkedin - I need count of people mentioning that vs. people taking favorbly about linkedin. Include names. Skip Yaniv, Matan and Shaul",
+      "score": {
+        "Freq": 0,
+        "Intensity": 0,
+        "Fit": 0
+      }
     },
     {
       "id": "obs-b",
       "status": "active",
-      "type": "problem",
+      "type": "problem_space",
       "label": "HubSpot / newsletter approach to nurturing is broken",
       "children": [
         {
@@ -155,8 +161,8 @@
     },
     {
       "id": "obs-c",
-      "status": "active",
-      "type": "viral_sending",
+      "status": "validated",
+      "type": "problem_space",
       "label": "Introductions & intro-meetings are a viral product space",
       "children": [
         {
@@ -200,22 +206,17 @@
             "gordy"
           ],
           "label": "Option C: Meeting Intro Engine — pre-meeting briefs create two-sided value; counterpart email is the viral moment of conversion",
-          "test": "Counterpart email live test — does it create desire before the product exists?",
+          "test": "Behavioral: do people practice the idea of asking for 2-3 introductions in every meeting",
           "children": [
             {
               "id": "gordy-brief",
-              "status": "validated",
+              "status": "pending",
               "tags": [
                 "feature",
                 "value"
               ],
-              "label": "Gordy Strategic Ask Brief creates enough value that users want it before every external meeting",
-              "test": "Internal: briefs sent to Yaniv, Shaul, Oren — qualitative signal",
-              "score": {
-                "Value": 3,
-                "Freq": 3,
-                "Exchange": 2
-              }
+              "label": "Gordy Strategic Ask Brief creates enough value that users share it internally with colleagues",
+              "test": "Internal: we need to bring users from companies with actual employees"
             },
             {
               "id": "counterpart",
@@ -228,17 +229,18 @@
               "test": "Live emails to real attendees — measuring clicks, replies, sign-up intent"
             },
             {
-              "id": "int-share",
-              "status": "pending",
+              "id": "counterpart-dup-1",
+              "status": "active",
               "tags": [
-                "virality"
+                "virality",
+                "mvt"
               ],
-              "label": "Users share the pre-meeting brief doc internally — organic adoption spreads within teams",
-              "test": "Pending: observe sharing behavior after counterpart email validates"
+              "label": "Auto compose intro request feature is used and users don't delete the attribution ",
+              "test": "Data from live experiments + users interview"
             },
             {
               "id": "gordy-loop",
-              "status": "pending",
+              "status": "active",
               "tags": [
                 "virality"
               ],
@@ -265,7 +267,11 @@
               ],
               "label": "Name drop works with founders and VCs — strong positive signal confirmed",
               "test": "Name drop test run on founder + investor network",
-              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
             },
             {
               "id": "nd-aes",
@@ -278,7 +284,14 @@
             }
           ]
         }
-      ]
+      ],
+      "test": "Past successes",
+      "reason": "Calendly, zoom, Doodle (10M monthly users), Superhuman, Fathom, Firefly, Boardy, ...",
+      "score": {
+        "Freq": 0,
+        "Intensity": 0,
+        "Fit": 0
+      }
     }
   ]
 }
