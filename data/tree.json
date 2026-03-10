@@ -27,6 +27,13 @@
           "test": "Behavioral: how often do people see / click mutual connections? What for?",
           "children": [
             {
+              "id": "network-self-map",
+              "status": "active",
+              "type": "solution",
+              "label": "Users want a real picture of their own network — active vs dormant connections, response likelihood, and intro balance (favors given vs called) — not a vanity count",
+              "test": "Demo/waitlist test: show a mockup of a network health dashboard — does it generate sign-up intent or 'I want that' reactions? Not a Mom Test — this is a latent need, solution-first."
+            },
+            {
               "id": "option-b",
               "status": "eliminated",
               "tags": [
