@@ -143,19 +143,6 @@
       "label": "HubSpot / newsletter approach to nurturing is broken",
       "children": [
         {
-          "id": "founders",
-          "status": "active",
-          "label": "Founders in small companies that are wearing the sales hat are losing deals because of poor nurturing",
-          "test": "Behavioual: founder interviews",
-          "score": {
-            "Freq": 2,
-            "Intensity": 3,
-            "Fit": 2,
-            "WTP": 1
-          },
-          "type": "problem"
-        },
-        {
           "id": "aes",
           "status": "eliminated",
           "tags": [
@@ -194,7 +181,7 @@
           "id": "market-smallorg-nurture",
           "status": "active",
           "type": "market",
-          "label": "Business leaders in small orgs (<20) are more likely to need personal nurturing",
+          "label": "Business leaders in small orgs (<20) are more likely to manage relationships and need personal nurturing",
           "test": "Analysis of past calls",
           "children": [
             {
@@ -212,36 +199,49 @@
                 "Fit": 2,
                 "WTP": 1
               }
-            }
-          ]
-        },
-        {
-          "id": "market-smallorg-pokemon-warm",
-          "status": "active",
-          "type": "market",
-          "label": "Business leaders in small orgs (<20) are more likely to manage relationships",
-          "test": "Analysis on past calls",
-          "children": [
-            {
-              "id": "pokemon-intros",
-              "status": "active",
-              "type": "hypothesis",
-              "label": "Personal intel on a connector makes intro requests more targeted and more likely to succeed",
-              "test": "Simulation: compare intro request quality and success rate with vs without personal context on the connector"
             },
             {
-              "id": "pokemon-mine-rare",
+              "id": "founders",
               "status": "active",
-              "type": "solution",
-              "label": "Users will pay to mine deep personal intel from their own emails, call transcripts, and WhatsApp to fuel warm relationship actions",
-              "test": "Waitlist/credits test: when offered pokemon mining, do users connect their email or transcripts? Measure activation rate and willingness to pay."
+              "label": "Founders in small companies that are wearing the sales hat are losing deals because of poor nurturing",
+              "test": "Behavioual: founder interviews",
+              "score": {
+                "Freq": 2,
+                "Intensity": 3,
+                "Fit": 2,
+                "WTP": 1
+              },
+              "type": "problem"
             },
             {
-              "id": "pokemon-share",
+              "id": "obs-e",
               "status": "active",
-              "type": "hypothesis",
-              "label": "Users who have gathered deep personal intel about contacts through real relationships are willing to share or trade it with others in exchange for reputation, credits, or reciprocal intel",
-              "test": "Interview: have they shared before? What info are they ok sharing? Who are they willing to share with?"
+              "type": "problem_space",
+              "label": "Personal contact intelligence improves nurturing by creating more follow-up opportunities, increasing engagement rates, and ultimately improving win rates",
+              "test": "Behavioral interview: do people who know personal details about contacts report better relationship outcomes? Simulation: compare nurture sequences with vs without personal intel.",
+              "children": [
+                {
+                  "id": "pokemon-intros",
+                  "status": "active",
+                  "type": "hypothesis",
+                  "label": "Personal intel on a connector makes intro requests more targeted and more likely to succeed",
+                  "test": "Simulation: compare intro request quality and success rate with vs without personal context on the connector"
+                },
+                {
+                  "id": "pokemon-mine-rare",
+                  "status": "active",
+                  "type": "solution",
+                  "label": "Users will pay to mine deep personal intel from their own emails, call transcripts, and WhatsApp to fuel warm relationship actions",
+                  "test": "Waitlist/credits test: when offered pokemon mining, do users connect their email or transcripts? Measure activation rate and willingness to pay."
+                },
+                {
+                  "id": "pokemon-share",
+                  "status": "active",
+                  "type": "hypothesis",
+                  "label": "Users who have gathered deep personal intel about contacts through real relationships are willing to share or trade it with others in exchange for reputation, credits, or reciprocal intel",
+                  "test": "Interview: have they shared before? What info are they ok sharing? Who are they willing to share with?"
+                }
+              ]
             }
           ]
         }
