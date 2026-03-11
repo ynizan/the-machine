@@ -26,10 +26,7 @@
         {
           "id": "mutual-lkg",
           "status": "review",
-          "tags": [
-            "problem",
-            "linkedin"
-          ],
+          "type": "problem",
           "label": "Users are frustrated weekly since mutual connections is inaccurate — they see 300+ but have no intelligence on which paths are real",
           "test": "Behavioral: how often do people see / click mutual connections? What for?",
           "children": [
@@ -52,13 +49,10 @@
             {
               "id": "option-b",
               "status": "eliminated",
-              "tags": [
-                "solution",
-                "low-freq"
-              ],
+              "type": "solution",
               "label": "Option B: Strategic Reach — find the real intro path to a specific high-value target",
               "test": "Mom tests — how often do you target a specific person for an intro?",
-              "reason": "Frequency too low — ~2× per Q. Not a recurring daily pain."
+              "reason": "Frequency too low — ~2x per Q. Not a recurring daily pain."
             },
             {
               "id": "market-smallorg-introreq",
@@ -70,18 +64,13 @@
                 {
                   "id": "option-b-smallorg",
                   "status": "active",
-                  "tags": [
-                    "solution"
-                  ],
+                  "type": "solution",
                   "label": "Small org Option B: Strategic Reach — find the real intro path to a specific target",
                   "test": "Mom test: how often do small org front-people target a specific person for an intro?",
                   "children": [
                     {
                       "id": "b-waterfall",
                       "status": "pending",
-                      "tags": [
-                        "feature"
-                      ],
                       "label": "Waterfall sequencing: try connector #1 → auto-fallback #2, prevent double-ask",
                       "test": "Mockup test: do you want this? Install chrome extension if you do",
                       "children": [
@@ -97,18 +86,12 @@
                     {
                       "id": "b-filter",
                       "status": "pending",
-                      "tags": [
-                        "feature"
-                      ],
                       "label": "Filter 300+ mutuals to 3–5 real paths via active relationship signals",
                       "test": "Mockup test: do you want this? Install chrome extension if you do"
                     },
                     {
                       "id": "b-rank",
                       "status": "pending",
-                      "tags": [
-                        "feature"
-                      ],
                       "label": "Rank connectors by responsiveness to both you and the target",
                       "test": "Mockup test: do you want this? Install chrome extension if you do"
                     },
@@ -156,18 +139,14 @@
             {
               "id": "mutual-ca-dup-1",
               "status": "active",
-              "tags": [
-                "hypothesis"
-              ],
+              "type": "hypothesis",
               "label": "Many mutual connections - helps the user build confidence before the reachout. More chances for him to accept.",
               "test": "Interview: when and why do you look at mutual connections?"
             },
             {
               "id": "mutual-cb",
               "status": "active",
-              "tags": [
-                "hypothesis"
-              ],
+              "type": "hypothesis",
               "label": "People check mutual connections as part of understanding the target. What people he associate with.",
               "test": "Interview: what triggers you to check mutual connections?"
             }
@@ -197,10 +176,6 @@
         {
           "id": "aes",
           "status": "eliminated",
-          "tags": [
-            "persona",
-            "wtp"
-          ],
           "label": "AEs will pay out of pocket for personal network CRM — owned by the rep, not the company",
           "test": "AE validation interviews (simulation + real calls) + cold email signal",
           "children": [
@@ -223,9 +198,6 @@
         {
           "id": "csm",
           "status": "active",
-          "tags": [
-            "persona"
-          ],
           "label": "CSMs need relationship intelligence to prevent churn and surface expansion opportunities",
           "test": "Cold email signal — real call interviews pending"
         },
@@ -259,10 +231,6 @@
                 {
                   "id": "vcs",
                   "status": "active",
-                  "tags": [
-                    "persona",
-                    "validated"
-                  ],
                   "label": "VC principals miss deal flow — can't maintain active signals on 80–150 priority founders",
                   "test": "Mom test - what happens after the intro call if it's too early"
                 }
@@ -354,10 +322,6 @@
                 {
                   "id": "a-giver-dup-4",
                   "status": "pending",
-                  "tags": [
-                    "feature",
-                    "value"
-                  ],
                   "label": "Giver is willing to install a tool that shares a real map with the asker ",
                   "test": "Mockup test - pretending it's real",
                   "type": "viral_receiving"
@@ -369,31 +333,18 @@
             {
               "id": "option-c",
               "status": "active",
-              "tags": [
-                "solution",
-                "virality",
-                "gordy"
-              ],
               "label": "In calls - over 80% wanted the \"Ask brief\". 50% signed up.  ",
               "test": "Mockup test: do people want to test Gordy sending them ideas for 2-3 introductions in every meeting",
               "children": [
                 {
                   "id": "gordy-brief",
                   "status": "pending",
-                  "tags": [
-                    "feature",
-                    "value"
-                  ],
                   "label": "Gordy Strategic Ask Brief creates enough value that users share it internally with colleagues",
                   "test": "Internal: we need to bring users from companies with actual employees"
                 },
                 {
                   "id": "counterpart",
                   "status": "active",
-                  "tags": [
-                    "virality",
-                    "mvt"
-                  ],
                   "label": "Counterpart email gets over 30% click rate and 60% notice rate.",
                   "test": "Live emails to real attendees — measuring clicks, replies, sign-up intent",
                   "type": "viral_receiving"
@@ -401,10 +352,6 @@
                 {
                   "id": "counterpart-dup-1",
                   "status": "pending",
-                  "tags": [
-                    "virality",
-                    "mvt"
-                  ],
                   "label": "Auto compose intro request feature is used and users don't delete the attribution ",
                   "test": "Data from live experiments + users interview",
                   "type": "viral_sending"
@@ -412,9 +359,6 @@
                 {
                   "id": "gordy-loop",
                   "status": "active",
-                  "tags": [
-                    "virality"
-                  ],
                   "label": "Post-meeting Gordy follow-up on counterpart gets 10% response rate.",
                   "test": "Monitor response rates",
                   "type": "viral_receiving"
@@ -422,9 +366,6 @@
                 {
                   "id": "gordy-loop-dup-4",
                   "status": "pending",
-                  "tags": [
-                    "virality"
-                  ],
                   "label": "Post-meeting Gordy follow-up on user generates 2 intros per month.",
                   "test": "Pending: automation not implemented",
                   "type": "viral_sending"
@@ -445,10 +386,6 @@
         {
           "id": "namedrop",
           "status": "review",
-          "tags": [
-            "distribution",
-            "gordy"
-          ],
           "label": "Name drop works with founders and VCs — strong positive signal confirmed",
           "test": "Live Gordy outreach to founders, VCs",
           "type": "viral_receiving"
@@ -456,10 +393,6 @@
         {
           "id": "namedrop-dup-1",
           "status": "review",
-          "tags": [
-            "distribution",
-            "gordy"
-          ],
           "label": "Name drop works with AEs and BD ",
           "test": "Live Gordy outreach to AEs and BD",
           "type": "viral_receiving"
