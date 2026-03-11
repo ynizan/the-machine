@@ -33,6 +33,12 @@
     <div class="leg" style="margin-left:4px">
       <div style="width:24px;height:1.5px;background:#333;border-radius:2px"></div>Edge = Test
     </div>
+    <div class="leg depth-ctrl-header" style="margin-left:8px">
+      <span class="depth-label">Depth</span>
+      <button class="depth-hdr-btn" onclick="setMaxDepth(MAX_DEPTH-1)">&minus;</button>
+      <span id="depth-val">5</span>
+      <button class="depth-hdr-btn" onclick="setMaxDepth(MAX_DEPTH+1)">+</button>
+    </div>
   </div>
 </div>
 
@@ -42,12 +48,6 @@
   <button class="cb" id="zi">+</button>
   <button class="cb" id="zo">&minus;</button>
   <button class="cb" id="zr" style="font-size:13px">&#8962;</button>
-  <div id="depth-ctrl">
-    <span class="depth-label">Depth</span>
-    <button class="cb depth-btn" onclick="setMaxDepth(MAX_DEPTH-1)">&minus;</button>
-    <span id="depth-val">5</span>
-    <button class="cb depth-btn" onclick="setMaxDepth(MAX_DEPTH+1)">+</button>
-  </div>
 </div>
 
 <div id="editor-toggle">
