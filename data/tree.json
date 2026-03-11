@@ -185,16 +185,6 @@
           "test": "Analysis of past calls",
           "children": [
             {
-              "id": "vcs",
-              "status": "active",
-              "tags": [
-                "persona",
-                "validated"
-              ],
-              "label": "VC principals miss deal flow — can't maintain active signals on 80–150 priority founders",
-              "test": "Mom test - what happens after the intro call if it's too early"
-            },
-            {
               "id": "founders",
               "status": "active",
               "label": "Founders in small companies that are wearing the sales hat are losing deals because of poor nurturing",
@@ -208,11 +198,23 @@
               "type": "problem"
             },
             {
-              "id": "founders-dup-1",
+              "id": "top-of-mind",
               "status": "active",
               "label": "Users want to stay top of mind so customers call them when in-market and various opportunities find them",
               "test": "Mom Test: do users find work arounds to stay top of mind. Do they agree that this is the motivation",
-              "type": "problem"
+              "type": "problem",
+              "children": [
+                {
+                  "id": "vcs",
+                  "status": "active",
+                  "tags": [
+                    "persona",
+                    "validated"
+                  ],
+                  "label": "VC principals miss deal flow — can't maintain active signals on 80–150 priority founders",
+                  "test": "Mom test - what happens after the intro call if it's too early"
+                }
+              ]
             },
             {
               "id": "obs-e",
