@@ -315,6 +315,13 @@
               "test": "Name drop test on AE network — running"
             }
           ]
+        },
+        {
+          "id": "gordy-asks",
+          "status": "active",
+          "type": "hypothesis",
+          "label": "Prospects respond to Gordy outbound offering intros",
+          "test": "Live test: Gordy sends outbound messages offering intros to targeted prospects — measure response rate and yes/no ratio"
         }
       ],
       "test": "Past successes",
