@@ -17,13 +17,20 @@
           "reason": "Most people didn't feel it's an issue. The ones that have a lot of linkedin reachout use external tools for it anyway."
         },
         {
-          "id": "mutual-lkg",
+          "id": "17",
           "status": "active",
+          "type": "problem",
+          "label": "Users want to delegate their LinkedIn search + inbox/outbox to an SDR or recruiter",
+          "test": "Mom test: when and why do users want to delegate LinkedIn/email communication? What triggers the need and what are current workarounds?"
+        },
+        {
+          "id": "mutual-lkg",
+          "status": "review",
           "tags": [
             "problem",
             "linkedin"
           ],
-          "label": "Mutual connections is inaccurate — they see 300+ but have no intelligence on which paths are real",
+          "label": "Users are frustrated weekly since mutual connections is inaccurate — they see 300+ but have no intelligence on which paths are real",
           "test": "Behavioral: how often do people see / click mutual connections? What for?",
           "children": [
             {
@@ -55,9 +62,9 @@
             },
             {
               "id": "market-smallorg-introreq",
-              "status": "active",
+              "status": "review",
               "type": "market",
-              "label": "Business leaders in small orgs (<20) are more likely to ask intros",
+              "label": "Business leaders in small orgs (<20) are using intros enough to justify (excluding B2C startups)",
               "test": "Analysis on past calls",
               "children": [
                 {
@@ -76,7 +83,16 @@
                         "feature"
                       ],
                       "label": "Waterfall sequencing: try connector #1 → auto-fallback #2, prevent double-ask",
-                      "test": "Pending: validate parent node frequency first"
+                      "test": "Mockup test: do you want this? Install chrome extension if you do",
+                      "children": [
+                        {
+                          "id": "new-2",
+                          "status": "pending",
+                          "label": "Can we do this",
+                          "type": "solution",
+                          "test": "Feasibility"
+                        }
+                      ]
                     },
                     {
                       "id": "b-filter",
@@ -85,7 +101,7 @@
                         "feature"
                       ],
                       "label": "Filter 300+ mutuals to 3–5 real paths via active relationship signals",
-                      "test": "Pending: validate parent node frequency first"
+                      "test": "Mockup test: do you want this? Install chrome extension if you do"
                     },
                     {
                       "id": "b-rank",
@@ -94,7 +110,14 @@
                         "feature"
                       ],
                       "label": "Rank connectors by responsiveness to both you and the target",
-                      "test": "Pending: validate parent node frequency first"
+                      "test": "Mockup test: do you want this? Install chrome extension if you do"
+                    },
+                    {
+                      "id": "16",
+                      "status": "pending",
+                      "type": "viral_sending",
+                      "label": "Users want to copy Gordy on outreach so he can manage the waterfall or help otherwise with warm path attempts automatically",
+                      "test": "Mockup test: show the cc-Gordy flow — does the user understand it and want to use it?"
                     }
                   ]
                 },
@@ -107,14 +130,14 @@
                   "children": [
                     {
                       "id": "new-3",
-                      "status": "active",
+                      "status": "pending",
                       "label": "Users with chrome extension will send their friends the extension to discover friends network as well",
                       "type": "viral_sending",
                       "test": "Mockup test: are they willing to come up with names? intro us?"
                     },
                     {
                       "id": "new-3-dup-4",
-                      "status": "active",
+                      "status": "pending",
                       "label": "Users who received a request to install the chrome extension and connect their calendar will do so.",
                       "type": "viral_receiving",
                       "test": "MVT test: Send them the emails pretending we already have the flow implemented"
@@ -125,14 +148,14 @@
             },
             {
               "id": "mutual-ca",
-              "status": "pending",
+              "status": "active",
               "label": "Job searchers are asking for many intros",
               "test": "Interview: when and why do you look at mutual connections?",
               "type": "problem"
             },
             {
               "id": "mutual-ca-dup-1",
-              "status": "pending",
+              "status": "active",
               "tags": [
                 "hypothesis"
               ],
@@ -141,7 +164,7 @@
             },
             {
               "id": "mutual-cb",
-              "status": "pending",
+              "status": "active",
               "tags": [
                 "hypothesis"
               ],
@@ -149,6 +172,12 @@
               "test": "Interview: what triggers you to check mutual connections?"
             }
           ]
+        },
+        {
+          "id": "new-1",
+          "status": "active",
+          "label": "Users want to take messaging outside of Linkedin as soon as possible",
+          "test": "Mom test - ask them"
         }
       ],
       "reason": "**The overwhelming majority expressed dissatisfaction with LinkedIn.** Out of approximately 55 unique interviewees, roughly **40+ expressed negative sentiment**, while only about **8-10 spoke favorably**, with the remainder mixed.",
@@ -271,7 +300,16 @@
                   "status": "active",
                   "type": "problem",
                   "label": "Users want alerts about life/career trigger events for contacts — job change, funding, promotion, local holiday, local news — as a reason to reach out and nurture",
-                  "test": "Mom test: do they actually search for it"
+                  "test": "Mom test: do they actually search for it",
+                  "children": [
+                    {
+                      "id": "15",
+                      "status": "active",
+                      "type": "problem",
+                      "label": "Users want alerts about dynamic data matching their pokemon intel — sports results, news, events — as a zero-effort reason to reach out (the \"Sarah's Seahawks won\" mechanic)",
+                      "test": "Mom test: do users currently track dynamic external data (sports, news, events) about contacts? Do they act on it when they notice it organically?"
+                    }
+                  ]
                 }
               ]
             }
