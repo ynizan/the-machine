@@ -242,6 +242,13 @@
                   "test": "Interview: have they shared before? What info are they ok sharing? Who are they willing to share with?"
                 }
               ]
+            },
+            {
+              "id": "14b",
+              "status": "active",
+              "type": "problem",
+              "label": "Users want alerts about life/career trigger events for contacts — job change, funding, promotion — as a reason to reach out and nurture",
+              "test": "Mom test: when was the last time a contact had a life/career event you wished you'd known about sooner? How often does that happen?"
             }
           ]
         }
