@@ -169,9 +169,9 @@
     },
     {
       "id": "obs-b",
-      "status": "active",
+      "status": "validated",
       "type": "problem_space",
-      "label": "HubSpot / newsletter approach to nurturing is broken",
+      "label": "HubSpot / newsletter approach to nurturing is dying",
       "children": [
         {
           "id": "aes",
@@ -282,7 +282,13 @@
           ]
         }
       ],
-      "test": "test"
+      "test": "Online research",
+      "reason": "1. Unsubscribe rates up 50-150% since Gmail's July 2025 rollout (MarTech/Salesforce — newsletter-specific, very recent)\n2. MailChimp's average inbox rate decreased from 51.93% to 32.30%\n3. Gmail's Promotions tab filtering doubled — emails that used to split 50/50 between Primary and Promotions now land 75/25 in Promotions since Q3 2024.",
+      "score": {
+        "Freq": 0,
+        "Intensity": 0,
+        "Fit": 0
+      }
     },
     {
       "id": "obs-c",
@@ -414,7 +420,7 @@
       "id": "obs-d",
       "status": "validated",
       "type": "problem_space",
-      "label": "Knowing something specific about a target meaningfully improves cold outreach conversion rates as long as not creepy",
+      "label": "Personalizing cold outreach to the recipient's specific situation increases response rates by roughly a third.",
       "test": "Online research",
       "children": [
         {
@@ -447,7 +453,8 @@
         "Freq": 0,
         "Intensity": 0,
         "Fit": 0
-      }
+      },
+      "reason": "Backlinko's large-scale email outreach study found a 32.7% higher response rate for emails with customized message body content vs. generic templates"
     },
     {
       "id": "obs-f",
