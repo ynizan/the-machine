@@ -29,14 +29,8 @@ function cardHeight(node){
   h += c.efs * 1.8;
   h += c.efs * 0.6;
 
-  if(node.data.type === 'market'){
+  if(node.data.type){
     h += c.efs * 1.6;
-  }
-
-  const tags = node.data.tags || [];
-  if(tags.length){
-    h += c.tfs * 2.4;
-    h += c.tfs * 0.5;
   }
 
   const label = node.data.label || '';
@@ -83,11 +77,6 @@ const LBL_COLORS = {
   validated:'#E8E8E8', active:'#BBBBBB',
   pending:'#8A7855', eliminated:'#3A3A3A', review:'#9AC8E0'
 };
-const TAG_BG = {
-  validated:'rgba(127,191,149,.09)',
-  active:'rgba(255,255,255,.05)', pending:'rgba(212,165,116,.07)',
-  eliminated:'rgba(255,255,255,.03)', review:'rgba(106,176,210,.09)'
-};
 const EDGE_COLORS = {
   validated:'#4A8A60', active:'#383838',
   pending:'#6A4818', eliminated:'#1E1E1E', review:'#3A7A9A'
@@ -99,22 +88,33 @@ const EYE_LABELS = {
 };
 
 const HYPOTHESIS_TYPES = [
-  'problem', 'problem_space', 'solution', 'viral_sending', 'viral_receiving', 'revenue', 'unit_economics', 'market'
+  'problem', 'problem_space', 'solution', 'hypothesis', 'viral_sending', 'viral_receiving', 'revenue', 'unit_economics', 'market'
 ];
 const TYPE_LABELS = {
-  problem:'Problem', problem_space:'Problem Space', solution:'Solution', viral_sending:'Viral Sending',
-  viral_receiving:'Viral Receiving', revenue:'Revenue', unit_economics:'Unit Economics', market:'Market'
+  problem:'Problem', problem_space:'Problem Space', solution:'Solution', hypothesis:'Hypothesis',
+  viral_sending:'Viral Sending', viral_receiving:'Viral Receiving', revenue:'Revenue',
+  unit_economics:'Unit Economics', market:'Market'
+};
+const TYPE_COLORS = {
+  problem:{ text:'#E07060', bg:'rgba(224,112,96,.12)', border:'rgba(224,112,96,.25)' },
+  problem_space:{ text:'#C85A4A', bg:'rgba(200,90,74,.10)', border:'rgba(200,90,74,.20)' },
+  solution:{ text:'#6ABF80', bg:'rgba(106,191,128,.12)', border:'rgba(106,191,128,.25)' },
+  hypothesis:{ text:'#B08AD6', bg:'rgba(176,138,214,.12)', border:'rgba(176,138,214,.25)' },
+  viral_sending:{ text:'#5AAFE0', bg:'rgba(90,175,224,.12)', border:'rgba(90,175,224,.25)' },
+  viral_receiving:{ text:'#4A9ACE', bg:'rgba(74,154,206,.10)', border:'rgba(74,154,206,.20)' },
+  revenue:{ text:'#D4A574', bg:'rgba(212,165,116,.12)', border:'rgba(212,165,116,.25)' },
+  unit_economics:{ text:'#C8A060', bg:'rgba(200,160,96,.12)', border:'rgba(200,160,96,.25)' },
+  market:{ text:'#D4A574', bg:'rgba(212,165,116,.12)', border:'rgba(212,165,116,.25)' }
 };
 
 const EDGE_WIDTHS = { 1:8, 2:4, 3:2, 4:1, 5:0.5 };
 
 // Card HTML
 function cardHTML(d, c, h){
-  const { status:st, label, tags, reason, score, type } = d.data;
+  const { status:st, label, reason, score, type } = d.data;
   const hasKids = !!(d._children && d._children.length);
   const ec = EYE_COLORS[st] || '#555';
   const lc = LBL_COLORS[st] || '#999';
-  const tb = TAG_BG[st] || 'rgba(255,255,255,.04)';
   const strike = st==='eliminated'
     ? 'text-decoration:line-through;text-decoration-color:rgba(160,60,40,.55);' : '';
 
@@ -168,29 +168,20 @@ function cardHTML(d, c, h){
     </div>
   </div>`;
 
-  if(type === 'market'){
+  if(type){
+    const tc = TYPE_COLORS[type] || { text:'#999', bg:'rgba(255,255,255,.06)', border:'rgba(255,255,255,.12)' };
+    const icon = type === 'market' ? '\u25C6' : type === 'problem' || type === 'problem_space' ? '\u25CF' :
+      type === 'solution' ? '\u2713' : type === 'hypothesis' ? '?' :
+      type.startsWith('viral') ? '\u2192' : '\u25CB';
     h2 += `<div style="
       display:inline-flex;align-items:center;gap:${c.efs*0.25}px;
       font-family:'IBM Plex Mono',monospace;font-size:${c.efs*0.72}px;
       letter-spacing:.08em;text-transform:uppercase;
-      color:#D4A574;background:rgba(212,165,116,.12);
-      border:1px solid rgba(212,165,116,.25);
+      color:${tc.text};background:${tc.bg};
+      border:1px solid ${tc.border};
       padding:${c.efs*0.15}px ${c.efs*0.4}px;border-radius:3px;
       align-self:flex-start;flex-shrink:0;
-    ">\u25C6 Market</div>`;
-  }
-
-  if(tags && tags.length){
-    h2 += `<div style="display:flex;flex-wrap:wrap;gap:${c.tfs*0.35}px;flex-shrink:0;">`;
-    tags.forEach(t => {
-      h2 += `<span style="
-        font-family:'IBM Plex Mono',monospace;font-size:${c.tfs}px;
-        letter-spacing:.06em;text-transform:uppercase;
-        background:${tb};color:${ec};
-        padding:${c.tfs*0.18}px ${c.tfs*0.5}px;border-radius:3px;white-space:nowrap;
-      ">${t}</span>`;
-    });
-    h2 += `</div>`;
+    ">${icon} ${TYPE_LABELS[type] || type}</div>`;
   }
 
   h2 += `<div style="
@@ -826,10 +817,6 @@ function openInlineEdit(nodeId, evt, focusField){
           <textarea id="ief-label" rows="3">${(nodeData.label||'').replace(/"/g,'&quot;')}</textarea>
         </div>
         <div class="ief-field">
-          <label>Tags (comma-separated)</label>
-          <input id="ief-tags" value="${(nodeData.tags||[]).join(', ')}">
-        </div>
-        <div class="ief-field">
           <label>Test</label>
           <textarea id="ief-test" rows="2">${(nodeData.test||'').replace(/"/g,'&quot;')}</textarea>
         </div>
@@ -877,8 +864,6 @@ function openInlineEdit(nodeId, evt, focusField){
     nodeData.type   = typeVal || undefined;
     if(!nodeData.type) delete nodeData.type;
     nodeData.label  = document.getElementById('ief-label').value;
-    const tagsVal   = document.getElementById('ief-tags').value.trim();
-    nodeData.tags   = tagsVal ? tagsVal.split(',').map(t=>t.trim()).filter(Boolean) : [];
     nodeData.test   = document.getElementById('ief-test').value || undefined;
     const reasonVal = document.getElementById('ief-reason').value;
     nodeData.reason = reasonVal || undefined;
@@ -897,7 +882,6 @@ function openInlineEdit(nodeId, evt, focusField){
     // Clean up undefined fields
     if(!nodeData.test) delete nodeData.test;
     if(!nodeData.reason) delete nodeData.reason;
-    if(!nodeData.tags || !nodeData.tags.length) delete nodeData.tags;
 
     overlay.remove();
     markDirty();
@@ -924,6 +908,104 @@ setInterval(resetPageZoom, 5000);
 // Also reset immediately when visualViewport fires resize
 if(window.visualViewport){
   window.visualViewport.addEventListener('resize', resetPageZoom);
+}
+
+// --- Navigation: Moms, Mockups, Review ---
+function collectNodes(obj, predicate, results){
+  if(!obj) return results;
+  if(obj.id && obj.id !== '__root__' && predicate(obj)) results.push(obj);
+  if(obj.children) obj.children.forEach(c => collectNodes(c, predicate, results));
+  return results;
+}
+
+function openNavList(title, items){
+  const existing = document.querySelector('.nav-list-overlay');
+  if(existing) existing.remove();
+
+  const overlay = document.createElement('div');
+  overlay.className = 'nav-list-overlay';
+  overlay.onclick = (e) => { if(e.target === overlay) overlay.remove(); };
+
+  const listItems = items.map((item, i) => {
+    const label = item.label || '';
+    const test = item.test || '';
+    const displayText = title === 'Review' ? label : test;
+    const secondary = title === 'Review' ? (test ? `Test: ${test}` : '') : (label ? label : '');
+    return `<div class="nav-list-item" data-index="${i}">
+      <div class="nav-list-item-content">
+        <div class="nav-list-item-primary">${displayText}</div>
+        ${secondary ? `<div class="nav-list-item-secondary">${secondary}</div>` : ''}
+      </div>
+      <button class="nav-list-copy-btn" onclick="copyNavItem(this, event)" title="Copy">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </button>
+    </div>`;
+  }).join('');
+
+  const allText = items.map(item => {
+    if(title === 'Review'){
+      return item.label + (item.test ? '\n  Test: ' + item.test : '');
+    }
+    return item.test + (item.label ? '\n  (' + item.label + ')' : '');
+  }).join('\n\n');
+
+  overlay.innerHTML = `
+    <div class="nav-list-panel">
+      <div class="nav-list-header">
+        <h3>${title} <span class="nav-list-count">${items.length}</span></h3>
+        <div style="display:flex;gap:6px;align-items:center;">
+          <button class="ep-btn" onclick="copyAllNavItems(this, event)" title="Copy all">Copy All</button>
+          <button class="ief-close" onclick="this.closest('.nav-list-overlay').remove()">&times;</button>
+        </div>
+      </div>
+      <div class="nav-list-body">
+        ${items.length ? listItems : '<div style="color:#555;padding:20px;text-align:center;font-family:\'IBM Plex Mono\',monospace;font-size:12px;">No items found</div>'}
+      </div>
+    </div>
+  `;
+
+  overlay.dataset.allText = allText;
+  document.body.appendChild(overlay);
+}
+
+function copyNavItem(btn, evt){
+  evt.stopPropagation();
+  const item = btn.closest('.nav-list-item');
+  const primary = item.querySelector('.nav-list-item-primary').textContent;
+  const secondary = item.querySelector('.nav-list-item-secondary');
+  const text = primary + (secondary ? '\n' + secondary.textContent : '');
+  navigator.clipboard.writeText(text).then(() => {
+    btn.style.color = '#6ABF80';
+    setTimeout(() => { btn.style.color = ''; }, 800);
+    showToast('Copied!');
+  });
+}
+
+function copyAllNavItems(btn, evt){
+  evt.stopPropagation();
+  const overlay = btn.closest('.nav-list-overlay');
+  const text = overlay.dataset.allText || '';
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Copied!';
+    btn.style.color = '#6ABF80';
+    setTimeout(() => { btn.textContent = 'Copy All'; btn.style.color = ''; }, 1200);
+    showToast('All copied!');
+  });
+}
+
+function openMoms(){
+  const items = collectNodes(CURRENT_DATA, n => n.status === 'active' && n.test && /mom/i.test(n.test), []);
+  openNavList('Mom Tests', items);
+}
+
+function openMockups(){
+  const items = collectNodes(CURRENT_DATA, n => n.status === 'active' && n.test && /mockup/i.test(n.test), []);
+  openNavList('Mockup Tests', items);
+}
+
+function openReview(){
+  const items = collectNodes(CURRENT_DATA, n => n.status === 'review', []);
+  openNavList('Review', items);
 }
 
 // Fetch data and boot
