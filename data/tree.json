@@ -97,6 +97,29 @@
                       "test": "Pending: validate parent node frequency first"
                     }
                   ]
+                },
+                {
+                  "id": "new-1",
+                  "status": "active",
+                  "label": "Users will install a chrome extension and connect their calendar in order to get a reality check on their network",
+                  "type": "solution",
+                  "test": "Mockup test: are they willing to install",
+                  "children": [
+                    {
+                      "id": "new-3",
+                      "status": "active",
+                      "label": "Users with chrome extension will send their friends the extension to discover friends network as well",
+                      "type": "viral_sending",
+                      "test": "Mockup test: are they willing to come up with names? intro us?"
+                    },
+                    {
+                      "id": "new-3-dup-4",
+                      "status": "active",
+                      "label": "Users who received a request to install the chrome extension and connect their calendar will do so.",
+                      "type": "viral_receiving",
+                      "test": "MVT test: Send them the emails pretending we already have the flow implemented"
+                    }
+                  ]
                 }
               ]
             },
