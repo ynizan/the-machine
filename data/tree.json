@@ -57,19 +57,17 @@
               "id": "market-smallorg-introreq",
               "status": "active",
               "type": "market",
-              "label": "Small org front-people (founder, CEO, BD, PR lead) make targeted intro requests far more frequently than enterprise users — option-b's low-frequency elimination may not apply to this segment",
-              "test": "Mom test: how many targeted intro requests does a small org front-person make per month? Compare to the ~2x per quarter found in general population.",
+              "label": "Low-frequency elimination may not apply — this segment makes targeted intro requests far more often",
+              "test": "Mom test: how many targeted intro requests per month?",
               "children": [
                 {
                   "id": "option-b-smallorg",
-                  "status": "eliminated",
+                  "status": "active",
                   "tags": [
-                    "solution",
-                    "low-freq"
+                    "solution"
                   ],
-                  "label": "Option B: Strategic Reach — find the real intro path to a specific high-value target",
-                  "test": "Mom tests — how often do you target a specific person for an intro?",
-                  "reason": "Frequency too low — ~2× per Q. Not a recurring daily pain.",
+                  "label": "Small org Option B: Strategic Reach — find the real intro path to a specific target",
+                  "test": "Mom test: how often do small org front-people target a specific person for an intro?",
                   "children": [
                     {
                       "id": "b-waterfall",
@@ -196,8 +194,8 @@
           "id": "market-smallorg-nurture",
           "status": "active",
           "type": "market",
-          "label": "Small org front-people feel the nurturing gap most acutely — they are the sales team, the BD team, and the relationship manager all in one, with no handoff and no system",
-          "test": "Mom test: how do small org front-people currently manage nurturing? Do they have a system or is it ad hoc? What have they lost because of poor nurturing?",
+          "label": "They feel the nurturing gap most acutely — they are sales, BD, and relationship manager in one, with no system",
+          "test": "Mom test: how do they manage nurturing today? What have they lost?",
           "children": [
             {
               "id": "vcs",
@@ -230,8 +228,8 @@
           "id": "market-smallorg-viral",
           "status": "active",
           "type": "market",
-          "label": "Small org front-people are the ideal viral vector for intro and meeting products — they personally attend every meeting and every intro flows through them, creating natural two-sided adoption",
-          "test": "Mom test: how do small org front-people currently find and request intros? Do they use any tools or is it manual? How many meetings per week involve potential intro opportunities?",
+          "label": "Ideal viral vector — they attend every meeting and every intro flows through them personally",
+          "test": "Mom test: how do they request intros today? How many meetings per week?",
           "children": [
             {
               "id": "option-a",
@@ -374,8 +372,8 @@
           "id": "market-smallorg-pokemon-cold",
           "status": "active",
           "type": "market",
-          "label": "Small org front-people rely on cold outreach as a core growth channel — personal intel on targets is highest-leverage for them because they have no SDR team doing research",
-          "test": "Mom test: how do small org front-people research targets before cold outreach? How much time do they spend? Would instant personal intel change their conversion rates?",
+          "label": "Cold outreach is a core growth channel — no SDR team, so personal intel is highest-leverage",
+          "test": "Mom test: how do they research targets before cold outreach? How much time?",
           "children": [
             {
               "id": "pokemon-cold-mine-common",
@@ -408,8 +406,8 @@
           "id": "market-smallorg-pokemon-warm",
           "status": "active",
           "type": "market",
-          "label": "Small org front-people get the most value from personal contact intelligence for warm nurturing — they manage all relationships personally and have no system to remember personal details at scale",
-          "test": "Mom test: how do small org front-people remember personal details about contacts? Do they lose deals or relationships because they forgot something important? Would a system that surfaces personal intel before touchpoints change their behavior?",
+          "label": "They manage all relationships personally — no system to remember personal details at scale",
+          "test": "Mom test: how do they remember personal details? Have they lost deals because of it?",
           "children": [
             {
               "id": "pokemon-intros",
