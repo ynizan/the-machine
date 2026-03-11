@@ -410,7 +410,7 @@ function initTree(DATA, opts){
 
   const root = d3.hierarchy(DATA);
   root.descendants().forEach(d => {
-    if(d.depth >= 4){ d._children = d.children; d.children = null; }
+    if(d.depth >= 5){ d._children = d.children; d.children = null; }
   });
 
   const treeLayout = d3.tree()
