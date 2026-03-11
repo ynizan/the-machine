@@ -25,12 +25,19 @@
     <button class="nav-btn nav-btn-review" onclick="openReview()">Review</button>
   </div>
   <div class="legend">
-    <div class="leg"><div class="leg-sw" style="background:#0F1710;border:1px solid #2A2A2A;border-top:2px solid #D4A574"></div>Validated</div>
-    <div class="leg"><div class="leg-sw" style="background:#111;border:1px solid #252525"></div>Active</div>
-    <div class="leg"><div class="leg-sw" style="background:#100E0A;border:1.5px dashed #7A5828"></div>Pending</div>
-    <div class="leg"><div class="leg-sw" style="background:#0E0E0E;border:1.5px dashed #222;opacity:.5"></div>Eliminated</div>
+    <div class="leg"><div class="leg-sw" style="background:#0F1710;border:1px solid #2A2A2A;border-top:2px solid #D4A574"></div><span style="color:#7FBF95">Validated</span> <span class="leg-color">green</span></div>
+    <div class="leg"><div class="leg-sw" style="background:#0E1418;border:1px solid #28607A"></div><span style="color:#6AB0D2">Review</span> <span class="leg-color">blue</span></div>
+    <div class="leg"><div class="leg-sw" style="background:#111;border:1px solid #252525"></div><span style="color:#BBBBBB">Active</span> <span class="leg-color">white</span></div>
+    <div class="leg"><div class="leg-sw" style="background:#100E0A;border:1.5px dashed #7A5828"></div><span style="color:#A07840">Pending</span> <span class="leg-color">gold</span></div>
+    <div class="leg"><div class="leg-sw" style="background:#0E0E0E;border:1.5px dashed #222;opacity:.5"></div><span style="color:#666">Eliminated</span> <span class="leg-color">red</span></div>
     <div class="leg" style="margin-left:4px">
       <div style="width:24px;height:1.5px;background:#333;border-radius:2px"></div>Edge = Test
+    </div>
+    <div class="leg depth-ctrl-header" style="margin-left:8px">
+      <span class="depth-label">Depth</span>
+      <button class="depth-hdr-btn" onclick="setMaxDepth(MAX_DEPTH-1)">&minus;</button>
+      <span id="depth-val">5</span>
+      <button class="depth-hdr-btn" onclick="setMaxDepth(MAX_DEPTH+1)">+</button>
     </div>
   </div>
 </div>
