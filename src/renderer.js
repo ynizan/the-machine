@@ -29,6 +29,10 @@ function cardHeight(node){
   h += c.efs * 1.8;
   h += c.efs * 0.6;
 
+  if(node.data.type === 'market'){
+    h += c.efs * 1.6;
+  }
+
   const tags = node.data.tags || [];
   if(tags.length){
     h += c.tfs * 2.4;
@@ -94,11 +98,11 @@ const EYE_LABELS = {
 };
 
 const HYPOTHESIS_TYPES = [
-  'problem', 'problem_space', 'solution', 'viral_sending', 'viral_receiving', 'revenue', 'unit_economics'
+  'problem', 'problem_space', 'solution', 'viral_sending', 'viral_receiving', 'revenue', 'unit_economics', 'market'
 ];
 const TYPE_LABELS = {
   problem:'Problem', problem_space:'Problem Space', solution:'Solution', viral_sending:'Viral Sending',
-  viral_receiving:'Viral Receiving', revenue:'Revenue', unit_economics:'Unit Economics'
+  viral_receiving:'Viral Receiving', revenue:'Revenue', unit_economics:'Unit Economics', market:'Market'
 };
 
 const EDGE_WIDTHS = { 1:8, 2:4, 3:2, 4:1, 5:0.5 };
@@ -162,6 +166,18 @@ function cardHTML(d, c, h){
       >${openRightSVG(iconSz)}</div>
     </div>
   </div>`;
+
+  if(type === 'market'){
+    h2 += `<div style="
+      display:inline-flex;align-items:center;gap:${c.efs*0.25}px;
+      font-family:'IBM Plex Mono',monospace;font-size:${c.efs*0.72}px;
+      letter-spacing:.08em;text-transform:uppercase;
+      color:#D4A574;background:rgba(212,165,116,.12);
+      border:1px solid rgba(212,165,116,.25);
+      padding:${c.efs*0.15}px ${c.efs*0.4}px;border-radius:3px;
+      align-self:flex-start;flex-shrink:0;
+    ">\u25C6 Market</div>`;
+  }
 
   if(tags && tags.length){
     h2 += `<div style="display:flex;flex-wrap:wrap;gap:${c.tfs*0.35}px;flex-shrink:0;">`;
@@ -394,7 +410,7 @@ function initTree(DATA, opts){
 
   const root = d3.hierarchy(DATA);
   root.descendants().forEach(d => {
-    if(d.depth >= 4){ d._children = d.children; d.children = null; }
+    if(d.depth >= 5){ d._children = d.children; d.children = null; }
   });
 
   const treeLayout = d3.tree()

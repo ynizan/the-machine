@@ -51,34 +51,52 @@
               ],
               "label": "Option B: Strategic Reach — find the real intro path to a specific high-value target",
               "test": "Mom tests — how often do you target a specific person for an intro?",
-              "reason": "Frequency too low — ~2× per Q. Not a recurring daily pain.",
+              "reason": "Frequency too low — ~2× per Q. Not a recurring daily pain."
+            },
+            {
+              "id": "market-smallorg-introreq",
+              "status": "active",
+              "type": "market",
+              "label": "Low-frequency elimination may not apply — this segment makes targeted intro requests far more often",
+              "test": "Mom test: how many targeted intro requests per month?",
               "children": [
                 {
-                  "id": "b-waterfall",
-                  "status": "pending",
+                  "id": "option-b-smallorg",
+                  "status": "active",
                   "tags": [
-                    "feature"
+                    "solution"
                   ],
-                  "label": "Waterfall sequencing: try connector #1 → auto-fallback #2, prevent double-ask",
-                  "test": "Pending: validate parent node frequency first"
-                },
-                {
-                  "id": "b-filter",
-                  "status": "pending",
-                  "tags": [
-                    "feature"
-                  ],
-                  "label": "Filter 300+ mutuals to 3–5 real paths via active relationship signals",
-                  "test": "Pending: validate parent node frequency first"
-                },
-                {
-                  "id": "b-rank",
-                  "status": "pending",
-                  "tags": [
-                    "feature"
-                  ],
-                  "label": "Rank connectors by responsiveness to both you and the target",
-                  "test": "Pending: validate parent node frequency first"
+                  "label": "Small org Option B: Strategic Reach — find the real intro path to a specific target",
+                  "test": "Mom test: how often do small org front-people target a specific person for an intro?",
+                  "children": [
+                    {
+                      "id": "b-waterfall",
+                      "status": "pending",
+                      "tags": [
+                        "feature"
+                      ],
+                      "label": "Waterfall sequencing: try connector #1 → auto-fallback #2, prevent double-ask",
+                      "test": "Pending: validate parent node frequency first"
+                    },
+                    {
+                      "id": "b-filter",
+                      "status": "pending",
+                      "tags": [
+                        "feature"
+                      ],
+                      "label": "Filter 300+ mutuals to 3–5 real paths via active relationship signals",
+                      "test": "Pending: validate parent node frequency first"
+                    },
+                    {
+                      "id": "b-rank",
+                      "status": "pending",
+                      "tags": [
+                        "feature"
+                      ],
+                      "label": "Rank connectors by responsiveness to both you and the target",
+                      "test": "Pending: validate parent node frequency first"
+                    }
+                  ]
                 }
               ]
             },
@@ -138,22 +156,6 @@
           "type": "problem"
         },
         {
-          "id": "vcs",
-          "status": "active",
-          "tags": [
-            "persona",
-            "validated"
-          ],
-          "label": "VC principals miss deal flow — can't maintain active signals on 80–150 priority founders",
-          "test": "3 VC principal Mom test interviews",
-          "score": {
-            "Freq": 3,
-            "Intensity": 3,
-            "Fit": 2,
-            "WTP": 1
-          }
-        },
-        {
           "id": "aes",
           "status": "eliminated",
           "tags": [
@@ -187,6 +189,31 @@
           ],
           "label": "CSMs need relationship intelligence to prevent churn and surface expansion opportunities",
           "test": "Cold email signal — real call interviews pending"
+        },
+        {
+          "id": "market-smallorg-nurture",
+          "status": "active",
+          "type": "market",
+          "label": "They feel the nurturing gap most acutely — they are sales, BD, and relationship manager in one, with no system",
+          "test": "Mom test: how do they manage nurturing today? What have they lost?",
+          "children": [
+            {
+              "id": "vcs",
+              "status": "active",
+              "tags": [
+                "persona",
+                "validated"
+              ],
+              "label": "VC principals miss deal flow — can't maintain active signals on 80–150 priority founders",
+              "test": "3 VC principal Mom test interviews",
+              "score": {
+                "Freq": 3,
+                "Intensity": 3,
+                "Fit": 2,
+                "WTP": 1
+              }
+            }
+          ]
         }
       ],
       "test": "test"
@@ -198,86 +225,95 @@
       "label": "Introductions & intro-meetings are a viral product space",
       "children": [
         {
-          "id": "option-a",
+          "id": "market-smallorg-viral",
           "status": "active",
-          "tags": [
-            "solution",
-            "virality"
-          ],
-          "label": "Option A: Intro Marketplace — product requires both sides; asker and giver both need network intelligence to complete the workflow",
-          "test": "Build two-sided intro flow — does the asker naturally recruit the giver?",
+          "type": "market",
+          "label": "Ideal viral vector — they attend every meeting and every intro flows through them personally",
+          "test": "Mom test: how do they request intros today? How many meetings per week?",
           "children": [
             {
-              "id": "a-asker",
+              "id": "option-a",
               "status": "active",
               "tags": [
-                "feature",
-                "value"
-              ],
-              "label": "Asker sees which of helper's connections are real & active before asking",
-              "test": "Simulation: does seeing the real map change ask behavior?"
-            },
-            {
-              "id": "a-giver",
-              "status": "active",
-              "tags": [
-                "feature",
-                "value"
-              ],
-              "label": "Giver shares a real map of available connections — turns vague asks into actionable requests",
-              "test": "Simulation: does shared map increase intro success rate?"
-            }
-          ]
-        },
-        {
-          "id": "option-c",
-          "status": "active",
-          "tags": [
-            "solution",
-            "virality",
-            "gordy"
-          ],
-          "label": "Option C: Meeting Intro Engine — pre-meeting briefs create two-sided value; counterpart email is the viral moment of conversion",
-          "test": "Behavioral: do people practice the idea of asking for 2-3 introductions in every meeting",
-          "children": [
-            {
-              "id": "gordy-brief",
-              "status": "pending",
-              "tags": [
-                "feature",
-                "value"
-              ],
-              "label": "Gordy Strategic Ask Brief creates enough value that users share it internally with colleagues",
-              "test": "Internal: we need to bring users from companies with actual employees"
-            },
-            {
-              "id": "counterpart",
-              "status": "active",
-              "tags": [
-                "virality",
-                "mvt"
-              ],
-              "label": "Counterpart email creates desire in someone who's never heard of InTouch — before they have a product to land on",
-              "test": "Live emails to real attendees — measuring clicks, replies, sign-up intent"
-            },
-            {
-              "id": "counterpart-dup-1",
-              "status": "active",
-              "tags": [
-                "virality",
-                "mvt"
-              ],
-              "label": "Auto compose intro request feature is used and users don't delete the attribution ",
-              "test": "Data from live experiments + users interview"
-            },
-            {
-              "id": "gordy-loop",
-              "status": "active",
-              "tags": [
+                "solution",
                 "virality"
               ],
-              "label": "Post-meeting Gordy follow-up converts successful meetings into new warm user acquisition",
-              "test": "Pending: define loop after counterpart email signal confirmed"
+              "label": "Option A: Intro Marketplace — product requires both sides; asker and giver both need network intelligence to complete the workflow",
+              "test": "Build two-sided intro flow — does the asker naturally recruit the giver?",
+              "children": [
+                {
+                  "id": "a-asker",
+                  "status": "active",
+                  "tags": [
+                    "feature",
+                    "value"
+                  ],
+                  "label": "Asker sees which of helper's connections are real & active before asking",
+                  "test": "Simulation: does seeing the real map change ask behavior?"
+                },
+                {
+                  "id": "a-giver",
+                  "status": "active",
+                  "tags": [
+                    "feature",
+                    "value"
+                  ],
+                  "label": "Giver shares a real map of available connections — turns vague asks into actionable requests",
+                  "test": "Simulation: does shared map increase intro success rate?"
+                }
+              ]
+            },
+            {
+              "id": "option-c",
+              "status": "active",
+              "tags": [
+                "solution",
+                "virality",
+                "gordy"
+              ],
+              "label": "Option C: Meeting Intro Engine — pre-meeting briefs create two-sided value; counterpart email is the viral moment of conversion",
+              "test": "Behavioral: do people practice the idea of asking for 2-3 introductions in every meeting",
+              "children": [
+                {
+                  "id": "gordy-brief",
+                  "status": "pending",
+                  "tags": [
+                    "feature",
+                    "value"
+                  ],
+                  "label": "Gordy Strategic Ask Brief creates enough value that users share it internally with colleagues",
+                  "test": "Internal: we need to bring users from companies with actual employees"
+                },
+                {
+                  "id": "counterpart",
+                  "status": "active",
+                  "tags": [
+                    "virality",
+                    "mvt"
+                  ],
+                  "label": "Counterpart email creates desire in someone who's never heard of InTouch — before they have a product to land on",
+                  "test": "Live emails to real attendees — measuring clicks, replies, sign-up intent"
+                },
+                {
+                  "id": "counterpart-dup-1",
+                  "status": "active",
+                  "tags": [
+                    "virality",
+                    "mvt"
+                  ],
+                  "label": "Auto compose intro request feature is used and users don't delete the attribution ",
+                  "test": "Data from live experiments + users interview"
+                },
+                {
+                  "id": "gordy-loop",
+                  "status": "active",
+                  "tags": [
+                    "virality"
+                  ],
+                  "label": "Post-meeting Gordy follow-up converts successful meetings into new warm user acquisition",
+                  "test": "Pending: define loop after counterpart email signal confirmed"
+                }
+              ]
             }
           ]
         },
@@ -340,18 +376,27 @@
       "test": "A/B test: compare cold outreach with pokemon-sourced personal intel vs generic outreach — does conversion rate differ significantly?",
       "children": [
         {
-          "id": "pokemon-cold-mine-common",
+          "id": "market-smallorg-pokemon-cold",
           "status": "active",
-          "type": "problem",
-          "label": "Users doing cold outreach have no scalable way to get public personal intel on targets today — they do it manually or skip it entirely",
-          "test": "Mom test: do people research targets before cold outreach? How long does it take? Have they tried to automate it? Would they pay to get it instantly?",
+          "type": "market",
+          "label": "Cold outreach is a core growth channel — no SDR team, so personal intel is highest-leverage",
+          "test": "Mom test: how do they research targets before cold outreach? How much time?",
           "children": [
             {
-              "id": "pokemon-get-buy",
+              "id": "pokemon-cold-mine-common",
               "status": "active",
-              "type": "hypothesis",
-              "label": "Users will pay to access personal intel that others have collected about a target they've never met — fueling better cold outreach and first meetings",
-              "test": "Interview: do they feel comfortable with the concept? Show them a mockup — do they want it?"
+              "type": "problem",
+              "label": "Users doing cold outreach have no scalable way to get public personal intel on targets today — they do it manually or skip it entirely",
+              "test": "Mom test: do people research targets before cold outreach? How long does it take? Have they tried to automate it? Would they pay to get it instantly?",
+              "children": [
+                {
+                  "id": "pokemon-get-buy",
+                  "status": "active",
+                  "type": "hypothesis",
+                  "label": "Users will pay to access personal intel that others have collected about a target they've never met — fueling better cold outreach and first meetings",
+                  "test": "Interview: do they feel comfortable with the concept? Show them a mockup — do they want it?"
+                }
+              ]
             }
           ]
         }
@@ -365,25 +410,34 @@
       "test": "Behavioral interview: do people who know personal details about contacts report better relationship outcomes? Simulation: compare nurture sequences with vs without personal intel.",
       "children": [
         {
-          "id": "pokemon-intros",
+          "id": "market-smallorg-pokemon-warm",
           "status": "active",
-          "type": "hypothesis",
-          "label": "Personal intel on a connector makes intro requests more targeted and more likely to succeed",
-          "test": "Simulation: compare intro request quality and success rate with vs without personal context on the connector"
-        },
-        {
-          "id": "pokemon-mine-rare",
-          "status": "active",
-          "type": "solution",
-          "label": "Users will pay to mine deep personal intel from their own emails, call transcripts, and WhatsApp to fuel warm relationship actions",
-          "test": "Waitlist/credits test: when offered pokemon mining, do users connect their email or transcripts? Measure activation rate and willingness to pay."
-        },
-        {
-          "id": "pokemon-share",
-          "status": "active",
-          "type": "hypothesis",
-          "label": "Users who have gathered deep personal intel about contacts through real relationships are willing to share or trade it with others in exchange for reputation, credits, or reciprocal intel",
-          "test": "Interview: have they shared before? What info are they ok sharing? Who are they willing to share with?"
+          "type": "market",
+          "label": "They manage all relationships personally — no system to remember personal details at scale",
+          "test": "Mom test: how do they remember personal details? Have they lost deals because of it?",
+          "children": [
+            {
+              "id": "pokemon-intros",
+              "status": "active",
+              "type": "hypothesis",
+              "label": "Personal intel on a connector makes intro requests more targeted and more likely to succeed",
+              "test": "Simulation: compare intro request quality and success rate with vs without personal context on the connector"
+            },
+            {
+              "id": "pokemon-mine-rare",
+              "status": "active",
+              "type": "solution",
+              "label": "Users will pay to mine deep personal intel from their own emails, call transcripts, and WhatsApp to fuel warm relationship actions",
+              "test": "Waitlist/credits test: when offered pokemon mining, do users connect their email or transcripts? Measure activation rate and willingness to pay."
+            },
+            {
+              "id": "pokemon-share",
+              "status": "active",
+              "type": "hypothesis",
+              "label": "Users who have gathered deep personal intel about contacts through real relationships are willing to share or trade it with others in exchange for reputation, credits, or reciprocal intel",
+              "test": "Interview: have they shared before? What info are they ok sharing? Who are they willing to share with?"
+            }
+          ]
         }
       ]
     },
