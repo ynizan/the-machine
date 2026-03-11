@@ -1,4 +1,5 @@
 // Depth config
+let MAX_DEPTH = 5;
 const CFG = {
   1: { fs:160, efs:52,  tfs:38,  w:2000, pad:64,  gap:2200, lh:1.35, dSz:22 },
   2: { fs:80,  efs:26,  tfs:19,  w:1100, pad:36,  gap:1100, lh:1.4,  dSz:13 },
@@ -11,6 +12,14 @@ function edgeFontSize(srcDepth, tgtDepth){
   return Math.min(cfg(srcDepth).fs, cfg(tgtDepth).fs);
 }
 function cfg(d){ return CFG[Math.min(d,5)] || CFG[5]; }
+
+function setMaxDepth(n){
+  MAX_DEPTH = Math.max(1, Math.min(n, 99));
+  const el = document.getElementById('depth-val');
+  if(el) el.textContent = MAX_DEPTH;
+  CURRENT_ROOT = null; // Reset so depth-based collapsing re-applies
+  if(CURRENT_DATA && RENDER_FN) RENDER_FN(CURRENT_DATA);
+}
 
 function depthX(depth){
   let x = 80;
@@ -401,9 +410,16 @@ function initTree(DATA, opts){
   document.getElementById('zr').onclick = resetView;
 
   const root = d3.hierarchy(DATA);
-  root.descendants().forEach(d => {
-    if(d.depth >= 5){ d._children = d.children; d.children = null; }
-  });
+  CURRENT_ROOT = root;
+  if(opts && opts.collapsedIds !== undefined){
+    root.descendants().forEach(d => {
+      if(opts.collapsedIds.has(d.data.id)){ d._children = d.children; d.children = null; }
+    });
+  } else {
+    root.descendants().forEach(d => {
+      if(d.depth >= MAX_DEPTH){ d._children = d.children; d.children = null; }
+    });
+  }
 
   const treeLayout = d3.tree()
     .nodeSize([10, 10])
@@ -624,6 +640,16 @@ let CURRENT_DATA = null;
 let RENDER_FN = null;
 let ORIGINAL_JSON = null;
 let _dirty = false;
+let CURRENT_ROOT = null;
+
+function getCollapsedIds(root){
+  const ids = new Set();
+  if(!root) return ids;
+  root.descendants().forEach(d => {
+    if(d._children && d._children.length) ids.add(d.data.id);
+  });
+  return ids;
+}
 
 function markDirty(){
   if(!_dirty){
@@ -769,7 +795,7 @@ function openInlineEdit(nodeId, evt, focusField){
       if(!nodeData.test) delete nodeData.test;
       overlay.remove();
       markDirty();
-      RENDER_FN(CURRENT_DATA);
+      RENDER_FN(CURRENT_DATA, {skipResetView: true});
     };
     return;
   }
@@ -1019,7 +1045,9 @@ fetch('data/tree.json')
       CURRENT_DATA = newData;
       NODE_MAP = {};
       buildNodeMap(newData);
+      // Save collapse state before re-render
+      const collapsedIds = CURRENT_ROOT ? getCollapsedIds(CURRENT_ROOT) : undefined;
       document.getElementById('G').innerHTML = '';
-      initTree(newData, opts);
+      initTree(newData, { ...opts, collapsedIds });
     });
   });
