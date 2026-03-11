@@ -213,14 +213,8 @@
             {
               "id": "founders",
               "status": "active",
-              "label": "Founders in small companies that are wearing the sales hat are losing deals because of poor nurturing",
-              "test": "Behavioual: founder interviews",
-              "score": {
-                "Freq": 2,
-                "Intensity": 3,
-                "Fit": 2,
-                "WTP": 1
-              },
+              "label": "Founders in small companies wearing the sales hat feel that they are losing deals because of poor nurturing",
+              "test": "Mom test: founder interviews, do they feel that?",
               "type": "problem"
             },
             {
@@ -232,9 +226,10 @@
               "children": [
                 {
                   "id": "vcs",
-                  "status": "active",
+                  "status": "pending",
                   "label": "VC principals miss deal flow — can't maintain active signals on 80–150 priority founders",
-                  "test": "Mom test - what happens after the intro call if it's too early"
+                  "test": "Mom test - what happens after the intro call if it's too early",
+                  "type": "problem"
                 }
               ]
             },
@@ -247,34 +242,35 @@
               "children": [
                 {
                   "id": "pokemon-intros",
-                  "status": "active",
+                  "status": "pending",
                   "label": "Users want to leverage personal anecdotes on connectors so they can ask more intros",
-                  "test": "Mom test: do they try to make the small talk before the intro request"
+                  "test": "Mom test: do they try to make the small talk before the intro request",
+                  "type": "problem"
                 },
                 {
                   "id": "pokemon-mine-rare",
-                  "status": "active",
+                  "status": "pending",
                   "type": "solution",
                   "label": "Users will pay to mine personal intel from their own emails, call transcripts, and WhatsApp to fuel warm relationship actions",
                   "test": "Mockup test: when offered pokemon mining, do users want it? Send the transcripts? Connect email?"
                 },
                 {
                   "id": "pokemon-share",
-                  "status": "active",
-                  "type": "hypothesis",
+                  "status": "pending",
+                  "type": "viral_sending",
                   "label": "Users who have gathered deep personal intel about contacts through real relationships are willing to share or trade it with others in exchange for reputation, credits, or reciprocal intel",
                   "test": "Interview: have they shared before? What info are they ok sharing? Who are they willing to share with?"
                 },
                 {
                   "id": "14b",
-                  "status": "active",
+                  "status": "pending",
                   "type": "problem",
                   "label": "Users want alerts about life/career trigger events for contacts — job change, funding, promotion, local holiday, local news — as a reason to reach out and nurture",
-                  "test": "Mom test: do they actually search for it",
+                  "test": "Mom test: do they actually search for it? set alerts? Follow companies?",
                   "children": [
                     {
                       "id": "15",
-                      "status": "active",
+                      "status": "pending",
                       "type": "problem",
                       "label": "Users want alerts about dynamic data matching their pokemon intel — sports results, news, events — as a zero-effort reason to reach out (the \"Sarah's Seahawks won\" mechanic)",
                       "test": "Mom test: do users currently track dynamic external data (sports, news, events) about contacts? Do they act on it when they notice it organically?"
