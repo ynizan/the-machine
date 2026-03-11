@@ -196,7 +196,7 @@
       "children": [
         {
           "id": "aes",
-          "status": "eliminated",
+          "status": "review",
           "tags": [
             "persona",
             "wtp"
@@ -209,25 +209,27 @@
               "status": "pending",
               "type": "problem",
               "label": "AEs want to own their network and move it with them when they change jobs — their relationships are personal assets, not company property",
-              "test": "Pending: parent node (aes) is eliminated due to WTP blocker. Validate willingness to pay first."
+              "test": "Mom test: do they keep personal notes in other places? Have they tried to export upon leaving?"
             },
             {
               "id": "ae-attribution",
               "status": "pending",
               "type": "problem",
               "label": "AEs want to claim attribution for deals they influenced through personal relationships — giving them a concrete reason to nurture outside the company CRM",
-              "test": "Pending: parent node (aes) is eliminated due to WTP blocker. Validate willingness to pay first."
+              "test": "Mome test: have they presented such behaviors"
             }
-          ]
+          ],
+          "type": "revenue"
         },
         {
           "id": "csm",
-          "status": "active",
+          "status": "review",
           "tags": [
             "persona"
           ],
           "label": "CSMs need relationship intelligence to prevent churn and surface expansion opportunities",
-          "test": "Cold email signal — real call interviews pending"
+          "test": "Mom test - have they tried to get such information? Have they kept records",
+          "type": "problem"
         },
         {
           "id": "market-smallorg-nurture",
