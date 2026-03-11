@@ -205,9 +205,9 @@
         },
         {
           "id": "market-smallorg-nurture",
-          "status": "active",
+          "status": "review",
           "type": "market",
-          "label": "Business leaders in small orgs (<20) are more likely to manage relationships and need personal nurturing",
+          "label": "Business leaders in small orgs (<20) are spending over 1h/week to manage relationships and need personal nurturing",
           "test": "Analysis of past calls",
           "children": [
             {
