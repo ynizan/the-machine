@@ -57,8 +57,8 @@
               "id": "market-smallorg-introreq",
               "status": "active",
               "type": "market",
-              "label": "Low-frequency elimination may not apply — this segment makes targeted intro requests far more often",
-              "test": "Mom test: how many targeted intro requests per month?",
+              "label": "Business leaders in small orgs (<20) are more likely to ask intros",
+              "test": "Analysis on past calls",
               "children": [
                 {
                   "id": "option-b-smallorg",
@@ -95,6 +95,29 @@
                       ],
                       "label": "Rank connectors by responsiveness to both you and the target",
                       "test": "Pending: validate parent node frequency first"
+                    }
+                  ]
+                },
+                {
+                  "id": "new-1",
+                  "status": "active",
+                  "label": "Users will install a chrome extension and connect their calendar in order to get a reality check on their network",
+                  "type": "solution",
+                  "test": "Mockup test: are they willing to install",
+                  "children": [
+                    {
+                      "id": "new-3",
+                      "status": "active",
+                      "label": "Users with chrome extension will send their friends the extension to discover friends network as well",
+                      "type": "viral_sending",
+                      "test": "Mockup test: are they willing to come up with names? intro us?"
+                    },
+                    {
+                      "id": "new-3-dup-4",
+                      "status": "active",
+                      "label": "Users who received a request to install the chrome extension and connect their calendar will do so.",
+                      "type": "viral_receiving",
+                      "test": "MVT test: Send them the emails pretending we already have the flow implemented"
                     }
                   ]
                 }
@@ -143,19 +166,6 @@
       "label": "HubSpot / newsletter approach to nurturing is broken",
       "children": [
         {
-          "id": "founders",
-          "status": "active",
-          "label": "Founders in small companies that are wearing the sales hat are losing deals because of poor nurturing",
-          "test": "Behavioual: founder interviews",
-          "score": {
-            "Freq": 2,
-            "Intensity": 3,
-            "Fit": 2,
-            "WTP": 1
-          },
-          "type": "problem"
-        },
-        {
           "id": "aes",
           "status": "eliminated",
           "tags": [
@@ -194,24 +204,76 @@
           "id": "market-smallorg-nurture",
           "status": "active",
           "type": "market",
-          "label": "They feel the nurturing gap most acutely — they are sales, BD, and relationship manager in one, with no system",
-          "test": "Mom test: how do they manage nurturing today? What have they lost?",
+          "label": "Business leaders in small orgs (<20) are more likely to manage relationships and need personal nurturing",
+          "test": "Analysis of past calls",
           "children": [
             {
-              "id": "vcs",
+              "id": "founders",
               "status": "active",
-              "tags": [
-                "persona",
-                "validated"
-              ],
-              "label": "VC principals miss deal flow — can't maintain active signals on 80–150 priority founders",
-              "test": "3 VC principal Mom test interviews",
+              "label": "Founders in small companies that are wearing the sales hat are losing deals because of poor nurturing",
+              "test": "Behavioual: founder interviews",
               "score": {
-                "Freq": 3,
+                "Freq": 2,
                 "Intensity": 3,
                 "Fit": 2,
                 "WTP": 1
-              }
+              },
+              "type": "problem"
+            },
+            {
+              "id": "top-of-mind",
+              "status": "active",
+              "label": "Users want to stay top of mind so customers call them when in-market and various opportunities find them",
+              "test": "Mom Test: do users find work arounds to stay top of mind. Do they agree that this is the motivation",
+              "type": "problem",
+              "children": [
+                {
+                  "id": "vcs",
+                  "status": "active",
+                  "tags": [
+                    "persona",
+                    "validated"
+                  ],
+                  "label": "VC principals miss deal flow — can't maintain active signals on 80–150 priority founders",
+                  "test": "Mom test - what happens after the intro call if it's too early"
+                }
+              ]
+            },
+            {
+              "id": "obs-e",
+              "status": "active",
+              "type": "problem_space",
+              "label": "Users think that more personal contact intelligence improves nurturing by creating more follow-up opportunities that aren't lame, ultimately improving win rates",
+              "test": "Mom test: do people who know personal details about contacts report better relationship outcomes?",
+              "children": [
+                {
+                  "id": "pokemon-intros",
+                  "status": "active",
+                  "label": "Users want to leverage personal anecdotes on connectors so they can ask more intros",
+                  "test": "Mom test: do they try to make the small talk before the intro request"
+                },
+                {
+                  "id": "pokemon-mine-rare",
+                  "status": "active",
+                  "type": "solution",
+                  "label": "Users will pay to mine personal intel from their own emails, call transcripts, and WhatsApp to fuel warm relationship actions",
+                  "test": "Mockup test: when offered pokemon mining, do users want it? Send the transcripts? Connect email?"
+                },
+                {
+                  "id": "pokemon-share",
+                  "status": "active",
+                  "type": "hypothesis",
+                  "label": "Users who have gathered deep personal intel about contacts through real relationships are willing to share or trade it with others in exchange for reputation, credits, or reciprocal intel",
+                  "test": "Interview: have they shared before? What info are they ok sharing? Who are they willing to share with?"
+                },
+                {
+                  "id": "14b",
+                  "status": "active",
+                  "type": "problem",
+                  "label": "Users want alerts about life/career trigger events for contacts — job change, funding, promotion, local holiday, local news — as a reason to reach out and nurture",
+                  "test": "Mom test: do they actually search for it"
+                }
+              ]
             }
           ]
         }
@@ -228,40 +290,42 @@
           "id": "market-smallorg-viral",
           "status": "active",
           "type": "market",
-          "label": "Ideal viral vector — they attend every meeting and every intro flows through them personally",
-          "test": "Mom test: how do they request intros today? How many meetings per week?",
+          "label": "Business leaders in small orgs (<20) are more likely to ask intros",
+          "test": "Analysis on past callsd",
           "children": [
             {
               "id": "option-a",
               "status": "active",
-              "tags": [
-                "solution",
-                "virality"
-              ],
-              "label": "Option A: Intro Marketplace — product requires both sides; asker and giver both need network intelligence to complete the workflow",
-              "test": "Build two-sided intro flow — does the asker naturally recruit the giver?",
+              "label": "Asker want to know when a giver makes a new real connection that is relevant to them so they can ask for an intro.",
+              "test": "Mockup test - see if the asker is willing to introduce to giver",
+              "type": "problem"
+            },
+            {
+              "id": "option-a-dup-2",
+              "status": "active",
+              "label": "Asker and giver engage frequently in \"open the book\" exercise and it has friction",
+              "test": "Mom test - Ask both investors and early stage founders the frequency of \"open the book\" + what challenges",
               "children": [
                 {
-                  "id": "a-asker",
+                  "id": "a-asker-dup-3",
                   "status": "active",
-                  "tags": [
-                    "feature",
-                    "value"
-                  ],
-                  "label": "Asker sees which of helper's connections are real & active before asking",
-                  "test": "Simulation: does seeing the real map change ask behavior?"
+                  "label": "Asker sees which of helper's connections are real & active before asking - he convinces the give to participate",
+                  "test": "Mockup test - Pretending it's ready.  Who will they ask tomorrow.",
+                  "type": "viral_sending"
                 },
                 {
-                  "id": "a-giver",
+                  "id": "a-giver-dup-4",
                   "status": "active",
                   "tags": [
                     "feature",
                     "value"
                   ],
-                  "label": "Giver shares a real map of available connections — turns vague asks into actionable requests",
-                  "test": "Simulation: does shared map increase intro success rate?"
+                  "label": "Giver is willing to install a tool that shares a real map with the asker ",
+                  "test": "Mockup test - pretending it's real",
+                  "type": "viral_receiving"
                 }
-              ]
+              ],
+              "type": "problem"
             },
             {
               "id": "option-c",
@@ -379,8 +443,8 @@
           "id": "market-smallorg-pokemon-cold",
           "status": "active",
           "type": "market",
-          "label": "Cold outreach is a core growth channel — no SDR team, so personal intel is highest-leverage",
-          "test": "Mom test: how do they research targets before cold outreach? How much time?",
+          "label": "Business leaders in small orgs (<20) are more likely to research data manually",
+          "test": "Analysis of past calls",
           "children": [
             {
               "id": "pokemon-cold-mine-common",
@@ -397,45 +461,6 @@
                   "test": "Interview: do they feel comfortable with the concept? Show them a mockup — do they want it?"
                 }
               ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "obs-e",
-      "status": "active",
-      "type": "problem_space",
-      "label": "Personal contact intelligence improves nurturing by creating more follow-up opportunities, increasing engagement rates, and ultimately improving win rates",
-      "test": "Behavioral interview: do people who know personal details about contacts report better relationship outcomes? Simulation: compare nurture sequences with vs without personal intel.",
-      "children": [
-        {
-          "id": "market-smallorg-pokemon-warm",
-          "status": "active",
-          "type": "market",
-          "label": "They manage all relationships personally — no system to remember personal details at scale",
-          "test": "Mom test: how do they remember personal details? Have they lost deals because of it?",
-          "children": [
-            {
-              "id": "pokemon-intros",
-              "status": "active",
-              "type": "hypothesis",
-              "label": "Personal intel on a connector makes intro requests more targeted and more likely to succeed",
-              "test": "Simulation: compare intro request quality and success rate with vs without personal context on the connector"
-            },
-            {
-              "id": "pokemon-mine-rare",
-              "status": "active",
-              "type": "solution",
-              "label": "Users will pay to mine deep personal intel from their own emails, call transcripts, and WhatsApp to fuel warm relationship actions",
-              "test": "Waitlist/credits test: when offered pokemon mining, do users connect their email or transcripts? Measure activation rate and willingness to pay."
-            },
-            {
-              "id": "pokemon-share",
-              "status": "active",
-              "type": "hypothesis",
-              "label": "Users who have gathered deep personal intel about contacts through real relationships are willing to share or trade it with others in exchange for reputation, credits, or reciprocal intel",
-              "test": "Interview: have they shared before? What info are they ok sharing? Who are they willing to share with?"
             }
           ]
         }
