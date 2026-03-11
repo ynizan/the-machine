@@ -326,10 +326,10 @@
       "children": [
         {
           "id": "market-smallorg-viral",
-          "status": "active",
+          "status": "review",
           "type": "market",
-          "label": "Business leaders in small orgs (<20) are more likely to ask intros",
-          "test": "Analysis on past callsd",
+          "label": "Exists a defined group in business leaders in small orgs (<20) requesting intros at least on a weekly basis",
+          "test": "Analysis on past calls",
           "children": [
             {
               "id": "option-a",
@@ -340,20 +340,20 @@
             },
             {
               "id": "option-a-dup-2",
-              "status": "active",
+              "status": "eliminated",
               "label": "Asker and giver engage frequently in \"open the book\" exercise and it has friction",
               "test": "Mom test - Ask both investors and early stage founders the frequency of \"open the book\" + what challenges",
               "children": [
                 {
                   "id": "a-asker-dup-3",
-                  "status": "active",
+                  "status": "pending",
                   "label": "Asker sees which of helper's connections are real & active before asking - he convinces the give to participate",
                   "test": "Mockup test - Pretending it's ready.  Who will they ask tomorrow.",
                   "type": "viral_sending"
                 },
                 {
                   "id": "a-giver-dup-4",
-                  "status": "active",
+                  "status": "pending",
                   "tags": [
                     "feature",
                     "value"
@@ -363,7 +363,8 @@
                   "type": "viral_receiving"
                 }
               ],
-              "type": "problem"
+              "type": "problem",
+              "reason": "We couldn't find anyone doing it more than once per quarter"
             },
             {
               "id": "option-c",
@@ -373,8 +374,8 @@
                 "virality",
                 "gordy"
               ],
-              "label": "Option C: Meeting Intro Engine — pre-meeting briefs create two-sided value; counterpart email is the viral moment of conversion",
-              "test": "Behavioral: do people practice the idea of asking for 2-3 introductions in every meeting",
+              "label": "In calls - over 80% wanted the \"Ask brief\". 50% signed up.  ",
+              "test": "Mockup test: do people want to test Gordy sending them ideas for 2-3 introductions in every meeting",
               "children": [
                 {
                   "id": "gordy-brief",
@@ -393,18 +394,20 @@
                     "virality",
                     "mvt"
                   ],
-                  "label": "Counterpart email creates desire in someone who's never heard of InTouch — before they have a product to land on",
-                  "test": "Live emails to real attendees — measuring clicks, replies, sign-up intent"
+                  "label": "Counterpart email gets over 30% click rate and 60% notice rate.",
+                  "test": "Live emails to real attendees — measuring clicks, replies, sign-up intent",
+                  "type": "viral_receiving"
                 },
                 {
                   "id": "counterpart-dup-1",
-                  "status": "active",
+                  "status": "pending",
                   "tags": [
                     "virality",
                     "mvt"
                   ],
                   "label": "Auto compose intro request feature is used and users don't delete the attribution ",
-                  "test": "Data from live experiments + users interview"
+                  "test": "Data from live experiments + users interview",
+                  "type": "viral_sending"
                 },
                 {
                   "id": "gordy-loop",
@@ -412,53 +415,59 @@
                   "tags": [
                     "virality"
                   ],
-                  "label": "Post-meeting Gordy follow-up converts successful meetings into new warm user acquisition",
-                  "test": "Pending: define loop after counterpart email signal confirmed"
+                  "label": "Post-meeting Gordy follow-up on counterpart gets 10% response rate.",
+                  "test": "Monitor response rates",
+                  "type": "viral_receiving"
+                },
+                {
+                  "id": "gordy-loop-dup-4",
+                  "status": "pending",
+                  "tags": [
+                    "virality"
+                  ],
+                  "label": "Post-meeting Gordy follow-up on user generates 2 intros per month.",
+                  "test": "Pending: automation not implemented",
+                  "type": "viral_sending"
                 }
-              ]
+              ],
+              "type": "viral_receiving"
+            },
+            {
+              "id": "new-3",
+              "status": "eliminated",
+              "label": "Behavioral: do people practice the idea of asking for 2-3 introductions in every meeting",
+              "type": "problem",
+              "test": "Mom test - ask them past behaviour",
+              "reason": "Only 3 people said they do it out of at least 10"
             }
           ]
         },
         {
           "id": "namedrop",
-          "status": "active",
+          "status": "review",
           "tags": [
             "distribution",
             "gordy"
           ],
-          "label": "Name drop test: \"Gordy mentioned you know X — may I mention you when I reach out?\" creates warm outreach at scale",
-          "test": "Live Gordy outreach to founders, VCs, AEs — tracking Yes/No + follow-up calls",
-          "children": [
-            {
-              "id": "nd-founders",
-              "status": "validated",
-              "tags": [
-                "result"
-              ],
-              "label": "Name drop works with founders and VCs — strong positive signal confirmed",
-              "test": "Name drop test run on founder + investor network",
-              "score": {
-                "Freq": 0,
-                "Intensity": 0,
-                "Fit": 0
-              }
-            },
-            {
-              "id": "nd-aes",
-              "status": "active",
-              "tags": [
-                "result"
-              ],
-              "label": "Name drop works with AEs and sales professionals — test running",
-              "test": "Name drop test on AE network — running"
-            }
-          ]
+          "label": "Name drop works with founders and VCs — strong positive signal confirmed",
+          "test": "Live Gordy outreach to founders, VCs",
+          "type": "viral_receiving"
+        },
+        {
+          "id": "namedrop-dup-1",
+          "status": "review",
+          "tags": [
+            "distribution",
+            "gordy"
+          ],
+          "label": "Name drop works with AEs and BD ",
+          "test": "Live Gordy outreach to AEs and BD",
+          "type": "viral_receiving"
         },
         {
           "id": "gordy-asks",
-          "status": "active",
-          "type": "hypothesis",
-          "label": "Prospects respond to Gordy outbound offering intros",
+          "status": "review",
+          "label": "Prospects respond to Gordy outbound offering intros > 2x better than other cold outreach",
           "test": "Live test: Gordy sends outbound messages offering intros to targeted prospects — measure response rate and yes/no ratio"
         }
       ],
@@ -472,29 +481,29 @@
     },
     {
       "id": "obs-d",
-      "status": "active",
+      "status": "validated",
       "type": "problem_space",
-      "label": "Knowing something personal about a target meaningfully improves cold outreach conversion rates",
-      "test": "A/B test: compare cold outreach with pokemon-sourced personal intel vs generic outreach — does conversion rate differ significantly?",
+      "label": "Knowing something specific about a target meaningfully improves cold outreach conversion rates as long as not creepy",
+      "test": "Online research",
       "children": [
         {
           "id": "market-smallorg-pokemon-cold",
-          "status": "active",
+          "status": "review",
           "type": "market",
-          "label": "Business leaders in small orgs (<20) are more likely to research data manually",
-          "test": "Analysis of past calls",
+          "label": "Exists a well defined group in business leaders in small orgs (<20) are researching prospect data manually - at least 1 hour / week total",
+          "test": "Analysis of past calls\ndo people research targets before cold outreach? How long does it take? ",
           "children": [
             {
               "id": "pokemon-cold-mine-common",
               "status": "active",
               "type": "problem",
               "label": "Users doing cold outreach have no scalable way to get public personal intel on targets today — they do it manually or skip it entirely",
-              "test": "Mom test: do people research targets before cold outreach? How long does it take? Have they tried to automate it? Would they pay to get it instantly?",
+              "test": "Mom test: are people frustrated with the amount of time it takes them? Are they looking for solutions? Tried to automate? Willing to pay?",
               "children": [
                 {
                   "id": "pokemon-get-buy",
-                  "status": "active",
-                  "type": "hypothesis",
+                  "status": "pending",
+                  "type": "viral_receiving",
                   "label": "Users will pay to access personal intel that others have collected about a target they've never met — fueling better cold outreach and first meetings",
                   "test": "Interview: do they feel comfortable with the concept? Show them a mockup — do they want it?"
                 }
@@ -502,15 +511,25 @@
             }
           ]
         }
-      ]
+      ],
+      "score": {
+        "Freq": 0,
+        "Intensity": 0,
+        "Fit": 0
+      }
     },
     {
       "id": "obs-f",
       "status": "validated",
       "type": "problem_space",
-      "label": "Users want to avoid data entry",
+      "label": "Users want to avoid ongoing data entry",
       "test": "Validated by market: 25+ predecessor companies failed primarily due to manual data entry abandonment (Contactually, Highrise, Nimble, etc.). Confirmed independently across multiple founder, AE, and VC interviews.",
-      "reason": "Historical pattern across $300M+ in failed CRM attempts. Interviewees consistently report starting tools and abandoning them when upkeep becomes too heavy."
+      "reason": "Historical pattern across $300M+ in failed CRM attempts. Interviewees consistently report starting tools and abandoning them when upkeep becomes too heavy.",
+      "score": {
+        "Freq": 0,
+        "Intensity": 0,
+        "Fit": 0
+      }
     }
   ]
 }
