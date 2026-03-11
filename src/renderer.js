@@ -69,32 +69,33 @@ function cardHeight(node){
 // Status helpers
 const FILLS = {
   validated:'#0E1710', active:'#0D0D0D',
-  pending:'#100E0A', eliminated:'#0C0C0C'
+  pending:'#100E0A', eliminated:'#0C0C0C', review:'#0E1418'
 };
 const BORDERS = {
   validated:'#2A2A2A', active:'#1E1E1E',
-  pending:'#7A5828', eliminated:'#181818'
+  pending:'#7A5828', eliminated:'#181818', review:'#28607A'
 };
 const EYE_COLORS = {
   validated:'#7FBF95', active:'#555',
-  pending:'#A07840', eliminated:'#383838'
+  pending:'#A07840', eliminated:'#383838', review:'#6AB0D2'
 };
 const LBL_COLORS = {
   validated:'#E8E8E8', active:'#BBBBBB',
-  pending:'#8A7855', eliminated:'#3A3A3A'
+  pending:'#8A7855', eliminated:'#3A3A3A', review:'#9AC8E0'
 };
 const TAG_BG = {
   validated:'rgba(127,191,149,.09)',
   active:'rgba(255,255,255,.05)', pending:'rgba(212,165,116,.07)',
-  eliminated:'rgba(255,255,255,.03)'
+  eliminated:'rgba(255,255,255,.03)', review:'rgba(106,176,210,.09)'
 };
 const EDGE_COLORS = {
   validated:'#4A8A60', active:'#383838',
-  pending:'#6A4818', eliminated:'#1E1E1E'
+  pending:'#6A4818', eliminated:'#1E1E1E', review:'#3A7A9A'
 };
 const EYE_LABELS = {
   validated:'\u2713  Validated',
-  active:'\u25CF  Active', pending:'\u25CC  Pending', eliminated:'\u2715  Eliminated'
+  active:'\u25CF  Active', pending:'\u25CC  Pending', eliminated:'\u2715  Eliminated',
+  review:'\u25C9  Review'
 };
 
 const HYPOTHESIS_TYPES = [
@@ -782,7 +783,7 @@ function openInlineEdit(nodeId, evt, focusField){
     return;
   }
 
-  const statuses = ['validated','active','pending','eliminated'];
+  const statuses = ['validated','review','active','pending','eliminated'];
   const statusOpts = statuses.map(s =>
     `<option value="${s}" ${nodeData.status===s?'selected':''}>${s}</option>`
   ).join('');
