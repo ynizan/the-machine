@@ -208,6 +208,13 @@
               "type": "problem"
             },
             {
+              "id": "founders-dup-1",
+              "status": "active",
+              "label": "Users want to stay top of mind so customers call them when in-market and various opportunities find them",
+              "test": "Mom Test: do users find work arounds to stay top of mind. Do they agree that this is the motivation",
+              "type": "problem"
+            },
+            {
               "id": "obs-e",
               "status": "active",
               "type": "problem_space",
@@ -264,18 +271,25 @@
             {
               "id": "option-a",
               "status": "active",
+              "label": "Asker want to know when a giver makes a new real connection that is relevant to them so they can ask for an intro.",
+              "test": "Mockup test - see if the asker is willing to introduce to giver",
+              "type": "problem"
+            },
+            {
+              "id": "option-a-dup-2",
+              "status": "active",
               "label": "Asker and giver engage frequently in \"open the book\" exercise and it has friction",
               "test": "Mom test - Ask both investors and early stage founders the frequency of \"open the book\" + what challenges",
               "children": [
                 {
-                  "id": "a-asker",
+                  "id": "a-asker-dup-3",
                   "status": "active",
                   "label": "Asker sees which of helper's connections are real & active before asking - he convinces the give to participate",
                   "test": "Mockup test - Pretending it's ready.  Who will they ask tomorrow.",
                   "type": "viral_sending"
                 },
                 {
-                  "id": "a-giver",
+                  "id": "a-giver-dup-4",
                   "status": "active",
                   "tags": [
                     "feature",
