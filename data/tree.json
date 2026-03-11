@@ -192,13 +192,7 @@
                 "validated"
               ],
               "label": "VC principals miss deal flow — can't maintain active signals on 80–150 priority founders",
-              "test": "3 VC principal Mom test interviews",
-              "score": {
-                "Freq": 3,
-                "Intensity": 3,
-                "Fit": 2,
-                "WTP": 1
-              }
+              "test": "Mom test - what happens after the intro call if it's too early"
             },
             {
               "id": "founders",
@@ -217,22 +211,21 @@
               "id": "obs-e",
               "status": "active",
               "type": "problem_space",
-              "label": "Personal contact intelligence improves nurturing by creating more follow-up opportunities, increasing engagement rates, and ultimately improving win rates",
-              "test": "Behavioral interview: do people who know personal details about contacts report better relationship outcomes? Simulation: compare nurture sequences with vs without personal intel.",
+              "label": "Users think that more personal contact intelligence improves nurturing by creating more follow-up opportunities that aren't lame, ultimately improving win rates",
+              "test": "Mom test: do people who know personal details about contacts report better relationship outcomes?",
               "children": [
                 {
                   "id": "pokemon-intros",
                   "status": "active",
-                  "type": "hypothesis",
-                  "label": "Personal intel on a connector makes intro requests more targeted and more likely to succeed",
-                  "test": "Simulation: compare intro request quality and success rate with vs without personal context on the connector"
+                  "label": "Users want to leverage personal anecdotes on connectors so they can ask more intros",
+                  "test": "Mom test: do they try to make the small talk before the intro request"
                 },
                 {
                   "id": "pokemon-mine-rare",
                   "status": "active",
                   "type": "solution",
-                  "label": "Users will pay to mine deep personal intel from their own emails, call transcripts, and WhatsApp to fuel warm relationship actions",
-                  "test": "Waitlist/credits test: when offered pokemon mining, do users connect their email or transcripts? Measure activation rate and willingness to pay."
+                  "label": "Users will pay to mine personal intel from their own emails, call transcripts, and WhatsApp to fuel warm relationship actions",
+                  "test": "Mockup test: when offered pokemon mining, do users want it? Send the transcripts? Connect email?"
                 },
                 {
                   "id": "pokemon-share",
@@ -240,15 +233,15 @@
                   "type": "hypothesis",
                   "label": "Users who have gathered deep personal intel about contacts through real relationships are willing to share or trade it with others in exchange for reputation, credits, or reciprocal intel",
                   "test": "Interview: have they shared before? What info are they ok sharing? Who are they willing to share with?"
+                },
+                {
+                  "id": "14b",
+                  "status": "active",
+                  "type": "problem",
+                  "label": "Users want alerts about life/career trigger events for contacts — job change, funding, promotion, local holiday, local news — as a reason to reach out and nurture",
+                  "test": "Mom test: do they actually search for it"
                 }
               ]
-            },
-            {
-              "id": "14b",
-              "status": "active",
-              "type": "problem",
-              "label": "Users want alerts about life/career trigger events for contacts — job change, funding, promotion — as a reason to reach out and nurture",
-              "test": "Mom test: when was the last time a contact had a life/career event you wished you'd known about sooner? How often does that happen?"
             }
           ]
         }
