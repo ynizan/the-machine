@@ -389,23 +389,42 @@
         },
         {
           "id": "namedrop",
-          "status": "review",
-          "label": "Name drop works with founders and VCs — strong positive signal confirmed",
-          "test": "Live Gordy outreach to founders, VCs",
-          "type": "viral_receiving"
+          "status": "validated",
+          "label": "Requesting a name drop using Gordy algo produced high reply rate (25% for investors, 29% for founders) and confirmation rate (25% for investors, 29% for founders) ",
+          "test": "Predicting who will they know and reaching out to them asking for a name drop",
+          "type": "viral_receiving",
+          "reason": "Investors: 50 > 12 > 3\nFounders: 58 > 17 > 5",
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          }
         },
         {
           "id": "namedrop-dup-1",
-          "status": "review",
-          "label": "Name drop works with AEs and BD ",
-          "test": "Live Gordy outreach to AEs and BD",
-          "type": "viral_receiving"
+          "status": "validated",
+          "label": "Requesting a name drop using Gordy algo produced high reply rate (38% for AEs, 35% for BD) and confirmation rate (69% for AEs, 47% for BD) ",
+          "test": "Predicting who will they know and reaching out to them asking for a name drop",
+          "type": "viral_receiving",
+          "reason": "AE/Sales: 67 > 26 > 18\nBD: 64 > 23 > 11",
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          }
         },
         {
           "id": "gordy-asks",
-          "status": "review",
-          "label": "Prospects respond to Gordy outbound offering intros > 2x better than other cold outreach",
-          "test": "Live test: Gordy sends outbound messages offering intros to targeted prospects — measure response rate and yes/no ratio"
+          "status": "validated",
+          "label": "Prospects respond to Gordy outbound offering intros. 5% human response and 3.23% said yes",
+          "test": "Live test: Gordy sends outbound messages offering intros to targeted prospects — measure response rate and yes/no ratio",
+          "type": "viral_receiving",
+          "reason": "Sent: 279 \nHuman response: 14\nSaid yes: 9",
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          }
         }
       ],
       "test": "Past successes",
