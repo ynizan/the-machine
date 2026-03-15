@@ -72,28 +72,33 @@ function cardHeight(node){
 // Status helpers
 const FILLS = {
   validated:'#0E1710', active:'#0D0D0D',
-  pending:'#100E0A', eliminated:'#0C0C0C', review:'#0E1418'
+  pending:'#100E0A', eliminated:'#0C0C0C', review:'#0E1418',
+  backlog:'#0F0E10'
 };
 const BORDERS = {
   validated:'#2A2A2A', active:'#1E1E1E',
-  pending:'#7A5828', eliminated:'#181818', review:'#28607A'
+  pending:'#7A5828', eliminated:'#181818', review:'#28607A',
+  backlog:'#3A2E4A'
 };
 const EYE_COLORS = {
   validated:'#7FBF95', active:'#555',
-  pending:'#A07840', eliminated:'#383838', review:'#6AB0D2'
+  pending:'#A07840', eliminated:'#383838', review:'#6AB0D2',
+  backlog:'#9A8AB8'
 };
 const LBL_COLORS = {
   validated:'#E8E8E8', active:'#BBBBBB',
-  pending:'#8A7855', eliminated:'#3A3A3A', review:'#9AC8E0'
+  pending:'#8A7855', eliminated:'#3A3A3A', review:'#9AC8E0',
+  backlog:'#8878A0'
 };
 const EDGE_COLORS = {
   validated:'#4A8A60', active:'#383838',
-  pending:'#6A4818', eliminated:'#1E1E1E', review:'#3A7A9A'
+  pending:'#6A4818', eliminated:'#1E1E1E', review:'#3A7A9A',
+  backlog:'#4A3A60'
 };
 const EYE_LABELS = {
   validated:'\u2713  Validated',
   active:'\u25CF  Active', pending:'\u25CC  Pending', eliminated:'\u2715  Eliminated',
-  review:'\u25C9  Review'
+  review:'\u25C9  Review', backlog:'\u25CB  Backlog'
 };
 
 const HYPOTHESIS_TYPES = [
@@ -442,7 +447,7 @@ function initTree(DATA, opts){
 
     links.forEach(l => {
       const st  = l.target.data.status;
-      const dash= (st==='pending'||st==='eliminated') ? '8,5' : null;
+      const dash= (st==='pending'||st==='eliminated'||st==='backlog') ? '8,5' : null;
       const srcC = cfg(l.source.depth);
       const tgtC = cfg(l.target.depth);
 
@@ -455,7 +460,7 @@ function initTree(DATA, opts){
       edgeG.append('path')
         .attr('d', `M${sx},${sy} C${mx},${sy} ${mx},${ty} ${tx},${ty}`)
         .attr('fill','none')
-        .attr('stroke', (st==='pending'||st==='eliminated') ? '#D4A574' : '#FFFFFF')
+        .attr('stroke', (st==='pending'||st==='eliminated'||st==='backlog') ? '#D4A574' : '#FFFFFF')
         .attr('stroke-width', EDGE_WIDTHS[l.target.depth] || 0.5)
         .attr('stroke-dasharray', dash)
         .attr('opacity', st==='eliminated' ? 0.2 : st==='pending' ? 0.45 : 0.6);
@@ -586,7 +591,7 @@ function initTree(DATA, opts){
         .attr('fill','none')
         .attr('stroke', BORDERS[st]||'#222')
         .attr('stroke-width', Math.max(1, c.fs*0.012))
-        .attr('stroke-dasharray', (st==='pending'||st==='eliminated')
+        .attr('stroke-dasharray', (st==='pending'||st==='eliminated'||st==='backlog')
           ? `${c.fs*0.25},${c.fs*0.14}` : null)
         .attr('opacity', st==='eliminated' ? 0.4 : 1);
 
@@ -800,7 +805,7 @@ function openInlineEdit(nodeId, evt, focusField){
     return;
   }
 
-  const statuses = ['validated','review','active','pending','eliminated'];
+  const statuses = ['validated','review','active','pending','eliminated','backlog'];
   const statusOpts = statuses.map(s =>
     `<option value="${s}" ${nodeData.status===s?'selected':''}>${s}</option>`
   ).join('');

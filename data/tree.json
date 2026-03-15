@@ -175,7 +175,7 @@
       "children": [
         {
           "id": "aes",
-          "status": "review",
+          "status": "eliminated",
           "label": "AEs will pay out of pocket for personal network CRM — owned by the rep, not the company",
           "test": "AE validation interviews (simulation + real calls) + cold email signal",
           "children": [
@@ -194,11 +194,12 @@
               "test": "Mome test: have they presented such behaviors"
             }
           ],
-          "type": "revenue"
+          "type": "revenue",
+          "reason": "**Among those who gave a clear signal (N=20):** 7 personal-pay vs. 13 company/stack — **35% personal-pay rate.**\n\n"
         },
         {
           "id": "csm",
-          "status": "review",
+          "status": "backlog",
           "label": "CSMs need relationship intelligence to prevent churn and surface expansion opportunities",
           "test": "Mom test - have they tried to get such information? Have they kept records",
           "type": "problem"
