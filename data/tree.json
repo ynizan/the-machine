@@ -234,7 +234,7 @@
                 {
                   "id": "circles-exist",
                   "status": "pending",
-                  "type": "problem",
+                  "type": "opportunity",
                   "label": "Over 80% of users already feel that most of their contacts exist in circles - have connections between them",
                   "test": "Mom test: ask users if they think of their contacts as connected to each other or only to themselves. Do they naturally describe their network in clusters?",
                   "children": [
