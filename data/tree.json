@@ -171,7 +171,7 @@
       "id": "obs-b",
       "status": "validated",
       "type": "problem_space",
-      "label": "HubSpot / newsletter approach to nurturing is dying",
+      "label": "Newsletter approach to nurturing is dying",
       "children": [
         {
           "id": "aes",
@@ -257,23 +257,22 @@
                     {
                       "id": "acq-outbound",
                       "status": "pending",
-                      "type": "acquisition",
-                      "label": "Over 2% response rate to cold outbound describing the nudge value prop",
+                      "label": "Over 50% yes rate and 2% response rate to cold outbound offering to receive such tips",
                       "test": "Outbound campaign: email describing the nudge value prop, measure human response rate"
                     },
                     {
                       "id": "acq-gordy-viral-tip",
                       "status": "pending",
                       "type": "viral_receiving",
-                      "label": "10% of recipients who received a tip email from Gordy want to get this service",
-                      "test": "Gordy sends contacts a tip about news of a contact they have, measure sign-up intent"
+                      "label": "10% of recipients who received a tip email from Gordy want to get this service ",
+                      "test": "Gordy nudges users (Yaniv and Matan) to tip contact Y about news of a contact Z"
                     },
                     {
                       "id": "acq-gordy-viral-nudge",
                       "status": "pending",
-                      "type": "viral_receiving",
+                      "type": "solution",
                       "label": "10% of users who received a nudge email from Gordy want to get this service",
-                      "test": "Gordy sends user X a nudge to tip contact Y about news of contact Z, measure sign-up intent"
+                      "test": "Gordy nudges user X to tip contact Y about news of contact Z, measure sign-up intent"
                     }
                   ]
                 }
