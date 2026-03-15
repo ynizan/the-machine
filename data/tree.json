@@ -139,14 +139,14 @@
             {
               "id": "mutual-ca-dup-1",
               "status": "active",
-              "type": "hypothesis",
+              "type": "problem",
               "label": "Many mutual connections - helps the user build confidence before the reachout. More chances for him to accept.",
               "test": "Interview: when and why do you look at mutual connections?"
             },
             {
               "id": "mutual-cb",
               "status": "active",
-              "type": "hypothesis",
+              "type": "problem",
               "label": "People check mutual connections as part of understanding the target. What people he associate with.",
               "test": "Interview: what triggers you to check mutual connections?"
             }
@@ -241,14 +241,14 @@
                     {
                       "id": "nudge-action",
                       "status": "pending",
-                      "type": "hypothesis",
+                      "type": "solution",
                       "label": "Over 50% of interviewees say they would send the nudge message when shown a mockup",
                       "test": "Mockup test: show example nudge (tell person Y about person Z's news), ask if they would send it and why/why not",
                       "children": [
                         {
                           "id": "acq-interview",
                           "status": "pending",
-                          "type": "hypothesis",
+                          "type": "solution",
                           "label": "Over 50% of users who said yes to the nudge want to try the service during the call",
                           "test": "Mockup test: after showing the nudge and getting positive response, offer to try the service, measure intent"
                         }
@@ -257,7 +257,7 @@
                     {
                       "id": "acq-outbound",
                       "status": "pending",
-                      "type": "hypothesis",
+                      "type": "acquisition",
                       "label": "Over 2% response rate to cold outbound describing the nudge value prop",
                       "test": "Outbound campaign: email describing the nudge value prop, measure human response rate"
                     },
