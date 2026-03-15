@@ -206,7 +206,7 @@
         },
         {
           "id": "market-smallorg-nurture",
-          "status": "review",
+          "status": "validated",
           "type": "market",
           "label": "Business leaders in small orgs (<20) are spending over 1h/week to manage relationships and need personal nurturing",
           "test": "Analysis of past calls",
@@ -325,7 +325,13 @@
                 }
               ]
             }
-          ]
+          ],
+          "reason": "**VERDICT: SUPPORTED — with a meaningful dissenting minority**\n\n**OVER 1h/week (17 people):**\nRicky Bureau, Yoav Naveh, Mike Rosengarten, Eugene Malobrodsky, Nitzan Gindi, Santiago Cordoba, Zach Beegal, Liad Glikman, Eran Savir, Amos Halfon, Roee Adler, Anthony Simola, Adrian Domenech, Michael Giunta, Angela Mekosh, ענבל הראל (Anbel Harel), Adi Perry\n\n**UNDER 1h/week (8 people):**\nBenjamin Tannenbaum, Anthony Rey, Mat | renn, Ben Lerner, Lior Nachum, Ira Fridman, Marcelle Kaspi, Oren Harnevo\n",
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          }
         }
       ],
       "test": "Online research",
@@ -344,7 +350,7 @@
       "children": [
         {
           "id": "market-smallorg-viral",
-          "status": "review",
+          "status": "validated",
           "type": "market",
           "label": "Exists a defined group in business leaders in small orgs (<20) requesting intros at least on a weekly basis",
           "test": "Analysis on past calls",
@@ -431,7 +437,13 @@
               "test": "Mom test - ask them past behaviour",
               "reason": "Only 3 people said they do it out of at least 10"
             }
-          ]
+          ],
+          "reason": "## VERDICT: SUPPORTED\n## NUMBERS\n\n**Total interviewees  55\n\n\n### Weekly or more — 16\nOr Biderman, Alon Shrier, Itay Hakuki (first interview), Yoav Naveh (~20 people, borderline), Meitar Tobal, Inbal Levy Horesh, Andres Prilloltensky, Oren Harnevo, Roee Adler, Liat Lachish Levy, Nate Levine, Moti Friedman, Angela Mekosh, Michael Giunta, Adi Perry, Enabel Harel\n\n### Monthly — 3\nBoaz Katz, Adrian Domenech, Rami Rozen\n\n### Quarterly or less — 11\nMatan Talmi, Mat | renn, Eran Savir, Di Wang, Yoav Vilner (current), Lior Livak, Guy Israeli, Chris Pfluger, Kyle Crabtree, Anthony Simola, Itay Hakuki (second interview — conflicts with first)\n\n### Never — 6\nBenjamin Tannenbaum, Anthony Rey, Justin \n(Yess), Ben Mizrachi, Lior Nachum, Marcelle Kaspi",
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          }
         },
         {
           "id": "namedrop",
