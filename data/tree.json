@@ -139,14 +139,14 @@
             {
               "id": "mutual-ca-dup-1",
               "status": "active",
-              "type": "hypothesis",
+              "type": "problem",
               "label": "Many mutual connections - helps the user build confidence before the reachout. More chances for him to accept.",
               "test": "Interview: when and why do you look at mutual connections?"
             },
             {
               "id": "mutual-cb",
               "status": "active",
-              "type": "hypothesis",
+              "type": "problem",
               "label": "People check mutual connections as part of understanding the target. What people he associate with.",
               "test": "Interview: what triggers you to check mutual connections?"
             }
@@ -234,9 +234,48 @@
                 {
                   "id": "circles-exist",
                   "status": "pending",
-                  "type": "problem",
+                  "type": "opportunity",
                   "label": "Over 80% of users already feel that most of their contacts exist in circles - have connections between them",
-                  "test": "Mom test: ask users if they think of their contacts as connected to each other or only to themselves. Do they naturally describe their network in clusters?"
+                  "test": "Mom test: ask users if they think of their contacts as connected to each other or only to themselves. Do they naturally describe their network in clusters?",
+                  "children": [
+                    {
+                      "id": "nudge-action",
+                      "status": "pending",
+                      "type": "solution",
+                      "label": "Over 50% of interviewees say they would send the nudge message when shown a mockup",
+                      "test": "Mockup test: show example nudge (tell person Y about person Z's news), ask if they would send it and why/why not",
+                      "children": [
+                        {
+                          "id": "acq-interview",
+                          "status": "pending",
+                          "type": "solution",
+                          "label": "Over 50% of users who said yes to the nudge want to try the service during the call",
+                          "test": "Mockup test: after showing the nudge and getting positive response, offer to try the service, measure intent"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "acq-outbound",
+                      "status": "pending",
+                      "type": "acquisition",
+                      "label": "Over 2% response rate to cold outbound describing the nudge value prop",
+                      "test": "Outbound campaign: email describing the nudge value prop, measure human response rate"
+                    },
+                    {
+                      "id": "acq-gordy-viral-tip",
+                      "status": "pending",
+                      "type": "viral_receiving",
+                      "label": "10% of recipients who received a tip email from Gordy want to get this service",
+                      "test": "Gordy sends contacts a tip about news of a contact they have, measure sign-up intent"
+                    },
+                    {
+                      "id": "acq-gordy-viral-nudge",
+                      "status": "pending",
+                      "type": "viral_receiving",
+                      "label": "10% of users who received a nudge email from Gordy want to get this service",
+                      "test": "Gordy sends user X a nudge to tip contact Y about news of contact Z, measure sign-up intent"
+                    }
+                  ]
                 }
               ]
             },
