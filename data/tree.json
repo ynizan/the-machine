@@ -388,7 +388,7 @@
             },
             {
               "id": "option-c",
-              "status": "active",
+              "status": "review",
               "label": "In calls - over 80% wanted the \"Ask brief\". 50% signed up.  ",
               "test": "Mockup test: do people want to test Gordy sending them ideas for 2-3 introductions in every meeting",
               "children": [
@@ -427,7 +427,8 @@
                   "type": "viral_sending"
                 }
               ],
-              "type": "viral_receiving"
+              "type": "viral_receiving",
+              "reason": "**VERDICT: STRONGLY SUPPORTED**\n\n---\n\n### NUMBERS\n\n**Total unique interviewees assessed:** ~92\n**Summary ratio:** ~84% expressed some interest (strong or mild); ~15% not interested."
             },
             {
               "id": "new-3",
@@ -506,6 +507,7 @@
           "type": "market",
           "label": "Exists a well defined group in business leaders in small orgs (<20) are researching prospect data manually - at least 1 hour / week total",
           "test": "Analysis of past calls\ndo people research targets before cold outreach? How long does it take? ",
+          "reason": "**The hypothesis holds for a clear majority (17/32 who gave classifiable answers = 53%) but with important non-trivial minority who don't (15/32 = 47%).** The group that *does not* do it is real and meaningful.",
           "children": [
             {
               "id": "pokemon-cold-mine-common",
