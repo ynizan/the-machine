@@ -457,13 +457,16 @@ function initTree(DATA, opts){
       const ty = l.target.x;
       const mx = (sx + tx) / 2;
 
+      const edgeDimmed = FILTER_UNCHANGED && CHANGED_IDS.size > 0 && !CHANGED_IDS.has(l.target.data.id);
+      const baseOpacity = st==='eliminated' ? 0.2 : st==='pending' ? 0.45 : 0.6;
+
       edgeG.append('path')
         .attr('d', `M${sx},${sy} C${mx},${sy} ${mx},${ty} ${tx},${ty}`)
         .attr('fill','none')
         .attr('stroke', (st==='pending'||st==='eliminated'||st==='backlog') ? '#D4A574' : '#FFFFFF')
         .attr('stroke-width', EDGE_WIDTHS[l.target.depth] || 0.5)
         .attr('stroke-dasharray', dash)
-        .attr('opacity', st==='eliminated' ? 0.2 : st==='pending' ? 0.45 : 0.6);
+        .attr('opacity', edgeDimmed ? baseOpacity * 0.15 : baseOpacity);
 
       const test = l.target.data.test;
       if(!test) return;
@@ -548,9 +551,13 @@ function initTree(DATA, opts){
       const yp = d.x - h / 2;
       const rx = Math.max(4, 12 - d.depth * 2);
 
+      // Dim unchanged nodes when filter is active
+      const isDimmed = FILTER_UNCHANGED && CHANGED_IDS.size > 0 && !CHANGED_IDS.has(d.data.id);
+
       let _clickTimer = null;
       const grp = nodeG.append('g')
         .attr('transform', `translate(${xp},${yp})`)
+        .attr('opacity', isDimmed ? 0.12 : 1)
         .style('cursor','pointer')
         .on('click', () => {
           if(_clickTimer) clearTimeout(_clickTimer);
@@ -1039,20 +1046,153 @@ function openReview(){
   openNavList('Review', items);
 }
 
-// Fetch data and boot
-fetch('data/tree.json')
-  .then(r => r.json())
-  .then(data => {
-    CURRENT_DATA = data;
-    buildNodeMap(data);
-    initTree(data);
-    setupEditor(data, (newData, opts) => {
-      CURRENT_DATA = newData;
-      NODE_MAP = {};
-      buildNodeMap(newData);
-      // Save collapse state before re-render
-      const collapsedIds = CURRENT_ROOT ? getCollapsedIds(CURRENT_ROOT) : undefined;
-      document.getElementById('G').innerHTML = '';
-      initTree(newData, { ...opts, collapsedIds });
-    });
+// --- Changelog & Hide-Unchanged ---
+let CHANGELOG = [];
+let CHANGED_IDS = new Set();   // currently highlighted changed node IDs
+let FILTER_UNCHANGED = false;  // whether to dim unchanged nodes
+
+function loadChangelog(){
+  return fetch('data/changelog.json')
+    .then(r => r.ok ? r.json() : [])
+    .then(data => { CHANGELOG = data; })
+    .catch(() => { CHANGELOG = []; });
+}
+
+function openChangelog(){
+  const existing = document.querySelector('.nav-list-overlay');
+  if(existing) existing.remove();
+
+  const overlay = document.createElement('div');
+  overlay.className = 'nav-list-overlay';
+  overlay.onclick = (e) => { if(e.target === overlay){ overlay.remove(); clearHighlight(); }};
+
+  const entries = CHANGELOG.slice(0, 30);
+
+  const filterBar = `
+    <div class="changelog-filter-bar">
+      <label class="changelog-toggle">
+        <input type="checkbox" id="cl-hide-unchanged" ${FILTER_UNCHANGED ? 'checked' : ''}>
+        Hide unchanged
+      </label>
+      <span class="changelog-range" id="cl-range-label">${CHANGED_IDS.size ? CHANGED_IDS.size + ' nodes highlighted' : 'Click an entry to highlight'}</span>
+    </div>
+  `;
+
+  const entryHtml = entries.map((e, i) => {
+    const chips = e.changedIds.slice(0, 8).map(id =>
+      `<span class="changelog-id-chip">${id}</span>`
+    ).join('') + (e.changedIds.length > 8 ? `<span class="changelog-id-chip">+${e.changedIds.length - 8}</span>` : '');
+
+    return `<div class="changelog-entry" data-index="${i}" onclick="selectChangelogEntry(${i})">
+      <div>
+        <span class="changelog-date">${e.date}</span>
+        <span class="changelog-commit">${e.commit}</span>
+      </div>
+      <div class="changelog-msg">${e.message}</div>
+      <div class="changelog-ids">${chips}</div>
+    </div>`;
+  }).join('');
+
+  overlay.innerHTML = `
+    <div class="nav-list-panel" style="width:680px;">
+      <div class="nav-list-header">
+        <h3>Changelog <span class="nav-list-count">${CHANGELOG.length}</span></h3>
+        <div style="display:flex;gap:6px;align-items:center;">
+          <button class="ep-btn" id="cl-select-recent" onclick="selectRecentChanges(event)">Last 3 days</button>
+          <button class="ep-btn" onclick="clearHighlight();this.closest('.nav-list-overlay').remove()">&times;</button>
+        </div>
+      </div>
+      ${filterBar}
+      <div class="nav-list-body">
+        ${entries.length ? entryHtml : '<div style="color:#555;padding:20px;text-align:center;font-family:\'IBM Plex Mono\',monospace;font-size:12px;">No changelog entries. Run scripts/gen-changelog.js to generate.</div>'}
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+
+  document.getElementById('cl-hide-unchanged').addEventListener('change', function(){
+    FILTER_UNCHANGED = this.checked;
+    applyHighlight();
   });
+}
+
+function selectChangelogEntry(index){
+  const entry = CHANGELOG[index];
+  if(!entry) return;
+
+  // Toggle: if already selected, deselect
+  const el = document.querySelectorAll('.changelog-entry')[index];
+  if(el.classList.contains('selected')){
+    el.classList.remove('selected');
+    // Remove these IDs
+    entry.changedIds.forEach(id => CHANGED_IDS.delete(id));
+  } else {
+    el.classList.add('selected');
+    entry.changedIds.forEach(id => CHANGED_IDS.add(id));
+  }
+
+  updateRangeLabel();
+  applyHighlight();
+}
+
+function selectRecentChanges(evt){
+  if(evt) evt.stopPropagation();
+  const threeDaysAgo = new Date();
+  threeDaysAgo.setDate(threeDaysAgo.getDate() - 3);
+  const cutoff = threeDaysAgo.toISOString().split('T')[0];
+
+  CHANGED_IDS.clear();
+  document.querySelectorAll('.changelog-entry').forEach((el, i) => {
+    const entry = CHANGELOG[i];
+    if(entry && entry.date >= cutoff){
+      el.classList.add('selected');
+      entry.changedIds.forEach(id => CHANGED_IDS.add(id));
+    } else {
+      el.classList.remove('selected');
+    }
+  });
+
+  // Auto-enable hide unchanged
+  FILTER_UNCHANGED = true;
+  const cb = document.getElementById('cl-hide-unchanged');
+  if(cb) cb.checked = true;
+
+  updateRangeLabel();
+  applyHighlight();
+}
+
+function updateRangeLabel(){
+  const label = document.getElementById('cl-range-label');
+  if(label) label.textContent = CHANGED_IDS.size ? CHANGED_IDS.size + ' nodes highlighted' : 'Click an entry to highlight';
+}
+
+function clearHighlight(){
+  CHANGED_IDS.clear();
+  FILTER_UNCHANGED = false;
+  applyHighlight();
+}
+
+function applyHighlight(){
+  if(!CURRENT_DATA || !RENDER_FN) return;
+  RENDER_FN(CURRENT_DATA, { skipResetView: true });
+}
+
+// Fetch data and boot
+Promise.all([
+  fetch('data/tree.json').then(r => r.json()),
+  loadChangelog()
+]).then(([data]) => {
+  CURRENT_DATA = data;
+  buildNodeMap(data);
+  initTree(data);
+  setupEditor(data, (newData, opts) => {
+    CURRENT_DATA = newData;
+    NODE_MAP = {};
+    buildNodeMap(newData);
+    // Save collapse state before re-render
+    const collapsedIds = CURRENT_ROOT ? getCollapsedIds(CURRENT_ROOT) : undefined;
+    document.getElementById('G').innerHTML = '';
+    initTree(newData, { ...opts, collapsedIds });
+  });
+});
