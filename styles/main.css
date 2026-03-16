@@ -17,7 +17,8 @@ html,body{width:100%;height:100%;overflow:hidden;background:#080808;font-family:
 .leg-sw{width:11px;height:11px;border-radius:2px;flex-shrink:0}
 .leg-color{font-size:7px;color:#333;letter-spacing:.06em;}
 
-#canvas{position:fixed;top:88px;left:0;right:0;bottom:0;cursor:grab;touch-action:none}
+#canvas{position:fixed;top:56px;left:0;right:0;bottom:0;cursor:grab;touch-action:none;transition:top .2s ease}
+#canvas.with-changelog{top:88px;}
 #canvas:active{cursor:grabbing}
 #canvas svg{width:100%;height:100%}
 
@@ -65,7 +66,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#080808;font-family:
   display:flex;gap:6px;
 }
 #editor-panel{
-  position:fixed;top:88px;right:0;bottom:0;width:520px;z-index:400;
+  position:fixed;top:56px;right:0;bottom:0;width:520px;z-index:400;transition:top .2s ease;
   background:#0C0C0C;border-left:1px solid #1E1E1E;
   transform:translateX(100%);transition:transform .25s ease;
   display:flex;flex-direction:column;
@@ -214,18 +215,26 @@ html,body{width:100%;height:100%;overflow:hidden;background:#080808;font-family:
   position:fixed;top:56px;left:0;right:0;height:32px;z-index:300;
   background:#0A0A0A;border-bottom:1px solid #1A1A1A;
   display:flex;align-items:center;padding:0 18px;gap:8px;
+  transition:transform .2s ease,opacity .2s ease;
+}
+#changelog-bar.collapsed{
+  transform:translateY(-100%);opacity:0;pointer-events:none;
 }
 .cl-nav-btn{
-  width:22px;height:22px;background:#151515;border:1px solid #2A2A2A;color:#777;
+  height:22px;background:#151515;border:1px solid #2A2A2A;color:#777;
   border-radius:3px;font-size:14px;cursor:pointer;display:flex;align-items:center;
   justify-content:center;transition:all .12s;font-family:'Manrope',sans-serif;
-  line-height:1;padding:0;
+  line-height:1;padding:0 6px;
+}
+.cl-nav-label{
+  font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.04em;
+  text-transform:uppercase;padding:0 8px;gap:3px;
 }
 .cl-nav-btn:hover{background:#1E1E1E;color:#fff;border-color:#444;}
 .cl-info{
   font-family:'IBM Plex Mono',monospace;font-size:10px;color:#888;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-  min-width:0;flex:1;
+  min-width:0;flex:1;text-align:center;
 }
 .cl-info .cl-date{color:#666;margin-right:6px;}
 .cl-info .cl-commit{color:#6A5A80;margin-right:8px;}
@@ -245,11 +254,8 @@ html,body{width:100%;height:100%;overflow:hidden;background:#080808;font-family:
 .cl-toggle input[type="checkbox"]{
   accent-color:#9A8AB8;width:12px;height:12px;cursor:pointer;
 }
-.cl-clear-btn{
-  width:20px;height:20px;background:none;border:1px solid #2A2A2A;color:#555;
-  border-radius:3px;font-size:13px;cursor:pointer;display:flex;align-items:center;
-  justify-content:center;transition:all .12s;
-}
-.cl-clear-btn:hover{color:#fff;border-color:#444;background:rgba(255,255,255,.06);}
+.nav-btn-changelog{border-color:#4A3A60;color:#9A8AB8;}
+.nav-btn-changelog:hover{background:#12101A;color:#B8A8D8;border-color:#6A5A80;}
+.nav-btn-changelog.active{background:#1A1428;color:#B8A8D8;border-color:#6A5A80;}
 #changelog-bar.active{border-bottom-color:#4A3A60;}
 #changelog-bar.active .cl-info .cl-msg{color:#ccc;}

@@ -1051,6 +1051,7 @@ let CHANGELOG = [];
 let CL_INDEX = -1;             // current changelog entry index (-1 = none)
 let CHANGED_IDS = new Set();   // currently highlighted changed node IDs
 let FILTER_UNCHANGED = false;  // whether to dim unchanged nodes
+let CL_BAR_OPEN = false;
 
 function loadChangelog(){
   return fetch('data/changelog.json')
@@ -1064,27 +1065,47 @@ function initChangelogBar(){
     document.getElementById('cl-info').textContent = 'No changelog data';
     return;
   }
-  clNav(0); // show first entry without activating filter
+  document.getElementById('cl-info').innerHTML =
+    `<span class="cl-msg" style="color:#555">${CHANGELOG.length} changes tracked</span>`;
+}
+
+function toggleChangelogBar(){
+  CL_BAR_OPEN = !CL_BAR_OPEN;
+  const bar = document.getElementById('changelog-bar');
+  const btn = document.getElementById('cl-toggle-btn');
+  const canvas = document.getElementById('canvas');
+  const editor = document.getElementById('editor-panel');
+
+  bar.classList.toggle('collapsed', !CL_BAR_OPEN);
+  btn.classList.toggle('active', CL_BAR_OPEN);
+  canvas.classList.toggle('with-changelog', CL_BAR_OPEN);
+  if(editor) editor.style.top = CL_BAR_OPEN ? '88px' : '56px';
+
+  if(!CL_BAR_OPEN){
+    // Closing: clear filter state
+    clearHighlight();
+  }
 }
 
 function clNav(dir){
   if(!CHANGELOG.length) return;
-  if(CL_INDEX === -1) CL_INDEX = 0;
+  if(CL_INDEX === -1) CL_INDEX = dir > 0 ? 0 : 0;
   else CL_INDEX = Math.max(0, Math.min(CL_INDEX + dir, CHANGELOG.length - 1));
 
   const entry = CHANGELOG[CL_INDEX];
   const info = document.getElementById('cl-info');
+  const pos = `${CL_INDEX + 1}/${CHANGELOG.length}`;
   info.innerHTML = `<span class="cl-date">${entry.date}</span><span class="cl-commit">${entry.commit}</span><span class="cl-msg">${entry.message}</span>`;
 
   // Update changed IDs to this entry
   CHANGED_IDS = new Set(entry.changedIds);
 
   const countEl = document.getElementById('cl-node-count');
-  countEl.textContent = entry.changedIds.length + ' node' + (entry.changedIds.length !== 1 ? 's' : '');
+  countEl.textContent = entry.changedIds.length + ' node' + (entry.changedIds.length !== 1 ? 's' : '') + ` (${pos})`;
 
   document.getElementById('changelog-bar').classList.add('active');
 
-  // Auto-enable hide unchanged on navigation
+  // Auto-enable hide unchanged on first navigation
   if(!FILTER_UNCHANGED){
     FILTER_UNCHANGED = true;
     document.getElementById('cl-hide-unchanged').checked = true;
@@ -1103,7 +1124,8 @@ function clearHighlight(){
   FILTER_UNCHANGED = false;
   document.getElementById('cl-hide-unchanged').checked = false;
   document.getElementById('changelog-bar').classList.remove('active');
-  document.getElementById('cl-info').innerHTML = `<span class="cl-msg" style="color:#555">${CHANGELOG.length} changes tracked &middot; use arrows to browse</span>`;
+  document.getElementById('cl-info').innerHTML =
+    `<span class="cl-msg" style="color:#555">${CHANGELOG.length} changes tracked</span>`;
   document.getElementById('cl-node-count').textContent = '';
   applyHighlight();
 }
