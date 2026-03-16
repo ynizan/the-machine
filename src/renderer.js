@@ -1046,8 +1046,9 @@ function openReview(){
   openNavList('Review', items);
 }
 
-// --- Changelog & Hide-Unchanged ---
+// --- Changelog bar (inline, non-blocking) ---
 let CHANGELOG = [];
+let CL_INDEX = -1;             // current changelog entry index (-1 = none)
 let CHANGED_IDS = new Set();   // currently highlighted changed node IDs
 let FILTER_UNCHANGED = false;  // whether to dim unchanged nodes
 
@@ -1058,118 +1059,52 @@ function loadChangelog(){
     .catch(() => { CHANGELOG = []; });
 }
 
-function openChangelog(){
-  const existing = document.querySelector('.nav-list-overlay');
-  if(existing) existing.remove();
-
-  const overlay = document.createElement('div');
-  overlay.className = 'nav-list-overlay';
-  overlay.onclick = (e) => { if(e.target === overlay){ overlay.remove(); clearHighlight(); }};
-
-  const entries = CHANGELOG.slice(0, 30);
-
-  const filterBar = `
-    <div class="changelog-filter-bar">
-      <label class="changelog-toggle">
-        <input type="checkbox" id="cl-hide-unchanged" ${FILTER_UNCHANGED ? 'checked' : ''}>
-        Hide unchanged
-      </label>
-      <span class="changelog-range" id="cl-range-label">${CHANGED_IDS.size ? CHANGED_IDS.size + ' nodes highlighted' : 'Click an entry to highlight'}</span>
-    </div>
-  `;
-
-  const entryHtml = entries.map((e, i) => {
-    const chips = e.changedIds.slice(0, 8).map(id =>
-      `<span class="changelog-id-chip">${id}</span>`
-    ).join('') + (e.changedIds.length > 8 ? `<span class="changelog-id-chip">+${e.changedIds.length - 8}</span>` : '');
-
-    return `<div class="changelog-entry" data-index="${i}" onclick="selectChangelogEntry(${i})">
-      <div>
-        <span class="changelog-date">${e.date}</span>
-        <span class="changelog-commit">${e.commit}</span>
-      </div>
-      <div class="changelog-msg">${e.message}</div>
-      <div class="changelog-ids">${chips}</div>
-    </div>`;
-  }).join('');
-
-  overlay.innerHTML = `
-    <div class="nav-list-panel" style="width:680px;">
-      <div class="nav-list-header">
-        <h3>Changelog <span class="nav-list-count">${CHANGELOG.length}</span></h3>
-        <div style="display:flex;gap:6px;align-items:center;">
-          <button class="ep-btn" id="cl-select-recent" onclick="selectRecentChanges(event)">Last 3 days</button>
-          <button class="ep-btn" onclick="clearHighlight();this.closest('.nav-list-overlay').remove()">&times;</button>
-        </div>
-      </div>
-      ${filterBar}
-      <div class="nav-list-body">
-        ${entries.length ? entryHtml : '<div style="color:#555;padding:20px;text-align:center;font-family:\'IBM Plex Mono\',monospace;font-size:12px;">No changelog entries. Run scripts/gen-changelog.js to generate.</div>'}
-      </div>
-    </div>
-  `;
-
-  document.body.appendChild(overlay);
-
-  document.getElementById('cl-hide-unchanged').addEventListener('change', function(){
-    FILTER_UNCHANGED = this.checked;
-    applyHighlight();
-  });
-}
-
-function selectChangelogEntry(index){
-  const entry = CHANGELOG[index];
-  if(!entry) return;
-
-  // Toggle: if already selected, deselect
-  const el = document.querySelectorAll('.changelog-entry')[index];
-  if(el.classList.contains('selected')){
-    el.classList.remove('selected');
-    // Remove these IDs
-    entry.changedIds.forEach(id => CHANGED_IDS.delete(id));
-  } else {
-    el.classList.add('selected');
-    entry.changedIds.forEach(id => CHANGED_IDS.add(id));
+function initChangelogBar(){
+  if(!CHANGELOG.length){
+    document.getElementById('cl-info').textContent = 'No changelog data';
+    return;
   }
+  clNav(0); // show first entry without activating filter
+}
 
-  updateRangeLabel();
+function clNav(dir){
+  if(!CHANGELOG.length) return;
+  if(CL_INDEX === -1) CL_INDEX = 0;
+  else CL_INDEX = Math.max(0, Math.min(CL_INDEX + dir, CHANGELOG.length - 1));
+
+  const entry = CHANGELOG[CL_INDEX];
+  const info = document.getElementById('cl-info');
+  info.innerHTML = `<span class="cl-date">${entry.date}</span><span class="cl-commit">${entry.commit}</span><span class="cl-msg">${entry.message}</span>`;
+
+  // Update changed IDs to this entry
+  CHANGED_IDS = new Set(entry.changedIds);
+
+  const countEl = document.getElementById('cl-node-count');
+  countEl.textContent = entry.changedIds.length + ' node' + (entry.changedIds.length !== 1 ? 's' : '');
+
+  document.getElementById('changelog-bar').classList.add('active');
+
+  // Auto-enable hide unchanged on navigation
+  if(!FILTER_UNCHANGED){
+    FILTER_UNCHANGED = true;
+    document.getElementById('cl-hide-unchanged').checked = true;
+  }
   applyHighlight();
 }
 
-function selectRecentChanges(evt){
-  if(evt) evt.stopPropagation();
-  const threeDaysAgo = new Date();
-  threeDaysAgo.setDate(threeDaysAgo.getDate() - 3);
-  const cutoff = threeDaysAgo.toISOString().split('T')[0];
-
-  CHANGED_IDS.clear();
-  document.querySelectorAll('.changelog-entry').forEach((el, i) => {
-    const entry = CHANGELOG[i];
-    if(entry && entry.date >= cutoff){
-      el.classList.add('selected');
-      entry.changedIds.forEach(id => CHANGED_IDS.add(id));
-    } else {
-      el.classList.remove('selected');
-    }
-  });
-
-  // Auto-enable hide unchanged
-  FILTER_UNCHANGED = true;
-  const cb = document.getElementById('cl-hide-unchanged');
-  if(cb) cb.checked = true;
-
-  updateRangeLabel();
+function toggleHideUnchanged(checked){
+  FILTER_UNCHANGED = checked;
   applyHighlight();
-}
-
-function updateRangeLabel(){
-  const label = document.getElementById('cl-range-label');
-  if(label) label.textContent = CHANGED_IDS.size ? CHANGED_IDS.size + ' nodes highlighted' : 'Click an entry to highlight';
 }
 
 function clearHighlight(){
+  CL_INDEX = -1;
   CHANGED_IDS.clear();
   FILTER_UNCHANGED = false;
+  document.getElementById('cl-hide-unchanged').checked = false;
+  document.getElementById('changelog-bar').classList.remove('active');
+  document.getElementById('cl-info').innerHTML = `<span class="cl-msg" style="color:#555">${CHANGELOG.length} changes tracked &middot; use arrows to browse</span>`;
+  document.getElementById('cl-node-count').textContent = '';
   applyHighlight();
 }
 
@@ -1186,6 +1121,7 @@ Promise.all([
   CURRENT_DATA = data;
   buildNodeMap(data);
   initTree(data);
+  initChangelogBar();
   setupEditor(data, (newData, opts) => {
     CURRENT_DATA = newData;
     NODE_MAP = {};

@@ -23,7 +23,6 @@
     <button class="nav-btn" onclick="openMoms()">Moms</button>
     <button class="nav-btn" onclick="openMockups()">Mockups</button>
     <button class="nav-btn nav-btn-review" onclick="openReview()">Review</button>
-    <button class="nav-btn nav-btn-changelog" onclick="openChangelog()">Changelog</button>
   </div>
   <div class="legend">
     <div class="leg"><div class="leg-sw" style="background:#0F1710;border:1px solid #2A2A2A;border-top:2px solid #D4A574"></div><span style="color:#7FBF95">Validated</span> <span class="leg-color">green</span></div>
@@ -41,6 +40,19 @@
       <button class="depth-hdr-btn" onclick="setMaxDepth(MAX_DEPTH+1)">+</button>
     </div>
   </div>
+</div>
+
+<div id="changelog-bar">
+  <button class="cl-nav-btn" id="cl-prev" onclick="clNav(-1)" title="Previous change">&lsaquo;</button>
+  <span class="cl-info" id="cl-info">Loading changelog...</span>
+  <button class="cl-nav-btn" id="cl-next" onclick="clNav(1)" title="Next change">&rsaquo;</button>
+  <span class="cl-sep"></span>
+  <span class="cl-node-count" id="cl-node-count"></span>
+  <label class="cl-toggle">
+    <input type="checkbox" id="cl-hide-unchanged" onchange="toggleHideUnchanged(this.checked)">
+    <span>Hide unchanged</span>
+  </label>
+  <button class="cl-clear-btn" id="cl-clear" onclick="clearHighlight()" title="Clear filter">&times;</button>
 </div>
 
 <div id="canvas"><svg id="tree"><g id="G"></g></svg></div>
