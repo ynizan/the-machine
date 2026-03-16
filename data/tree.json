@@ -131,9 +131,9 @@
             },
             {
               "id": "mutual-ca",
-              "status": "active",
-              "label": "Job searchers are asking for many intros",
-              "test": "Interview: when and why do you look at mutual connections?",
+              "status": "review",
+              "label": "Job searchers are looking for 1st degree connections that will answer them so they submit them from the inside",
+              "test": "Interview: when you looked for a job have you looked for inside submissions",
               "type": "problem"
             },
             {
@@ -176,7 +176,7 @@
         {
           "id": "aes",
           "status": "eliminated",
-          "label": "AEs will pay out of pocket for personal network CRM — owned by the rep, not the company",
+          "label": "AEs in companies over 20 will pay out of pocket for personal network CRM — owned by the rep, not the company",
           "test": "AE validation interviews (simulation + real calls) + cold email signal",
           "children": [
             {
@@ -195,7 +195,7 @@
             }
           ],
           "type": "revenue",
-          "reason": "**Among those who gave a clear signal (N=20):** 7 personal-pay vs. 13 company/stack — **35% personal-pay rate.**\n\n"
+          "reason": "**Ratio:** Even at best case, 5/18 = **28% personal payers**. Conservative: 3/18 = **17%**.\n"
         },
         {
           "id": "csm",
@@ -208,7 +208,7 @@
           "id": "market-smallorg-nurture",
           "status": "validated",
           "type": "market",
-          "label": "Business leaders in small orgs (<20) are spending over 1h/week to manage relationships and need personal nurturing",
+          "label": "Among founders and individual business leaders at small organizations (non‑B2C / non‑PLG, non‑recruiters), do a clear majority spend over 1 hour per week on manual prospect research and mapping warm paths (primarily via LinkedIn and similar sources)?",
           "test": "Analysis of past calls",
           "children": [
             {
@@ -326,7 +326,7 @@
               ]
             }
           ],
-          "reason": "**VERDICT: SUPPORTED — with a meaningful dissenting minority**\n\n**OVER 1h/week (17 people):**\nRicky Bureau, Yoav Naveh, Mike Rosengarten, Eugene Malobrodsky, Nitzan Gindi, Santiago Cordoba, Zach Beegal, Liad Glikman, Eran Savir, Amos Halfon, Roee Adler, Anthony Simola, Adrian Domenech, Michael Giunta, Angela Mekosh, ענבל הראל (Anbel Harel), Adi Perry\n\n**UNDER 1h/week (8 people):**\nBenjamin Tannenbaum, Anthony Rey, Mat | renn, Ben Lerner, Lior Nachum, Ira Fridman, Marcelle Kaspi, Oren Harnevo\n",
+          "reason": "OVER 1h/week — 21 people\n(Includes Ben Mizrahi, Yoav Naveh, and Anthony, all counted as 1h+.)\n\nUNDER 1h/week — 2 people\n\nDOES NOT DO IT — 3 people\n\nPercentages (within well-defined ICP, clear answers only):\n\nOver 1h/week: \n21\n/\n26\n≈\n81\n%\n21/26≈81%\n\n\nUnder 1h/week: \n2\n/\n26\n≈\n8\n%\n2/26≈8%\n\n\nDoes not do it: \n3\n/\n26\n≈\n12\n%\n3/26≈12%\n​",
           "score": {
             "Freq": 0,
             "Intensity": 0,
@@ -388,8 +388,8 @@
             },
             {
               "id": "option-c",
-              "status": "review",
-              "label": "In calls - over 80% wanted the \"Ask brief\". 50% signed up.  ",
+              "status": "validated",
+              "label": "In calls where \"Ask brief\" was offered - over 80% wanted the \"Ask brief\". ",
               "test": "Mockup test: do people want to test Gordy sending them ideas for 2-3 introductions in every meeting",
               "children": [
                 {
@@ -425,10 +425,22 @@
                   "label": "Post-meeting Gordy follow-up on user generates 2 intros per month.",
                   "test": "Pending: automation not implemented",
                   "type": "viral_sending"
+                },
+                {
+                  "id": "new-1",
+                  "status": "active",
+                  "label": "Users will agree to ask the counterpart about a cool new way to do the intro using Gordy.",
+                  "type": "solution",
+                  "test": "Mockup test - show them the flow"
                 }
               ],
               "type": "viral_receiving",
-              "reason": "**VERDICT: STRONGLY SUPPORTED**\n\n---\n\n### NUMBERS\n\n**Total unique interviewees assessed:** ~92\n**Summary ratio:** ~84% expressed some interest (strong or mild); ~15% not interested."
+              "reason": "**VERDICT: STRONGLY SUPPORTED**\n17 intros made out of 20-25",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
             },
             {
               "id": "new-3",
