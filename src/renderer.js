@@ -457,13 +457,16 @@ function initTree(DATA, opts){
       const ty = l.target.x;
       const mx = (sx + tx) / 2;
 
+      const edgeDimmed = FILTER_UNCHANGED && CHANGED_IDS.size > 0 && !CHANGED_IDS.has(l.target.data.id);
+      const baseOpacity = st==='eliminated' ? 0.2 : st==='pending' ? 0.45 : 0.6;
+
       edgeG.append('path')
         .attr('d', `M${sx},${sy} C${mx},${sy} ${mx},${ty} ${tx},${ty}`)
         .attr('fill','none')
         .attr('stroke', (st==='pending'||st==='eliminated'||st==='backlog') ? '#D4A574' : '#FFFFFF')
         .attr('stroke-width', EDGE_WIDTHS[l.target.depth] || 0.5)
         .attr('stroke-dasharray', dash)
-        .attr('opacity', st==='eliminated' ? 0.2 : st==='pending' ? 0.45 : 0.6);
+        .attr('opacity', edgeDimmed ? baseOpacity * 0.15 : baseOpacity);
 
       const test = l.target.data.test;
       if(!test) return;
@@ -548,9 +551,13 @@ function initTree(DATA, opts){
       const yp = d.x - h / 2;
       const rx = Math.max(4, 12 - d.depth * 2);
 
+      // Dim unchanged nodes when filter is active
+      const isDimmed = FILTER_UNCHANGED && CHANGED_IDS.size > 0 && !CHANGED_IDS.has(d.data.id);
+
       let _clickTimer = null;
       const grp = nodeG.append('g')
         .attr('transform', `translate(${xp},${yp})`)
+        .attr('opacity', isDimmed ? 0.12 : 1)
         .style('cursor','pointer')
         .on('click', () => {
           if(_clickTimer) clearTimeout(_clickTimer);
@@ -1039,20 +1046,111 @@ function openReview(){
   openNavList('Review', items);
 }
 
+// --- Changelog bar (inline, non-blocking) ---
+let CHANGELOG = [];
+let CL_INDEX = -1;             // current changelog entry index (-1 = none)
+let CHANGED_IDS = new Set();   // currently highlighted changed node IDs
+let FILTER_UNCHANGED = false;  // whether to dim unchanged nodes
+let CL_BAR_OPEN = false;
+
+function loadChangelog(){
+  return fetch('data/changelog.json')
+    .then(r => r.ok ? r.json() : [])
+    .then(data => { CHANGELOG = data; })
+    .catch(() => { CHANGELOG = []; });
+}
+
+function initChangelogBar(){
+  if(!CHANGELOG.length){
+    document.getElementById('cl-info').textContent = 'No changelog data';
+    return;
+  }
+  document.getElementById('cl-info').innerHTML =
+    `<span class="cl-msg" style="color:#555">${CHANGELOG.length} changes tracked</span>`;
+}
+
+function toggleChangelogBar(){
+  CL_BAR_OPEN = !CL_BAR_OPEN;
+  const bar = document.getElementById('changelog-bar');
+  const btn = document.getElementById('cl-toggle-btn');
+  const canvas = document.getElementById('canvas');
+  const editor = document.getElementById('editor-panel');
+
+  bar.classList.toggle('collapsed', !CL_BAR_OPEN);
+  btn.classList.toggle('active', CL_BAR_OPEN);
+  canvas.classList.toggle('with-changelog', CL_BAR_OPEN);
+  if(editor) editor.style.top = CL_BAR_OPEN ? '88px' : '56px';
+
+  if(!CL_BAR_OPEN){
+    // Closing: clear filter state
+    clearHighlight();
+  }
+}
+
+function clNav(dir){
+  if(!CHANGELOG.length) return;
+  if(CL_INDEX === -1) CL_INDEX = dir > 0 ? 0 : 0;
+  else CL_INDEX = Math.max(0, Math.min(CL_INDEX + dir, CHANGELOG.length - 1));
+
+  const entry = CHANGELOG[CL_INDEX];
+  const info = document.getElementById('cl-info');
+  const pos = `${CL_INDEX + 1}/${CHANGELOG.length}`;
+  info.innerHTML = `<span class="cl-date">${entry.date}</span><span class="cl-commit">${entry.commit}</span><span class="cl-msg">${entry.message}</span>`;
+
+  // Update changed IDs to this entry
+  CHANGED_IDS = new Set(entry.changedIds);
+
+  const countEl = document.getElementById('cl-node-count');
+  countEl.textContent = entry.changedIds.length + ' node' + (entry.changedIds.length !== 1 ? 's' : '') + ` (${pos})`;
+
+  document.getElementById('changelog-bar').classList.add('active');
+
+  // Auto-enable hide unchanged on first navigation
+  if(!FILTER_UNCHANGED){
+    FILTER_UNCHANGED = true;
+    document.getElementById('cl-hide-unchanged').checked = true;
+  }
+  applyHighlight();
+}
+
+function toggleHideUnchanged(checked){
+  FILTER_UNCHANGED = checked;
+  applyHighlight();
+}
+
+function clearHighlight(){
+  CL_INDEX = -1;
+  CHANGED_IDS.clear();
+  FILTER_UNCHANGED = false;
+  document.getElementById('cl-hide-unchanged').checked = false;
+  document.getElementById('changelog-bar').classList.remove('active');
+  document.getElementById('cl-info').innerHTML =
+    `<span class="cl-msg" style="color:#555">${CHANGELOG.length} changes tracked</span>`;
+  document.getElementById('cl-node-count').textContent = '';
+  applyHighlight();
+}
+
+function applyHighlight(){
+  if(!CURRENT_DATA || !RENDER_FN) return;
+  RENDER_FN(CURRENT_DATA, { skipResetView: true });
+}
+
 // Fetch data and boot
-fetch('data/tree.json')
-  .then(r => r.json())
-  .then(data => {
-    CURRENT_DATA = data;
-    buildNodeMap(data);
-    initTree(data);
-    setupEditor(data, (newData, opts) => {
-      CURRENT_DATA = newData;
-      NODE_MAP = {};
-      buildNodeMap(newData);
-      // Save collapse state before re-render
-      const collapsedIds = CURRENT_ROOT ? getCollapsedIds(CURRENT_ROOT) : undefined;
-      document.getElementById('G').innerHTML = '';
-      initTree(newData, { ...opts, collapsedIds });
-    });
+Promise.all([
+  fetch('data/tree.json').then(r => r.json()),
+  loadChangelog()
+]).then(([data]) => {
+  CURRENT_DATA = data;
+  buildNodeMap(data);
+  initTree(data);
+  initChangelogBar();
+  setupEditor(data, (newData, opts) => {
+    CURRENT_DATA = newData;
+    NODE_MAP = {};
+    buildNodeMap(newData);
+    // Save collapse state before re-render
+    const collapsedIds = CURRENT_ROOT ? getCollapsedIds(CURRENT_ROOT) : undefined;
+    document.getElementById('G').innerHTML = '';
+    initTree(newData, { ...opts, collapsedIds });
   });
+});

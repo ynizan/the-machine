@@ -1,0 +1,3720 @@
+[
+  {
+    "date": "2026-03-16",
+    "commit": "61c59b4",
+    "message": "Update tree.json: option-c to review with verdict, add market-smallorg-pokemon-cold reason",
+    "changedIds": [
+      "option-c",
+      "market-smallorg-pokemon-cold"
+    ],
+    "changes": [
+      {
+        "id": "option-c",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "review"
+          },
+          {
+            "field": "reason",
+            "to": "**VERDICT: STRONGLY SUPPORTED**\n\n---\n\n### NUMBERS\n\n**Total unique interviewees assessed:** ~92\n**Summary ratio:** ~84% expressed some interest (strong or mild); ~15% not interested."
+          }
+        ]
+      },
+      {
+        "id": "market-smallorg-pokemon-cold",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "reason",
+            "to": "**The hypothesis holds for a clear majority (17/32 who gave classifiable answers = 53%) but with important non-trivial minority who don't (15/32 = 47%).** The group that *does not* do it is real and meaningful."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-03-15",
+    "commit": "08d572d",
+    "message": "Validate market-smallorg-nurture and market-smallorg-viral nodes",
+    "changedIds": [
+      "market-smallorg-nurture",
+      "market-smallorg-viral"
+    ],
+    "changes": [
+      {
+        "id": "market-smallorg-nurture",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "review",
+            "to": "validated"
+          },
+          {
+            "field": "reason",
+            "to": "**VERDICT: SUPPORTED — with a meaningful dissenting minority**\n\n**OVER 1h/week (17 people):**\nRicky Bureau, Yoav Naveh, Mike Rosengarten, Eugene Malobrodsky, Nitzan Gindi, Santiago Cordoba, Zach Beegal, Liad Glikman, Eran Savir, Amos Halfon, Roee Adler, Anthony Simola, Adrian Domenech, Michael Giunta, Angela Mekosh, ענבל הראל (Anbel Harel), Adi Perry\n\n**UNDER 1h/week (8 people):**\nBenjamin Tannenbaum, Anthony Rey, Mat | renn, Ben Lerner, Lior Nachum, Ira Fridman, Marcelle Kaspi, Oren Harnevo\n"
+          },
+          {
+            "field": "score",
+            "to": {
+              "Freq": 0,
+              "Intensity": 0,
+              "Fit": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "market-smallorg-viral",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "review",
+            "to": "validated"
+          },
+          {
+            "field": "reason",
+            "to": "## VERDICT: SUPPORTED\n## NUMBERS\n\n**Total interviewees  55\n\n\n### Weekly or more — 16\nOr Biderman, Alon Shrier, Itay Hakuki (first interview), Yoav Naveh (~20 people, borderline), Meitar Tobal, Inbal Levy Horesh, Andres Prilloltensky, Oren Harnevo, Roee Adler, Liat Lachish Levy, Nate Levine, Moti Friedman, Angela Mekosh, Michael Giunta, Adi Perry, Enabel Harel\n\n### Monthly — 3\nBoaz Katz, Adrian Domenech, Rami Rozen\n\n### Quarterly or less — 11\nMatan Talmi, Mat | renn, Eran Savir, Di Wang, Yoav Vilner (current), Lior Livak, Guy Israeli, Chris Pfluger, Kyle Crabtree, Anthony Simola, Itay Hakuki (second interview — conflicts with first)\n\n### Never — 6\nBenjamin Tannenbaum, Anthony Rey, Justin \n(Yess), Ben Mizrachi, Lior Nachum, Marcelle Kaspi"
+          },
+          {
+            "field": "score",
+            "to": {
+              "Freq": 0,
+              "Intensity": 0,
+              "Fit": 0
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-03-15",
+    "commit": "b6b4ddd",
+    "message": "Update tree.json and add backlog status with pale purple color",
+    "changedIds": [
+      "aes",
+      "csm"
+    ],
+    "changes": [
+      {
+        "id": "aes",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "review",
+            "to": "eliminated"
+          },
+          {
+            "field": "reason",
+            "to": "**Among those who gave a clear signal (N=20):** 7 personal-pay vs. 13 company/stack — **35% personal-pay rate.**\n\n"
+          }
+        ]
+      },
+      {
+        "id": "csm",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "review",
+            "to": "backlog"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-03-15",
+    "commit": "1e2d37a",
+    "message": "Update tree.json: revise obs-b label, update acq-outbound/viral node details",
+    "changedIds": [
+      "obs-b",
+      "acq-outbound",
+      "acq-gordy-viral-tip",
+      "acq-gordy-viral-nudge"
+    ],
+    "changes": [
+      {
+        "id": "obs-b",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "HubSpot / newsletter approach to nurturing is dying",
+            "to": "Newsletter approach to nurturing is dying"
+          }
+        ]
+      },
+      {
+        "id": "acq-outbound",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Over 2% response rate to cold outbound describing the nudge value prop",
+            "to": "Over 50% yes rate and 2% response rate to cold outbound offering to receive such tips"
+          },
+          {
+            "field": "type",
+            "from": "acquisition"
+          }
+        ]
+      },
+      {
+        "id": "acq-gordy-viral-tip",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "10% of recipients who received a tip email from Gordy want to get this service",
+            "to": "10% of recipients who received a tip email from Gordy want to get this service "
+          },
+          {
+            "field": "test",
+            "from": "Gordy sends contacts a tip about news of a contact they have, measure sign-up intent",
+            "to": "Gordy nudges users (Yaniv and Matan) to tip contact Y about news of a contact Z"
+          }
+        ]
+      },
+      {
+        "id": "acq-gordy-viral-nudge",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "type",
+            "from": "viral_receiving",
+            "to": "solution"
+          },
+          {
+            "field": "test",
+            "from": "Gordy sends user X a nudge to tip contact Y about news of contact Z, measure sign-up intent",
+            "to": "Gordy nudges user X to tip contact Y about news of contact Z, measure sign-up intent"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-03-15",
+    "commit": "0cc7b66",
+    "message": "Reclassify hypothesis types: mutual-ca-dup-1 and mutual-cb to problem, nudge-action and acq-interview to solution, acq-outbound to acquisition",
+    "changedIds": [
+      "mutual-ca-dup-1",
+      "mutual-cb",
+      "nudge-action",
+      "acq-interview",
+      "acq-outbound"
+    ],
+    "changes": [
+      {
+        "id": "mutual-ca-dup-1",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "type",
+            "from": "hypothesis",
+            "to": "problem"
+          }
+        ]
+      },
+      {
+        "id": "mutual-cb",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "type",
+            "from": "hypothesis",
+            "to": "problem"
+          }
+        ]
+      },
+      {
+        "id": "nudge-action",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "type",
+            "from": "hypothesis",
+            "to": "solution"
+          }
+        ]
+      },
+      {
+        "id": "acq-interview",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "type",
+            "from": "hypothesis",
+            "to": "solution"
+          }
+        ]
+      },
+      {
+        "id": "acq-outbound",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "type",
+            "from": "hypothesis",
+            "to": "acquisition"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-03-15",
+    "commit": "4724a46",
+    "message": "Change circles-exist type from problem to opportunity",
+    "changedIds": [
+      "circles-exist"
+    ],
+    "changes": [
+      {
+        "id": "circles-exist",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "type",
+            "from": "problem",
+            "to": "opportunity"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-03-15",
+    "commit": "82a6b43",
+    "message": "Add 5 hypothesis nodes under circles-exist in top-of-mind subtree",
+    "changedIds": [
+      "nudge-action",
+      "acq-interview",
+      "acq-outbound",
+      "acq-gordy-viral-tip",
+      "acq-gordy-viral-nudge"
+    ],
+    "changes": [
+      {
+        "id": "nudge-action",
+        "action": "added"
+      },
+      {
+        "id": "acq-interview",
+        "action": "added"
+      },
+      {
+        "id": "acq-outbound",
+        "action": "added"
+      },
+      {
+        "id": "acq-gordy-viral-tip",
+        "action": "added"
+      },
+      {
+        "id": "acq-gordy-viral-nudge",
+        "action": "added"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-15",
+    "commit": "bb1d934",
+    "message": "Change circles-exist status to pending",
+    "changedIds": [
+      "circles-exist"
+    ],
+    "changes": [
+      {
+        "id": "circles-exist",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "pending"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-03-15",
+    "commit": "3dddf02",
+    "message": "Add 'circles-exist' hypothesis node under top-of-mind",
+    "changedIds": [
+      "circles-exist"
+    ],
+    "changes": [
+      {
+        "id": "circles-exist",
+        "action": "added"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-12",
+    "commit": "f5bb57d",
+    "message": "Update namedrop and gordy-asks nodes to validated with experiment results",
+    "changedIds": [
+      "namedrop",
+      "namedrop-dup-1",
+      "gordy-asks"
+    ],
+    "changes": [
+      {
+        "id": "namedrop",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "review",
+            "to": "validated"
+          },
+          {
+            "field": "label",
+            "from": "Name drop works with founders and VCs — strong positive signal confirmed",
+            "to": "Requesting a name drop using Gordy algo produced high reply rate (25% for investors, 29% for founders) and confirmation rate (25% for investors, 29% for founders) "
+          },
+          {
+            "field": "test",
+            "from": "Live Gordy outreach to founders, VCs",
+            "to": "Predicting who will they know and reaching out to them asking for a name drop"
+          },
+          {
+            "field": "reason",
+            "to": "Investors: 50 > 12 > 3\nFounders: 58 > 17 > 5"
+          },
+          {
+            "field": "score",
+            "to": {
+              "Freq": 0,
+              "Intensity": 0,
+              "Fit": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "namedrop-dup-1",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "review",
+            "to": "validated"
+          },
+          {
+            "field": "label",
+            "from": "Name drop works with AEs and BD ",
+            "to": "Requesting a name drop using Gordy algo produced high reply rate (38% for AEs, 35% for BD) and confirmation rate (69% for AEs, 47% for BD) "
+          },
+          {
+            "field": "test",
+            "from": "Live Gordy outreach to AEs and BD",
+            "to": "Predicting who will they know and reaching out to them asking for a name drop"
+          },
+          {
+            "field": "reason",
+            "to": "AE/Sales: 67 > 26 > 18\nBD: 64 > 23 > 11"
+          },
+          {
+            "field": "score",
+            "to": {
+              "Freq": 0,
+              "Intensity": 0,
+              "Fit": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "gordy-asks",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "review",
+            "to": "validated"
+          },
+          {
+            "field": "label",
+            "from": "Prospects respond to Gordy outbound offering intros > 2x better than other cold outreach",
+            "to": "Prospects respond to Gordy outbound offering intros. 5% human response and 3.23% said yes"
+          },
+          {
+            "field": "type",
+            "to": "viral_receiving"
+          },
+          {
+            "field": "reason",
+            "to": "Sent: 279 \nHuman response: 14\nSaid yes: 9"
+          },
+          {
+            "field": "score",
+            "to": {
+              "Freq": 0,
+              "Intensity": 0,
+              "Fit": 0
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "commit": "eb9546a",
+    "message": "Update hypothesis tree: validate obs-b and obs-d with research findings",
+    "changedIds": [
+      "obs-b",
+      "obs-d"
+    ],
+    "changes": [
+      {
+        "id": "obs-b",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "validated"
+          },
+          {
+            "field": "label",
+            "from": "HubSpot / newsletter approach to nurturing is broken",
+            "to": "HubSpot / newsletter approach to nurturing is dying"
+          },
+          {
+            "field": "test",
+            "from": "test",
+            "to": "Online research"
+          },
+          {
+            "field": "reason",
+            "to": "1. Unsubscribe rates up 50-150% since Gmail's July 2025 rollout (MarTech/Salesforce — newsletter-specific, very recent)\n2. MailChimp's average inbox rate decreased from 51.93% to 32.30%\n3. Gmail's Promotions tab filtering doubled — emails that used to split 50/50 between Primary and Promotions now land 75/25 in Promotions since Q3 2024."
+          },
+          {
+            "field": "score",
+            "to": {
+              "Freq": 0,
+              "Intensity": 0,
+              "Fit": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "obs-d",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Knowing something specific about a target meaningfully improves cold outreach conversion rates as long as not creepy",
+            "to": "Personalizing cold outreach to the recipient's specific situation increases response rates by roughly a third."
+          },
+          {
+            "field": "reason",
+            "to": "Backlinko's large-scale email outreach study found a 32.7% higher response rate for emails with customized message body content vs. generic templates"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "commit": "15afbbd",
+    "message": "Update tree.json: revise founders node, demote nurturing sub-hypotheses to pending",
+    "changedIds": [
+      "15",
+      "founders",
+      "vcs",
+      "pokemon-intros",
+      "pokemon-mine-rare",
+      "pokemon-share",
+      "14b"
+    ],
+    "changes": [
+      {
+        "id": "15",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "pending"
+          }
+        ]
+      },
+      {
+        "id": "founders",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Founders in small companies that are wearing the sales hat are losing deals because of poor nurturing",
+            "to": "Founders in small companies wearing the sales hat feel that they are losing deals because of poor nurturing"
+          },
+          {
+            "field": "test",
+            "from": "Behavioual: founder interviews",
+            "to": "Mom test: founder interviews, do they feel that?"
+          },
+          {
+            "field": "score",
+            "from": {
+              "Freq": 2,
+              "Intensity": 3,
+              "Fit": 2,
+              "WTP": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "vcs",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "pending"
+          },
+          {
+            "field": "type",
+            "to": "problem"
+          }
+        ]
+      },
+      {
+        "id": "pokemon-intros",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "pending"
+          },
+          {
+            "field": "type",
+            "to": "problem"
+          }
+        ]
+      },
+      {
+        "id": "pokemon-mine-rare",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "pending"
+          }
+        ]
+      },
+      {
+        "id": "pokemon-share",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "pending"
+          },
+          {
+            "field": "type",
+            "from": "hypothesis",
+            "to": "viral_sending"
+          }
+        ]
+      },
+      {
+        "id": "14b",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "pending"
+          },
+          {
+            "field": "test",
+            "from": "Mom test: do they actually search for it",
+            "to": "Mom test: do they actually search for it? set alerts? Follow companies?"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "commit": "8c32740",
+    "message": "Update market-smallorg-nurture: status to review, refine label",
+    "changedIds": [
+      "market-smallorg-nurture"
+    ],
+    "changes": [
+      {
+        "id": "market-smallorg-nurture",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "review"
+          },
+          {
+            "field": "label",
+            "from": "Business leaders in small orgs (<20) are more likely to manage relationships and need personal nurturing",
+            "to": "Business leaders in small orgs (<20) are spending over 1h/week to manage relationships and need personal nurturing"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "commit": "eb04d3a",
+    "message": "Merge main: resolve conflicts keeping review status, dropping tags",
+    "changedIds": [
+      "mutual-lkg",
+      "option-b",
+      "option-b-smallorg",
+      "b-waterfall",
+      "b-filter",
+      "b-rank",
+      "mutual-ca-dup-1",
+      "mutual-cb",
+      "aes",
+      "csm",
+      "vcs",
+      "a-giver-dup-4",
+      "option-c",
+      "gordy-brief",
+      "counterpart",
+      "counterpart-dup-1",
+      "gordy-loop",
+      "gordy-loop-dup-4",
+      "namedrop",
+      "namedrop-dup-1"
+    ],
+    "changes": [
+      {
+        "id": "mutual-lkg",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "type",
+            "to": "problem"
+          },
+          {
+            "field": "tags",
+            "from": [
+              "problem",
+              "linkedin"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "option-b",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "type",
+            "to": "solution"
+          },
+          {
+            "field": "reason",
+            "from": "Frequency too low — ~2× per Q. Not a recurring daily pain.",
+            "to": "Frequency too low — ~2x per Q. Not a recurring daily pain."
+          },
+          {
+            "field": "tags",
+            "from": [
+              "solution",
+              "low-freq"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "option-b-smallorg",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "type",
+            "to": "solution"
+          },
+          {
+            "field": "tags",
+            "from": [
+              "solution"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b-waterfall",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "from": [
+              "feature"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b-filter",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "from": [
+              "feature"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b-rank",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "from": [
+              "feature"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "mutual-ca-dup-1",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "type",
+            "to": "hypothesis"
+          },
+          {
+            "field": "tags",
+            "from": [
+              "hypothesis"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "mutual-cb",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "type",
+            "to": "hypothesis"
+          },
+          {
+            "field": "tags",
+            "from": [
+              "hypothesis"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "aes",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "from": [
+              "persona",
+              "wtp"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "csm",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "from": [
+              "persona"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "vcs",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "from": [
+              "persona",
+              "validated"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "a-giver-dup-4",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "from": [
+              "feature",
+              "value"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "option-c",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "from": [
+              "solution",
+              "virality",
+              "gordy"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "gordy-brief",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "from": [
+              "feature",
+              "value"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "counterpart",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "from": [
+              "virality",
+              "mvt"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "counterpart-dup-1",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "from": [
+              "virality",
+              "mvt"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "gordy-loop",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "from": [
+              "virality"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "gordy-loop-dup-4",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "from": [
+              "virality"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "namedrop",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "from": [
+              "distribution",
+              "gordy"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "namedrop-dup-1",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "from": [
+              "distribution",
+              "gordy"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "commit": "f76a8ae",
+    "message": "Update tree: reactivate AEs node, update CSM status and tests",
+    "changedIds": [
+      "mutual-lkg",
+      "option-b",
+      "option-b-smallorg",
+      "b-waterfall",
+      "b-filter",
+      "b-rank",
+      "mutual-ca-dup-1",
+      "mutual-cb",
+      "aes",
+      "ae-network-ownership",
+      "ae-attribution",
+      "csm",
+      "vcs",
+      "a-giver-dup-4",
+      "option-c",
+      "gordy-brief",
+      "counterpart",
+      "counterpart-dup-1",
+      "gordy-loop",
+      "gordy-loop-dup-4",
+      "namedrop",
+      "namedrop-dup-1"
+    ],
+    "changes": [
+      {
+        "id": "mutual-lkg",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "to": [
+              "problem",
+              "linkedin"
+            ]
+          },
+          {
+            "field": "type",
+            "from": "problem"
+          }
+        ]
+      },
+      {
+        "id": "option-b",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "to": [
+              "solution",
+              "low-freq"
+            ]
+          },
+          {
+            "field": "reason",
+            "from": "Frequency too low — ~2x per Q. Not a recurring daily pain.",
+            "to": "Frequency too low — ~2× per Q. Not a recurring daily pain."
+          },
+          {
+            "field": "type",
+            "from": "solution"
+          }
+        ]
+      },
+      {
+        "id": "option-b-smallorg",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "to": [
+              "solution"
+            ]
+          },
+          {
+            "field": "type",
+            "from": "solution"
+          }
+        ]
+      },
+      {
+        "id": "b-waterfall",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "to": [
+              "feature"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b-filter",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "to": [
+              "feature"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b-rank",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "to": [
+              "feature"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "mutual-ca-dup-1",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "to": [
+              "hypothesis"
+            ]
+          },
+          {
+            "field": "type",
+            "from": "hypothesis"
+          }
+        ]
+      },
+      {
+        "id": "mutual-cb",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "to": [
+              "hypothesis"
+            ]
+          },
+          {
+            "field": "type",
+            "from": "hypothesis"
+          }
+        ]
+      },
+      {
+        "id": "aes",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "eliminated",
+            "to": "review"
+          },
+          {
+            "field": "tags",
+            "to": [
+              "persona",
+              "wtp"
+            ]
+          },
+          {
+            "field": "type",
+            "to": "revenue"
+          }
+        ]
+      },
+      {
+        "id": "ae-network-ownership",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "test",
+            "from": "Pending: parent node (aes) is eliminated due to WTP blocker. Validate willingness to pay first.",
+            "to": "Mom test: do they keep personal notes in other places? Have they tried to export upon leaving?"
+          }
+        ]
+      },
+      {
+        "id": "ae-attribution",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "test",
+            "from": "Pending: parent node (aes) is eliminated due to WTP blocker. Validate willingness to pay first.",
+            "to": "Mome test: have they presented such behaviors"
+          }
+        ]
+      },
+      {
+        "id": "csm",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "review"
+          },
+          {
+            "field": "tags",
+            "to": [
+              "persona"
+            ]
+          },
+          {
+            "field": "test",
+            "from": "Cold email signal — real call interviews pending",
+            "to": "Mom test - have they tried to get such information? Have they kept records"
+          },
+          {
+            "field": "type",
+            "to": "problem"
+          }
+        ]
+      },
+      {
+        "id": "vcs",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "to": [
+              "persona",
+              "validated"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "a-giver-dup-4",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "to": [
+              "feature",
+              "value"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "option-c",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "to": [
+              "solution",
+              "virality",
+              "gordy"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "gordy-brief",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "to": [
+              "feature",
+              "value"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "counterpart",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "to": [
+              "virality",
+              "mvt"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "counterpart-dup-1",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "to": [
+              "virality",
+              "mvt"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "gordy-loop",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "to": [
+              "virality"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "gordy-loop-dup-4",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "to": [
+              "virality"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "namedrop",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "to": [
+              "distribution",
+              "gordy"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "namedrop-dup-1",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "to": [
+              "distribution",
+              "gordy"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "commit": "5f2ade4",
+    "message": "Remove tags from JSON, show type badges on cards, add Moms/Mockups/Review nav buttons",
+    "changedIds": [
+      "mutual-lkg",
+      "option-b",
+      "option-b-smallorg",
+      "b-waterfall",
+      "b-filter",
+      "b-rank",
+      "mutual-ca-dup-1",
+      "mutual-cb",
+      "aes",
+      "csm",
+      "vcs",
+      "a-giver-dup-4",
+      "option-c",
+      "gordy-brief",
+      "counterpart",
+      "counterpart-dup-1",
+      "gordy-loop",
+      "gordy-loop-dup-4",
+      "namedrop",
+      "namedrop-dup-1"
+    ],
+    "changes": [
+      {
+        "id": "mutual-lkg",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "type",
+            "to": "problem"
+          },
+          {
+            "field": "tags",
+            "from": [
+              "problem",
+              "linkedin"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "option-b",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "type",
+            "to": "solution"
+          },
+          {
+            "field": "reason",
+            "from": "Frequency too low — ~2× per Q. Not a recurring daily pain.",
+            "to": "Frequency too low — ~2x per Q. Not a recurring daily pain."
+          },
+          {
+            "field": "tags",
+            "from": [
+              "solution",
+              "low-freq"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "option-b-smallorg",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "type",
+            "to": "solution"
+          },
+          {
+            "field": "tags",
+            "from": [
+              "solution"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b-waterfall",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "from": [
+              "feature"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b-filter",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "from": [
+              "feature"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b-rank",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "from": [
+              "feature"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "mutual-ca-dup-1",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "type",
+            "to": "hypothesis"
+          },
+          {
+            "field": "tags",
+            "from": [
+              "hypothesis"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "mutual-cb",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "type",
+            "to": "hypothesis"
+          },
+          {
+            "field": "tags",
+            "from": [
+              "hypothesis"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "aes",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "from": [
+              "persona",
+              "wtp"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "csm",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "from": [
+              "persona"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "vcs",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "from": [
+              "persona",
+              "validated"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "a-giver-dup-4",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "from": [
+              "feature",
+              "value"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "option-c",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "from": [
+              "solution",
+              "virality",
+              "gordy"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "gordy-brief",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "from": [
+              "feature",
+              "value"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "counterpart",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "from": [
+              "virality",
+              "mvt"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "counterpart-dup-1",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "from": [
+              "virality",
+              "mvt"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "gordy-loop",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "from": [
+              "virality"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "gordy-loop-dup-4",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "from": [
+              "virality"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "namedrop",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "from": [
+              "distribution",
+              "gordy"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "namedrop-dup-1",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "from": [
+              "distribution",
+              "gordy"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "commit": "628befb",
+    "message": "Update hypothesis tree with revised statuses, labels, and structure",
+    "changedIds": [
+      "new-3",
+      "market-smallorg-viral",
+      "option-a-dup-2",
+      "a-asker-dup-3",
+      "a-giver-dup-4",
+      "option-c",
+      "counterpart",
+      "counterpart-dup-1",
+      "gordy-loop",
+      "gordy-loop-dup-4",
+      "namedrop",
+      "namedrop-dup-1",
+      "gordy-asks",
+      "obs-d",
+      "market-smallorg-pokemon-cold",
+      "pokemon-cold-mine-common",
+      "pokemon-get-buy",
+      "obs-f",
+      "nd-founders",
+      "nd-aes"
+    ],
+    "changes": [
+      {
+        "id": "new-3",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "pending",
+            "to": "eliminated"
+          },
+          {
+            "field": "label",
+            "from": "Users with chrome extension will send their friends the extension to discover friends network as well",
+            "to": "Behavioral: do people practice the idea of asking for 2-3 introductions in every meeting"
+          },
+          {
+            "field": "type",
+            "from": "viral_sending",
+            "to": "problem"
+          },
+          {
+            "field": "test",
+            "from": "Mockup test: are they willing to come up with names? intro us?",
+            "to": "Mom test - ask them past behaviour"
+          },
+          {
+            "field": "reason",
+            "to": "Only 3 people said they do it out of at least 10"
+          }
+        ]
+      },
+      {
+        "id": "market-smallorg-viral",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "review"
+          },
+          {
+            "field": "label",
+            "from": "Business leaders in small orgs (<20) are more likely to ask intros",
+            "to": "Exists a defined group in business leaders in small orgs (<20) requesting intros at least on a weekly basis"
+          },
+          {
+            "field": "test",
+            "from": "Analysis on past callsd",
+            "to": "Analysis on past calls"
+          }
+        ]
+      },
+      {
+        "id": "option-a-dup-2",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "eliminated"
+          },
+          {
+            "field": "reason",
+            "to": "We couldn't find anyone doing it more than once per quarter"
+          }
+        ]
+      },
+      {
+        "id": "a-asker-dup-3",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "pending"
+          }
+        ]
+      },
+      {
+        "id": "a-giver-dup-4",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "pending"
+          }
+        ]
+      },
+      {
+        "id": "option-c",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Option C: Meeting Intro Engine — pre-meeting briefs create two-sided value; counterpart email is the viral moment of conversion",
+            "to": "In calls - over 80% wanted the \"Ask brief\". 50% signed up.  "
+          },
+          {
+            "field": "test",
+            "from": "Behavioral: do people practice the idea of asking for 2-3 introductions in every meeting",
+            "to": "Mockup test: do people want to test Gordy sending them ideas for 2-3 introductions in every meeting"
+          },
+          {
+            "field": "type",
+            "to": "viral_receiving"
+          }
+        ]
+      },
+      {
+        "id": "counterpart",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Counterpart email creates desire in someone who's never heard of InTouch — before they have a product to land on",
+            "to": "Counterpart email gets over 30% click rate and 60% notice rate."
+          },
+          {
+            "field": "type",
+            "to": "viral_receiving"
+          }
+        ]
+      },
+      {
+        "id": "counterpart-dup-1",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "pending"
+          },
+          {
+            "field": "type",
+            "to": "viral_sending"
+          }
+        ]
+      },
+      {
+        "id": "gordy-loop",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Post-meeting Gordy follow-up converts successful meetings into new warm user acquisition",
+            "to": "Post-meeting Gordy follow-up on counterpart gets 10% response rate."
+          },
+          {
+            "field": "test",
+            "from": "Pending: define loop after counterpart email signal confirmed",
+            "to": "Monitor response rates"
+          },
+          {
+            "field": "type",
+            "to": "viral_receiving"
+          }
+        ]
+      },
+      {
+        "id": "gordy-loop-dup-4",
+        "action": "added"
+      },
+      {
+        "id": "namedrop",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "review"
+          },
+          {
+            "field": "label",
+            "from": "Name drop test: \"Gordy mentioned you know X — may I mention you when I reach out?\" creates warm outreach at scale",
+            "to": "Name drop works with founders and VCs — strong positive signal confirmed"
+          },
+          {
+            "field": "test",
+            "from": "Live Gordy outreach to founders, VCs, AEs — tracking Yes/No + follow-up calls",
+            "to": "Live Gordy outreach to founders, VCs"
+          },
+          {
+            "field": "type",
+            "to": "viral_receiving"
+          }
+        ]
+      },
+      {
+        "id": "namedrop-dup-1",
+        "action": "added"
+      },
+      {
+        "id": "gordy-asks",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "review"
+          },
+          {
+            "field": "label",
+            "from": "Prospects respond to Gordy outbound offering intros",
+            "to": "Prospects respond to Gordy outbound offering intros > 2x better than other cold outreach"
+          },
+          {
+            "field": "type",
+            "from": "hypothesis"
+          }
+        ]
+      },
+      {
+        "id": "obs-d",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "validated"
+          },
+          {
+            "field": "label",
+            "from": "Knowing something personal about a target meaningfully improves cold outreach conversion rates",
+            "to": "Knowing something specific about a target meaningfully improves cold outreach conversion rates as long as not creepy"
+          },
+          {
+            "field": "test",
+            "from": "A/B test: compare cold outreach with pokemon-sourced personal intel vs generic outreach — does conversion rate differ significantly?",
+            "to": "Online research"
+          },
+          {
+            "field": "score",
+            "to": {
+              "Freq": 0,
+              "Intensity": 0,
+              "Fit": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "market-smallorg-pokemon-cold",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "review"
+          },
+          {
+            "field": "label",
+            "from": "Business leaders in small orgs (<20) are more likely to research data manually",
+            "to": "Exists a well defined group in business leaders in small orgs (<20) are researching prospect data manually - at least 1 hour / week total"
+          },
+          {
+            "field": "test",
+            "from": "Analysis of past calls",
+            "to": "Analysis of past calls\ndo people research targets before cold outreach? How long does it take? "
+          }
+        ]
+      },
+      {
+        "id": "pokemon-cold-mine-common",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "test",
+            "from": "Mom test: do people research targets before cold outreach? How long does it take? Have they tried to automate it? Would they pay to get it instantly?",
+            "to": "Mom test: are people frustrated with the amount of time it takes them? Are they looking for solutions? Tried to automate? Willing to pay?"
+          }
+        ]
+      },
+      {
+        "id": "pokemon-get-buy",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "pending"
+          },
+          {
+            "field": "type",
+            "from": "hypothesis",
+            "to": "viral_receiving"
+          }
+        ]
+      },
+      {
+        "id": "obs-f",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Users want to avoid data entry",
+            "to": "Users want to avoid ongoing data entry"
+          },
+          {
+            "field": "score",
+            "to": {
+              "Freq": 0,
+              "Intensity": 0,
+              "Fit": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "nd-founders",
+        "action": "removed"
+      },
+      {
+        "id": "nd-aes",
+        "action": "removed"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "commit": "b4c626c",
+    "message": "Update tree structure: add new nodes, review statuses, label changes",
+    "changedIds": [
+      "17",
+      "mutual-lkg",
+      "market-smallorg-introreq",
+      "new-1",
+      "new-3",
+      "new-3-dup-4",
+      "mutual-ca",
+      "mutual-ca-dup-1",
+      "mutual-cb"
+    ],
+    "changes": [
+      {
+        "id": "17",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Users want to delegate their LinkedIn inbox/outbox (and email) to an SDR or recruiter",
+            "to": "Users want to delegate their LinkedIn search + inbox/outbox to an SDR or recruiter"
+          }
+        ]
+      },
+      {
+        "id": "mutual-lkg",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "review"
+          },
+          {
+            "field": "label",
+            "from": "Mutual connections is inaccurate — they see 300+ but have no intelligence on which paths are real",
+            "to": "Users are frustrated weekly since mutual connections is inaccurate — they see 300+ but have no intelligence on which paths are real"
+          }
+        ]
+      },
+      {
+        "id": "market-smallorg-introreq",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "review"
+          }
+        ]
+      },
+      {
+        "id": "new-1",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Users will install a chrome extension and connect their calendar in order to get a reality check on their network",
+            "to": "Users want to take messaging outside of Linkedin as soon as possible"
+          },
+          {
+            "field": "test",
+            "from": "Mockup test: are they willing to install",
+            "to": "Mom test - ask them"
+          },
+          {
+            "field": "type",
+            "from": "solution"
+          }
+        ]
+      },
+      {
+        "id": "new-3",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "pending"
+          }
+        ]
+      },
+      {
+        "id": "new-3-dup-4",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "pending"
+          }
+        ]
+      },
+      {
+        "id": "mutual-ca",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "pending",
+            "to": "active"
+          }
+        ]
+      },
+      {
+        "id": "mutual-ca-dup-1",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "pending",
+            "to": "active"
+          }
+        ]
+      },
+      {
+        "id": "mutual-cb",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "pending",
+            "to": "active"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "commit": "6fa67c1",
+    "message": "Update tree.json structure and add 'review' status",
+    "changedIds": [
+      "15",
+      "16",
+      "17",
+      "market-smallorg-introreq",
+      "b-waterfall",
+      "new-2",
+      "b-filter",
+      "b-rank"
+    ],
+    "changes": [
+      {
+        "id": "15",
+        "action": "added"
+      },
+      {
+        "id": "16",
+        "action": "added"
+      },
+      {
+        "id": "17",
+        "action": "added"
+      },
+      {
+        "id": "market-smallorg-introreq",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Business leaders in small orgs (<20) are more likely to ask intros",
+            "to": "Business leaders in small orgs (<20) are using intros enough to justify (excluding B2C startups)"
+          }
+        ]
+      },
+      {
+        "id": "b-waterfall",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "test",
+            "from": "Pending: validate parent node frequency first",
+            "to": "Mockup test: do you want this? Install chrome extension if you do"
+          }
+        ]
+      },
+      {
+        "id": "new-2",
+        "action": "added"
+      },
+      {
+        "id": "b-filter",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "test",
+            "from": "Pending: validate parent node frequency first",
+            "to": "Mockup test: do you want this? Install chrome extension if you do"
+          }
+        ]
+      },
+      {
+        "id": "b-rank",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "test",
+            "from": "Pending: validate parent node frequency first",
+            "to": "Mockup test: do you want this? Install chrome extension if you do"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "commit": "075541b",
+    "message": "Add chrome extension solution (new-1) with viral nodes under market-smallorg-introreq",
+    "changedIds": [
+      "new-1",
+      "new-3",
+      "new-3-dup-4"
+    ],
+    "changes": [
+      {
+        "id": "new-1",
+        "action": "added"
+      },
+      {
+        "id": "new-3",
+        "action": "added"
+      },
+      {
+        "id": "new-3-dup-4",
+        "action": "added"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "commit": "334ccb1",
+    "message": "Rename founders-dup-1 to top-of-mind, move vcs under it",
+    "changedIds": [
+      "top-of-mind",
+      "founders-dup-1"
+    ],
+    "changes": [
+      {
+        "id": "top-of-mind",
+        "action": "added"
+      },
+      {
+        "id": "founders-dup-1",
+        "action": "removed"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "commit": "94fa676",
+    "message": "Add founders-dup-1 (top of mind), restructure obs-c option-a nodes",
+    "changedIds": [
+      "founders-dup-1",
+      "option-a",
+      "option-a-dup-2",
+      "a-asker-dup-3",
+      "a-giver-dup-4",
+      "a-asker",
+      "a-giver"
+    ],
+    "changes": [
+      {
+        "id": "founders-dup-1",
+        "action": "added"
+      },
+      {
+        "id": "option-a",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Asker and giver engage frequently in \"open the book\" exercise and it has friction",
+            "to": "Asker want to know when a giver makes a new real connection that is relevant to them so they can ask for an intro."
+          },
+          {
+            "field": "test",
+            "from": "Mom test - Ask both investors and early stage founders the frequency of \"open the book\" + what challenges",
+            "to": "Mockup test - see if the asker is willing to introduce to giver"
+          }
+        ]
+      },
+      {
+        "id": "option-a-dup-2",
+        "action": "added"
+      },
+      {
+        "id": "a-asker-dup-3",
+        "action": "added"
+      },
+      {
+        "id": "a-giver-dup-4",
+        "action": "added"
+      },
+      {
+        "id": "a-asker",
+        "action": "removed"
+      },
+      {
+        "id": "a-giver",
+        "action": "removed"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "commit": "6456bca",
+    "message": "Update tree: revise obs-e/pokemon labels, move 14b under obs-e, update vcs test",
+    "changedIds": [
+      "vcs",
+      "obs-e",
+      "pokemon-intros",
+      "pokemon-mine-rare",
+      "14b"
+    ],
+    "changes": [
+      {
+        "id": "vcs",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "test",
+            "from": "3 VC principal Mom test interviews",
+            "to": "Mom test - what happens after the intro call if it's too early"
+          },
+          {
+            "field": "score",
+            "from": {
+              "Freq": 3,
+              "Intensity": 3,
+              "Fit": 2,
+              "WTP": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "obs-e",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Personal contact intelligence improves nurturing by creating more follow-up opportunities, increasing engagement rates, and ultimately improving win rates",
+            "to": "Users think that more personal contact intelligence improves nurturing by creating more follow-up opportunities that aren't lame, ultimately improving win rates"
+          },
+          {
+            "field": "test",
+            "from": "Behavioral interview: do people who know personal details about contacts report better relationship outcomes? Simulation: compare nurture sequences with vs without personal intel.",
+            "to": "Mom test: do people who know personal details about contacts report better relationship outcomes?"
+          }
+        ]
+      },
+      {
+        "id": "pokemon-intros",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Personal intel on a connector makes intro requests more targeted and more likely to succeed",
+            "to": "Users want to leverage personal anecdotes on connectors so they can ask more intros"
+          },
+          {
+            "field": "test",
+            "from": "Simulation: compare intro request quality and success rate with vs without personal context on the connector",
+            "to": "Mom test: do they try to make the small talk before the intro request"
+          },
+          {
+            "field": "type",
+            "from": "hypothesis"
+          }
+        ]
+      },
+      {
+        "id": "pokemon-mine-rare",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Users will pay to mine deep personal intel from their own emails, call transcripts, and WhatsApp to fuel warm relationship actions",
+            "to": "Users will pay to mine personal intel from their own emails, call transcripts, and WhatsApp to fuel warm relationship actions"
+          },
+          {
+            "field": "test",
+            "from": "Waitlist/credits test: when offered pokemon mining, do users connect their email or transcripts? Measure activation rate and willingness to pay.",
+            "to": "Mockup test: when offered pokemon mining, do users want it? Send the transcripts? Connect email?"
+          }
+        ]
+      },
+      {
+        "id": "14b",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Users want alerts about life/career trigger events for contacts — job change, funding, promotion — as a reason to reach out and nurture",
+            "to": "Users want alerts about life/career trigger events for contacts — job change, funding, promotion, local holiday, local news — as a reason to reach out and nurture"
+          },
+          {
+            "field": "test",
+            "from": "Mom test: when was the last time a contact had a life/career event you wished you'd known about sooner? How often does that happen?",
+            "to": "Mom test: do they actually search for it"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "commit": "0c526c3",
+    "message": "Add 14b trigger event alerts node under market-smallorg-nurture",
+    "changedIds": [
+      "14b"
+    ],
+    "changes": [
+      {
+        "id": "14b",
+        "action": "added"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "commit": "58fdf1c",
+    "message": "Merge market-smallorg-nurture and pokemon-warm under obs-b",
+    "changedIds": [
+      "market-smallorg-nurture",
+      "obs-e",
+      "market-smallorg-pokemon-warm"
+    ],
+    "changes": [
+      {
+        "id": "market-smallorg-nurture",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Business leaders in small orgs (<20) are more likely to need personal nurturing",
+            "to": "Business leaders in small orgs (<20) are more likely to manage relationships and need personal nurturing"
+          }
+        ]
+      },
+      {
+        "id": "obs-e",
+        "action": "added"
+      },
+      {
+        "id": "market-smallorg-pokemon-warm",
+        "action": "removed"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "commit": "3fc7ecc",
+    "message": "Move obs-e children (pokemon-warm intel) under obs-b (nurturing)",
+    "changedIds": [
+      "obs-e"
+    ],
+    "changes": [
+      {
+        "id": "obs-e",
+        "action": "removed"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "commit": "367497f",
+    "message": "Update tree.json: standardize market node labels and revise option-a structure",
+    "changedIds": [
+      "market-smallorg-introreq",
+      "market-smallorg-nurture",
+      "market-smallorg-viral",
+      "option-a",
+      "a-asker",
+      "a-giver",
+      "market-smallorg-pokemon-cold",
+      "market-smallorg-pokemon-warm"
+    ],
+    "changes": [
+      {
+        "id": "market-smallorg-introreq",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Low-frequency elimination may not apply — this segment makes targeted intro requests far more often",
+            "to": "Business leaders in small orgs (<20) are more likely to ask intros"
+          },
+          {
+            "field": "test",
+            "from": "Mom test: how many targeted intro requests per month?",
+            "to": "Analysis on past calls"
+          }
+        ]
+      },
+      {
+        "id": "market-smallorg-nurture",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "They feel the nurturing gap most acutely — they are sales, BD, and relationship manager in one, with no system",
+            "to": "Business leaders in small orgs (<20) are more likely to need personal nurturing"
+          },
+          {
+            "field": "test",
+            "from": "Mom test: how do they manage nurturing today? What have they lost?",
+            "to": "Analysis of past calls"
+          }
+        ]
+      },
+      {
+        "id": "market-smallorg-viral",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Ideal viral vector — they attend every meeting and every intro flows through them personally",
+            "to": "Business leaders in small orgs (<20) are more likely to ask intros"
+          },
+          {
+            "field": "test",
+            "from": "Mom test: how do they request intros today? How many meetings per week?",
+            "to": "Analysis on past callsd"
+          }
+        ]
+      },
+      {
+        "id": "option-a",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Option A: Intro Marketplace — product requires both sides; asker and giver both need network intelligence to complete the workflow",
+            "to": "Asker and giver engage frequently in \"open the book\" exercise and it has friction"
+          },
+          {
+            "field": "test",
+            "from": "Build two-sided intro flow — does the asker naturally recruit the giver?",
+            "to": "Mom test - Ask both investors and early stage founders the frequency of \"open the book\" + what challenges"
+          },
+          {
+            "field": "type",
+            "to": "problem"
+          },
+          {
+            "field": "tags",
+            "from": [
+              "solution",
+              "virality"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "a-asker",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Asker sees which of helper's connections are real & active before asking",
+            "to": "Asker sees which of helper's connections are real & active before asking - he convinces the give to participate"
+          },
+          {
+            "field": "test",
+            "from": "Simulation: does seeing the real map change ask behavior?",
+            "to": "Mockup test - Pretending it's ready.  Who will they ask tomorrow."
+          },
+          {
+            "field": "type",
+            "to": "viral_sending"
+          },
+          {
+            "field": "tags",
+            "from": [
+              "feature",
+              "value"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "a-giver",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Giver shares a real map of available connections — turns vague asks into actionable requests",
+            "to": "Giver is willing to install a tool that shares a real map with the asker "
+          },
+          {
+            "field": "test",
+            "from": "Simulation: does shared map increase intro success rate?",
+            "to": "Mockup test - pretending it's real"
+          },
+          {
+            "field": "type",
+            "to": "viral_receiving"
+          }
+        ]
+      },
+      {
+        "id": "market-smallorg-pokemon-cold",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Cold outreach is a core growth channel — no SDR team, so personal intel is highest-leverage",
+            "to": "Business leaders in small orgs (<20) are more likely to research data manually"
+          },
+          {
+            "field": "test",
+            "from": "Mom test: how do they research targets before cold outreach? How much time?",
+            "to": "Analysis of past calls"
+          }
+        ]
+      },
+      {
+        "id": "market-smallorg-pokemon-warm",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "They manage all relationships personally — no system to remember personal details at scale",
+            "to": "Business leaders in small orgs (<20) are more likely to manage relationships"
+          },
+          {
+            "field": "test",
+            "from": "Mom test: how do they remember personal details? Have they lost deals because of it?",
+            "to": "Analysis on past calls"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "commit": "a6f8297",
+    "message": "Merge pull request #28 from ynizan/claude/add-market-nodes-j2I2J",
+    "changedIds": [
+      "gordy-asks",
+      "obs-f"
+    ],
+    "changes": [
+      {
+        "id": "gordy-asks",
+        "action": "added"
+      },
+      {
+        "id": "obs-f",
+        "action": "added"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "commit": "f07c748",
+    "message": "Fix option-b-smallorg to active status and shorten all market node text",
+    "changedIds": [
+      "market-smallorg-introreq",
+      "option-b-smallorg",
+      "market-smallorg-nurture",
+      "market-smallorg-viral",
+      "market-smallorg-pokemon-cold",
+      "market-smallorg-pokemon-warm",
+      "gordy-asks",
+      "obs-f"
+    ],
+    "changes": [
+      {
+        "id": "market-smallorg-introreq",
+        "action": "added"
+      },
+      {
+        "id": "option-b-smallorg",
+        "action": "added"
+      },
+      {
+        "id": "market-smallorg-nurture",
+        "action": "added"
+      },
+      {
+        "id": "market-smallorg-viral",
+        "action": "added"
+      },
+      {
+        "id": "market-smallorg-pokemon-cold",
+        "action": "added"
+      },
+      {
+        "id": "market-smallorg-pokemon-warm",
+        "action": "added"
+      },
+      {
+        "id": "gordy-asks",
+        "action": "removed"
+      },
+      {
+        "id": "obs-f",
+        "action": "removed"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-10",
+    "commit": "3b5ca30",
+    "message": "Add gordy-asks hypothesis node to obs-c children (Thesis #13)",
+    "changedIds": [
+      "gordy-asks",
+      "obs-f",
+      "market-smallorg-introreq",
+      "option-b-smallorg",
+      "market-smallorg-nurture",
+      "market-smallorg-viral",
+      "market-smallorg-pokemon-cold",
+      "market-smallorg-pokemon-warm"
+    ],
+    "changes": [
+      {
+        "id": "gordy-asks",
+        "action": "added"
+      },
+      {
+        "id": "obs-f",
+        "action": "added"
+      },
+      {
+        "id": "market-smallorg-introreq",
+        "action": "removed"
+      },
+      {
+        "id": "option-b-smallorg",
+        "action": "removed"
+      },
+      {
+        "id": "market-smallorg-nurture",
+        "action": "removed"
+      },
+      {
+        "id": "market-smallorg-viral",
+        "action": "removed"
+      },
+      {
+        "id": "market-smallorg-pokemon-cold",
+        "action": "removed"
+      },
+      {
+        "id": "market-smallorg-pokemon-warm",
+        "action": "removed"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-10",
+    "commit": "f7e843c",
+    "message": "Restructure market nodes: reposition, add viral/pokemon-cold/pokemon-warm wrappers",
+    "changedIds": [
+      "option-b-smallorg",
+      "market-smallorg-viral",
+      "market-smallorg-pokemon-cold",
+      "market-smallorg-pokemon-warm",
+      "market-smallorg-intromktplace",
+      "market-smallorg-gordy"
+    ],
+    "changes": [
+      {
+        "id": "option-b-smallorg",
+        "action": "added"
+      },
+      {
+        "id": "market-smallorg-viral",
+        "action": "added"
+      },
+      {
+        "id": "market-smallorg-pokemon-cold",
+        "action": "added"
+      },
+      {
+        "id": "market-smallorg-pokemon-warm",
+        "action": "added"
+      },
+      {
+        "id": "market-smallorg-intromktplace",
+        "action": "removed"
+      },
+      {
+        "id": "market-smallorg-gordy",
+        "action": "removed"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-10",
+    "commit": "6340d4f",
+    "message": "Add 4 market nodes for small org front-people persona across thesis branches",
+    "changedIds": [
+      "market-smallorg-introreq",
+      "market-smallorg-nurture",
+      "market-smallorg-intromktplace",
+      "market-smallorg-gordy",
+      "obs-f"
+    ],
+    "changes": [
+      {
+        "id": "market-smallorg-introreq",
+        "action": "added"
+      },
+      {
+        "id": "market-smallorg-nurture",
+        "action": "added"
+      },
+      {
+        "id": "market-smallorg-intromktplace",
+        "action": "added"
+      },
+      {
+        "id": "market-smallorg-gordy",
+        "action": "added"
+      },
+      {
+        "id": "obs-f",
+        "action": "removed"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-10",
+    "commit": "ff29ecd",
+    "message": "Merge pull request #27 from ynizan/claude/add-obs-f-node-2WGyD",
+    "changedIds": [
+      "ae-network-ownership",
+      "ae-attribution"
+    ],
+    "changes": [
+      {
+        "id": "ae-network-ownership",
+        "action": "added"
+      },
+      {
+        "id": "ae-attribution",
+        "action": "added"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-10",
+    "commit": "28b4ca1",
+    "message": "Simplify obs-f label to \"Users want to avoid data entry\"",
+    "changedIds": [
+      "obs-f"
+    ],
+    "changes": [
+      {
+        "id": "obs-f",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "All relationship management tools fail because they require manual data entry — users abandon them within weeks",
+            "to": "Users want to avoid data entry"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-03-10",
+    "commit": "914d9ef",
+    "message": "Add obs-f node: manual data entry kills relationship tools (Thesis #12)",
+    "changedIds": [
+      "obs-f",
+      "ae-network-ownership",
+      "ae-attribution"
+    ],
+    "changes": [
+      {
+        "id": "obs-f",
+        "action": "added"
+      },
+      {
+        "id": "ae-network-ownership",
+        "action": "removed"
+      },
+      {
+        "id": "ae-attribution",
+        "action": "removed"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-10",
+    "commit": "44ef462",
+    "message": "Add ae-network-ownership and ae-attribution child nodes under aes",
+    "changedIds": [
+      "ae-network-ownership",
+      "ae-attribution"
+    ],
+    "changes": [
+      {
+        "id": "ae-network-ownership",
+        "action": "added"
+      },
+      {
+        "id": "ae-attribution",
+        "action": "added"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-10",
+    "commit": "c39275e",
+    "message": "Merge pull request #24 from ynizan/claude/add-network-benchmark-node-UKNA3",
+    "changedIds": [
+      "network-benchmark"
+    ],
+    "changes": [
+      {
+        "id": "network-benchmark",
+        "action": "added"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-10",
+    "commit": "a4af27c",
+    "message": "Move pokemon-get-buy under pokemon-cold-mine-common and update tests",
+    "changedIds": [
+      "pokemon-get-buy",
+      "pokemon-share",
+      "network-benchmark"
+    ],
+    "changes": [
+      {
+        "id": "pokemon-get-buy",
+        "action": "added"
+      },
+      {
+        "id": "pokemon-share",
+        "action": "added"
+      },
+      {
+        "id": "network-benchmark",
+        "action": "removed"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-10",
+    "commit": "593d1d6",
+    "message": "Add network-benchmark node as child of network-self-map",
+    "changedIds": [
+      "network-benchmark",
+      "pokemon-get-buy",
+      "pokemon-share"
+    ],
+    "changes": [
+      {
+        "id": "network-benchmark",
+        "action": "added"
+      },
+      {
+        "id": "pokemon-get-buy",
+        "action": "removed"
+      },
+      {
+        "id": "pokemon-share",
+        "action": "removed"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-10",
+    "commit": "77d5525",
+    "message": "Add pokemon-get-buy and pokemon-share hypothesis nodes",
+    "changedIds": [
+      "pokemon-get-buy",
+      "pokemon-share"
+    ],
+    "changes": [
+      {
+        "id": "pokemon-get-buy",
+        "action": "added"
+      },
+      {
+        "id": "pokemon-share",
+        "action": "added"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-10",
+    "commit": "561f303",
+    "message": "Merge pull request #21 from ynizan/claude/add-obs-d-node-F9To2",
+    "changedIds": [
+      "network-self-map"
+    ],
+    "changes": [
+      {
+        "id": "network-self-map",
+        "action": "added"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-10",
+    "commit": "2ff67b8",
+    "message": "Add obs-d, obs-e, pokemon-cold-mine-common, pokemon-intros, and pokemon-mine-rare nodes to tree",
+    "changedIds": [
+      "obs-d",
+      "pokemon-cold-mine-common",
+      "obs-e",
+      "pokemon-intros",
+      "pokemon-mine-rare",
+      "network-self-map"
+    ],
+    "changes": [
+      {
+        "id": "obs-d",
+        "action": "added"
+      },
+      {
+        "id": "pokemon-cold-mine-common",
+        "action": "added"
+      },
+      {
+        "id": "obs-e",
+        "action": "added"
+      },
+      {
+        "id": "pokemon-intros",
+        "action": "added"
+      },
+      {
+        "id": "pokemon-mine-rare",
+        "action": "added"
+      },
+      {
+        "id": "network-self-map",
+        "action": "removed"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-10",
+    "commit": "5c9ccea",
+    "message": "Add network-self-map node as first child of mutual-lkg",
+    "changedIds": [
+      "network-self-map"
+    ],
+    "changes": [
+      {
+        "id": "network-self-map",
+        "action": "added"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-10",
+    "commit": "560bd5e",
+    "message": "Update tree.json",
+    "changedIds": [
+      "obs-a",
+      "obs-b",
+      "obs-c",
+      "option-c",
+      "gordy-brief",
+      "counterpart-dup-1",
+      "gordy-loop",
+      "int-share"
+    ],
+    "changes": [
+      {
+        "id": "obs-a",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "test",
+            "to": "Question all transcripts: Are people unhappy with Linkedin - I need count of people mentioning that vs. people taking favorbly about linkedin. Include names. Skip Yaniv, Matan and Shaul"
+          },
+          {
+            "field": "score",
+            "to": {
+              "Freq": 0,
+              "Intensity": 0,
+              "Fit": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "obs-b",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "type",
+            "from": "problem",
+            "to": "problem_space"
+          }
+        ]
+      },
+      {
+        "id": "obs-c",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "validated"
+          },
+          {
+            "field": "type",
+            "from": "viral_sending",
+            "to": "problem_space"
+          },
+          {
+            "field": "test",
+            "to": "Past successes"
+          },
+          {
+            "field": "reason",
+            "to": "Calendly, zoom, Doodle (10M monthly users), Superhuman, Fathom, Firefly, Boardy, ..."
+          },
+          {
+            "field": "score",
+            "to": {
+              "Freq": 0,
+              "Intensity": 0,
+              "Fit": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "option-c",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "test",
+            "from": "Counterpart email live test — does it create desire before the product exists?",
+            "to": "Behavioral: do people practice the idea of asking for 2-3 introductions in every meeting"
+          }
+        ]
+      },
+      {
+        "id": "gordy-brief",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "validated",
+            "to": "pending"
+          },
+          {
+            "field": "label",
+            "from": "Gordy Strategic Ask Brief creates enough value that users want it before every external meeting",
+            "to": "Gordy Strategic Ask Brief creates enough value that users share it internally with colleagues"
+          },
+          {
+            "field": "test",
+            "from": "Internal: briefs sent to Yaniv, Shaul, Oren — qualitative signal",
+            "to": "Internal: we need to bring users from companies with actual employees"
+          },
+          {
+            "field": "score",
+            "from": {
+              "Value": 3,
+              "Freq": 3,
+              "Exchange": 2
+            }
+          }
+        ]
+      },
+      {
+        "id": "counterpart-dup-1",
+        "action": "added"
+      },
+      {
+        "id": "gordy-loop",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "pending",
+            "to": "active"
+          }
+        ]
+      },
+      {
+        "id": "int-share",
+        "action": "removed"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-10",
+    "commit": "d3b0c05",
+    "message": "Merge branch 'main' into claude/show-scores-validated-M33ZA",
+    "changedIds": [
+      "mutual-ca",
+      "mutual-ca-dup-1",
+      "obs-b",
+      "founders"
+    ],
+    "changes": [
+      {
+        "id": "mutual-ca",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Many mutual connections - helps the user build confidence before the reachout. More chances for him to accept.",
+            "to": "Job searchers are asking for many intros"
+          },
+          {
+            "field": "type",
+            "to": "problem"
+          },
+          {
+            "field": "tags",
+            "from": [
+              "hypothesis"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "mutual-ca-dup-1",
+        "action": "added"
+      },
+      {
+        "id": "obs-b",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "test",
+            "to": "test"
+          }
+        ]
+      },
+      {
+        "id": "founders",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Serial founders lose high-value relationships due to relationship drift and missed timing signals",
+            "to": "Founders in small companies that are wearing the sales hat are losing deals because of poor nurturing"
+          },
+          {
+            "field": "test",
+            "from": "3 serial founder Mom test interviews",
+            "to": "Behavioual: founder interviews"
+          },
+          {
+            "field": "type",
+            "to": "problem"
+          },
+          {
+            "field": "tags",
+            "from": [
+              "persona",
+              "validated"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-03-10",
+    "commit": "0a94823",
+    "message": "Show scores only for validated nodes",
+    "changedIds": [
+      "li-inbox",
+      "mutual-ca",
+      "obs-b",
+      "founders",
+      "nd-founders",
+      "mutual-ca-dup-1"
+    ],
+    "changes": [
+      {
+        "id": "li-inbox",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "test",
+            "from": "Behavioural: Do AEs, founders, VCs express inbox usage & frustration",
+            "to": "Mom tests across AEs, founders, VCs — inbox usage & frustration"
+          },
+          {
+            "field": "score",
+            "from": {
+              "Freq": 0,
+              "Intensity": 0,
+              "Fit": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "mutual-ca",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "to": [
+              "hypothesis"
+            ]
+          },
+          {
+            "field": "label",
+            "from": "Job searchers are asking for many intros",
+            "to": "Many mutual connections - helps the user build confidence before the reachout. More chances for him to accept."
+          },
+          {
+            "field": "type",
+            "from": "problem"
+          }
+        ]
+      },
+      {
+        "id": "obs-b",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "test",
+            "from": "test"
+          }
+        ]
+      },
+      {
+        "id": "founders",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "tags",
+            "to": [
+              "persona",
+              "validated"
+            ]
+          },
+          {
+            "field": "label",
+            "from": "Founders in small companies that are wearing the sales hat are losing deals because of poor nurturing",
+            "to": "Serial founders lose high-value relationships due to relationship drift and missed timing signals"
+          },
+          {
+            "field": "test",
+            "from": "Behavioual: founder interviews",
+            "to": "3 serial founder Mom test interviews"
+          },
+          {
+            "field": "type",
+            "from": "problem"
+          }
+        ]
+      },
+      {
+        "id": "nd-founders",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "score",
+            "to": {
+              "Freq": 0,
+              "Intensity": 0,
+              "Fit": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "mutual-ca-dup-1",
+        "action": "removed"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-10",
+    "commit": "40748a7",
+    "message": "Update tree.json: revise hypothesis tree structure",
+    "changedIds": [
+      "li-inbox",
+      "mutual-ca",
+      "mutual-ca-dup-1",
+      "obs-b",
+      "founders"
+    ],
+    "changes": [
+      {
+        "id": "li-inbox",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "test",
+            "from": "Mom tests across AEs, founders, VCs — inbox usage & frustration",
+            "to": "Behavioural: Do AEs, founders, VCs express inbox usage & frustration"
+          }
+        ]
+      },
+      {
+        "id": "mutual-ca",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Many mutual connections - helps the user build confidence before the reachout. More chances for him to accept.",
+            "to": "Job searchers are asking for many intros"
+          },
+          {
+            "field": "type",
+            "to": "problem"
+          },
+          {
+            "field": "tags",
+            "from": [
+              "hypothesis"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "mutual-ca-dup-1",
+        "action": "added"
+      },
+      {
+        "id": "obs-b",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "test",
+            "to": "test"
+          }
+        ]
+      },
+      {
+        "id": "founders",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Serial founders lose high-value relationships due to relationship drift and missed timing signals",
+            "to": "Founders in small companies that are wearing the sales hat are losing deals because of poor nurturing"
+          },
+          {
+            "field": "test",
+            "from": "3 serial founder Mom test interviews",
+            "to": "Behavioual: founder interviews"
+          },
+          {
+            "field": "type",
+            "to": "problem"
+          },
+          {
+            "field": "tags",
+            "from": [
+              "persona",
+              "validated"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-03-09",
+    "commit": "a382d2b",
+    "message": "Update obs-a: change type to problem_space, reset li-inbox scores, add reason",
+    "changedIds": [
+      "obs-a",
+      "li-inbox"
+    ],
+    "changes": [
+      {
+        "id": "obs-a",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "type",
+            "from": "problem",
+            "to": "problem_space"
+          },
+          {
+            "field": "reason",
+            "to": "**The overwhelming majority expressed dissatisfaction with LinkedIn.** Out of approximately 55 unique interviewees, roughly **40+ expressed negative sentiment**, while only about **8-10 spoke favorably**, with the remainder mixed."
+          }
+        ]
+      },
+      {
+        "id": "li-inbox",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "score",
+            "from": {
+              "Freq": 3,
+              "Intensity": 2,
+              "Fit": 3
+            },
+            "to": {
+              "Freq": 0,
+              "Intensity": 0,
+              "Fit": 0
+            }
+          },
+          {
+            "field": "tags",
+            "from": [
+              "problem"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-03-09",
+    "commit": "f927523",
+    "message": "Remove observation status, add hypothesis type field",
+    "changedIds": [
+      "obs-a",
+      "obs-b",
+      "obs-c"
+    ],
+    "changes": [
+      {
+        "id": "obs-a",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "type",
+            "to": "problem"
+          },
+          {
+            "field": "tags",
+            "from": [
+              "observation"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "obs-b",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "observation",
+            "to": "active"
+          },
+          {
+            "field": "type",
+            "to": "problem"
+          },
+          {
+            "field": "tags",
+            "from": [
+              "observation"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "obs-c",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "observation",
+            "to": "active"
+          },
+          {
+            "field": "type",
+            "to": "viral_sending"
+          },
+          {
+            "field": "tags",
+            "from": [
+              "observation"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-03-09",
+    "commit": "b4ff91c",
+    "message": "Update tree.json: revise labels, statuses, and hypothesis descriptions",
+    "changedIds": [
+      "obs-a",
+      "li-inbox",
+      "mutual-lkg",
+      "option-b",
+      "b-waterfall",
+      "b-filter",
+      "b-rank",
+      "mutual-ca",
+      "mutual-cb",
+      "obs-b",
+      "founders",
+      "vcs",
+      "aes",
+      "csm",
+      "obs-c",
+      "option-a",
+      "a-asker",
+      "a-giver",
+      "option-c",
+      "gordy-brief",
+      "counterpart",
+      "int-share",
+      "gordy-loop",
+      "namedrop",
+      "nd-founders",
+      "nd-aes"
+    ],
+    "changes": [
+      {
+        "id": "obs-a",
+        "action": "added"
+      },
+      {
+        "id": "li-inbox",
+        "action": "added"
+      },
+      {
+        "id": "mutual-lkg",
+        "action": "added"
+      },
+      {
+        "id": "option-b",
+        "action": "added"
+      },
+      {
+        "id": "b-waterfall",
+        "action": "added"
+      },
+      {
+        "id": "b-filter",
+        "action": "added"
+      },
+      {
+        "id": "b-rank",
+        "action": "added"
+      },
+      {
+        "id": "mutual-ca",
+        "action": "added"
+      },
+      {
+        "id": "mutual-cb",
+        "action": "added"
+      },
+      {
+        "id": "obs-b",
+        "action": "added"
+      },
+      {
+        "id": "founders",
+        "action": "added"
+      },
+      {
+        "id": "vcs",
+        "action": "added"
+      },
+      {
+        "id": "aes",
+        "action": "added"
+      },
+      {
+        "id": "csm",
+        "action": "added"
+      },
+      {
+        "id": "obs-c",
+        "action": "added"
+      },
+      {
+        "id": "option-a",
+        "action": "added"
+      },
+      {
+        "id": "a-asker",
+        "action": "added"
+      },
+      {
+        "id": "a-giver",
+        "action": "added"
+      },
+      {
+        "id": "option-c",
+        "action": "added"
+      },
+      {
+        "id": "gordy-brief",
+        "action": "added"
+      },
+      {
+        "id": "counterpart",
+        "action": "added"
+      },
+      {
+        "id": "int-share",
+        "action": "added"
+      },
+      {
+        "id": "gordy-loop",
+        "action": "added"
+      },
+      {
+        "id": "namedrop",
+        "action": "added"
+      },
+      {
+        "id": "nd-founders",
+        "action": "added"
+      },
+      {
+        "id": "nd-aes",
+        "action": "added"
+      }
+    ]
+  }
+]
