@@ -1,0 +1,31 @@
+name: Update changelog
+
+on:
+  push:
+    branches: [main]
+    paths: [data/tree.json]
+
+permissions:
+  contents: write
+
+jobs:
+  update-changelog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 50
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: node scripts/gen-changelog.js
+
+      - name: Commit updated changelog
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/changelog.json
+          git diff --cached --quiet || git commit -m "chore: auto-update changelog.json"
+          git push
