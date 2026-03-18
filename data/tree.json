@@ -25,7 +25,7 @@
         },
         {
           "id": "mutual-lkg",
-          "status": "review",
+          "status": "validated",
           "type": "problem",
           "label": "Users are frustrated weekly since mutual connections is inaccurate — they see 300+ but have no intelligence on which paths are real",
           "test": "Behavioral: how often do people see / click mutual connections? What for?",
@@ -56,16 +56,16 @@
             },
             {
               "id": "market-smallorg-introreq",
-              "status": "review",
+              "status": "validated",
               "type": "market",
-              "label": "Business leaders in small orgs (<20) are using intros enough to justify (excluding B2C startups)",
+              "label": "Business leaders in small orgs (<20) are describe needing to reach a specific target through a warm path? ",
               "test": "Analysis on past calls",
               "children": [
                 {
                   "id": "option-b-smallorg",
-                  "status": "active",
+                  "status": "validated",
                   "type": "solution",
-                  "label": "Small org Option B: Strategic Reach — find the real intro path to a specific target",
+                  "label": "Small biz leaders - describe facing a large set of mutual connections and needing to narrow them to a few realistic intro paths? ",
                   "test": "Mom test: how often do small org front-people target a specific person for an intro?",
                   "children": [
                     {
@@ -102,7 +102,13 @@
                       "label": "Users want to copy Gordy on outreach so he can manage the waterfall or help otherwise with warm path attempts automatically",
                       "test": "Mockup test: show the cc-Gordy flow — does the user understand it and want to use it?"
                     }
-                  ]
+                  ],
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  },
+                  "reason": "Q6: 31 described this as a need out of 33 that were asked."
                 },
                 {
                   "id": "new-1",
@@ -127,11 +133,17 @@
                     }
                   ]
                 }
-              ]
+              ],
+              "reason": "Q5: 35 described this as a need out of 40 that were asked.",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
             },
             {
               "id": "mutual-ca",
-              "status": "review",
+              "status": "active",
               "label": "Job searchers are looking for 1st degree connections that will answer them so they submit them from the inside",
               "test": "Interview: when you looked for a job have you looked for inside submissions",
               "type": "problem"
@@ -150,7 +162,13 @@
               "label": "People check mutual connections as part of understanding the target. What people he associate with.",
               "test": "Interview: what triggers you to check mutual connections?"
             }
-          ]
+          ],
+          "reason": "Q3: In small (<20) - came up in 18 conversations. All confirmed.\n14 said no and the other 4 just stopped trying (they moved on) ",
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          }
         },
         {
           "id": "new-1",
@@ -326,7 +344,7 @@
               ]
             }
           ],
-          "reason": "OVER 1h/week — 21 people\n(Includes Ben Mizrahi, Yoav Naveh, and Anthony, all counted as 1h+.)\n\nUNDER 1h/week — 2 people\n\nDOES NOT DO IT — 3 people\n\nPercentages (within well-defined ICP, clear answers only):\n\nOver 1h/week: \n21\n/\n26\n≈\n81\n%\n21/26≈81%\n\n\nUnder 1h/week: \n2\n/\n26\n≈\n8\n%\n2/26≈8%\n\n\nDoes not do it: \n3\n/\n26\n≈\n12\n%\n3/26≈12%\n​",
+          "reason": "OVER 1h/week — 21 people\n(Includes Ben Mizrahi, Yoav Naveh, and Anthony, all counted as 1h+.)\n\nUNDER 1h/week — 2 people\n\nDOES NOT DO IT — 3 people\n\nPercentages (within well-defined ICP, clear answers only):\n\nOver 1h/week: \n21\n/\n26\n≈\n81\n%\n21/26≈81%\n\n\nUnder 1h/week: \n2\n/\n26\n≈\n8\n%\n2/26≈8%\n\n\nDoes not do it: \n3\n/\n26\n≈\n12\n%\n3/26≈12%\n",
           "score": {
             "Freq": 0,
             "Intensity": 0,
