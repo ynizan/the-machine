@@ -17,13 +17,6 @@
           "reason": "Most people didn't feel it's an issue. The ones that have a lot of linkedin reachout use external tools for it anyway."
         },
         {
-          "id": "17",
-          "status": "active",
-          "type": "problem",
-          "label": "Users want to delegate their LinkedIn search + inbox/outbox to an SDR or recruiter",
-          "test": "Mom test: when and why do users want to delegate LinkedIn/email communication? What triggers the need and what are current workarounds?"
-        },
-        {
           "id": "mutual-lkg",
           "status": "review",
           "type": "problem",
@@ -559,6 +552,13 @@
         "Intensity": 0,
         "Fit": 0
       }
+    },
+    {
+      "id": "17",
+      "status": "active",
+      "type": "problem",
+      "label": "Users want to delegate their LinkedIn search + inbox/outbox to an SDR or recruiter",
+      "test": "Mom test: when and why do users want to delegate LinkedIn/email communication? What triggers the need and what are current workarounds?"
     }
   ]
 }
