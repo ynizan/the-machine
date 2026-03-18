@@ -1,5 +1,236 @@
 [
   {
+    "date": "2026-03-18",
+    "commit": "fb757a5",
+    "message": "Update tree.json: validate mutual-lkg and market-smallorg-introreq nodes, update labels and add evidence",
+    "changedIds": [
+      "mutual-lkg",
+      "market-smallorg-introreq",
+      "option-b-smallorg",
+      "mutual-ca",
+      "market-smallorg-nurture"
+    ],
+    "changes": [
+      {
+        "id": "mutual-lkg",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "review",
+            "to": "validated"
+          },
+          {
+            "field": "reason",
+            "to": "Q3: In small (<20) - came up in 18 conversations. All confirmed.\n14 said no and the other 4 just stopped trying (they moved on) "
+          },
+          {
+            "field": "score",
+            "to": {
+              "Freq": 0,
+              "Intensity": 0,
+              "Fit": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "market-smallorg-introreq",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "review",
+            "to": "validated"
+          },
+          {
+            "field": "label",
+            "from": "Business leaders in small orgs (<20) are using intros enough to justify (excluding B2C startups)",
+            "to": "Business leaders in small orgs (<20) are describe needing to reach a specific target through a warm path? "
+          },
+          {
+            "field": "reason",
+            "to": "Q5: 35 described this as a need out of 40 that were asked."
+          },
+          {
+            "field": "score",
+            "to": {
+              "Freq": 0,
+              "Intensity": 0,
+              "Fit": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "option-b-smallorg",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "validated"
+          },
+          {
+            "field": "label",
+            "from": "Small org Option B: Strategic Reach — find the real intro path to a specific target",
+            "to": "Small biz leaders - describe facing a large set of mutual connections and needing to narrow them to a few realistic intro paths? "
+          },
+          {
+            "field": "score",
+            "to": {
+              "Freq": 0,
+              "Intensity": 0,
+              "Fit": 0
+            }
+          },
+          {
+            "field": "reason",
+            "to": "Q6: 31 described this as a need out of 33 that were asked."
+          }
+        ]
+      },
+      {
+        "id": "mutual-ca",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "review",
+            "to": "active"
+          }
+        ]
+      },
+      {
+        "id": "market-smallorg-nurture",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "reason",
+            "from": "OVER 1h/week — 21 people\n(Includes Ben Mizrahi, Yoav Naveh, and Anthony, all counted as 1h+.)\n\nUNDER 1h/week — 2 people\n\nDOES NOT DO IT — 3 people\n\nPercentages (within well-defined ICP, clear answers only):\n\nOver 1h/week: \n21\n/\n26\n≈\n81\n%\n21/26≈81%\n\n\nUnder 1h/week: \n2\n/\n26\n≈\n8\n%\n2/26≈8%\n\n\nDoes not do it: \n3\n/\n26\n≈\n12\n%\n3/26≈12%\n​",
+            "to": "OVER 1h/week — 21 people\n(Includes Ben Mizrahi, Yoav Naveh, and Anthony, all counted as 1h+.)\n\nUNDER 1h/week — 2 people\n\nDOES NOT DO IT — 3 people\n\nPercentages (within well-defined ICP, clear answers only):\n\nOver 1h/week: \n21\n/\n26\n≈\n81\n%\n21/26≈81%\n\n\nUnder 1h/week: \n2\n/\n26\n≈\n8\n%\n2/26≈8%\n\n\nDoes not do it: \n3\n/\n26\n≈\n12\n%\n3/26≈12%\n"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-03-16",
+    "commit": "358d8a2",
+    "message": "Update tree.json with latest validation findings and new nodes",
+    "changedIds": [
+      "new-1",
+      "mutual-ca",
+      "aes",
+      "market-smallorg-nurture",
+      "option-c"
+    ],
+    "changes": [
+      {
+        "id": "new-1",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Users want to take messaging outside of Linkedin as soon as possible",
+            "to": "Users will agree to ask the counterpart about a cool new way to do the intro using Gordy."
+          },
+          {
+            "field": "type",
+            "to": "solution"
+          },
+          {
+            "field": "test",
+            "from": "Mom test - ask them",
+            "to": "Mockup test - show them the flow"
+          }
+        ]
+      },
+      {
+        "id": "mutual-ca",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "review"
+          },
+          {
+            "field": "label",
+            "from": "Job searchers are asking for many intros",
+            "to": "Job searchers are looking for 1st degree connections that will answer them so they submit them from the inside"
+          },
+          {
+            "field": "test",
+            "from": "Interview: when and why do you look at mutual connections?",
+            "to": "Interview: when you looked for a job have you looked for inside submissions"
+          }
+        ]
+      },
+      {
+        "id": "aes",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "AEs will pay out of pocket for personal network CRM — owned by the rep, not the company",
+            "to": "AEs in companies over 20 will pay out of pocket for personal network CRM — owned by the rep, not the company"
+          },
+          {
+            "field": "reason",
+            "from": "**Among those who gave a clear signal (N=20):** 7 personal-pay vs. 13 company/stack — **35% personal-pay rate.**\n\n",
+            "to": "**Ratio:** Even at best case, 5/18 = **28% personal payers**. Conservative: 3/18 = **17%**.\n"
+          }
+        ]
+      },
+      {
+        "id": "market-smallorg-nurture",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Business leaders in small orgs (<20) are spending over 1h/week to manage relationships and need personal nurturing",
+            "to": "Among founders and individual business leaders at small organizations (non‑B2C / non‑PLG, non‑recruiters), do a clear majority spend over 1 hour per week on manual prospect research and mapping warm paths (primarily via LinkedIn and similar sources)?"
+          },
+          {
+            "field": "reason",
+            "from": "**VERDICT: SUPPORTED — with a meaningful dissenting minority**\n\n**OVER 1h/week (17 people):**\nRicky Bureau, Yoav Naveh, Mike Rosengarten, Eugene Malobrodsky, Nitzan Gindi, Santiago Cordoba, Zach Beegal, Liad Glikman, Eran Savir, Amos Halfon, Roee Adler, Anthony Simola, Adrian Domenech, Michael Giunta, Angela Mekosh, ענבל הראל (Anbel Harel), Adi Perry\n\n**UNDER 1h/week (8 people):**\nBenjamin Tannenbaum, Anthony Rey, Mat | renn, Ben Lerner, Lior Nachum, Ira Fridman, Marcelle Kaspi, Oren Harnevo\n",
+            "to": "OVER 1h/week — 21 people\n(Includes Ben Mizrahi, Yoav Naveh, and Anthony, all counted as 1h+.)\n\nUNDER 1h/week — 2 people\n\nDOES NOT DO IT — 3 people\n\nPercentages (within well-defined ICP, clear answers only):\n\nOver 1h/week: \n21\n/\n26\n≈\n81\n%\n21/26≈81%\n\n\nUnder 1h/week: \n2\n/\n26\n≈\n8\n%\n2/26≈8%\n\n\nDoes not do it: \n3\n/\n26\n≈\n12\n%\n3/26≈12%\n​"
+          }
+        ]
+      },
+      {
+        "id": "option-c",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "review",
+            "to": "validated"
+          },
+          {
+            "field": "label",
+            "from": "In calls - over 80% wanted the \"Ask brief\". 50% signed up.  ",
+            "to": "In calls where \"Ask brief\" was offered - over 80% wanted the \"Ask brief\". "
+          },
+          {
+            "field": "reason",
+            "from": "**VERDICT: STRONGLY SUPPORTED**\n\n---\n\n### NUMBERS\n\n**Total unique interviewees assessed:** ~92\n**Summary ratio:** ~84% expressed some interest (strong or mild); ~15% not interested.",
+            "to": "**VERDICT: STRONGLY SUPPORTED**\n17 intros made out of 20-25"
+          },
+          {
+            "field": "score",
+            "to": {
+              "Freq": 0,
+              "Intensity": 0,
+              "Fit": 0
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-03-16",
     "commit": "61c59b4",
     "message": "Update tree.json: option-c to review with verdict, add market-smallorg-pokemon-cold reason",
@@ -3461,127 +3692,6 @@
     "date": "2026-03-09",
     "commit": "a382d2b",
     "message": "Update obs-a: change type to problem_space, reset li-inbox scores, add reason",
-    "changedIds": [
-      "obs-a",
-      "li-inbox"
-    ],
-    "changes": [
-      {
-        "id": "obs-a",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "type",
-            "from": "problem",
-            "to": "problem_space"
-          },
-          {
-            "field": "reason",
-            "to": "**The overwhelming majority expressed dissatisfaction with LinkedIn.** Out of approximately 55 unique interviewees, roughly **40+ expressed negative sentiment**, while only about **8-10 spoke favorably**, with the remainder mixed."
-          }
-        ]
-      },
-      {
-        "id": "li-inbox",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "score",
-            "from": {
-              "Freq": 3,
-              "Intensity": 2,
-              "Fit": 3
-            },
-            "to": {
-              "Freq": 0,
-              "Intensity": 0,
-              "Fit": 0
-            }
-          },
-          {
-            "field": "tags",
-            "from": [
-              "problem"
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-03-09",
-    "commit": "f927523",
-    "message": "Remove observation status, add hypothesis type field",
-    "changedIds": [
-      "obs-a",
-      "obs-b",
-      "obs-c"
-    ],
-    "changes": [
-      {
-        "id": "obs-a",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "type",
-            "to": "problem"
-          },
-          {
-            "field": "tags",
-            "from": [
-              "observation"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "obs-b",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "status",
-            "from": "observation",
-            "to": "active"
-          },
-          {
-            "field": "type",
-            "to": "problem"
-          },
-          {
-            "field": "tags",
-            "from": [
-              "observation"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "obs-c",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "status",
-            "from": "observation",
-            "to": "active"
-          },
-          {
-            "field": "type",
-            "to": "viral_sending"
-          },
-          {
-            "field": "tags",
-            "from": [
-              "observation"
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-03-09",
-    "commit": "b4ff91c",
-    "message": "Update tree.json: revise labels, statuses, and hypothesis descriptions",
     "changedIds": [
       "obs-a",
       "li-inbox",
