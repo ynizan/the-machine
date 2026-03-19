@@ -224,9 +224,9 @@
         },
         {
           "id": "market-smallorg-nurture",
-          "status": "validated",
+          "status": "review",
           "type": "market",
-          "label": "Among founders and individual business leaders at small organizations (non‑B2C / non‑PLG, non‑recruiters), do a clear majority spend over 1 hour per week on manual prospect research and mapping warm paths (primarily via LinkedIn and similar sources)?",
+          "label": "Among founders and individual business leaders at small organizations (non‑B2C / non‑PLG, non‑recruiters), do they describe spending over 1 hour per week on either producing content that is likely reaching people they already know or in communicating with people they already know but are not in a sales funnel.",
           "test": "Analysis of past calls",
           "children": [
             {
@@ -238,7 +238,7 @@
             },
             {
               "id": "top-of-mind",
-              "status": "active",
+              "status": "validated",
               "label": "Users want to stay top of mind so customers call them when in-market and various opportunities find them",
               "test": "Mom Test: do users find work arounds to stay top of mind. Do they agree that this is the motivation",
               "type": "problem",
@@ -295,14 +295,20 @@
                     }
                   ]
                 }
-              ]
+              ],
+              "reason": "Out of 38 that answered that question, 33 described some behavior of trying to stay top of mind.",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
             },
             {
               "id": "obs-e",
-              "status": "active",
+              "status": "validated",
               "type": "problem_space",
               "label": "Users think that more personal contact intelligence improves nurturing by creating more follow-up opportunities that aren't lame, ultimately improving win rates",
-              "test": "Mom test: do people who know personal details about contacts report better relationship outcomes?",
+              "test": "Mom test: do people think that it can help?",
               "children": [
                 {
                   "id": "pokemon-intros",
@@ -341,15 +347,15 @@
                     }
                   ]
                 }
-              ]
+              ],
+              "reason": "37 out of 40 believe richer personal context creates better reasons to follow up",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
             }
-          ],
-          "reason": "OVER 1h/week — 21 people\n(Includes Ben Mizrahi, Yoav Naveh, and Anthony, all counted as 1h+.)\n\nUNDER 1h/week — 2 people\n\nDOES NOT DO IT — 3 people\n\nPercentages (within well-defined ICP, clear answers only):\n\nOver 1h/week: \n21\n/\n26\n≈\n81\n%\n21/26≈81%\n\n\nUnder 1h/week: \n2\n/\n26\n≈\n8\n%\n2/26≈8%\n\n\nDoes not do it: \n3\n/\n26\n≈\n12\n%\n3/26≈12%\n",
-          "score": {
-            "Freq": 0,
-            "Intensity": 0,
-            "Fit": 0
-          }
+          ]
         }
       ],
       "test": "Online research",
