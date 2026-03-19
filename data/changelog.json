@@ -1,6 +1,97 @@
 [
   {
     "date": "2026-03-18",
+    "commit": "6300d8a",
+    "message": "Update tree: validate top-of-mind & obs-e, revert market-smallorg-nurture to review",
+    "changedIds": [
+      "market-smallorg-nurture",
+      "top-of-mind",
+      "obs-e"
+    ],
+    "changes": [
+      {
+        "id": "market-smallorg-nurture",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "validated",
+            "to": "review"
+          },
+          {
+            "field": "label",
+            "from": "Among founders and individual business leaders at small organizations (non‑B2C / non‑PLG, non‑recruiters), do a clear majority spend over 1 hour per week on manual prospect research and mapping warm paths (primarily via LinkedIn and similar sources)?",
+            "to": "Among founders and individual business leaders at small organizations (non‑B2C / non‑PLG, non‑recruiters), do they describe spending over 1 hour per week on either producing content that is likely reaching people they already know or in communicating with people they already know but are not in a sales funnel."
+          },
+          {
+            "field": "reason",
+            "from": "OVER 1h/week — 21 people\n(Includes Ben Mizrahi, Yoav Naveh, and Anthony, all counted as 1h+.)\n\nUNDER 1h/week — 2 people\n\nDOES NOT DO IT — 3 people\n\nPercentages (within well-defined ICP, clear answers only):\n\nOver 1h/week: \n21\n/\n26\n≈\n81\n%\n21/26≈81%\n\n\nUnder 1h/week: \n2\n/\n26\n≈\n8\n%\n2/26≈8%\n\n\nDoes not do it: \n3\n/\n26\n≈\n12\n%\n3/26≈12%\n"
+          },
+          {
+            "field": "score",
+            "from": {
+              "Freq": 0,
+              "Intensity": 0,
+              "Fit": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "top-of-mind",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "validated"
+          },
+          {
+            "field": "reason",
+            "to": "Out of 38 that answered that question, 33 described some behavior of trying to stay top of mind."
+          },
+          {
+            "field": "score",
+            "to": {
+              "Freq": 0,
+              "Intensity": 0,
+              "Fit": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "obs-e",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "validated"
+          },
+          {
+            "field": "test",
+            "from": "Mom test: do people who know personal details about contacts report better relationship outcomes?",
+            "to": "Mom test: do people think that it can help?"
+          },
+          {
+            "field": "reason",
+            "to": "37 out of 40 believe richer personal context creates better reasons to follow up"
+          },
+          {
+            "field": "score",
+            "to": {
+              "Freq": 0,
+              "Intensity": 0,
+              "Fit": 0
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-03-18",
     "commit": "fb757a5",
     "message": "Update tree.json: validate mutual-lkg and market-smallorg-introreq nodes, update labels and add evidence",
     "changedIds": [
@@ -3606,93 +3697,6 @@
     "commit": "40748a7",
     "message": "Update tree.json: revise hypothesis tree structure",
     "changedIds": [
-      "li-inbox",
-      "mutual-ca",
-      "mutual-ca-dup-1",
-      "obs-b",
-      "founders"
-    ],
-    "changes": [
-      {
-        "id": "li-inbox",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "test",
-            "from": "Mom tests across AEs, founders, VCs — inbox usage & frustration",
-            "to": "Behavioural: Do AEs, founders, VCs express inbox usage & frustration"
-          }
-        ]
-      },
-      {
-        "id": "mutual-ca",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "label",
-            "from": "Many mutual connections - helps the user build confidence before the reachout. More chances for him to accept.",
-            "to": "Job searchers are asking for many intros"
-          },
-          {
-            "field": "type",
-            "to": "problem"
-          },
-          {
-            "field": "tags",
-            "from": [
-              "hypothesis"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "mutual-ca-dup-1",
-        "action": "added"
-      },
-      {
-        "id": "obs-b",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "test",
-            "to": "test"
-          }
-        ]
-      },
-      {
-        "id": "founders",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "label",
-            "from": "Serial founders lose high-value relationships due to relationship drift and missed timing signals",
-            "to": "Founders in small companies that are wearing the sales hat are losing deals because of poor nurturing"
-          },
-          {
-            "field": "test",
-            "from": "3 serial founder Mom test interviews",
-            "to": "Behavioual: founder interviews"
-          },
-          {
-            "field": "type",
-            "to": "problem"
-          },
-          {
-            "field": "tags",
-            "from": [
-              "persona",
-              "validated"
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-03-09",
-    "commit": "a382d2b",
-    "message": "Update obs-a: change type to problem_space, reset li-inbox scores, add reason",
-    "changedIds": [
       "obs-a",
       "li-inbox",
       "mutual-lkg",
@@ -3701,6 +3705,7 @@
       "b-filter",
       "b-rank",
       "mutual-ca",
+      "mutual-ca-dup-1",
       "mutual-cb",
       "obs-b",
       "founders",
@@ -3751,6 +3756,10 @@
       },
       {
         "id": "mutual-ca",
+        "action": "added"
+      },
+      {
+        "id": "mutual-ca-dup-1",
         "action": "added"
       },
       {
