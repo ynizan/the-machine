@@ -345,10 +345,25 @@ function findParent(obj, targetId){
   return null;
 }
 
-let _dupCounter = 0;
+function _collectAllIds(node, ids){
+  if(node.id) ids.add(node.id);
+  if(node.children) node.children.forEach(c => _collectAllIds(c, ids));
+  return ids;
+}
+
+function _uniqueId(base){
+  const allIds = _collectAllIds(CURRENT_DATA, new Set());
+  let candidate = base;
+  let i = 1;
+  while(allIds.has(candidate)){
+    candidate = base + '-' + i;
+    i++;
+  }
+  return candidate;
+}
+
 function assignNewIds(node){
-  _dupCounter++;
-  node.id = node.id + '-dup-' + _dupCounter;
+  node.id = _uniqueId(node.id + '-dup');
   if(node.children) node.children.forEach(c => assignNewIds(c));
 }
 
@@ -359,8 +374,7 @@ function openNodeRight(nodeId, evt){
   if(!nodeData) return;
 
   // Create a new child node
-  _dupCounter++;
-  const newId = 'new-' + _dupCounter;
+  const newId = _uniqueId('new');
   const newNode = {
     id: newId,
     status: 'active',
@@ -905,6 +919,19 @@ function openInlineEdit(nodeId, evt, focusField){
     nodeData.test   = document.getElementById('ief-test').value || undefined;
     const reasonVal = document.getElementById('ief-reason').value;
     nodeData.reason = reasonVal || undefined;
+
+    // Auto-generate a meaningful ID for placeholder nodes when label is set
+    if(nodeData.label && /^new(-\d+)?$/.test(nodeData.id)){
+      const slug = nodeData.label.toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 40)
+        .replace(/-$/, '');
+      if(slug){
+        const oldId = nodeData.id;
+        nodeData.id = _uniqueId(slug);
+        delete NODE_MAP[oldId];
+        NODE_MAP[nodeData.id] = nodeData;
+      }
+    }
 
     if(newStatus === 'validated'){
       // Ensure score exists; update from form if score fields were shown
