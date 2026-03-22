@@ -294,6 +294,13 @@
                       "test": "Gordy nudges user X to tip contact Y about news of contact Z, measure sign-up intent"
                     }
                   ]
+                },
+                {
+                  "id": "radar-drift-alert",
+                  "status": "active",
+                  "type": "solution",
+                  "label": "Users respond to Gordy drift alerts — when told they haven't spoken to a specific contact in 3+ months, over 15% respond wanting help to re-engage",
+                  "test": "MVT: Gordy emails 20 calendar-connected users about their most-drifted contact. Measure response rate and yes rate to 'want me to help reconnect?'"
                 }
               ],
               "reason": "Out of 41 that answered that question, 33 described some behavior of trying to stay top of mind. Only 1 rejected directly.",
