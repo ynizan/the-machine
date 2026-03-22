@@ -1,6 +1,20 @@
 [
   {
     "date": "2026-03-22",
+    "commit": "58a25f7",
+    "message": "Add nurture-pick-people child node under nurture-criteria-define",
+    "changedIds": [
+      "nurture-pick-people"
+    ],
+    "changes": [
+      {
+        "id": "nurture-pick-people",
+        "action": "added"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-22",
     "commit": "0c06f2c",
     "message": "Add nurture-criteria-define node under top-of-mind",
     "changedIds": [
@@ -2930,508 +2944,14 @@
     "commit": "3fc7ecc",
     "message": "Move obs-e children (pokemon-warm intel) under obs-b (nurturing)",
     "changedIds": [
-      "obs-e"
-    ],
-    "changes": [
-      {
-        "id": "obs-e",
-        "action": "removed"
-      }
-    ]
-  },
-  {
-    "date": "2026-03-11",
-    "commit": "367497f",
-    "message": "Update tree.json: standardize market node labels and revise option-a structure",
-    "changedIds": [
-      "market-smallorg-introreq",
-      "market-smallorg-nurture",
-      "market-smallorg-viral",
-      "option-a",
-      "a-asker",
-      "a-giver",
-      "market-smallorg-pokemon-cold",
-      "market-smallorg-pokemon-warm"
-    ],
-    "changes": [
-      {
-        "id": "market-smallorg-introreq",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "label",
-            "from": "Low-frequency elimination may not apply — this segment makes targeted intro requests far more often",
-            "to": "Business leaders in small orgs (<20) are more likely to ask intros"
-          },
-          {
-            "field": "test",
-            "from": "Mom test: how many targeted intro requests per month?",
-            "to": "Analysis on past calls"
-          }
-        ]
-      },
-      {
-        "id": "market-smallorg-nurture",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "label",
-            "from": "They feel the nurturing gap most acutely — they are sales, BD, and relationship manager in one, with no system",
-            "to": "Business leaders in small orgs (<20) are more likely to need personal nurturing"
-          },
-          {
-            "field": "test",
-            "from": "Mom test: how do they manage nurturing today? What have they lost?",
-            "to": "Analysis of past calls"
-          }
-        ]
-      },
-      {
-        "id": "market-smallorg-viral",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "label",
-            "from": "Ideal viral vector — they attend every meeting and every intro flows through them personally",
-            "to": "Business leaders in small orgs (<20) are more likely to ask intros"
-          },
-          {
-            "field": "test",
-            "from": "Mom test: how do they request intros today? How many meetings per week?",
-            "to": "Analysis on past callsd"
-          }
-        ]
-      },
-      {
-        "id": "option-a",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "label",
-            "from": "Option A: Intro Marketplace — product requires both sides; asker and giver both need network intelligence to complete the workflow",
-            "to": "Asker and giver engage frequently in \"open the book\" exercise and it has friction"
-          },
-          {
-            "field": "test",
-            "from": "Build two-sided intro flow — does the asker naturally recruit the giver?",
-            "to": "Mom test - Ask both investors and early stage founders the frequency of \"open the book\" + what challenges"
-          },
-          {
-            "field": "type",
-            "to": "problem"
-          },
-          {
-            "field": "tags",
-            "from": [
-              "solution",
-              "virality"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "a-asker",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "label",
-            "from": "Asker sees which of helper's connections are real & active before asking",
-            "to": "Asker sees which of helper's connections are real & active before asking - he convinces the give to participate"
-          },
-          {
-            "field": "test",
-            "from": "Simulation: does seeing the real map change ask behavior?",
-            "to": "Mockup test - Pretending it's ready.  Who will they ask tomorrow."
-          },
-          {
-            "field": "type",
-            "to": "viral_sending"
-          },
-          {
-            "field": "tags",
-            "from": [
-              "feature",
-              "value"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "a-giver",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "label",
-            "from": "Giver shares a real map of available connections — turns vague asks into actionable requests",
-            "to": "Giver is willing to install a tool that shares a real map with the asker "
-          },
-          {
-            "field": "test",
-            "from": "Simulation: does shared map increase intro success rate?",
-            "to": "Mockup test - pretending it's real"
-          },
-          {
-            "field": "type",
-            "to": "viral_receiving"
-          }
-        ]
-      },
-      {
-        "id": "market-smallorg-pokemon-cold",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "label",
-            "from": "Cold outreach is a core growth channel — no SDR team, so personal intel is highest-leverage",
-            "to": "Business leaders in small orgs (<20) are more likely to research data manually"
-          },
-          {
-            "field": "test",
-            "from": "Mom test: how do they research targets before cold outreach? How much time?",
-            "to": "Analysis of past calls"
-          }
-        ]
-      },
-      {
-        "id": "market-smallorg-pokemon-warm",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "label",
-            "from": "They manage all relationships personally — no system to remember personal details at scale",
-            "to": "Business leaders in small orgs (<20) are more likely to manage relationships"
-          },
-          {
-            "field": "test",
-            "from": "Mom test: how do they remember personal details? Have they lost deals because of it?",
-            "to": "Analysis on past calls"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-03-11",
-    "commit": "a6f8297",
-    "message": "Merge pull request #28 from ynizan/claude/add-market-nodes-j2I2J",
-    "changedIds": [
-      "gordy-asks",
-      "obs-f"
-    ],
-    "changes": [
-      {
-        "id": "gordy-asks",
-        "action": "added"
-      },
-      {
-        "id": "obs-f",
-        "action": "added"
-      }
-    ]
-  },
-  {
-    "date": "2026-03-11",
-    "commit": "f07c748",
-    "message": "Fix option-b-smallorg to active status and shorten all market node text",
-    "changedIds": [
-      "market-smallorg-introreq",
-      "option-b-smallorg",
-      "market-smallorg-nurture",
-      "market-smallorg-viral",
-      "market-smallorg-pokemon-cold",
-      "market-smallorg-pokemon-warm",
-      "gordy-asks",
-      "obs-f"
-    ],
-    "changes": [
-      {
-        "id": "market-smallorg-introreq",
-        "action": "added"
-      },
-      {
-        "id": "option-b-smallorg",
-        "action": "added"
-      },
-      {
-        "id": "market-smallorg-nurture",
-        "action": "added"
-      },
-      {
-        "id": "market-smallorg-viral",
-        "action": "added"
-      },
-      {
-        "id": "market-smallorg-pokemon-cold",
-        "action": "added"
-      },
-      {
-        "id": "market-smallorg-pokemon-warm",
-        "action": "added"
-      },
-      {
-        "id": "gordy-asks",
-        "action": "removed"
-      },
-      {
-        "id": "obs-f",
-        "action": "removed"
-      }
-    ]
-  },
-  {
-    "date": "2026-03-10",
-    "commit": "3b5ca30",
-    "message": "Add gordy-asks hypothesis node to obs-c children (Thesis #13)",
-    "changedIds": [
-      "gordy-asks",
-      "obs-f",
-      "market-smallorg-introreq",
-      "option-b-smallorg",
-      "market-smallorg-nurture",
-      "market-smallorg-viral",
-      "market-smallorg-pokemon-cold",
-      "market-smallorg-pokemon-warm"
-    ],
-    "changes": [
-      {
-        "id": "gordy-asks",
-        "action": "added"
-      },
-      {
-        "id": "obs-f",
-        "action": "added"
-      },
-      {
-        "id": "market-smallorg-introreq",
-        "action": "removed"
-      },
-      {
-        "id": "option-b-smallorg",
-        "action": "removed"
-      },
-      {
-        "id": "market-smallorg-nurture",
-        "action": "removed"
-      },
-      {
-        "id": "market-smallorg-viral",
-        "action": "removed"
-      },
-      {
-        "id": "market-smallorg-pokemon-cold",
-        "action": "removed"
-      },
-      {
-        "id": "market-smallorg-pokemon-warm",
-        "action": "removed"
-      }
-    ]
-  },
-  {
-    "date": "2026-03-10",
-    "commit": "f7e843c",
-    "message": "Restructure market nodes: reposition, add viral/pokemon-cold/pokemon-warm wrappers",
-    "changedIds": [
-      "option-b-smallorg",
-      "market-smallorg-viral",
-      "market-smallorg-pokemon-cold",
-      "market-smallorg-pokemon-warm",
-      "market-smallorg-intromktplace",
-      "market-smallorg-gordy"
-    ],
-    "changes": [
-      {
-        "id": "option-b-smallorg",
-        "action": "added"
-      },
-      {
-        "id": "market-smallorg-viral",
-        "action": "added"
-      },
-      {
-        "id": "market-smallorg-pokemon-cold",
-        "action": "added"
-      },
-      {
-        "id": "market-smallorg-pokemon-warm",
-        "action": "added"
-      },
-      {
-        "id": "market-smallorg-intromktplace",
-        "action": "removed"
-      },
-      {
-        "id": "market-smallorg-gordy",
-        "action": "removed"
-      }
-    ]
-  },
-  {
-    "date": "2026-03-10",
-    "commit": "6340d4f",
-    "message": "Add 4 market nodes for small org front-people persona across thesis branches",
-    "changedIds": [
-      "market-smallorg-introreq",
-      "market-smallorg-nurture",
-      "market-smallorg-intromktplace",
-      "market-smallorg-gordy",
-      "obs-f"
-    ],
-    "changes": [
-      {
-        "id": "market-smallorg-introreq",
-        "action": "added"
-      },
-      {
-        "id": "market-smallorg-nurture",
-        "action": "added"
-      },
-      {
-        "id": "market-smallorg-intromktplace",
-        "action": "added"
-      },
-      {
-        "id": "market-smallorg-gordy",
-        "action": "added"
-      },
-      {
-        "id": "obs-f",
-        "action": "removed"
-      }
-    ]
-  },
-  {
-    "date": "2026-03-10",
-    "commit": "ff29ecd",
-    "message": "Merge pull request #27 from ynizan/claude/add-obs-f-node-2WGyD",
-    "changedIds": [
-      "ae-network-ownership",
-      "ae-attribution"
-    ],
-    "changes": [
-      {
-        "id": "ae-network-ownership",
-        "action": "added"
-      },
-      {
-        "id": "ae-attribution",
-        "action": "added"
-      }
-    ]
-  },
-  {
-    "date": "2026-03-10",
-    "commit": "28b4ca1",
-    "message": "Simplify obs-f label to \"Users want to avoid data entry\"",
-    "changedIds": [
-      "obs-f"
-    ],
-    "changes": [
-      {
-        "id": "obs-f",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "label",
-            "from": "All relationship management tools fail because they require manual data entry — users abandon them within weeks",
-            "to": "Users want to avoid data entry"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-03-10",
-    "commit": "914d9ef",
-    "message": "Add obs-f node: manual data entry kills relationship tools (Thesis #12)",
-    "changedIds": [
-      "obs-f",
-      "ae-network-ownership",
-      "ae-attribution"
-    ],
-    "changes": [
-      {
-        "id": "obs-f",
-        "action": "added"
-      },
-      {
-        "id": "ae-network-ownership",
-        "action": "removed"
-      },
-      {
-        "id": "ae-attribution",
-        "action": "removed"
-      }
-    ]
-  },
-  {
-    "date": "2026-03-10",
-    "commit": "44ef462",
-    "message": "Add ae-network-ownership and ae-attribution child nodes under aes",
-    "changedIds": [
-      "ae-network-ownership",
-      "ae-attribution"
-    ],
-    "changes": [
-      {
-        "id": "ae-network-ownership",
-        "action": "added"
-      },
-      {
-        "id": "ae-attribution",
-        "action": "added"
-      }
-    ]
-  },
-  {
-    "date": "2026-03-10",
-    "commit": "c39275e",
-    "message": "Merge pull request #24 from ynizan/claude/add-network-benchmark-node-UKNA3",
-    "changedIds": [
-      "network-benchmark"
-    ],
-    "changes": [
-      {
-        "id": "network-benchmark",
-        "action": "added"
-      }
-    ]
-  },
-  {
-    "date": "2026-03-10",
-    "commit": "a4af27c",
-    "message": "Move pokemon-get-buy under pokemon-cold-mine-common and update tests",
-    "changedIds": [
-      "pokemon-get-buy",
-      "pokemon-share",
-      "network-benchmark"
-    ],
-    "changes": [
-      {
-        "id": "pokemon-get-buy",
-        "action": "added"
-      },
-      {
-        "id": "pokemon-share",
-        "action": "added"
-      },
-      {
-        "id": "network-benchmark",
-        "action": "removed"
-      }
-    ]
-  },
-  {
-    "date": "2026-03-10",
-    "commit": "593d1d6",
-    "message": "Add network-benchmark node as child of network-self-map",
-    "changedIds": [
       "obs-a",
       "li-inbox",
       "mutual-lkg",
       "network-self-map",
       "network-benchmark",
       "option-b",
+      "market-smallorg-introreq",
+      "option-b-smallorg",
       "b-waterfall",
       "b-filter",
       "b-rank",
@@ -3440,10 +2960,18 @@
       "mutual-cb",
       "obs-b",
       "founders",
-      "vcs",
       "aes",
+      "ae-network-ownership",
+      "ae-attribution",
       "csm",
+      "market-smallorg-nurture",
+      "vcs",
+      "market-smallorg-pokemon-warm",
+      "pokemon-intros",
+      "pokemon-mine-rare",
+      "pokemon-share",
       "obs-c",
+      "market-smallorg-viral",
       "option-a",
       "a-asker",
       "a-giver",
@@ -3455,11 +2983,12 @@
       "namedrop",
       "nd-founders",
       "nd-aes",
+      "gordy-asks",
       "obs-d",
+      "market-smallorg-pokemon-cold",
       "pokemon-cold-mine-common",
-      "obs-e",
-      "pokemon-intros",
-      "pokemon-mine-rare"
+      "pokemon-get-buy",
+      "obs-f"
     ],
     "changes": [
       {
@@ -3484,6 +3013,14 @@
       },
       {
         "id": "option-b",
+        "action": "added"
+      },
+      {
+        "id": "market-smallorg-introreq",
+        "action": "added"
+      },
+      {
+        "id": "option-b-smallorg",
         "action": "added"
       },
       {
@@ -3519,11 +3056,15 @@
         "action": "added"
       },
       {
-        "id": "vcs",
+        "id": "aes",
         "action": "added"
       },
       {
-        "id": "aes",
+        "id": "ae-network-ownership",
+        "action": "added"
+      },
+      {
+        "id": "ae-attribution",
         "action": "added"
       },
       {
@@ -3531,7 +3072,35 @@
         "action": "added"
       },
       {
+        "id": "market-smallorg-nurture",
+        "action": "added"
+      },
+      {
+        "id": "vcs",
+        "action": "added"
+      },
+      {
+        "id": "market-smallorg-pokemon-warm",
+        "action": "added"
+      },
+      {
+        "id": "pokemon-intros",
+        "action": "added"
+      },
+      {
+        "id": "pokemon-mine-rare",
+        "action": "added"
+      },
+      {
+        "id": "pokemon-share",
+        "action": "added"
+      },
+      {
         "id": "obs-c",
+        "action": "added"
+      },
+      {
+        "id": "market-smallorg-viral",
         "action": "added"
       },
       {
@@ -3579,7 +3148,15 @@
         "action": "added"
       },
       {
+        "id": "gordy-asks",
+        "action": "added"
+      },
+      {
         "id": "obs-d",
+        "action": "added"
+      },
+      {
+        "id": "market-smallorg-pokemon-cold",
         "action": "added"
       },
       {
@@ -3587,15 +3164,11 @@
         "action": "added"
       },
       {
-        "id": "obs-e",
+        "id": "pokemon-get-buy",
         "action": "added"
       },
       {
-        "id": "pokemon-intros",
-        "action": "added"
-      },
-      {
-        "id": "pokemon-mine-rare",
+        "id": "obs-f",
         "action": "added"
       }
     ]
