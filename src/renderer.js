@@ -35,6 +35,8 @@ function cardHeight(node){
 
   let h = c.pad * 2;
 
+  h += Math.max(8, Math.round(c.efs * 0.65)) * 1.4;
+
   h += c.efs * 1.8;
   h += c.efs * 0.6;
 
@@ -136,6 +138,12 @@ function cardHTML(d, c, h){
   const iconSz = Math.max(10, Math.round(btnSz * 0.75));
 
   let h2 = '';
+
+  h2 += `<div style="
+    font-family:'IBM Plex Mono',monospace;font-size:${Math.max(8, Math.round(c.efs * 0.65))}px;line-height:1.2;
+    color:rgba(255,255,255,.25);letter-spacing:.05em;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-shrink:0;
+  ">${d.data.id}</div>`;
 
   h2 += `<div style="display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
     <div style="
