@@ -1,6 +1,46 @@
 [
   {
     "date": "2026-03-22",
+    "commit": "0a2033f",
+    "message": "Update after-being-exposed node: add Stay InTouch button detail to label and test",
+    "changedIds": [
+      "after-being-exposed-to-the-emails-from-g"
+    ],
+    "changes": [
+      {
+        "id": "after-being-exposed-to-the-emails-from-g",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "After being exposed to the emails from Gordy - 10% of exposed users send at least one tracking request within 30 days of first seeing the feature",
+            "to": "After being exposed to the emails from Gordy - 10% of exposed users will click \"Stay InTouch → Gordy will find ways for you to stay in touch with {{counterpartFullName}}\" button and send at least one tracking request within 30 days of first seeing the feature"
+          },
+          {
+            "field": "test",
+            "from": "MVT test - implementing the button",
+            "to": "MVT test - implementing the button Stay InTouch"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-03-22",
+    "commit": "47b25b7",
+    "message": "Add radar-drift-alert hypothesis node under top-of-mind",
+    "changedIds": [
+      "radar-drift-alert"
+    ],
+    "changes": [
+      {
+        "id": "radar-drift-alert",
+        "action": "added"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-22",
     "commit": "01daffd",
     "message": "Fix hypothesis tree: restore lost nodes and correct structure",
     "changedIds": [
@@ -3407,218 +3447,6 @@
     "message": "Update tree.json",
     "changedIds": [
       "obs-a",
-      "obs-b",
-      "obs-c",
-      "option-c",
-      "gordy-brief",
-      "counterpart-dup-1",
-      "gordy-loop",
-      "int-share"
-    ],
-    "changes": [
-      {
-        "id": "obs-a",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "test",
-            "to": "Question all transcripts: Are people unhappy with Linkedin - I need count of people mentioning that vs. people taking favorbly about linkedin. Include names. Skip Yaniv, Matan and Shaul"
-          },
-          {
-            "field": "score",
-            "to": {
-              "Freq": 0,
-              "Intensity": 0,
-              "Fit": 0
-            }
-          }
-        ]
-      },
-      {
-        "id": "obs-b",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "type",
-            "from": "problem",
-            "to": "problem_space"
-          }
-        ]
-      },
-      {
-        "id": "obs-c",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "status",
-            "from": "active",
-            "to": "validated"
-          },
-          {
-            "field": "type",
-            "from": "viral_sending",
-            "to": "problem_space"
-          },
-          {
-            "field": "test",
-            "to": "Past successes"
-          },
-          {
-            "field": "reason",
-            "to": "Calendly, zoom, Doodle (10M monthly users), Superhuman, Fathom, Firefly, Boardy, ..."
-          },
-          {
-            "field": "score",
-            "to": {
-              "Freq": 0,
-              "Intensity": 0,
-              "Fit": 0
-            }
-          }
-        ]
-      },
-      {
-        "id": "option-c",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "test",
-            "from": "Counterpart email live test — does it create desire before the product exists?",
-            "to": "Behavioral: do people practice the idea of asking for 2-3 introductions in every meeting"
-          }
-        ]
-      },
-      {
-        "id": "gordy-brief",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "status",
-            "from": "validated",
-            "to": "pending"
-          },
-          {
-            "field": "label",
-            "from": "Gordy Strategic Ask Brief creates enough value that users want it before every external meeting",
-            "to": "Gordy Strategic Ask Brief creates enough value that users share it internally with colleagues"
-          },
-          {
-            "field": "test",
-            "from": "Internal: briefs sent to Yaniv, Shaul, Oren — qualitative signal",
-            "to": "Internal: we need to bring users from companies with actual employees"
-          },
-          {
-            "field": "score",
-            "from": {
-              "Value": 3,
-              "Freq": 3,
-              "Exchange": 2
-            }
-          }
-        ]
-      },
-      {
-        "id": "counterpart-dup-1",
-        "action": "added"
-      },
-      {
-        "id": "gordy-loop",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "status",
-            "from": "pending",
-            "to": "active"
-          }
-        ]
-      },
-      {
-        "id": "int-share",
-        "action": "removed"
-      }
-    ]
-  },
-  {
-    "date": "2026-03-10",
-    "commit": "d3b0c05",
-    "message": "Merge branch 'main' into claude/show-scores-validated-M33ZA",
-    "changedIds": [
-      "mutual-ca",
-      "mutual-ca-dup-1",
-      "obs-b",
-      "founders"
-    ],
-    "changes": [
-      {
-        "id": "mutual-ca",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "label",
-            "from": "Many mutual connections - helps the user build confidence before the reachout. More chances for him to accept.",
-            "to": "Job searchers are asking for many intros"
-          },
-          {
-            "field": "type",
-            "to": "problem"
-          },
-          {
-            "field": "tags",
-            "from": [
-              "hypothesis"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "mutual-ca-dup-1",
-        "action": "added"
-      },
-      {
-        "id": "obs-b",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "test",
-            "to": "test"
-          }
-        ]
-      },
-      {
-        "id": "founders",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "label",
-            "from": "Serial founders lose high-value relationships due to relationship drift and missed timing signals",
-            "to": "Founders in small companies that are wearing the sales hat are losing deals because of poor nurturing"
-          },
-          {
-            "field": "test",
-            "from": "3 serial founder Mom test interviews",
-            "to": "Behavioual: founder interviews"
-          },
-          {
-            "field": "type",
-            "to": "problem"
-          },
-          {
-            "field": "tags",
-            "from": [
-              "persona",
-              "validated"
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-03-10",
-    "commit": "0a94823",
-    "message": "Show scores only for validated nodes",
-    "changedIds": [
-      "obs-a",
       "li-inbox",
       "mutual-lkg",
       "option-b",
@@ -3626,6 +3454,7 @@
       "b-filter",
       "b-rank",
       "mutual-ca",
+      "mutual-ca-dup-1",
       "mutual-cb",
       "obs-b",
       "founders",
@@ -3639,7 +3468,7 @@
       "option-c",
       "gordy-brief",
       "counterpart",
-      "int-share",
+      "counterpart-dup-1",
       "gordy-loop",
       "namedrop",
       "nd-founders",
@@ -3676,6 +3505,10 @@
       },
       {
         "id": "mutual-ca",
+        "action": "added"
+      },
+      {
+        "id": "mutual-ca-dup-1",
         "action": "added"
       },
       {
@@ -3731,7 +3564,7 @@
         "action": "added"
       },
       {
-        "id": "int-share",
+        "id": "counterpart-dup-1",
         "action": "added"
       },
       {
