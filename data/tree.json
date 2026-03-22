@@ -109,29 +109,6 @@
                     "Fit": 0
                   },
                   "reason": "Q6: 31 described this as a need out of 33 that were asked."
-                },
-                {
-                  "id": "new-1",
-                  "status": "active",
-                  "label": "Users will install a chrome extension and connect their calendar in order to get a reality check on their network",
-                  "type": "solution",
-                  "test": "Mockup test: are they willing to install",
-                  "children": [
-                    {
-                      "id": "new-3",
-                      "status": "pending",
-                      "label": "Users with chrome extension will send their friends the extension to discover friends network as well",
-                      "type": "viral_sending",
-                      "test": "Mockup test: are they willing to come up with names? intro us?"
-                    },
-                    {
-                      "id": "new-3-dup-4",
-                      "status": "pending",
-                      "label": "Users who received a request to install the chrome extension and connect their calendar will do so.",
-                      "type": "viral_receiving",
-                      "test": "MVT test: Send them the emails pretending we already have the flow implemented"
-                    }
-                  ]
                 }
               ],
               "reason": "Q5: 35 described this as a need out of 40 that were asked.",
@@ -169,12 +146,6 @@
             "Intensity": 0,
             "Fit": 0
           }
-        },
-        {
-          "id": "new-1",
-          "status": "active",
-          "label": "Users want to take messaging outside of Linkedin as soon as possible",
-          "test": "Mom test - ask them"
         }
       ],
       "reason": "**The overwhelming majority expressed dissatisfaction with LinkedIn.** Out of approximately 55 unique interviewees, roughly **40+ expressed negative sentiment**, while only about **8-10 spoke favorably**, with the remainder mixed.",
@@ -296,7 +267,7 @@
                   ]
                 }
               ],
-              "reason": "Out of 38 that answered that question, 33 described some behavior of trying to stay top of mind.",
+              "reason": "Out of 41 that answered that question, 33 described some behavior of trying to stay top of mind. Only 1 rejected directly.",
               "score": {
                 "Freq": 0,
                 "Intensity": 0,
@@ -344,8 +315,27 @@
                       "type": "problem",
                       "label": "Users want alerts about dynamic data matching their pokemon intel — sports results, news, events — as a zero-effort reason to reach out (the \"Sarah's Seahawks won\" mechanic)",
                       "test": "Mom test: do users currently track dynamic external data (sports, news, events) about contacts? Do they act on it when they notice it organically?"
+                    },
+                    {
+                      "id": "new-1",
+                      "status": "active",
+                      "label": ""
+                    },
+                    {
+                      "id": "new-2",
+                      "status": "active",
+                      "label": "After being exposed to the emails from Gordy - 10% of exposed users send at least one tracking request within 30 days of first seeing the feature",
+                      "type": "solution",
+                      "test": "Live test - implementing the button"
                     }
                   ]
+                },
+                {
+                  "id": "new-4",
+                  "status": "active",
+                  "label": "Over 20% of users go to the extended brief as least once",
+                  "type": "solution",
+                  "test": "In the email - new button (link). "Need an extended brief before the meeting?"\n"
                 }
               ],
               "reason": "37 out of 40 believe richer personal context creates better reasons to follow up",
@@ -452,10 +442,10 @@
                 },
                 {
                   "id": "new-1",
-                  "status": "active",
-                  "label": "Users will agree to ask the counterpart about a cool new way to do the intro using Gordy.",
+                  "status": "pending",
+                  "label": "After being exposed to the emails from Gordy - 10% of exposed users send at least one tracking request within 30 days of first seeing the feature",
                   "type": "solution",
-                  "test": "Mockup test - show them the flow"
+                  "test": "Live test - Implement the button"
                 }
               ],
               "type": "viral_receiving",
