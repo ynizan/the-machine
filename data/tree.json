@@ -324,6 +324,13 @@
                   "type": "problem",
                   "label": "Users manually research who to meet when traveling to a city or track when contacts are visiting their city — spending meaningful time on it",
                   "test": "Mom test across all transcripts: Do users check their contacts before traveling? How do they do it? Have they missed someone they wish they'd met? Do they know when contacts visit their city? Count mentions and names."
+                },
+                {
+                  "id": "gordy-kpi-selection",
+                  "status": "pending",
+                  "type": "solution",
+                  "label": "Users can identify which KPIs they would use to evaluate Gordy's performance and decide whether to keep paying",
+                  "test": "Mockup: present 5 candidate KPIs (reactivations, response rate, coverage %, opportunities surfaced, channel depth). Rank preference and measure conviction."
                 }
               ],
               "reason": "Out of 41 that answered that question, 33 described some behavior of trying to stay top of mind. Only 1 rejected directly.",
