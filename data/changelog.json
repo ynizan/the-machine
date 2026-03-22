@@ -1,5 +1,36 @@
 [
   {
+    "date": "2026-03-22",
+    "commit": "01daffd",
+    "message": "Fix hypothesis tree: restore lost nodes and correct structure",
+    "changedIds": [
+      "top-of-mind",
+      "after-being-exposed-to-the-emails-from-g",
+      "over-20-of-users-go-to-the-extended-brie"
+    ],
+    "changes": [
+      {
+        "id": "top-of-mind",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "reason",
+            "from": "Out of 38 that answered that question, 33 described some behavior of trying to stay top of mind.",
+            "to": "Out of 41 that answered that question, 33 described some behavior of trying to stay top of mind. Only 1 rejected directly."
+          }
+        ]
+      },
+      {
+        "id": "after-being-exposed-to-the-emails-from-g",
+        "action": "added"
+      },
+      {
+        "id": "over-20-of-users-go-to-the-extended-brie",
+        "action": "added"
+      }
+    ]
+  },
+  {
     "date": "2026-03-18",
     "commit": "6300d8a",
     "message": "Update tree: validate top-of-mind & obs-e, revert market-smallorg-nurture to review",
@@ -3587,116 +3618,6 @@
     "commit": "0a94823",
     "message": "Show scores only for validated nodes",
     "changedIds": [
-      "li-inbox",
-      "mutual-ca",
-      "obs-b",
-      "founders",
-      "nd-founders",
-      "mutual-ca-dup-1"
-    ],
-    "changes": [
-      {
-        "id": "li-inbox",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "test",
-            "from": "Behavioural: Do AEs, founders, VCs express inbox usage & frustration",
-            "to": "Mom tests across AEs, founders, VCs — inbox usage & frustration"
-          },
-          {
-            "field": "score",
-            "from": {
-              "Freq": 0,
-              "Intensity": 0,
-              "Fit": 0
-            }
-          }
-        ]
-      },
-      {
-        "id": "mutual-ca",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "tags",
-            "to": [
-              "hypothesis"
-            ]
-          },
-          {
-            "field": "label",
-            "from": "Job searchers are asking for many intros",
-            "to": "Many mutual connections - helps the user build confidence before the reachout. More chances for him to accept."
-          },
-          {
-            "field": "type",
-            "from": "problem"
-          }
-        ]
-      },
-      {
-        "id": "obs-b",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "test",
-            "from": "test"
-          }
-        ]
-      },
-      {
-        "id": "founders",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "tags",
-            "to": [
-              "persona",
-              "validated"
-            ]
-          },
-          {
-            "field": "label",
-            "from": "Founders in small companies that are wearing the sales hat are losing deals because of poor nurturing",
-            "to": "Serial founders lose high-value relationships due to relationship drift and missed timing signals"
-          },
-          {
-            "field": "test",
-            "from": "Behavioual: founder interviews",
-            "to": "3 serial founder Mom test interviews"
-          },
-          {
-            "field": "type",
-            "from": "problem"
-          }
-        ]
-      },
-      {
-        "id": "nd-founders",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "score",
-            "to": {
-              "Freq": 0,
-              "Intensity": 0,
-              "Fit": 0
-            }
-          }
-        ]
-      },
-      {
-        "id": "mutual-ca-dup-1",
-        "action": "removed"
-      }
-    ]
-  },
-  {
-    "date": "2026-03-10",
-    "commit": "40748a7",
-    "message": "Update tree.json: revise hypothesis tree structure",
-    "changedIds": [
       "obs-a",
       "li-inbox",
       "mutual-lkg",
@@ -3705,7 +3626,6 @@
       "b-filter",
       "b-rank",
       "mutual-ca",
-      "mutual-ca-dup-1",
       "mutual-cb",
       "obs-b",
       "founders",
@@ -3756,10 +3676,6 @@
       },
       {
         "id": "mutual-ca",
-        "action": "added"
-      },
-      {
-        "id": "mutual-ca-dup-1",
         "action": "added"
       },
       {
