@@ -337,7 +337,16 @@
                   "status": "active",
                   "type": "solution",
                   "label": "Users can define a workable filtering criteria for who they want to nurture — not just 'everyone' or 'my network' but a scoped, actionable set",
-                  "test": "Mockup test: show users a criteria builder and ask them to define their nurture list. Can they do it in under 2 minutes? Do they feel confident in the result?"
+                  "test": "Mockup test: show users a criteria builder and ask them to define their nurture list. Can they do it in under 2 minutes? Do they feel confident in the result?",
+                  "children": [
+                    {
+                      "id": "nurture-pick-people",
+                      "status": "pending",
+                      "type": "solution",
+                      "label": "Users are willing to commit to a specific list of people to nurture — when shown contacts matching their criteria, they select individuals rather than deferring or saying 'all of them'",
+                      "test": "Mockup test: after defining criteria, show users a filtered contact list and ask them to select specific people. Do they commit to names? How many? Do they hesitate or try to select everyone?"
+                    }
+                  ]
                 }
               ],
               "reason": "Out of 41 that answered that question, 33 described some behavior of trying to stay top of mind. Only 1 rejected directly.",
