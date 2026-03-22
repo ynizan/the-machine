@@ -1,6 +1,20 @@
 [
   {
     "date": "2026-03-22",
+    "commit": "8d46e83",
+    "message": "Add travel-proximity-trigger hypothesis node under top-of-mind",
+    "changedIds": [
+      "travel-proximity-trigger"
+    ],
+    "changes": [
+      {
+        "id": "travel-proximity-trigger",
+        "action": "added"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-22",
     "commit": "0a2033f",
     "message": "Update after-being-exposed node: add Stay InTouch button detail to label and test",
     "changedIds": [
@@ -3432,23 +3446,10 @@
     "commit": "5c9ccea",
     "message": "Add network-self-map node as first child of mutual-lkg",
     "changedIds": [
-      "network-self-map"
-    ],
-    "changes": [
-      {
-        "id": "network-self-map",
-        "action": "added"
-      }
-    ]
-  },
-  {
-    "date": "2026-03-10",
-    "commit": "560bd5e",
-    "message": "Update tree.json",
-    "changedIds": [
       "obs-a",
       "li-inbox",
       "mutual-lkg",
+      "network-self-map",
       "option-b",
       "b-waterfall",
       "b-filter",
@@ -3485,6 +3486,10 @@
       },
       {
         "id": "mutual-lkg",
+        "action": "added"
+      },
+      {
+        "id": "network-self-map",
         "action": "added"
       },
       {
