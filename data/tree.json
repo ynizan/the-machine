@@ -171,7 +171,7 @@
           }
         },
         {
-          "id": "new-1",
+          "id": "leave-linkedin-asap",
           "status": "active",
           "label": "Users want to take messaging outside of Linkedin as soon as possible",
           "test": "Mom test - ask them"
@@ -301,6 +301,22 @@
                   "type": "solution",
                   "label": "Users respond to Gordy drift alerts — when told they haven't spoken to a specific contact in 3+ months, over 15% respond wanting help to re-engage",
                   "test": "MVT: Gordy emails 20 calendar-connected users about their most-drifted contact. Measure response rate and yes rate to 'want me to help reconnect?'"
+                },
+                {
+                  "id": "channel-deepening",
+                  "status": "active",
+                  "type": "problem",
+                  "label": "Users actively try to increase communication channels with important contacts during existing conversations",
+                  "test": "Mom test across transcripts: tricks to add channels during natural exchanges",
+                  "children": [
+                    {
+                      "id": "channel-deepening-mockup",
+                      "status": "pending",
+                      "type": "solution",
+                      "label": "Users prefer AI-drafted messages with natural channel upgrade vs plain versions and activate the feature",
+                      "test": "Mockup: regular vs deepening message pairs. Measure preference and activation intent."
+                    }
+                  ]
                 },
                 {
                   "id": "travel-proximity-trigger",
