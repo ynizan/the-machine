@@ -50,8 +50,12 @@
   <span class="cl-sep"></span>
   <span class="cl-node-count" id="cl-node-count"></span>
   <label class="cl-toggle">
-    <input type="checkbox" id="cl-hide-unchanged" onchange="toggleHideUnchanged(this.checked)">
-    <span>Hide unchanged</span>
+    <input type="checkbox" id="cl-filter-new" onchange="toggleChangelogFilter()">
+    <span>New</span>
+  </label>
+  <label class="cl-toggle">
+    <input type="checkbox" id="cl-filter-modified" onchange="toggleChangelogFilter()">
+    <span>Modified</span>
   </label>
 </div>
 

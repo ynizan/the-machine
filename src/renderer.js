@@ -144,7 +144,7 @@ function cardHTML(d, c, h){
       white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
     ">${EYE_LABELS[st]||st}</div>
     <div style="display:flex;align-items:center;gap:${Math.max(2,btnSz*0.2)}px;flex-shrink:0;">
-      <div data-edit-id="${d.data.id}" onclick="openInlineEdit('${d.data.id}', event)" style="
+      <div data-edit-id="${d.data.id}" onclick="(CL_INDEX>=0 && MODIFIED_IDS.has('${d.data.id}')) ? openOldValuesDialog('${d.data.id}') : openInlineEdit('${d.data.id}', event)" style="
         display:flex;align-items:center;justify-content:center;
         width:${btnSz}px;height:${btnSz}px;border-radius:${Math.max(2,btnSz*0.2)}px;
         color:rgba(255,255,255,.25);cursor:pointer;
@@ -520,13 +520,18 @@ function initTree(DATA, opts){
         .style('cursor','pointer')
         .on('click', () => { openInlineEdit(l.target.data.id, null, 'test'); });
 
+      // Edge text color/opacity based on changelog state
+      const edgeTextDimmed = FILTER_UNCHANGED && CHANGED_IDS.size > 0 && !CHANGED_IDS.has(l.target.data.id);
+      const edgeTextColor = edgeTextDimmed ? '#D4A574' : (FILTER_UNCHANGED && CHANGED_IDS.size > 0 ? '#FFFFFF' : '#D4A574');
+      const edgeTextOpacity = edgeTextDimmed ? 0.10 : (FILTER_UNCHANGED && CHANGED_IDS.size > 0 ? 1 : 0.92);
+
       textLines.forEach((line, i) => {
         edgeTextG.append('text')
           .attr('x', centerX)
           .attr('y', startY + i * lh)
           .attr('text-anchor', 'middle')
-          .attr('fill', '#D4A574')
-          .attr('opacity', 0.92)
+          .attr('fill', edgeTextColor)
+          .attr('opacity', edgeTextOpacity)
           .attr('font-family', "'IBM Plex Mono', monospace")
           .attr('font-size', efs + 'px')
           .text(line);
@@ -537,12 +542,13 @@ function initTree(DATA, opts){
       const iconsX = lx + gapW + bgPad - iconSz;
       const iconsY = ly - bgPad - iconSz - efs * 0.3;
 
+      const edgeIconBaseOp = edgeTextDimmed ? 0.05 : 0.25;
       const edgeEditG = edgeG.append('g')
         .attr('transform', `translate(${iconsX},${iconsY})`)
         .style('cursor','pointer')
-        .attr('opacity', 0.25)
-        .on('mouseenter', function(){ d3.select(this).attr('opacity', 0.8); })
-        .on('mouseleave', function(){ d3.select(this).attr('opacity', 0.25); })
+        .attr('opacity', edgeIconBaseOp)
+        .on('mouseenter', function(){ d3.select(this).attr('opacity', edgeTextDimmed ? 0.15 : 0.8); })
+        .on('mouseleave', function(){ d3.select(this).attr('opacity', edgeIconBaseOp); })
         .on('click', (evt) => { evt.stopPropagation(); openInlineEdit(l.target.data.id, evt, 'test'); });
       edgeEditG.append('svg')
         .attr('width', iconSz).attr('height', iconSz)
@@ -585,6 +591,11 @@ function initTree(DATA, opts){
         .on('dblclick', (evt) => {
           if(_clickTimer){ clearTimeout(_clickTimer); _clickTimer = null; }
           evt.stopPropagation();
+          // In changelog mode, show old values dialog for modified nodes
+          if(CL_INDEX >= 0 && MODIFIED_IDS.has(d.data.id)){
+            openOldValuesDialog(d.data.id);
+            return;
+          }
           openInlineEdit(d.data.id, evt);
         });
 
@@ -1077,7 +1088,12 @@ function openReview(){
 let CHANGELOG = [];
 let CL_INDEX = -1;             // current changelog entry index (-1 = none)
 let CHANGED_IDS = new Set();   // currently highlighted changed node IDs
+let ADDED_IDS = new Set();     // IDs of nodes added in current entry
+let MODIFIED_IDS = new Set();  // IDs of nodes modified in current entry
+let CL_CHANGES = [];           // current entry's changes array (with diffs)
 let FILTER_UNCHANGED = false;  // whether to dim unchanged nodes
+let FILTER_NEW = false;        // show only new nodes
+let FILTER_MODIFIED = false;   // show only modified nodes
 let CL_BAR_OPEN = false;
 
 function loadChangelog(){
@@ -1124,32 +1140,70 @@ function clNav(dir){
   const pos = `${CL_INDEX + 1}/${CHANGELOG.length}`;
   info.innerHTML = `<span class="cl-date">${entry.date}</span><span class="cl-commit">${entry.commit}</span><span class="cl-msg">${entry.message}</span>`;
 
-  // Update changed IDs to this entry
+  // Categorize changed IDs by action
   CHANGED_IDS = new Set(entry.changedIds);
+  ADDED_IDS = new Set();
+  MODIFIED_IDS = new Set();
+  CL_CHANGES = entry.changes || [];
+  for(const ch of CL_CHANGES){
+    if(ch.action === 'added') ADDED_IDS.add(ch.id);
+    else if(ch.action === 'modified') MODIFIED_IDS.add(ch.id);
+  }
 
   const countEl = document.getElementById('cl-node-count');
   countEl.textContent = entry.changedIds.length + ' node' + (entry.changedIds.length !== 1 ? 's' : '') + ` (${pos})`;
 
   document.getElementById('changelog-bar').classList.add('active');
 
-  // Auto-enable hide unchanged on first navigation
-  if(!FILTER_UNCHANGED){
+  // Auto-enable both filter checkboxes on first navigation
+  if(!FILTER_NEW && !FILTER_MODIFIED){
+    FILTER_NEW = true;
+    FILTER_MODIFIED = true;
     FILTER_UNCHANGED = true;
-    document.getElementById('cl-hide-unchanged').checked = true;
+    document.getElementById('cl-filter-new').checked = true;
+    document.getElementById('cl-filter-modified').checked = true;
   }
+  _recalcFilteredIds();
   applyHighlight();
 }
 
-function toggleHideUnchanged(checked){
-  FILTER_UNCHANGED = checked;
+function toggleChangelogFilter(){
+  FILTER_NEW = document.getElementById('cl-filter-new').checked;
+  FILTER_MODIFIED = document.getElementById('cl-filter-modified').checked;
+  FILTER_UNCHANGED = FILTER_NEW || FILTER_MODIFIED;
+  _recalcFilteredIds();
   applyHighlight();
+}
+
+function _recalcFilteredIds(){
+  // Rebuild CHANGED_IDS based on which checkboxes are active
+  if(CL_INDEX < 0) return;
+  const entry = CHANGELOG[CL_INDEX];
+  CHANGED_IDS = new Set();
+  if(FILTER_NEW){
+    for(const id of ADDED_IDS) CHANGED_IDS.add(id);
+  }
+  if(FILTER_MODIFIED){
+    for(const id of MODIFIED_IDS) CHANGED_IDS.add(id);
+  }
+  // If neither checkbox is checked, show all (no filtering)
+  if(!FILTER_NEW && !FILTER_MODIFIED){
+    CHANGED_IDS = new Set(entry.changedIds);
+    FILTER_UNCHANGED = false;
+  }
 }
 
 function clearHighlight(){
   CL_INDEX = -1;
   CHANGED_IDS.clear();
+  ADDED_IDS.clear();
+  MODIFIED_IDS.clear();
+  CL_CHANGES = [];
   FILTER_UNCHANGED = false;
-  document.getElementById('cl-hide-unchanged').checked = false;
+  FILTER_NEW = false;
+  FILTER_MODIFIED = false;
+  document.getElementById('cl-filter-new').checked = false;
+  document.getElementById('cl-filter-modified').checked = false;
   document.getElementById('changelog-bar').classList.remove('active');
   document.getElementById('cl-info').innerHTML =
     `<span class="cl-msg" style="color:#555">${CHANGELOG.length} changes tracked</span>`;
@@ -1160,6 +1214,71 @@ function clearHighlight(){
 function applyHighlight(){
   if(!CURRENT_DATA || !RENDER_FN) return;
   RENDER_FN(CURRENT_DATA, { skipResetView: true });
+}
+
+function openOldValuesDialog(nodeId){
+  // Find the change entry for this node in the current changelog entry
+  const change = CL_CHANGES.find(ch => ch.id === nodeId && ch.action === 'modified');
+  if(!change || !change.diffs || !change.diffs.length) return false;
+
+  const nodeData = NODE_MAP[nodeId];
+  const existing = document.querySelector('.inline-edit-overlay');
+  if(existing) existing.remove();
+
+  const overlay = document.createElement('div');
+  overlay.className = 'inline-edit-overlay';
+  overlay.onclick = (e) => { if(e.target === overlay) overlay.remove(); };
+
+  const FIELD_LABELS = {
+    label: 'Label', status: 'Status', test: 'Test', reason: 'Data / Results',
+    type: 'Type', score: 'Score'
+  };
+
+  const diffsHtml = change.diffs.map(diff => {
+    const fieldLabel = FIELD_LABELS[diff.field] || diff.field;
+    const fromVal = diff.from || '—';
+    const toVal = diff.to || '—';
+    return `
+      <div style="margin-bottom:14px;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;
+          text-transform:uppercase;color:#666;margin-bottom:6px;">${fieldLabel}</div>
+        <div style="display:flex;gap:8px;align-items:stretch;">
+          <div style="flex:1;background:#1A0E0E;border:1px solid rgba(180,60,40,.3);
+            border-radius:4px;padding:8px 10px;font-family:'IBM Plex Serif',serif;
+            font-size:13px;line-height:1.5;color:#C07060;word-wrap:break-word;">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.08em;
+              text-transform:uppercase;color:rgba(180,60,40,.5);margin-bottom:4px;">Before</div>
+            ${typeof fromVal === 'object' ? JSON.stringify(fromVal) : fromVal}
+          </div>
+          <div style="flex:1;background:#0E1A10;border:1px solid rgba(90,158,111,.3);
+            border-radius:4px;padding:8px 10px;font-family:'IBM Plex Serif',serif;
+            font-size:13px;line-height:1.5;color:#7FBF95;word-wrap:break-word;">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.08em;
+              text-transform:uppercase;color:rgba(90,158,111,.5);margin-bottom:4px;">After</div>
+            ${typeof toVal === 'object' ? JSON.stringify(toVal) : toVal}
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+
+  overlay.innerHTML = `
+    <div class="inline-edit-form" style="max-width:600px;">
+      <div class="ief-header">
+        <h3>Changes — ${nodeData ? nodeData.label || nodeId : nodeId}</h3>
+        <button class="ief-close" onclick="this.closest('.inline-edit-overlay').remove()">&times;</button>
+      </div>
+      <div class="ief-body" style="max-height:60vh;overflow-y:auto;">
+        ${diffsHtml}
+      </div>
+      <div class="ief-footer">
+        <div style="flex:1"></div>
+        <button class="ep-btn" onclick="this.closest('.inline-edit-overlay').remove()">Close</button>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+  return true;
 }
 
 // Fetch data and boot
