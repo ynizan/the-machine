@@ -518,7 +518,23 @@
                   "status": "active",
                   "label": "Counterpart email gets over 30% click rate and 60% notice rate.",
                   "test": "Live emails to real attendees — measuring clicks, replies, sign-up intent",
-                  "type": "viral_receiving"
+                  "type": "viral_receiving",
+                  "children": [
+                    {
+                      "id": "counterpart-intros-cta",
+                      "status": "active",
+                      "type": "viral_receiving",
+                      "label": "Over 10% of counterpart email recipients click the 'Introduce me to someone' CTA button",
+                      "test": "MVT: Add 'Introduce me to someone' CTA button to counterpart emails. Measure click rate and downstream sign-up intent."
+                    },
+                    {
+                      "id": "counterpart-stay-intouch-cta",
+                      "status": "active",
+                      "type": "viral_receiving",
+                      "label": "Over 10% of counterpart email recipients click the 'I want Gordy to help me stay in touch with this person' button",
+                      "test": "MVT: Add 'I want Gordy to help me stay in touch with {{counterpartFullName}}' CTA button to counterpart emails. Measure click rate and downstream sign-up intent."
+                    }
+                  ]
                 },
                 {
                   "id": "counterpart-dup-1",
