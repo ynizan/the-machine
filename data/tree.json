@@ -518,7 +518,16 @@
                   "status": "active",
                   "label": "Counterpart email gets over 30% click rate and 60% notice rate.",
                   "test": "Live emails to real attendees — measuring clicks, replies, sign-up intent",
-                  "type": "viral_receiving"
+                  "type": "viral_receiving",
+                  "children": [
+                    {
+                      "id": "counterpart-intros-cta",
+                      "status": "active",
+                      "type": "viral_receiving",
+                      "label": "Over 20% of counterpart email recipients click the 'Get more intros from your meetings' button",
+                      "test": "MVT: Add 'Get more intros from your meetings' CTA button to counterpart emails. Measure click rate."
+                    }
+                  ]
                 },
                 {
                   "id": "counterpart-dup-1",
