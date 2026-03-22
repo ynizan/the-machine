@@ -1,6 +1,25 @@
 [
   {
     "date": "2026-03-22",
+    "commit": "3735b8c",
+    "message": "Add counterpart child nodes: intros CTA and stay-in-touch CTA",
+    "changedIds": [
+      "counterpart-intros-cta",
+      "counterpart-stay-intouch-cta"
+    ],
+    "changes": [
+      {
+        "id": "counterpart-intros-cta",
+        "action": "added"
+      },
+      {
+        "id": "counterpart-stay-intouch-cta",
+        "action": "added"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-22",
     "commit": "58a25f7",
     "message": "Add nurture-pick-people child node under nurture-criteria-define",
     "changedIds": [
@@ -2899,51 +2918,6 @@
     "commit": "0c526c3",
     "message": "Add 14b trigger event alerts node under market-smallorg-nurture",
     "changedIds": [
-      "14b"
-    ],
-    "changes": [
-      {
-        "id": "14b",
-        "action": "added"
-      }
-    ]
-  },
-  {
-    "date": "2026-03-11",
-    "commit": "58fdf1c",
-    "message": "Merge market-smallorg-nurture and pokemon-warm under obs-b",
-    "changedIds": [
-      "market-smallorg-nurture",
-      "obs-e",
-      "market-smallorg-pokemon-warm"
-    ],
-    "changes": [
-      {
-        "id": "market-smallorg-nurture",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "label",
-            "from": "Business leaders in small orgs (<20) are more likely to need personal nurturing",
-            "to": "Business leaders in small orgs (<20) are more likely to manage relationships and need personal nurturing"
-          }
-        ]
-      },
-      {
-        "id": "obs-e",
-        "action": "added"
-      },
-      {
-        "id": "market-smallorg-pokemon-warm",
-        "action": "removed"
-      }
-    ]
-  },
-  {
-    "date": "2026-03-11",
-    "commit": "3fc7ecc",
-    "message": "Move obs-e children (pokemon-warm intel) under obs-b (nurturing)",
-    "changedIds": [
       "obs-a",
       "li-inbox",
       "mutual-lkg",
@@ -2959,17 +2933,18 @@
       "mutual-ca-dup-1",
       "mutual-cb",
       "obs-b",
-      "founders",
       "aes",
       "ae-network-ownership",
       "ae-attribution",
       "csm",
       "market-smallorg-nurture",
       "vcs",
-      "market-smallorg-pokemon-warm",
+      "founders",
+      "obs-e",
       "pokemon-intros",
       "pokemon-mine-rare",
       "pokemon-share",
+      "14b",
       "obs-c",
       "market-smallorg-viral",
       "option-a",
@@ -3052,10 +3027,6 @@
         "action": "added"
       },
       {
-        "id": "founders",
-        "action": "added"
-      },
-      {
         "id": "aes",
         "action": "added"
       },
@@ -3080,7 +3051,11 @@
         "action": "added"
       },
       {
-        "id": "market-smallorg-pokemon-warm",
+        "id": "founders",
+        "action": "added"
+      },
+      {
+        "id": "obs-e",
         "action": "added"
       },
       {
@@ -3093,6 +3068,10 @@
       },
       {
         "id": "pokemon-share",
+        "action": "added"
+      },
+      {
+        "id": "14b",
         "action": "added"
       },
       {

@@ -526,6 +526,13 @@
                       "type": "viral_receiving",
                       "label": "Over 20% of counterpart email recipients click the 'Get more intros from your meetings' button",
                       "test": "MVT: Add 'Get more intros from your meetings' CTA button to counterpart emails. Measure click rate."
+                     },
+                    {
+                      "id": "counterpart-stay-intouch-cta",
+                      "status": "active",
+                      "type": "viral_receiving",
+                      "label": "Over 10% of counterpart email recipients click the 'I want Gordy to help me stay in touch with this person' button",
+                      "test": "MVT: Add 'I want Gordy to help me stay in touch with {{counterpartFullName}}' CTA button to counterpart emails. Measure click rate and downstream sign-up intent."
                     }
                   ]
                 },
