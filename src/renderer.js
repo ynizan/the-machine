@@ -471,7 +471,7 @@ function initTree(DATA, opts){
       const ty = l.target.x;
       const mx = (sx + tx) / 2;
 
-      const edgeDimmed = FILTER_UNCHANGED && CHANGED_IDS.size > 0 && !CHANGED_IDS.has(l.target.data.id);
+      const edgeDimmed = FILTER_UNCHANGED && !CHANGED_IDS.has(l.target.data.id);
       const baseOpacity = st==='eliminated' ? 0.2 : st==='pending' ? 0.45 : 0.6;
 
       edgeG.append('path')
@@ -521,9 +521,9 @@ function initTree(DATA, opts){
         .on('click', () => { openInlineEdit(l.target.data.id, null, 'test'); });
 
       // Edge text color/opacity based on changelog state
-      const edgeTextDimmed = FILTER_UNCHANGED && CHANGED_IDS.size > 0 && !CHANGED_IDS.has(l.target.data.id);
-      const edgeTextColor = edgeTextDimmed ? '#D4A574' : (FILTER_UNCHANGED && CHANGED_IDS.size > 0 ? '#FFFFFF' : '#D4A574');
-      const edgeTextOpacity = edgeTextDimmed ? 0.10 : (FILTER_UNCHANGED && CHANGED_IDS.size > 0 ? 1 : 0.92);
+      const edgeTextDimmed = FILTER_UNCHANGED && !CHANGED_IDS.has(l.target.data.id);
+      const edgeTextColor = edgeTextDimmed ? '#D4A574' : (FILTER_UNCHANGED ? '#FFFFFF' : '#D4A574');
+      const edgeTextOpacity = edgeTextDimmed ? 0.10 : (FILTER_UNCHANGED ? 1 : 0.92);
 
       textLines.forEach((line, i) => {
         edgeTextG.append('text')
@@ -572,7 +572,7 @@ function initTree(DATA, opts){
       const rx = Math.max(4, 12 - d.depth * 2);
 
       // Dim unchanged nodes when filter is active
-      const isDimmed = FILTER_UNCHANGED && CHANGED_IDS.size > 0 && !CHANGED_IDS.has(d.data.id);
+      const isDimmed = FILTER_UNCHANGED && !CHANGED_IDS.has(d.data.id);
 
       let _clickTimer = null;
       const grp = nodeG.append('g')
