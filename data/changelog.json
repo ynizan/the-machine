@@ -1,6 +1,30 @@
 [
   {
     "date": "2026-03-22",
+    "commit": "71aea2e",
+    "message": "Rename new-1 to leave-linkedin-asap, add channel-deepening chain under top-of-mind",
+    "changedIds": [
+      "leave-linkedin-asap",
+      "channel-deepening",
+      "channel-deepening-mockup"
+    ],
+    "changes": [
+      {
+        "id": "leave-linkedin-asap",
+        "action": "added"
+      },
+      {
+        "id": "channel-deepening",
+        "action": "added"
+      },
+      {
+        "id": "channel-deepening-mockup",
+        "action": "added"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-22",
     "commit": "9ac4f4d",
     "message": "Add nurture-channel-fomo → nurture-no-playbook → advisor-gordy-engage chain",
     "changedIds": [
@@ -3417,23 +3441,10 @@
     "commit": "561f303",
     "message": "Merge pull request #21 from ynizan/claude/add-obs-d-node-F9To2",
     "changedIds": [
-      "network-self-map"
-    ],
-    "changes": [
-      {
-        "id": "network-self-map",
-        "action": "added"
-      }
-    ]
-  },
-  {
-    "date": "2026-03-10",
-    "commit": "2ff67b8",
-    "message": "Add obs-d, obs-e, pokemon-cold-mine-common, pokemon-intros, and pokemon-mine-rare nodes to tree",
-    "changedIds": [
       "obs-a",
       "li-inbox",
       "mutual-lkg",
+      "network-self-map",
       "option-b",
       "b-waterfall",
       "b-filter",
@@ -3475,6 +3486,10 @@
       },
       {
         "id": "mutual-lkg",
+        "action": "added"
+      },
+      {
+        "id": "network-self-map",
         "action": "added"
       },
       {
