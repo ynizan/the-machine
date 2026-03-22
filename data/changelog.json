@@ -1,6 +1,30 @@
 [
   {
     "date": "2026-03-22",
+    "commit": "9ac4f4d",
+    "message": "Add nurture-channel-fomo → nurture-no-playbook → advisor-gordy-engage chain",
+    "changedIds": [
+      "nurture-channel-fomo",
+      "nurture-no-playbook",
+      "advisor-gordy-engage"
+    ],
+    "changes": [
+      {
+        "id": "nurture-channel-fomo",
+        "action": "added"
+      },
+      {
+        "id": "nurture-no-playbook",
+        "action": "added"
+      },
+      {
+        "id": "advisor-gordy-engage",
+        "action": "added"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-22",
     "commit": "8d46e83",
     "message": "Add travel-proximity-trigger hypothesis node under top-of-mind",
     "changedIds": [
@@ -3407,49 +3431,9 @@
     "commit": "2ff67b8",
     "message": "Add obs-d, obs-e, pokemon-cold-mine-common, pokemon-intros, and pokemon-mine-rare nodes to tree",
     "changedIds": [
-      "obs-d",
-      "pokemon-cold-mine-common",
-      "obs-e",
-      "pokemon-intros",
-      "pokemon-mine-rare",
-      "network-self-map"
-    ],
-    "changes": [
-      {
-        "id": "obs-d",
-        "action": "added"
-      },
-      {
-        "id": "pokemon-cold-mine-common",
-        "action": "added"
-      },
-      {
-        "id": "obs-e",
-        "action": "added"
-      },
-      {
-        "id": "pokemon-intros",
-        "action": "added"
-      },
-      {
-        "id": "pokemon-mine-rare",
-        "action": "added"
-      },
-      {
-        "id": "network-self-map",
-        "action": "removed"
-      }
-    ]
-  },
-  {
-    "date": "2026-03-10",
-    "commit": "5c9ccea",
-    "message": "Add network-self-map node as first child of mutual-lkg",
-    "changedIds": [
       "obs-a",
       "li-inbox",
       "mutual-lkg",
-      "network-self-map",
       "option-b",
       "b-waterfall",
       "b-filter",
@@ -3473,7 +3457,12 @@
       "gordy-loop",
       "namedrop",
       "nd-founders",
-      "nd-aes"
+      "nd-aes",
+      "obs-d",
+      "pokemon-cold-mine-common",
+      "obs-e",
+      "pokemon-intros",
+      "pokemon-mine-rare"
     ],
     "changes": [
       {
@@ -3486,10 +3475,6 @@
       },
       {
         "id": "mutual-lkg",
-        "action": "added"
-      },
-      {
-        "id": "network-self-map",
         "action": "added"
       },
       {
@@ -3586,6 +3571,26 @@
       },
       {
         "id": "nd-aes",
+        "action": "added"
+      },
+      {
+        "id": "obs-d",
+        "action": "added"
+      },
+      {
+        "id": "pokemon-cold-mine-common",
+        "action": "added"
+      },
+      {
+        "id": "obs-e",
+        "action": "added"
+      },
+      {
+        "id": "pokemon-intros",
+        "action": "added"
+      },
+      {
+        "id": "pokemon-mine-rare",
         "action": "added"
       }
     ]
