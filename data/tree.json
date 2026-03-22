@@ -381,6 +381,31 @@
                 "Intensity": 0,
                 "Fit": 0
               }
+            },
+            {
+              "id": "nurture-channel-fomo",
+              "status": "active",
+              "type": "problem",
+              "label": "Small org leaders have tried and abandoned multiple nurturing channels (newsletters, events, content, ABM) and feel FOMO about what peers are doing",
+              "test": "Mom test across transcripts: channels tried and stopped, FOMO mentions, count and names",
+              "children": [
+                {
+                  "id": "nurture-no-playbook",
+                  "status": "active",
+                  "type": "problem",
+                  "label": "Even when they pick a nurturing channel, users don't know what to do — what to write, which medium, how often, whether it works",
+                  "test": "Mom test across transcripts: evidence of uncertainty about execution, abandoned attempts due to not knowing what good looks like",
+                  "children": [
+                    {
+                      "id": "advisor-gordy-engage",
+                      "status": "pending",
+                      "type": "solution",
+                      "label": "Users engage with Gordy when he offers networking strategy advice by email — they ask questions or continue the conversation",
+                      "test": "MVT concierge: Gordy emails users offering strategic networking advice. Measure reply rate and engagement depth."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
