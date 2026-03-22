@@ -1,6 +1,20 @@
 [
   {
     "date": "2026-03-22",
+    "commit": "0c06f2c",
+    "message": "Add nurture-criteria-define node under top-of-mind",
+    "changedIds": [
+      "nurture-criteria-define"
+    ],
+    "changes": [
+      {
+        "id": "nurture-criteria-define",
+        "action": "added"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-22",
     "commit": "ec5165c",
     "message": "Add gordy-kpi-selection hypothesis node under top-of-mind",
     "changedIds": [
@@ -3412,34 +3426,11 @@
     "commit": "593d1d6",
     "message": "Add network-benchmark node as child of network-self-map",
     "changedIds": [
-      "network-benchmark",
-      "pokemon-get-buy",
-      "pokemon-share"
-    ],
-    "changes": [
-      {
-        "id": "network-benchmark",
-        "action": "added"
-      },
-      {
-        "id": "pokemon-get-buy",
-        "action": "removed"
-      },
-      {
-        "id": "pokemon-share",
-        "action": "removed"
-      }
-    ]
-  },
-  {
-    "date": "2026-03-10",
-    "commit": "77d5525",
-    "message": "Add pokemon-get-buy and pokemon-share hypothesis nodes",
-    "changedIds": [
       "obs-a",
       "li-inbox",
       "mutual-lkg",
       "network-self-map",
+      "network-benchmark",
       "option-b",
       "b-waterfall",
       "b-filter",
@@ -3466,11 +3457,9 @@
       "nd-aes",
       "obs-d",
       "pokemon-cold-mine-common",
-      "pokemon-get-buy",
       "obs-e",
       "pokemon-intros",
-      "pokemon-mine-rare",
-      "pokemon-share"
+      "pokemon-mine-rare"
     ],
     "changes": [
       {
@@ -3487,6 +3476,10 @@
       },
       {
         "id": "network-self-map",
+        "action": "added"
+      },
+      {
+        "id": "network-benchmark",
         "action": "added"
       },
       {
@@ -3594,10 +3587,6 @@
         "action": "added"
       },
       {
-        "id": "pokemon-get-buy",
-        "action": "added"
-      },
-      {
         "id": "obs-e",
         "action": "added"
       },
@@ -3607,10 +3596,6 @@
       },
       {
         "id": "pokemon-mine-rare",
-        "action": "added"
-      },
-      {
-        "id": "pokemon-share",
         "action": "added"
       }
     ]
