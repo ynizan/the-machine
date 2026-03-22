@@ -1,6 +1,20 @@
 [
   {
     "date": "2026-03-22",
+    "commit": "ec5165c",
+    "message": "Add gordy-kpi-selection hypothesis node under top-of-mind",
+    "changedIds": [
+      "gordy-kpi-selection"
+    ],
+    "changes": [
+      {
+        "id": "gordy-kpi-selection",
+        "action": "added"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-22",
     "commit": "71aea2e",
     "message": "Rename new-1 to leave-linkedin-asap, add channel-deepening chain under top-of-mind",
     "changedIds": [
@@ -3422,25 +3436,6 @@
     "commit": "77d5525",
     "message": "Add pokemon-get-buy and pokemon-share hypothesis nodes",
     "changedIds": [
-      "pokemon-get-buy",
-      "pokemon-share"
-    ],
-    "changes": [
-      {
-        "id": "pokemon-get-buy",
-        "action": "added"
-      },
-      {
-        "id": "pokemon-share",
-        "action": "added"
-      }
-    ]
-  },
-  {
-    "date": "2026-03-10",
-    "commit": "561f303",
-    "message": "Merge pull request #21 from ynizan/claude/add-obs-d-node-F9To2",
-    "changedIds": [
       "obs-a",
       "li-inbox",
       "mutual-lkg",
@@ -3471,9 +3466,11 @@
       "nd-aes",
       "obs-d",
       "pokemon-cold-mine-common",
+      "pokemon-get-buy",
       "obs-e",
       "pokemon-intros",
-      "pokemon-mine-rare"
+      "pokemon-mine-rare",
+      "pokemon-share"
     ],
     "changes": [
       {
@@ -3597,6 +3594,10 @@
         "action": "added"
       },
       {
+        "id": "pokemon-get-buy",
+        "action": "added"
+      },
+      {
         "id": "obs-e",
         "action": "added"
       },
@@ -3606,6 +3607,10 @@
       },
       {
         "id": "pokemon-mine-rare",
+        "action": "added"
+      },
+      {
+        "id": "pokemon-share",
         "action": "added"
       }
     ]
