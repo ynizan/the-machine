@@ -44,10 +44,7 @@ function cardHeight(node){
     h += c.efs * 1.6;
   }
 
-  // Gate type badge height
-  if(node.data.gateType && node.data.gateType !== 'FINAL'){
-    h += c.efs * 1.6;
-  }
+  // Gate type is now rendered as SVG on the edge, not in the card
 
   const label = node.data.label || '';
   const lines = Math.ceil(label.length / cpl);
@@ -116,14 +113,22 @@ const EYE_LABELS = {
 };
 
 const HYPOTHESIS_TYPES = [
+  'Segment', 'Need', 'Adoption', 'Growth', 'Feasibility', 'Economics',
   'problem', 'problem_space', 'solution', 'hypothesis', 'viral_sending', 'viral_receiving', 'revenue', 'unit_economics', 'market'
 ];
 const TYPE_LABELS = {
+  Segment:'Segment', Need:'Need', Adoption:'Adoption', Growth:'Growth', Feasibility:'Feasibility', Economics:'Economics',
   problem:'Problem', problem_space:'Problem Space', solution:'Solution', hypothesis:'Hypothesis',
   viral_sending:'Viral Sending', viral_receiving:'Viral Receiving', revenue:'Revenue',
   unit_economics:'Unit Economics', market:'Market'
 };
 const TYPE_COLORS = {
+  Segment:{ text:'#D4A574', bg:'rgba(212,165,116,.12)', border:'rgba(212,165,116,.25)' },
+  Need:{ text:'#E07060', bg:'rgba(224,112,96,.12)', border:'rgba(224,112,96,.25)' },
+  Adoption:{ text:'#6ABF80', bg:'rgba(106,191,128,.12)', border:'rgba(106,191,128,.25)' },
+  Growth:{ text:'#5AAFE0', bg:'rgba(90,175,224,.12)', border:'rgba(90,175,224,.25)' },
+  Feasibility:{ text:'#B08AD6', bg:'rgba(176,138,214,.12)', border:'rgba(176,138,214,.25)' },
+  Economics:{ text:'#C8A060', bg:'rgba(200,160,96,.12)', border:'rgba(200,160,96,.25)' },
   problem:{ text:'#E07060', bg:'rgba(224,112,96,.12)', border:'rgba(224,112,96,.25)' },
   problem_space:{ text:'#C85A4A', bg:'rgba(200,90,74,.10)', border:'rgba(200,90,74,.20)' },
   solution:{ text:'#6ABF80', bg:'rgba(106,191,128,.12)', border:'rgba(106,191,128,.25)' },
@@ -138,19 +143,43 @@ const TYPE_COLORS = {
 const EDGE_WIDTHS = { 1:8, 2:4, 3:2, 4:1, 5:0.5 };
 
 // Gate type constants
-const GATE_TYPES = ['AND', 'OR', 'FINAL'];
+const GATE_TYPES = ['AND', 'OR'];
 const GATE_COLORS = {
   AND: { text:'#E0A050', bg:'rgba(224,160,80,.15)', border:'rgba(224,160,80,.30)' },
-  OR:  { text:'#50B0E0', bg:'rgba(80,176,224,.15)', border:'rgba(80,176,224,.30)' },
-  FINAL:{ text:'#999', bg:'rgba(255,255,255,.06)', border:'rgba(255,255,255,.12)' }
+  OR:  { text:'#50B0E0', bg:'rgba(80,176,224,.15)', border:'rgba(80,176,224,.30)' }
 };
 const GATE_VALIDATED_COLOR = '#7FBF95';
 const GATE_NOT_VALIDATED_COLOR = '#664430';
 
+// Gate SVG dimensions per depth — proportional to card sizing
+function gateSize(depth){
+  const c = cfg(depth);
+  const h = c.efs * 3.2;
+  const w = h * 0.8;
+  return { w, h };
+}
+// Gap between card right edge and gate left edge
+function gateGap(depth){ return cfg(depth).efs * 0.8; }
+// Total horizontal space a gate occupies (gap + gate width)
+function gateTotalW(depth){ return gateGap(depth) + gateSize(depth).w; }
+
+// SVG path for AND gate body (flat left, semicircle right), centered at (0,0)
+function andGatePath(w, h){
+  const hw = w/2, hh = h/2;
+  return `M${-hw},${-hh} L${0},${-hh} A${hh},${hh} 0 0 1 ${0},${hh} L${-hw},${hh} Z`;
+}
+// SVG path for OR gate body (concave left, convex pointed right), centered at (0,0)
+function orGatePath(w, h){
+  const hw = w/2, hh = h/2;
+  return `M${-hw},${-hh} Q${-hw*0.15},${0} ${-hw},${hh} `
+    + `Q${hw*0.3},${hh*0.7} ${hw},${0} `
+    + `Q${hw*0.3},${-hh*0.7} ${-hw},${-hh} Z`;
+}
+
 // Propagate validation up the tree based on gate types
 // AND: validated iff ALL children are validated
 // OR: validated iff ANY child is validated
-// FINAL: keeps its own status (leaf node)
+// Leaf nodes (no children or no gateType): keep their own status
 function propagateValidation(node){
   if(!node.children || !node.children.length) return;
   node.children.forEach(c => propagateValidation(c));
@@ -170,7 +199,7 @@ function checkMissingGateTypes(data){
   const missing = [];
   function walk(node){
     if(node.id === '__root__'){ if(node.children) node.children.forEach(walk); return; }
-    if(!node.gateType) missing.push(node.id);
+    if(node.children && node.children.length > 0 && !node.gateType) missing.push(node.id);
     if(node.children) node.children.forEach(walk);
   }
   walk(data);
@@ -256,7 +285,10 @@ function cardHTML(d, c, h){
 
   if(type){
     const tc = TYPE_COLORS[type] || { text:'#999', bg:'rgba(255,255,255,.06)', border:'rgba(255,255,255,.12)' };
-    const icon = type === 'market' ? '\u25C6' : type === 'problem' || type === 'problem_space' ? '\u25CF' :
+    const icon = type === 'Segment' ? '\u25C6' : type === 'Need' ? '\u25CF' :
+      type === 'Adoption' ? '\u2713' : type === 'Growth' ? '\u2192' :
+      type === 'Feasibility' ? '\u2699' : type === 'Economics' ? '$' :
+      type === 'market' ? '\u25C6' : type === 'problem' || type === 'problem_space' ? '\u25CF' :
       type === 'solution' ? '\u2713' : type === 'hypothesis' ? '?' :
       type.startsWith('viral') ? '\u2192' : '\u25CB';
     h2 += `<div style="
@@ -268,29 +300,6 @@ function cardHTML(d, c, h){
       padding:${c.efs*0.15}px ${c.efs*0.4}px;border-radius:3px;
       align-self:flex-start;flex-shrink:0;
     ">${icon} ${TYPE_LABELS[type] || type}</div>`;
-  }
-
-  // Gate type badge (AND/OR only — FINAL shown differently)
-  if(d.data.gateType && d.data.gateType !== 'FINAL'){
-    const gt = d.data.gateType;
-    const gc = GATE_COLORS[gt] || GATE_COLORS.AND;
-    // Check if gate condition is met
-    const kids = d.children || d._children || [];
-    const kidsData = kids.map(k => k.data || k);
-    let gateMet = false;
-    if(gt === 'AND') gateMet = kidsData.length > 0 && kidsData.every(k => k.status === 'validated');
-    else if(gt === 'OR') gateMet = kidsData.some(k => k.status === 'validated');
-    const gateStatusColor = gateMet ? GATE_VALIDATED_COLOR : GATE_NOT_VALIDATED_COLOR;
-    const gateIcon = gt === 'AND' ? '&amp;' : '|';
-    h2 += `<div style="
-      display:inline-flex;align-items:center;gap:${c.efs*0.3}px;
-      font-family:'IBM Plex Mono',monospace;font-size:${c.efs*0.72}px;
-      letter-spacing:.08em;text-transform:uppercase;
-      color:${gateStatusColor};background:${gc.bg};
-      border:1px solid ${gateMet ? 'rgba(127,191,149,.3)' : gc.border};
-      padding:${c.efs*0.15}px ${c.efs*0.4}px;border-radius:3px;
-      align-self:flex-start;flex-shrink:0;
-    "><span style="font-weight:700;">${gateIcon}</span> ${gt} Gate ${gateMet ? '\u2713' : '\u25CB'}</div>`;
   }
 
   h2 += `<div style="
@@ -479,19 +488,12 @@ function openNodeRight(nodeId, evt){
   const nodeData = NODE_MAP[nodeId];
   if(!nodeData) return;
 
-  // Prevent adding children to FINAL nodes
-  if(nodeData.gateType === 'FINAL'){
-    showToast('FINAL nodes cannot have children');
-    return;
-  }
-
   // Create a new child node
   const newId = _uniqueId('new');
   const newNode = {
     id: newId,
     status: 'active',
-    label: '',
-    gateType: 'FINAL'
+    label: ''
   };
 
   if(!nodeData.children) nodeData.children = [];
@@ -578,9 +580,11 @@ function initTree(DATA, opts){
       const st  = l.target.data.status;
       const dash= (st==='pending'||st==='eliminated'||st==='backlog') ? '8,5' : null;
       const srcC = cfg(l.source.depth);
-      const tgtC = cfg(l.target.depth);
 
-      const sx = l.source.y + srcC.w;
+      // If source has a gate, edges start from the gate's right side
+      const hasGate = l.source.data.gateType && (l.source.children || l.source._children);
+      const gateOff = hasGate ? gateTotalW(l.source.depth) : 0;
+      const sx = l.source.y + srcC.w + gateOff;
       const sy = l.source.x;
       const tx = l.target.y;
       const ty = l.target.x;
@@ -596,6 +600,113 @@ function initTree(DATA, opts){
         .attr('stroke-width', EDGE_WIDTHS[l.target.depth] || 0.5)
         .attr('stroke-dasharray', dash)
         .attr('opacity', edgeDimmed ? baseOpacity * 0.15 : baseOpacity);
+    });
+
+    // Draw gate symbols on edges (right exit of parent nodes)
+    const gateG = g.append('g');
+    const drawnGates = new Set();
+    nodes.forEach(d => {
+      if(!d.data.gateType || !(d.children || d._children)) return;
+      if(drawnGates.has(d.data.id)) return;
+      drawnGates.add(d.data.id);
+
+      const c = cfg(d.depth);
+      const gs = gateSize(d.depth);
+      const gap = gateGap(d.depth);
+
+      // Gate center: right of card + gap + half gate width, vertically centered on node
+      const cx = d.y + c.w + gap + gs.w / 2;
+      const cy = d.x;
+
+      const isDimmed = FILTER_UNCHANGED && !CHANGED_IDS.has(d.data.id);
+
+      // Determine if gate condition is met
+      const kids = d.children || d._children || [];
+      const kidsData = kids.map(k => k.data || k);
+      const gt = d.data.gateType;
+      let gateMet = false;
+      if(gt === 'AND') gateMet = kidsData.length > 0 && kidsData.every(k => k.status === 'validated');
+      else if(gt === 'OR') gateMet = kidsData.some(k => k.status === 'validated');
+
+      const gateColor = gateMet ? GATE_VALIDATED_COLOR : (GATE_COLORS[gt] || GATE_COLORS.AND).text;
+      const gateFill = gateMet ? 'rgba(127,191,149,.12)' : (GATE_COLORS[gt] || GATE_COLORS.AND).bg;
+      const gateBorder = gateMet ? 'rgba(127,191,149,.4)' : (GATE_COLORS[gt] || GATE_COLORS.AND).border;
+
+      const gg = gateG.append('g')
+        .attr('transform', `translate(${cx},${cy})`)
+        .attr('opacity', isDimmed ? 0.12 : 1);
+
+      // Gate body — flipped horizontally (multi-leg right, single-leg left)
+      const pathD = gt === 'AND' ? andGatePath(gs.w, gs.h) : orGatePath(gs.w, gs.h);
+      gg.append('path')
+        .attr('d', pathD)
+        .attr('transform', 'scale(-1,1)')
+        .attr('fill', gateFill)
+        .attr('stroke', gateBorder)
+        .attr('stroke-width', Math.max(1, c.efs * 0.06));
+
+      // AND flipped: semicircle is now on left, flat on right. Leftmost point at -gs.h/2
+      // OR flipped: pointed tip on left, concave on right. Leftmost point at -gs.w/2
+      const gateLeftX = gt === 'AND' ? -gs.h/2 : -gs.w/2;
+      const gateRightX = gt === 'AND' ? gs.w/2 : gs.w/2;
+      const sw = Math.max(1, c.efs * 0.08);
+
+      // Input line (from card right edge to gate left tip)
+      gg.append('line')
+        .attr('x1', -gs.w/2 - gap).attr('y1', 0)
+        .attr('x2', gateLeftX).attr('y2', 0)
+        .attr('stroke', gateBorder).attr('stroke-width', sw);
+
+      // Output stub (from gate flat right side outward)
+      gg.append('line')
+        .attr('x1', gateRightX).attr('y1', 0)
+        .attr('x2', gs.w/2 + gap * 0.3).attr('y2', 0)
+        .attr('stroke', gateBorder).attr('stroke-width', sw);
+
+      // Gate label (not flipped — stays readable)
+      const fontSize = Math.max(6, c.efs * 0.65);
+      gg.append('text')
+        .attr('x', 0)
+        .attr('y', fontSize * 0.35)
+        .attr('text-anchor', 'middle')
+        .attr('font-family', "'IBM Plex Mono', monospace")
+        .attr('font-size', fontSize)
+        .attr('font-weight', '700')
+        .attr('letter-spacing', '.05em')
+        .attr('fill', gateColor)
+        .text(gt);
+
+      // Validated checkmark below label
+      if(gateMet){
+        gg.append('text')
+          .attr('x', 0)
+          .attr('y', fontSize * 0.35 + fontSize * 0.9)
+          .attr('text-anchor', 'middle')
+          .attr('font-size', fontSize * 0.8)
+          .attr('fill', GATE_VALIDATED_COLOR)
+          .text('\u2713');
+      }
+
+      // Output pins on right (multi-leg side) — one per child
+      const numKids = kidsData.length;
+      if(numKids > 1){
+        const maxSpread = gs.h * 0.7;
+        const pinSpacing = Math.min(maxSpread / (numKids - 1), gs.h * 0.3);
+        const totalSpan = pinSpacing * (numKids - 1);
+        const startY = -totalSpan / 2;
+        const pinLen = gap * 0.25;
+        for(let i = 0; i < numKids; i++){
+          const py = startY + i * pinSpacing;
+          gg.append('line')
+            .attr('x1', gateRightX)
+            .attr('y1', py)
+            .attr('x2', gateRightX + pinLen)
+            .attr('y2', py)
+            .attr('stroke', gateBorder)
+            .attr('stroke-width', Math.max(0.5, c.efs * 0.04))
+            .attr('opacity', 0.5);
+        }
+      }
     });
 
     const nodeG = g.append('g');
@@ -883,8 +994,8 @@ function openInlineEdit(nodeId, evt, focusField){
     `<option value="${t}" ${(nodeData.type||'')===t?'selected':''}>${t ? TYPE_LABELS[t] : '— None —'}</option>`
   ).join('');
 
-  const gateTypeOpts = GATE_TYPES.map(gt =>
-    `<option value="${gt}" ${(nodeData.gateType||'')===gt?'selected':''}>${gt}</option>`
+  const gateTypeOpts = [''].concat(GATE_TYPES).map(gt =>
+    `<option value="${gt}" ${(nodeData.gateType||'')===gt?'selected':''}>${gt || '— None —'}</option>`
   ).join('');
 
   const showScore = nodeData.status === 'validated';
@@ -972,13 +1083,8 @@ function openInlineEdit(nodeId, evt, focusField){
     nodeData.type   = typeVal || undefined;
     if(!nodeData.type) delete nodeData.type;
     const gateTypeVal = document.getElementById('ief-gatetype').value;
-    nodeData.gateType = gateTypeVal;
-    // If switching to FINAL but node has children, warn
-    if(gateTypeVal === 'FINAL' && nodeData.children && nodeData.children.length){
-      if(!confirm('Setting gate type to FINAL will not remove existing children, but FINAL nodes should be leaf nodes. Continue?')){
-        return;
-      }
-    }
+    if(gateTypeVal) nodeData.gateType = gateTypeVal;
+    else delete nodeData.gateType;
     nodeData.label  = document.getElementById('ief-label').value;
     nodeData.test   = document.getElementById('ief-test').value || undefined;
     const reasonVal = document.getElementById('ief-reason').value;
