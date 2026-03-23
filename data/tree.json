@@ -524,9 +524,9 @@
                       "id": "counterpart-intros-cta",
                       "status": "active",
                       "type": "viral_receiving",
-                      "label": "Over 10% of counterpart email recipients click the 'Introduce me to someone' CTA button",
-                      "test": "MVT: Add 'Introduce me to someone' CTA button to counterpart emails. Measure click rate and downstream sign-up intent."
-                    },
+                      "label": "Over 20% of counterpart email recipients click the 'Get more intros from your meetings' button",
+                      "test": "MVT: Add 'Get more intros from your meetings' CTA button to counterpart emails. Measure click rate."
+                     },
                     {
                       "id": "counterpart-stay-intouch-cta",
                       "status": "active",
