@@ -636,31 +636,37 @@ function initTree(DATA, opts){
         .attr('transform', `translate(${cx},${cy})`)
         .attr('opacity', isDimmed ? 0.12 : 1);
 
-      // Gate body
+      // Gate body — flipped horizontally (multi-leg right, single-leg left)
       const pathD = gt === 'AND' ? andGatePath(gs.w, gs.h) : orGatePath(gs.w, gs.h);
       gg.append('path')
         .attr('d', pathD)
+        .attr('transform', 'scale(-1,1)')
         .attr('fill', gateFill)
         .attr('stroke', gateBorder)
         .attr('stroke-width', Math.max(1, c.efs * 0.06));
 
-      // Input line (from card right edge to gate left)
+      // AND flipped: semicircle is now on left, flat on right. Leftmost point at -gs.h/2
+      // OR flipped: pointed tip on left, concave on right. Leftmost point at -gs.w/2
+      const gateLeftX = gt === 'AND' ? -gs.h/2 : -gs.w/2;
+      const gateRightX = gt === 'AND' ? gs.w/2 : gs.w/2;
+      const sw = Math.max(1, c.efs * 0.08);
+
+      // Input line (from card right edge to gate left tip)
       gg.append('line')
         .attr('x1', -gs.w/2 - gap).attr('y1', 0)
-        .attr('x2', -gs.w/2).attr('y2', 0)
-        .attr('stroke', gateBorder).attr('stroke-width', Math.max(1, c.efs * 0.08));
+        .attr('x2', gateLeftX).attr('y2', 0)
+        .attr('stroke', gateBorder).attr('stroke-width', sw);
 
-      // Output stub (from gate right to where edges begin)
+      // Output stub (from gate flat right side outward)
       gg.append('line')
-        .attr('x1', gt === 'OR' ? gs.w/2 : gs.h/2)
-        .attr('y1', 0)
+        .attr('x1', gateRightX).attr('y1', 0)
         .attr('x2', gs.w/2 + gap * 0.3).attr('y2', 0)
-        .attr('stroke', gateBorder).attr('stroke-width', Math.max(1, c.efs * 0.08));
+        .attr('stroke', gateBorder).attr('stroke-width', sw);
 
-      // Gate label
+      // Gate label (not flipped — stays readable)
       const fontSize = Math.max(6, c.efs * 0.65);
       gg.append('text')
-        .attr('x', gt === 'OR' ? -gs.w * 0.05 : 0)
+        .attr('x', 0)
         .attr('y', fontSize * 0.35)
         .attr('text-anchor', 'middle')
         .attr('font-family', "'IBM Plex Mono', monospace")
@@ -673,7 +679,7 @@ function initTree(DATA, opts){
       // Validated checkmark below label
       if(gateMet){
         gg.append('text')
-          .attr('x', gt === 'OR' ? -gs.w * 0.05 : 0)
+          .attr('x', 0)
           .attr('y', fontSize * 0.35 + fontSize * 0.9)
           .attr('text-anchor', 'middle')
           .attr('font-size', fontSize * 0.8)
@@ -681,7 +687,7 @@ function initTree(DATA, opts){
           .text('\u2713');
       }
 
-      // Input pins on left (multi-leg side) — one per child, capped at visible range
+      // Output pins on right (multi-leg side) — one per child
       const numKids = kidsData.length;
       if(numKids > 1){
         const maxSpread = gs.h * 0.7;
@@ -691,11 +697,10 @@ function initTree(DATA, opts){
         const pinLen = gap * 0.25;
         for(let i = 0; i < numKids; i++){
           const py = startY + i * pinSpacing;
-          // Small tick marks on the gate right side
           gg.append('line')
-            .attr('x1', gt === 'OR' ? gs.w/2 : gs.h/2)
+            .attr('x1', gateRightX)
             .attr('y1', py)
-            .attr('x2', gs.w/2 + pinLen)
+            .attr('x2', gateRightX + pinLen)
             .attr('y2', py)
             .attr('stroke', gateBorder)
             .attr('stroke-width', Math.max(0.5, c.efs * 0.04))
