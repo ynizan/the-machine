@@ -1,6 +1,32 @@
 [
   {
     "date": "2026-03-22",
+    "commit": "56d6f3d",
+    "message": "Merge branch 'main' into claude/add-counterpart-child-node-y9d3j",
+    "changedIds": [
+      "counterpart-intros-cta"
+    ],
+    "changes": [
+      {
+        "id": "counterpart-intros-cta",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Over 10% of counterpart email recipients click the 'Introduce me to someone' CTA button",
+            "to": "Over 20% of counterpart email recipients click the 'Get more intros from your meetings' button"
+          },
+          {
+            "field": "test",
+            "from": "MVT: Add 'Introduce me to someone' CTA button to counterpart emails. Measure click rate and downstream sign-up intent.",
+            "to": "MVT: Add 'Get more intros from your meetings' CTA button to counterpart emails. Measure click rate."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-03-22",
     "commit": "3735b8c",
     "message": "Add counterpart child nodes: intros CTA and stay-in-touch CTA",
     "changedIds": [
@@ -10,10 +36,36 @@
     "changes": [
       {
         "id": "counterpart-intros-cta",
-        "action": "added"
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Over 20% of counterpart email recipients click the 'Get more intros from your meetings' button",
+            "to": "Over 10% of counterpart email recipients click the 'Introduce me to someone' CTA button"
+          },
+          {
+            "field": "test",
+            "from": "MVT: Add 'Get more intros from your meetings' CTA button to counterpart emails. Measure click rate.",
+            "to": "MVT: Add 'Introduce me to someone' CTA button to counterpart emails. Measure click rate and downstream sign-up intent."
+          }
+        ]
       },
       {
         "id": "counterpart-stay-intouch-cta",
+        "action": "added"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-22",
+    "commit": "9fd9abf",
+    "message": "Add counterpart-intros-cta child node under counterpart",
+    "changedIds": [
+      "counterpart-intros-cta"
+    ],
+    "changes": [
+      {
+        "id": "counterpart-intros-cta",
         "action": "added"
       }
     ]
@@ -2760,164 +2812,6 @@
     "commit": "94fa676",
     "message": "Add founders-dup-1 (top of mind), restructure obs-c option-a nodes",
     "changedIds": [
-      "founders-dup-1",
-      "option-a",
-      "option-a-dup-2",
-      "a-asker-dup-3",
-      "a-giver-dup-4",
-      "a-asker",
-      "a-giver"
-    ],
-    "changes": [
-      {
-        "id": "founders-dup-1",
-        "action": "added"
-      },
-      {
-        "id": "option-a",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "label",
-            "from": "Asker and giver engage frequently in \"open the book\" exercise and it has friction",
-            "to": "Asker want to know when a giver makes a new real connection that is relevant to them so they can ask for an intro."
-          },
-          {
-            "field": "test",
-            "from": "Mom test - Ask both investors and early stage founders the frequency of \"open the book\" + what challenges",
-            "to": "Mockup test - see if the asker is willing to introduce to giver"
-          }
-        ]
-      },
-      {
-        "id": "option-a-dup-2",
-        "action": "added"
-      },
-      {
-        "id": "a-asker-dup-3",
-        "action": "added"
-      },
-      {
-        "id": "a-giver-dup-4",
-        "action": "added"
-      },
-      {
-        "id": "a-asker",
-        "action": "removed"
-      },
-      {
-        "id": "a-giver",
-        "action": "removed"
-      }
-    ]
-  },
-  {
-    "date": "2026-03-11",
-    "commit": "6456bca",
-    "message": "Update tree: revise obs-e/pokemon labels, move 14b under obs-e, update vcs test",
-    "changedIds": [
-      "vcs",
-      "obs-e",
-      "pokemon-intros",
-      "pokemon-mine-rare",
-      "14b"
-    ],
-    "changes": [
-      {
-        "id": "vcs",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "test",
-            "from": "3 VC principal Mom test interviews",
-            "to": "Mom test - what happens after the intro call if it's too early"
-          },
-          {
-            "field": "score",
-            "from": {
-              "Freq": 3,
-              "Intensity": 3,
-              "Fit": 2,
-              "WTP": 1
-            }
-          }
-        ]
-      },
-      {
-        "id": "obs-e",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "label",
-            "from": "Personal contact intelligence improves nurturing by creating more follow-up opportunities, increasing engagement rates, and ultimately improving win rates",
-            "to": "Users think that more personal contact intelligence improves nurturing by creating more follow-up opportunities that aren't lame, ultimately improving win rates"
-          },
-          {
-            "field": "test",
-            "from": "Behavioral interview: do people who know personal details about contacts report better relationship outcomes? Simulation: compare nurture sequences with vs without personal intel.",
-            "to": "Mom test: do people who know personal details about contacts report better relationship outcomes?"
-          }
-        ]
-      },
-      {
-        "id": "pokemon-intros",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "label",
-            "from": "Personal intel on a connector makes intro requests more targeted and more likely to succeed",
-            "to": "Users want to leverage personal anecdotes on connectors so they can ask more intros"
-          },
-          {
-            "field": "test",
-            "from": "Simulation: compare intro request quality and success rate with vs without personal context on the connector",
-            "to": "Mom test: do they try to make the small talk before the intro request"
-          },
-          {
-            "field": "type",
-            "from": "hypothesis"
-          }
-        ]
-      },
-      {
-        "id": "pokemon-mine-rare",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "label",
-            "from": "Users will pay to mine deep personal intel from their own emails, call transcripts, and WhatsApp to fuel warm relationship actions",
-            "to": "Users will pay to mine personal intel from their own emails, call transcripts, and WhatsApp to fuel warm relationship actions"
-          },
-          {
-            "field": "test",
-            "from": "Waitlist/credits test: when offered pokemon mining, do users connect their email or transcripts? Measure activation rate and willingness to pay.",
-            "to": "Mockup test: when offered pokemon mining, do users want it? Send the transcripts? Connect email?"
-          }
-        ]
-      },
-      {
-        "id": "14b",
-        "action": "modified",
-        "diffs": [
-          {
-            "field": "label",
-            "from": "Users want alerts about life/career trigger events for contacts — job change, funding, promotion — as a reason to reach out and nurture",
-            "to": "Users want alerts about life/career trigger events for contacts — job change, funding, promotion, local holiday, local news — as a reason to reach out and nurture"
-          },
-          {
-            "field": "test",
-            "from": "Mom test: when was the last time a contact had a life/career event you wished you'd known about sooner? How often does that happen?",
-            "to": "Mom test: do they actually search for it"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-03-11",
-    "commit": "0c526c3",
-    "message": "Add 14b trigger event alerts node under market-smallorg-nurture",
-    "changedIds": [
       "obs-a",
       "li-inbox",
       "mutual-lkg",
@@ -2940,6 +2834,7 @@
       "market-smallorg-nurture",
       "vcs",
       "founders",
+      "founders-dup-1",
       "obs-e",
       "pokemon-intros",
       "pokemon-mine-rare",
@@ -2948,8 +2843,9 @@
       "obs-c",
       "market-smallorg-viral",
       "option-a",
-      "a-asker",
-      "a-giver",
+      "option-a-dup-2",
+      "a-asker-dup-3",
+      "a-giver-dup-4",
       "option-c",
       "gordy-brief",
       "counterpart",
@@ -3055,6 +2951,10 @@
         "action": "added"
       },
       {
+        "id": "founders-dup-1",
+        "action": "added"
+      },
+      {
         "id": "obs-e",
         "action": "added"
       },
@@ -3087,11 +2987,15 @@
         "action": "added"
       },
       {
-        "id": "a-asker",
+        "id": "option-a-dup-2",
         "action": "added"
       },
       {
-        "id": "a-giver",
+        "id": "a-asker-dup-3",
+        "action": "added"
+      },
+      {
+        "id": "a-giver-dup-4",
         "action": "added"
       },
       {
