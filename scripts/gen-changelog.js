@@ -9,6 +9,10 @@ const REPO = path.resolve(__dirname, '..');
 const FILE = 'data/tree.json';
 const MAX_COMMITS = 50;
 
+// Tree was fully restructured in this commit — treat it as the first version.
+// Only generate changelog entries for commits after this one.
+const EPOCH_COMMIT = 'e5a69d7';
+
 function run(cmd) {
   return execSync(cmd, { cwd: REPO, encoding: 'utf-8', maxBuffer: 10 * 1024 * 1024 }).trim();
 }
@@ -31,10 +35,15 @@ function getTreeAtCommit(sha) {
   } catch { return null; }
 }
 
-// Get commits that touched tree.json
-const logLines = run(
+// Get commits that touched tree.json (only after the epoch commit)
+const allLogLines = run(
   `git log --format="%H|%ai|%s" -n ${MAX_COMMITS} -- ${FILE}`
 ).split('\n').filter(Boolean);
+
+// Include commits up to and including the epoch commit (epoch serves as baseline parent)
+// but don't generate a changelog entry for the epoch commit itself
+const epochIdx = allLogLines.findIndex(l => l.split('|')[0].startsWith(EPOCH_COMMIT));
+const logLines = epochIdx === -1 ? allLogLines : allLogLines.slice(0, epochIdx + 1);
 
 const changelog = [];
 
@@ -42,6 +51,9 @@ for (let i = 0; i < logLines.length; i++) {
   const [sha, date, ...msgParts] = logLines[i].split('|');
   const message = msgParts.join('|');
   const shortSha = sha.slice(0, 7);
+
+  // Skip the epoch commit itself — it's only here as a baseline for diffing
+  if (sha.startsWith(EPOCH_COMMIT)) continue;
 
   // Current commit tree vs parent commit tree
   const current = getTreeAtCommit(sha);
