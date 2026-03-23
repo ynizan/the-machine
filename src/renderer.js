@@ -45,7 +45,7 @@ function cardHeight(node){
   }
 
   // Gate type badge height
-  if(node.data.gateType && node.data.gateType !== 'FINAL'){
+  if(node.data.gateType){
     h += c.efs * 1.6;
   }
 
@@ -116,14 +116,22 @@ const EYE_LABELS = {
 };
 
 const HYPOTHESIS_TYPES = [
+  'Segment', 'Need', 'Adoption', 'Growth', 'Feasibility', 'Economics',
   'problem', 'problem_space', 'solution', 'hypothesis', 'viral_sending', 'viral_receiving', 'revenue', 'unit_economics', 'market'
 ];
 const TYPE_LABELS = {
+  Segment:'Segment', Need:'Need', Adoption:'Adoption', Growth:'Growth', Feasibility:'Feasibility', Economics:'Economics',
   problem:'Problem', problem_space:'Problem Space', solution:'Solution', hypothesis:'Hypothesis',
   viral_sending:'Viral Sending', viral_receiving:'Viral Receiving', revenue:'Revenue',
   unit_economics:'Unit Economics', market:'Market'
 };
 const TYPE_COLORS = {
+  Segment:{ text:'#D4A574', bg:'rgba(212,165,116,.12)', border:'rgba(212,165,116,.25)' },
+  Need:{ text:'#E07060', bg:'rgba(224,112,96,.12)', border:'rgba(224,112,96,.25)' },
+  Adoption:{ text:'#6ABF80', bg:'rgba(106,191,128,.12)', border:'rgba(106,191,128,.25)' },
+  Growth:{ text:'#5AAFE0', bg:'rgba(90,175,224,.12)', border:'rgba(90,175,224,.25)' },
+  Feasibility:{ text:'#B08AD6', bg:'rgba(176,138,214,.12)', border:'rgba(176,138,214,.25)' },
+  Economics:{ text:'#C8A060', bg:'rgba(200,160,96,.12)', border:'rgba(200,160,96,.25)' },
   problem:{ text:'#E07060', bg:'rgba(224,112,96,.12)', border:'rgba(224,112,96,.25)' },
   problem_space:{ text:'#C85A4A', bg:'rgba(200,90,74,.10)', border:'rgba(200,90,74,.20)' },
   solution:{ text:'#6ABF80', bg:'rgba(106,191,128,.12)', border:'rgba(106,191,128,.25)' },
@@ -138,11 +146,10 @@ const TYPE_COLORS = {
 const EDGE_WIDTHS = { 1:8, 2:4, 3:2, 4:1, 5:0.5 };
 
 // Gate type constants
-const GATE_TYPES = ['AND', 'OR', 'FINAL'];
+const GATE_TYPES = ['AND', 'OR'];
 const GATE_COLORS = {
   AND: { text:'#E0A050', bg:'rgba(224,160,80,.15)', border:'rgba(224,160,80,.30)' },
-  OR:  { text:'#50B0E0', bg:'rgba(80,176,224,.15)', border:'rgba(80,176,224,.30)' },
-  FINAL:{ text:'#999', bg:'rgba(255,255,255,.06)', border:'rgba(255,255,255,.12)' }
+  OR:  { text:'#50B0E0', bg:'rgba(80,176,224,.15)', border:'rgba(80,176,224,.30)' }
 };
 const GATE_VALIDATED_COLOR = '#7FBF95';
 const GATE_NOT_VALIDATED_COLOR = '#664430';
@@ -150,7 +157,7 @@ const GATE_NOT_VALIDATED_COLOR = '#664430';
 // Propagate validation up the tree based on gate types
 // AND: validated iff ALL children are validated
 // OR: validated iff ANY child is validated
-// FINAL: keeps its own status (leaf node)
+// Leaf nodes (no children or no gateType): keep their own status
 function propagateValidation(node){
   if(!node.children || !node.children.length) return;
   node.children.forEach(c => propagateValidation(c));
@@ -170,7 +177,7 @@ function checkMissingGateTypes(data){
   const missing = [];
   function walk(node){
     if(node.id === '__root__'){ if(node.children) node.children.forEach(walk); return; }
-    if(!node.gateType) missing.push(node.id);
+    if(node.children && node.children.length > 0 && !node.gateType) missing.push(node.id);
     if(node.children) node.children.forEach(walk);
   }
   walk(data);
@@ -256,7 +263,10 @@ function cardHTML(d, c, h){
 
   if(type){
     const tc = TYPE_COLORS[type] || { text:'#999', bg:'rgba(255,255,255,.06)', border:'rgba(255,255,255,.12)' };
-    const icon = type === 'market' ? '\u25C6' : type === 'problem' || type === 'problem_space' ? '\u25CF' :
+    const icon = type === 'Segment' ? '\u25C6' : type === 'Need' ? '\u25CF' :
+      type === 'Adoption' ? '\u2713' : type === 'Growth' ? '\u2192' :
+      type === 'Feasibility' ? '\u2699' : type === 'Economics' ? '$' :
+      type === 'market' ? '\u25C6' : type === 'problem' || type === 'problem_space' ? '\u25CF' :
       type === 'solution' ? '\u2713' : type === 'hypothesis' ? '?' :
       type.startsWith('viral') ? '\u2192' : '\u25CB';
     h2 += `<div style="
@@ -270,8 +280,8 @@ function cardHTML(d, c, h){
     ">${icon} ${TYPE_LABELS[type] || type}</div>`;
   }
 
-  // Gate type badge (AND/OR only — FINAL shown differently)
-  if(d.data.gateType && d.data.gateType !== 'FINAL'){
+  // Gate type badge (AND/OR)
+  if(d.data.gateType){
     const gt = d.data.gateType;
     const gc = GATE_COLORS[gt] || GATE_COLORS.AND;
     // Check if gate condition is met
@@ -479,19 +489,12 @@ function openNodeRight(nodeId, evt){
   const nodeData = NODE_MAP[nodeId];
   if(!nodeData) return;
 
-  // Prevent adding children to FINAL nodes
-  if(nodeData.gateType === 'FINAL'){
-    showToast('FINAL nodes cannot have children');
-    return;
-  }
-
   // Create a new child node
   const newId = _uniqueId('new');
   const newNode = {
     id: newId,
     status: 'active',
-    label: '',
-    gateType: 'FINAL'
+    label: ''
   };
 
   if(!nodeData.children) nodeData.children = [];
@@ -883,8 +886,8 @@ function openInlineEdit(nodeId, evt, focusField){
     `<option value="${t}" ${(nodeData.type||'')===t?'selected':''}>${t ? TYPE_LABELS[t] : '— None —'}</option>`
   ).join('');
 
-  const gateTypeOpts = GATE_TYPES.map(gt =>
-    `<option value="${gt}" ${(nodeData.gateType||'')===gt?'selected':''}>${gt}</option>`
+  const gateTypeOpts = [''].concat(GATE_TYPES).map(gt =>
+    `<option value="${gt}" ${(nodeData.gateType||'')===gt?'selected':''}>${gt || '— None —'}</option>`
   ).join('');
 
   const showScore = nodeData.status === 'validated';
@@ -972,13 +975,8 @@ function openInlineEdit(nodeId, evt, focusField){
     nodeData.type   = typeVal || undefined;
     if(!nodeData.type) delete nodeData.type;
     const gateTypeVal = document.getElementById('ief-gatetype').value;
-    nodeData.gateType = gateTypeVal;
-    // If switching to FINAL but node has children, warn
-    if(gateTypeVal === 'FINAL' && nodeData.children && nodeData.children.length){
-      if(!confirm('Setting gate type to FINAL will not remove existing children, but FINAL nodes should be leaf nodes. Continue?')){
-        return;
-      }
-    }
+    if(gateTypeVal) nodeData.gateType = gateTypeVal;
+    else delete nodeData.gateType;
     nodeData.label  = document.getElementById('ief-label').value;
     nodeData.test   = document.getElementById('ief-test').value || undefined;
     const reasonVal = document.getElementById('ief-reason').value;

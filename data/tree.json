@@ -4,113 +4,111 @@
   "status": "root",
   "children": [
     {
-      "id": "obs-a",
-      "status": "validated",
-      "type": "problem_space",
-      "label": "Many people are unhappy with Linkedin",
+      "id": "root-nurture-main",
+      "label": "There is a viable business around nurturing for small business owners at organizations under 20 who also do selling",
+      "status": "active",
       "children": [
         {
-          "id": "li-inbox",
-          "status": "eliminated",
-          "label": "LinkedIn inbox is a poor networking tool. Messages go unread, no prioritization, creates noise not signal",
-          "test": "Mom tests across AEs, founders, VCs — inbox usage & frustration",
-          "reason": "Most people didn't feel it's an issue. The ones that have a lot of linkedin reachout use external tools for it anyway.",
-          "gateType": "FINAL"
+          "id": "nurture-smallbiz-segment",
+          "label": "Small business owners at organizations under 20 who also do selling are a concrete initial segment for nurturing",
+          "status": "review",
+          "type": "Segment",
+          "test": "Analysis on past calls + targeted interviews about time spent nurturing outside active deals",
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          }
         },
         {
-          "id": "17",
+          "id": "nurture-smallbiz-need",
+          "label": "This segment has a recurring nurturing problem worth solving",
           "status": "active",
-          "type": "problem",
-          "label": "Users want to delegate their LinkedIn search + inbox/outbox to an SDR or recruiter",
-          "test": "Mom test: when and why do users want to delegate LinkedIn/email communication? What triggers the need and what are current workarounds?",
-          "gateType": "FINAL"
-        },
-        {
-          "id": "mutual-lkg",
-          "status": "validated",
-          "type": "problem",
-          "label": "Users are frustrated weekly since mutual connections is inaccurate — they see 300+ but have no intelligence on which paths are real",
-          "test": "Behavioral: how often do people see / click mutual connections? What for?",
+          "type": "Need",
           "children": [
             {
-              "id": "network-self-map",
+              "id": "founders",
+              "label": "Founders in small companies wearing the sales hat feel they are losing deals because of poor nurturing",
               "status": "active",
-              "type": "solution",
-              "label": "Users want a real picture of their own network — active vs dormant connections, response likelihood, and intro balance (favors given vs called) — not a vanity count",
-              "test": "Demo/waitlist test: show a mockup of a network health dashboard — does it generate sign-up intent or 'I want that' reactions? Not a Mom Test — this is a latent need, solution-first.",
-              "children": [
-                {
-                  "id": "network-benchmark",
-                  "status": "pending",
-                  "type": "solution",
-                  "label": "Users want to benchmark their network health against peers — how do I compare to my co-founder, or how strong is a friend's network before I ask them for something?",
-                  "test": "Pending: validate parent node (network-self-map) first",
-                  "gateType": "FINAL"
-                }
-              ],
-              "gateType": "AND"
+              "type": "Need",
+              "test": "Mom test: ask for concrete lost-opportunity examples where weak follow-up or weak top-of-mind presence mattered",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
             },
             {
-              "id": "option-b",
-              "status": "eliminated",
-              "type": "solution",
-              "label": "Option B: Strategic Reach — find the real intro path to a specific high-value target",
-              "test": "Mom tests — how often do you target a specific person for an intro?",
-              "reason": "Frequency too low — ~2x per Q. Not a recurring daily pain.",
-              "gateType": "FINAL"
-            },
-            {
-              "id": "market-smallorg-introreq",
+              "id": "nurture-top-of-mind",
+              "label": "Users want to stay top of mind so opportunities and in-market buyers come back to them",
               "status": "validated",
-              "type": "market",
-              "label": "Business leaders in small orgs (<20) are describe needing to reach a specific target through a warm path? ",
-              "test": "Analysis on past calls",
+              "type": "Need",
+              "test": "Interview + transcript analysis: do users explicitly describe wanting to stay top of mind so opportunities come back to them?",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
+            },
+            {
+              "id": "nurture-execution-gap-smallbiz",
+              "label": "Current ways of nurturing are weak, inconsistent, or too effortful",
+              "status": "active",
+              "type": "Need",
               "children": [
                 {
-                  "id": "option-b-smallorg",
-                  "status": "validated",
-                  "type": "solution",
-                  "label": "Small biz leaders - describe facing a large set of mutual connections and needing to narrow them to a few realistic intro paths? ",
-                  "test": "Mom test: how often do small org front-people target a specific person for an intro?",
+                  "id": "nurture-channel-fomo",
+                  "label": "Small business owners have tried and abandoned multiple nurturing channels and feel FOMO about what peers are doing",
+                  "status": "active",
+                  "type": "Need",
+                  "test": "Mom test across transcripts: channels tried and stopped, FOMO mentions, count and names",
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  }
+                },
+                {
+                  "id": "nurture-no-playbook",
+                  "label": "Even when users pick a nurturing channel, they do not know what to write, which medium to use, how often to reach out, or whether it works",
+                  "status": "active",
+                  "type": "Need",
+                  "test": "Mom test across transcripts: evidence of uncertainty about execution, abandoned attempts due to not knowing what good looks like",
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  }
+                },
+                {
+                  "id": "channel-deepening-path",
+                  "label": "Users already try to deepen communication channels with important contacts, and may adopt help doing it",
+                  "status": "active",
+                  "type": "Need",
                   "children": [
                     {
-                      "id": "b-waterfall",
-                      "status": "pending",
-                      "label": "Waterfall sequencing: try connector #1 → auto-fallback #2, prevent double-ask",
-                      "test": "Mockup test: do you want this? Install chrome extension if you do",
-                      "children": [
-                        {
-                          "id": "new-2",
-                          "status": "pending",
-                          "label": "Can we do this",
-                          "type": "solution",
-                          "test": "Feasibility",
-                          "gateType": "FINAL"
-                        }
-                      ],
-                      "gateType": "AND"
+                      "id": "channel-deepening",
+                      "label": "Users actively try to increase communication channels with important contacts during existing conversations",
+                      "status": "active",
+                      "type": "Need",
+                      "test": "Mom test: when do users try to move a relationship to a deeper channel, and what examples can they recall?",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
                     },
                     {
-                      "id": "b-filter",
+                      "id": "channel-deepening-mockup",
+                      "label": "Users prefer AI-drafted messages with natural channel upgrade versus plain versions and activate the feature",
                       "status": "pending",
-                      "label": "Filter 300+ mutuals to 3–5 real paths via active relationship signals",
-                      "test": "Mockup test: do you want this? Install chrome extension if you do",
-                      "gateType": "FINAL"
-                    },
-                    {
-                      "id": "b-rank",
-                      "status": "pending",
-                      "label": "Rank connectors by responsiveness to both you and the target",
-                      "test": "Mockup test: do you want this? Install chrome extension if you do",
-                      "gateType": "FINAL"
-                    },
-                    {
-                      "id": "16",
-                      "status": "pending",
-                      "type": "viral_sending",
-                      "label": "Users want to copy Gordy on outreach so he can manage the waterfall or help otherwise with warm path attempts automatically",
-                      "test": "Mockup test: show the cc-Gordy flow — does the user understand it and want to use it?",
-                      "gateType": "FINAL"
+                      "type": "Adoption",
+                      "test": "Mockup: show regular vs channel-deepening drafts and measure preference plus willingness to use",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
                     }
                   ],
                   "score": {
@@ -118,70 +116,29 @@
                     "Intensity": 0,
                     "Fit": 0
                   },
-                  "reason": "Q6: 31 described this as a need out of 33 that were asked.",
                   "gateType": "AND"
                 },
                 {
-                  "id": "new-1",
+                  "id": "travel-proximity-trigger",
+                  "label": "Users manually research who to meet when traveling or track when contacts are visiting their city",
                   "status": "active",
-                  "label": "Users will install a chrome extension and connect their calendar in order to get a reality check on their network",
-                  "type": "solution",
-                  "test": "Mockup test: are they willing to install",
-                  "children": [
-                    {
-                      "id": "new-3",
-                      "status": "pending",
-                      "label": "Users with chrome extension will send their friends the extension to discover friends network as well",
-                      "type": "viral_sending",
-                      "test": "Mockup test: are they willing to come up with names? intro us?",
-                      "gateType": "FINAL"
-                    },
-                    {
-                      "id": "new-3-dup-4",
-                      "status": "pending",
-                      "label": "Users who received a request to install the chrome extension and connect their calendar will do so.",
-                      "type": "viral_receiving",
-                      "test": "MVT test: Send them the emails pretending we already have the flow implemented",
-                      "gateType": "FINAL"
-                    }
-                  ],
-                  "gateType": "AND"
+                  "type": "Need",
+                  "test": "Mom test: ask for recent travel examples and whether they searched for people to meet or noticed visitors manually",
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  }
                 }
               ],
-              "reason": "Q5: 35 described this as a need out of 40 that were asked.",
               "score": {
                 "Freq": 0,
                 "Intensity": 0,
                 "Fit": 0
               },
-              "gateType": "AND"
-            },
-            {
-              "id": "mutual-ca",
-              "status": "active",
-              "label": "Job searchers are looking for 1st degree connections that will answer them so they submit them from the inside",
-              "test": "Interview: when you looked for a job have you looked for inside submissions",
-              "type": "problem",
-              "gateType": "FINAL"
-            },
-            {
-              "id": "mutual-ca-dup-1",
-              "status": "active",
-              "type": "problem",
-              "label": "Many mutual connections - helps the user build confidence before the reachout. More chances for him to accept.",
-              "test": "Interview: when and why do you look at mutual connections?",
-              "gateType": "FINAL"
-            },
-            {
-              "id": "mutual-cb",
-              "status": "active",
-              "type": "problem",
-              "label": "People check mutual connections as part of understanding the target. What people he associate with.",
-              "test": "Interview: what triggers you to check mutual connections?",
-              "gateType": "FINAL"
+              "gateType": "OR"
             }
           ],
-          "reason": "Q3: In small (<20) - came up in 18 conversations. All confirmed.\n14 said no and the other 4 just stopped trying (they moved on) ",
           "score": {
             "Freq": 0,
             "Intensity": 0,
@@ -190,449 +147,1042 @@
           "gateType": "AND"
         },
         {
-          "id": "leave-linkedin-asap",
+          "id": "nurture-smallbiz-adoption",
+          "label": "Users in this segment will adopt a low-friction workflow to tell Gordy who to nurture and act on prompts",
           "status": "active",
-          "label": "Users want to take messaging outside of Linkedin as soon as possible",
-          "test": "Mom test - ask them",
-          "gateType": "FINAL"
-        }
-      ],
-      "reason": "**The overwhelming majority expressed dissatisfaction with LinkedIn.** Out of approximately 55 unique interviewees, roughly **40+ expressed negative sentiment**, while only about **8-10 spoke favorably**, with the remainder mixed.",
-      "test": "Question all transcripts: Are people unhappy with Linkedin - I need count of people mentioning that vs. people taking favorbly about linkedin. Include names. Skip Yaniv, Matan and Shaul",
-      "score": {
-        "Freq": 0,
-        "Intensity": 0,
-        "Fit": 0
-      },
-      "gateType": "AND"
-    },
-    {
-      "id": "obs-b",
-      "status": "validated",
-      "type": "problem_space",
-      "label": "Newsletter approach to nurturing is dying",
-      "children": [
-        {
-          "id": "aes",
-          "status": "eliminated",
-          "label": "AEs in companies over 20 will pay out of pocket for personal network CRM — owned by the rep, not the company",
-          "test": "AE validation interviews (simulation + real calls) + cold email signal",
+          "type": "Adoption",
           "children": [
             {
-              "id": "ae-network-ownership",
-              "status": "pending",
-              "type": "problem",
-              "label": "AEs want to own their network and move it with them when they change jobs — their relationships are personal assets, not company property",
-              "test": "Mom test: do they keep personal notes in other places? Have they tried to export upon leaving?",
-              "gateType": "FINAL"
+              "id": "nurture-criteria-define",
+              "label": "Users can define a workable filtering criteria for who they want to nurture",
+              "status": "active",
+              "type": "Adoption",
+              "test": "Mockup: can users specify a scoped, actionable set instead of \"everyone\" or \"my whole network\"?",
+              "children": [
+                {
+                  "id": "nurture-pick-people",
+                  "label": "Users are willing to commit to a specific list of people to nurture",
+                  "status": "pending",
+                  "type": "Adoption",
+                  "test": "Mockup: when shown contacts matching their criteria, do they select specific people rather than deferring or saying 'everyone'?",
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  }
+                }
+              ],
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              },
+              "gateType": "AND"
             },
             {
-              "id": "ae-attribution",
+              "id": "radar-drift-alert",
+              "label": "Users respond to automated drift alerts and ask for help re-engaging a real contact",
+              "status": "active",
+              "type": "Adoption",
+              "test": "MVT: send drift alerts when a user has not spoken to a contact in 3+ months and measure reply / action rate",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
+            },
+            {
+              "id": "advisor-gordy-engage",
+              "label": "Users engage with Gordy when he offers networking strategy advice by email",
               "status": "pending",
-              "type": "problem",
-              "label": "AEs want to claim attribution for deals they influenced through personal relationships — giving them a concrete reason to nurture outside the company CRM",
-              "test": "Mome test: have they presented such behaviors",
-              "gateType": "FINAL"
+              "type": "Adoption",
+              "test": "MVT concierge: Gordy emails users offering strategic networking advice. Measure reply rate and engagement depth.",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
             }
           ],
-          "type": "revenue",
-          "reason": "**Ratio:** Even at best case, 5/18 = **28% personal payers**. Conservative: 3/18 = **17%**.\n",
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          },
           "gateType": "AND"
         },
         {
-          "id": "csm",
-          "status": "backlog",
-          "label": "CSMs need relationship intelligence to prevent churn and surface expansion opportunities",
-          "test": "Mom test - have they tried to get such information? Have they kept records",
-          "type": "problem",
-          "gateType": "FINAL"
-        },
-        {
-          "id": "market-smallorg-nurture",
-          "status": "review",
-          "type": "market",
-          "label": "Among founders and individual business leaders at small organizations (non‑B2C / non‑PLG, non‑recruiters), do they describe spending over 1 hour per week on either producing content that is likely reaching people they already know or in communicating with people they already know but are not in a sales funnel.",
-          "test": "Analysis of past calls",
+          "id": "nurture-smallbiz-growth",
+          "label": "There is at least one credible growth path for the nurturing product in this segment",
+          "status": "active",
+          "type": "Growth",
           "children": [
             {
-              "id": "founders",
+              "id": "nudge-path",
+              "label": "Contact-based nudges can drive both usage and acquisition",
               "status": "active",
-              "label": "Founders in small companies wearing the sales hat feel that they are losing deals because of poor nurturing",
-              "test": "Mom test: founder interviews, do they feel that?",
-              "type": "problem",
-              "gateType": "FINAL"
-            },
-            {
-              "id": "top-of-mind",
-              "status": "validated",
-              "label": "Users want to stay top of mind so customers call them when in-market and various opportunities find them",
-              "test": "Mom Test: do users find work arounds to stay top of mind. Do they agree that this is the motivation",
-              "type": "problem",
+              "type": "Growth",
               "children": [
                 {
-                  "id": "vcs",
+                  "id": "circles-exist",
+                  "label": "Users naturally think of their contacts in circles or clusters rather than only as one-off relationships",
                   "status": "pending",
-                  "label": "VC principals miss deal flow — can't maintain active signals on 80–150 priority founders",
-                  "test": "Mom test - what happens after the intro call if it's too early",
-                  "type": "problem",
-                  "gateType": "FINAL"
+                  "type": "Growth",
+                  "test": "Interview: ask users how they mentally organize important contacts and whether circles/clusters are already a natural model",
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  }
                 },
                 {
-                  "id": "circles-exist",
+                  "id": "nudge-action",
+                  "label": "Users will send a suggested nudge message when shown a concrete example",
                   "status": "pending",
-                  "type": "opportunity",
-                  "label": "Over 80% of users already feel that most of their contacts exist in circles - have connections between them",
-                  "test": "Mom test: ask users if they think of their contacts as connected to each other or only to themselves. Do they naturally describe their network in clusters?",
+                  "type": "Growth",
+                  "test": "Mockup: show a suggested nudge on a real contact and measure send intent / actual send rate",
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  }
+                },
+                {
+                  "id": "acq-interview",
+                  "label": "Users who say yes to the nudge want to try the service immediately",
+                  "status": "pending",
+                  "type": "Growth",
+                  "test": "During interviews, after a positive nudge reaction, ask whether they want to try the service now",
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  }
+                },
+                {
+                  "id": "acq-outbound",
+                  "label": "Cold outbound offering these nurturing tips can get enough response to be a viable acquisition path",
+                  "status": "pending",
+                  "type": "Growth",
+                  "test": "Outbound campaign: email describing the value of concrete nurturing tips. Measure yes rate and response rate.",
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  }
+                },
+                {
+                  "id": "acq-gordy-viral-tip",
+                  "label": "Recipients who receive a tip email from Gordy want the service for themselves",
+                  "status": "pending",
+                  "type": "Growth",
+                  "test": "Pilot: send Gordy tip emails and measure how many recipients ask for the service",
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  }
+                },
+                {
+                  "id": "acq-gordy-viral-nudge",
+                  "label": "Users who receive a Gordy nudge email want the service for themselves",
+                  "status": "pending",
+                  "type": "Growth",
+                  "test": "Pilot: send Gordy nudge emails and measure how many recipients ask for the service",
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  }
+                },
+                {
+                  "id": "nurture-exposed-via-intro-flow",
+                  "label": "Some users exposed through the intro-email flow ask Gordy for help staying in touch with a real contact",
+                  "status": "active",
+                  "type": "Growth",
+                  "test": "MVT: Add a stay-in-touch CTA to intro-flow emails and measure click-through plus creation of at least one tracking request",
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  }
+                }
+              ],
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              },
+              "gateType": "AND"
+            }
+          ],
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          },
+          "gateType": "OR"
+        },
+        {
+          "id": "nurture-smallbiz-feasibility",
+          "label": "We can deliver the nurturing workflow for this segment with low ongoing user effort",
+          "status": "active",
+          "type": "Feasibility",
+          "children": [
+            {
+              "id": "low-manual-entry",
+              "label": "The product can work without ongoing manual data entry from users",
+              "status": "pending",
+              "type": "Feasibility",
+              "test": "Prototype test: does the workflow still produce useful outputs when users only connect existing data sources and avoid ongoing manual upkeep?",
+              "reason": "Mapped from old cross-cutting hypothesis obs-f: users want to avoid ongoing data entry.",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
+            },
+            {
+              "id": "calendar-connected-workflow",
+              "label": "A calendar-connected workflow is enough to trigger useful nurturing prompts",
+              "status": "active",
+              "type": "Feasibility",
+              "test": "Live prompt experiment on calendar-connected users: do pre/post-meeting signals generate prompts users find useful enough to act on?",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
+            }
+          ],
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          },
+          "gateType": "AND"
+        },
+        {
+          "id": "nurture-smallbiz-economics",
+          "label": "There is a path to willingness to pay and retention in this segment",
+          "status": "pending",
+          "type": "Economics",
+          "children": [
+            {
+              "id": "gordy-kpi-selection",
+              "label": "Users can name the KPIs they would use to decide whether Gordy is worth paying for",
+              "status": "pending",
+              "type": "Economics",
+              "test": "Mockup: present candidate KPIs and measure which ones users trust enough to decide whether to keep paying",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
+            },
+            {
+              "id": "nurture-pay",
+              "label": "The chosen nurturing segment will pay for ongoing help if value is proven",
+              "status": "pending",
+              "type": "Economics",
+              "test": "Pricing / prepay / commitment test after a concrete value demo or concierge period",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
+            }
+          ],
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          },
+          "gateType": "AND"
+        }
+      ],
+      "gateType": "AND"
+    },
+    {
+      "id": "root-nurture-adjacent-segments",
+      "label": "Parallel nurturing segments that may have similar keep-in-touch problems",
+      "status": "backlog",
+      "children": [
+        {
+          "id": "nurture-vcs-segment",
+          "label": "VC principals may also face a similar keep-in-touch / top-of-mind problem",
+          "status": "pending",
+          "type": "Segment",
+          "test": "Mom test: what happens after an intro call when it is too early, and how do VCs try to stay top of mind over time?",
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          }
+        },
+        {
+          "id": "nurture-csm-segment",
+          "label": "CSMs may also face a similar keep-in-touch / relationship-nurturing problem",
+          "status": "backlog",
+          "type": "Segment",
+          "test": "Mom test: do CSMs keep relationship notes or seek relationship intelligence to prevent churn and surface expansion?",
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          }
+        },
+        {
+          "id": "nurture-recruiters-segment",
+          "label": "Recruiters may also face a similar keep-in-touch / relationship-nurturing problem",
+          "status": "backlog",
+          "type": "Segment",
+          "test": "Adjacent-segment interviews with recruiters about keeping candidates and hiring managers warm",
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          }
+        }
+      ],
+      "gateType": "OR"
+    },
+    {
+      "id": "root-nurture-richer-context",
+      "label": "Richer personal contact context may create better reasons to follow up",
+      "status": "backlog",
+      "children": [
+        {
+          "id": "nurture-context-trigger-alerts",
+          "label": "External trigger alerts may create useful reasons to reach out",
+          "status": "pending",
+          "type": "Need",
+          "children": [
+            {
+              "id": "14b",
+              "label": "Users want alerts about life or career trigger events for contacts as reasons to reach out",
+              "status": "pending",
+              "type": "Need",
+              "test": "Mom test: do users actually search for these triggers, set alerts, or follow companies/people to find reasons to reach out?",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
+            },
+            {
+              "id": "15",
+              "label": "Users want alerts about dynamic external data tied to contacts as a zero-effort reason to reach out",
+              "status": "pending",
+              "type": "Need",
+              "test": "Mom test: do users currently track sports, news, or events about contacts, and do they ever act on it?",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
+            }
+          ],
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          },
+          "gateType": "OR"
+        },
+        {
+          "id": "nurture-context-private-intel",
+          "label": "Deeper private contact context may create better warm actions",
+          "status": "pending",
+          "type": "Need",
+          "children": [
+            {
+              "id": "pokemon-intros",
+              "label": "Users want to leverage personal anecdotes on connectors so they can ask more intros",
+              "status": "pending",
+              "type": "Need",
+              "test": "Mom test: before asking for an intro, do users look for personal anecdotes or small-talk hooks about the connector?",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
+            },
+            {
+              "id": "pokemon-mine-rare",
+              "label": "Users will pay to mine personal intel from their own emails, call transcripts, and WhatsApp to fuel warm relationship actions",
+              "status": "pending",
+              "type": "Feasibility",
+              "test": "Mockup test: offer mined personal context from private sources and measure willingness to connect data and try it",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
+            },
+            {
+              "id": "pokemon-share",
+              "label": "Users who have gathered deep personal intel about contacts are willing to share or trade it with others",
+              "status": "pending",
+              "type": "Growth",
+              "test": "Interview: have users shared such intel before, what are they comfortable sharing, and with whom?",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
+            }
+          ],
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          },
+          "gateType": "OR"
+        },
+        {
+          "id": "nurture-context-engagement-signals",
+          "label": "Users show behavioral interest in richer context and deeper briefs",
+          "status": "active",
+          "type": "Growth",
+          "children": [
+            {
+              "id": "after-being-exposed-to-the-emails-from-g",
+              "label": "After being exposed to Gordy emails, some users click stay-in-touch and create at least one tracking request",
+              "status": "active",
+              "type": "Growth",
+              "test": "MVT: implement the stay-in-touch button and measure creation of at least one tracking request within 30 days",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
+            },
+            {
+              "id": "over-20-of-users-go-to-the-extended-brie",
+              "label": "A meaningful minority of users open an extended brief when it is offered",
+              "status": "active",
+              "type": "Growth",
+              "test": "Add an \"extended brief\" link to the email and measure click-through to the deeper brief",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
+            }
+          ],
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          },
+          "gateType": "OR"
+        }
+      ],
+      "gateType": "OR"
+    },
+    {
+      "id": "root-nurture-out-of-scope",
+      "label": "Learnings and out-of-scope nurturing branches",
+      "status": "eliminated",
+      "children": [
+        {
+          "id": "nurture-ae-out-of-scope",
+          "label": "Larger-company AEs paying out of pocket for a personal network CRM is weak as an initial path",
+          "status": "eliminated",
+          "type": "Economics",
+          "children": [
+            {
+              "id": "aes",
+              "label": "AEs in companies over 20 will pay out of pocket for a personal network CRM",
+              "status": "eliminated",
+              "type": "Economics",
+              "test": "Interviews plus willingness-to-pay checks with AEs at larger companies",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
+            },
+            {
+              "id": "ae-network-ownership",
+              "label": "AEs want to own their network and move it with them when they change jobs",
+              "status": "pending",
+              "type": "Need",
+              "test": "Mom test: ask whether reps see their network as a personal asset they want to carry across jobs",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
+            },
+            {
+              "id": "ae-attribution",
+              "label": "AEs want to claim attribution for deals they influenced through personal relationships",
+              "status": "pending",
+              "type": "Need",
+              "test": "Mom test: ask for examples where personal relationships influenced deals but attribution was unclear",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
+            }
+          ],
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          },
+          "gateType": "AND"
+        }
+      ],
+      "gateType": "OR"
+    },
+    {
+      "id": "root-intros-main",
+      "label": "There is at least one viral wedge in the introductions and intro-meetings space for small business owners who also do selling",
+      "status": "active",
+      "children": [
+        {
+          "id": "intro-askbrief-smallbiz-path",
+          "label": "Strategic ask brief / intro-meeting flow is a viable initial wedge for the segment",
+          "status": "active",
+          "children": [
+            {
+              "id": "intro-smallbiz-segment-askbrief",
+              "label": "Small business owners at organizations under 20 who also do selling request introductions or relevant meeting asks often enough to support this wedge",
+              "status": "validated",
+              "type": "Segment",
+              "test": "Analysis on past calls: frequency of asking for intros / relevant asks around meetings",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
+            },
+            {
+              "id": "intro-askbrief-need",
+              "label": "Users want a strategic ask brief before relevant meetings",
+              "status": "validated",
+              "type": "Need",
+              "test": "Mockup test: do users want Gordy sending them ideas for 2-3 introductions or strategic asks before each meeting?",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
+            },
+            {
+              "id": "intro-askbrief-adoption",
+              "label": "Users will use the strategic ask brief flow in live meetings and keep Gordy in the workflow",
+              "status": "active",
+              "type": "Adoption",
+              "children": [
+                {
+                  "id": "intro-askbrief-user-asks-counterpart",
+                  "label": "Users will agree to ask the counterpart about a new intro flow using Gordy",
+                  "status": "active",
+                  "type": "Adoption",
+                  "test": "Mockup test: show the flow and ask whether they would use it in a real meeting",
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  }
+                },
+                {
+                  "id": "intro-askbrief-auto-compose",
+                  "label": "Users will use an auto-composed intro request and keep Gordy attribution in the message",
+                  "status": "pending",
+                  "type": "Adoption",
+                  "test": "Data from live experiments plus user interviews about whether attribution is deleted",
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  }
+                }
+              ],
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              },
+              "gateType": "AND"
+            },
+            {
+              "id": "intro-askbrief-growth",
+              "label": "The strategic ask brief flow has at least one working growth loop",
+              "status": "validated",
+              "type": "Growth",
+              "children": [
+                {
+                  "id": "intro-askbrief-receiving-loop",
+                  "label": "The counterpart / recipient side of the loop works",
+                  "status": "validated",
+                  "type": "Growth",
                   "children": [
                     {
-                      "id": "nudge-action",
-                      "status": "pending",
-                      "type": "solution",
-                      "label": "Over 50% of interviewees say they would send the nudge message when shown a mockup",
-                      "test": "Mockup test: show example nudge (tell person Y about person Z's news), ask if they would send it and why/why not",
+                      "id": "counterpart-attention",
+                      "label": "Counterpart-facing emails get enough attention to drive downstream actions",
+                      "status": "active",
+                      "type": "Growth",
                       "children": [
                         {
-                          "id": "acq-interview",
-                          "status": "pending",
-                          "type": "solution",
-                          "label": "Over 50% of users who said yes to the nudge want to try the service during the call",
-                          "test": "Mockup test: after showing the nudge and getting positive response, offer to try the service, measure intent",
-                          "gateType": "FINAL"
+                          "id": "counterpart-attention-threshold",
+                          "label": "Counterpart email gets over 30% click rate and 60% notice rate",
+                          "status": "active",
+                          "type": "Growth",
+                          "test": "Live emails to real attendees — measuring clicks, replies, and notice / recall",
+                          "score": {
+                            "Freq": 0,
+                            "Intensity": 0,
+                            "Fit": 0
+                          }
+                        },
+                        {
+                          "id": "counterpart-attention-downstream",
+                          "label": "At least one counterpart CTA gets meaningful engagement",
+                          "status": "active",
+                          "type": "Growth",
+                          "children": [
+                            {
+                              "id": "counterpart-intros-cta",
+                              "label": "Some counterpart email recipients click an 'Introduce me to someone' CTA",
+                              "status": "active",
+                              "type": "Growth",
+                              "test": "MVT: Add 'Introduce me to someone' CTA button to counterpart emails. Measure click rate and downstream intent.",
+                              "score": {
+                                "Freq": 0,
+                                "Intensity": 0,
+                                "Fit": 0
+                              }
+                            },
+                            {
+                              "id": "counterpart-stay-intouch-cta",
+                              "label": "Some counterpart email recipients click an 'Help me stay in touch' CTA for a real contact",
+                              "status": "active",
+                              "type": "Growth",
+                              "test": "MVT: Add a stay-in-touch CTA to counterpart emails. Measure click rate and downstream tracking-request creation.",
+                              "score": {
+                                "Freq": 0,
+                                "Intensity": 0,
+                                "Fit": 0
+                              }
+                            }
+                          ],
+                          "gateType": "OR"
                         }
                       ],
                       "gateType": "AND"
                     },
                     {
-                      "id": "acq-outbound",
-                      "status": "pending",
-                      "label": "Over 50% yes rate and 2% response rate to cold outbound offering to receive such tips",
-                      "test": "Outbound campaign: email describing the nudge value prop, measure human response rate",
-                      "gateType": "FINAL"
-                    },
-                    {
-                      "id": "acq-gordy-viral-tip",
-                      "status": "pending",
-                      "type": "viral_receiving",
-                      "label": "10% of recipients who received a tip email from Gordy want to get this service ",
-                      "test": "Gordy nudges users (Yaniv and Matan) to tip contact Y about news of a contact Z",
-                      "gateType": "FINAL"
-                    },
-                    {
-                      "id": "acq-gordy-viral-nudge",
-                      "status": "pending",
-                      "type": "solution",
-                      "label": "10% of users who received a nudge email from Gordy want to get this service",
-                      "test": "Gordy nudges user X to tip contact Y about news of contact Z, measure sign-up intent",
-                      "gateType": "FINAL"
-                    }
-                  ],
-                  "gateType": "AND"
-                },
-                {
-                  "id": "radar-drift-alert",
-                  "status": "active",
-                  "type": "solution",
-                  "label": "Users respond to Gordy drift alerts — when told they haven't spoken to a specific contact in 3+ months, over 15% respond wanting help to re-engage",
-                  "test": "MVT: Gordy emails 20 calendar-connected users about their most-drifted contact. Measure response rate and yes rate to 'want me to help reconnect?'",
-                  "gateType": "FINAL"
-                },
-                {
-                  "id": "channel-deepening",
-                  "status": "active",
-                  "type": "problem",
-                  "label": "Users actively try to increase communication channels with important contacts during existing conversations",
-                  "test": "Mom test across transcripts: tricks to add channels during natural exchanges",
-                  "children": [
-                    {
-                      "id": "channel-deepening-mockup",
-                      "status": "pending",
-                      "type": "solution",
-                      "label": "Users prefer AI-drafted messages with natural channel upgrade vs plain versions and activate the feature",
-                      "test": "Mockup: regular vs deepening message pairs. Measure preference and activation intent.",
-                      "gateType": "FINAL"
-                    }
-                  ],
-                  "gateType": "AND"
-                },
-                {
-                  "id": "travel-proximity-trigger",
-                  "status": "active",
-                  "type": "problem",
-                  "label": "Users manually research who to meet when traveling to a city or track when contacts are visiting their city — spending meaningful time on it",
-                  "test": "Mom test across all transcripts: Do users check their contacts before traveling? How do they do it? Have they missed someone they wish they'd met? Do they know when contacts visit their city? Count mentions and names.",
-                  "gateType": "FINAL"
-                },
-                {
-                  "id": "gordy-kpi-selection",
-                  "status": "pending",
-                  "type": "solution",
-                  "label": "Users can identify which KPIs they would use to evaluate Gordy's performance and decide whether to keep paying",
-                  "test": "Mockup: present 5 candidate KPIs (reactivations, response rate, coverage %, opportunities surfaced, channel depth). Rank preference and measure conviction.",
-                  "gateType": "FINAL"
-                },
-                {
-                  "id": "nurture-criteria-define",
-                  "status": "active",
-                  "type": "solution",
-                  "label": "Users can define a workable filtering criteria for who they want to nurture — not just 'everyone' or 'my network' but a scoped, actionable set",
-                  "test": "Mockup test: show users a criteria builder and ask them to define their nurture list. Can they do it in under 2 minutes? Do they feel confident in the result?",
-                  "children": [
-                    {
-                      "id": "nurture-pick-people",
-                      "status": "pending",
-                      "type": "solution",
-                      "label": "Users are willing to commit to a specific list of people to nurture — when shown contacts matching their criteria, they select individuals rather than deferring or saying 'all of them'",
-                      "test": "Mockup test: after defining criteria, show users a filtered contact list and ask them to select specific people. Do they commit to names? How many? Do they hesitate or try to select everyone?",
-                      "gateType": "FINAL"
-                    }
-                  ],
-                  "gateType": "AND"
-                }
-              ],
-              "reason": "Out of 41 that answered that question, 33 described some behavior of trying to stay top of mind. Only 1 rejected directly.",
-              "score": {
-                "Freq": 0,
-                "Intensity": 0,
-                "Fit": 0
-              },
-              "gateType": "AND"
-            },
-            {
-              "id": "obs-e",
-              "status": "validated",
-              "type": "problem_space",
-              "label": "Users think that more personal contact intelligence improves nurturing by creating more follow-up opportunities that aren't lame, ultimately improving win rates",
-              "test": "Mom test: do people think that it can help?",
-              "children": [
-                {
-                  "id": "pokemon-intros",
-                  "status": "pending",
-                  "label": "Users want to leverage personal anecdotes on connectors so they can ask more intros",
-                  "test": "Mom test: do they try to make the small talk before the intro request",
-                  "type": "problem",
-                  "gateType": "FINAL"
-                },
-                {
-                  "id": "pokemon-mine-rare",
-                  "status": "pending",
-                  "type": "solution",
-                  "label": "Users will pay to mine personal intel from their own emails, call transcripts, and WhatsApp to fuel warm relationship actions",
-                  "test": "Mockup test: when offered pokemon mining, do users want it? Send the transcripts? Connect email?",
-                  "gateType": "FINAL"
-                },
-                {
-                  "id": "pokemon-share",
-                  "status": "pending",
-                  "type": "viral_sending",
-                  "label": "Users who have gathered deep personal intel about contacts through real relationships are willing to share or trade it with others in exchange for reputation, credits, or reciprocal intel",
-                  "test": "Interview: have they shared before? What info are they ok sharing? Who are they willing to share with?",
-                  "gateType": "FINAL"
-                },
-                {
-                  "id": "14b",
-                  "status": "pending",
-                  "type": "problem",
-                  "label": "Users want alerts about life/career trigger events for contacts — job change, funding, promotion, local holiday, local news — as a reason to reach out and nurture",
-                  "test": "Mom test: do they actually search for it? set alerts? Follow companies?",
-                  "children": [
-                    {
-                      "id": "15",
-                      "status": "pending",
-                      "type": "problem",
-                      "label": "Users want alerts about dynamic data matching their pokemon intel — sports results, news, events — as a zero-effort reason to reach out (the \"Sarah's Seahawks won\" mechanic)",
-                      "test": "Mom test: do users currently track dynamic external data (sports, news, events) about contacts? Do they act on it when they notice it organically?",
-                      "gateType": "FINAL"
-                    },
-                    {
-                      "id": "after-being-exposed-to-the-emails-from-g",
+                      "id": "gordy-loop",
+                      "label": "Post-meeting follow-up to the counterpart produces responses",
                       "status": "active",
-                      "label": "After being exposed to the emails from Gordy - 10% of exposed users will click \"Stay InTouch → Gordy will find ways for you to stay in touch with {{counterpartFullName}}\" button and send at least one tracking request within 30 days of first seeing the feature",
-                      "type": "solution",
-                      "test": "MVT test - implementing the button Stay InTouch",
-                      "gateType": "FINAL"
+                      "type": "Growth",
+                      "test": "Monitor response rates to post-meeting follow-up sent to the counterpart",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
                     }
                   ],
-                  "gateType": "AND"
+                  "gateType": "OR"
                 },
                 {
-                  "id": "over-20-of-users-go-to-the-extended-brie",
-                  "status": "active",
-                  "label": "Over 20% of users go to the extended brief as least once",
-                  "test": "In the email - new button (link) - Need an extended brief before the meeting?",
-                  "gateType": "FINAL"
+                  "id": "intro-askbrief-sending-loop",
+                  "label": "The user / sender side of the loop works",
+                  "status": "pending",
+                  "type": "Growth",
+                  "children": [
+                    {
+                      "id": "gordy-loop-user",
+                      "label": "Post-meeting follow-up to the user generates repeated intro requests",
+                      "status": "pending",
+                      "type": "Growth",
+                      "test": "Automation / concierge: measure intros generated per user per month from post-meeting follow-up",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
+                    },
+                    {
+                      "id": "gordy-brief-share",
+                      "label": "Users share the strategic ask brief internally with colleagues",
+                      "status": "pending",
+                      "type": "Growth",
+                      "test": "Internal pilot with companies that have multiple employees: measure forwarding / sharing behavior",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
+                    }
+                  ],
+                  "gateType": "OR"
                 }
               ],
-              "reason": "37 out of 40 believe richer personal context creates better reasons to follow up",
+              "gateType": "OR"
+            },
+            {
+              "id": "intro-askbrief-feasibility",
+              "label": "We can deliver the strategic ask brief flow with the current calendar-connected product and email workflow",
+              "status": "active",
+              "type": "Feasibility",
+              "test": "Run the current calendar + email workflow live and verify that briefs can be generated and delivered reliably enough to support usage",
               "score": {
                 "Freq": 0,
                 "Intensity": 0,
                 "Fit": 0
-              },
-              "gateType": "AND"
-            },
-            {
-              "id": "nurture-channel-fomo",
-              "status": "active",
-              "type": "problem",
-              "label": "Small org leaders have tried and abandoned multiple nurturing channels (newsletters, events, content, ABM) and feel FOMO about what peers are doing",
-              "test": "Mom test across transcripts: channels tried and stopped, FOMO mentions, count and names",
-              "children": [
-                {
-                  "id": "nurture-no-playbook",
-                  "status": "active",
-                  "type": "problem",
-                  "label": "Even when they pick a nurturing channel, users don't know what to do — what to write, which medium, how often, whether it works",
-                  "test": "Mom test across transcripts: evidence of uncertainty about execution, abandoned attempts due to not knowing what good looks like",
-                  "children": [
-                    {
-                      "id": "advisor-gordy-engage",
-                      "status": "pending",
-                      "type": "solution",
-                      "label": "Users engage with Gordy when he offers networking strategy advice by email — they ask questions or continue the conversation",
-                      "test": "MVT concierge: Gordy emails users offering strategic networking advice. Measure reply rate and engagement depth.",
-                      "gateType": "FINAL"
-                    }
-                  ],
-                  "gateType": "AND"
-                }
-              ],
-              "gateType": "AND"
+              }
             }
           ],
           "gateType": "AND"
-        }
-      ],
-      "test": "Online research",
-      "reason": "1. Unsubscribe rates up 50-150% since Gmail's July 2025 rollout (MarTech/Salesforce — newsletter-specific, very recent)\n2. MailChimp's average inbox rate decreased from 51.93% to 32.30%\n3. Gmail's Promotions tab filtering doubled — emails that used to split 50/50 between Primary and Promotions now land 75/25 in Promotions since Q3 2024.",
-      "score": {
-        "Freq": 0,
-        "Intensity": 0,
-        "Fit": 0
-      },
-      "gateType": "AND"
-    },
-    {
-      "id": "obs-c",
-      "status": "validated",
-      "type": "problem_space",
-      "label": "Introductions & intro-meetings are a viral product space",
-      "children": [
+        },
         {
-          "id": "market-smallorg-viral",
-          "status": "validated",
-          "type": "market",
-          "label": "Exists a defined group in business leaders in small orgs (<20) requesting intros at least on a weekly basis",
-          "test": "Analysis on past calls",
+          "id": "intro-network-smallbiz-path",
+          "label": "Real intro path / network-truth is a viable wedge for the same segment",
+          "status": "active",
           "children": [
             {
-              "id": "option-a",
-              "status": "active",
-              "label": "Asker want to know when a giver makes a new real connection that is relevant to them so they can ask for an intro.",
-              "test": "Mockup test - see if the asker is willing to introduce to giver",
-              "type": "problem",
-              "gateType": "FINAL"
-            },
-            {
-              "id": "option-a-dup-2",
-              "status": "eliminated",
-              "label": "Asker and giver engage frequently in \"open the book\" exercise and it has friction",
-              "test": "Mom test - Ask both investors and early stage founders the frequency of \"open the book\" + what challenges",
-              "children": [
-                {
-                  "id": "a-asker-dup-3",
-                  "status": "pending",
-                  "label": "Asker sees which of helper's connections are real & active before asking - he convinces the give to participate",
-                  "test": "Mockup test - Pretending it's ready.  Who will they ask tomorrow.",
-                  "type": "viral_sending",
-                  "gateType": "FINAL"
-                },
-                {
-                  "id": "a-giver-dup-4",
-                  "status": "pending",
-                  "label": "Giver is willing to install a tool that shares a real map with the asker ",
-                  "test": "Mockup test - pretending it's real",
-                  "type": "viral_receiving",
-                  "gateType": "FINAL"
-                }
-              ],
-              "type": "problem",
-              "reason": "We couldn't find anyone doing it more than once per quarter",
-              "gateType": "AND"
-            },
-            {
-              "id": "option-c",
+              "id": "intro-smallbiz-segment-network",
+              "label": "The same segment has enough warm-intro demand to justify a real intro path / network-truth wedge",
               "status": "validated",
-              "label": "In calls where \"Ask brief\" was offered - over 80% wanted the \"Ask brief\". ",
-              "test": "Mockup test: do people want to test Gordy sending them ideas for 2-3 introductions in every meeting",
+              "type": "Segment",
+              "test": "Analysis on past calls: how often small-business leaders target a specific person through a warm path",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
+            },
+            {
+              "id": "intro-network-need",
+              "label": "Users need better help finding or timing warm introductions",
+              "status": "validated",
+              "type": "Need",
               "children": [
                 {
-                  "id": "gordy-brief",
-                  "status": "pending",
-                  "label": "Gordy Strategic Ask Brief creates enough value that users share it internally with colleagues",
-                  "test": "Internal: we need to bring users from companies with actual employees",
-                  "gateType": "FINAL"
-                },
-                {
-                  "id": "counterpart",
-                  "status": "active",
-                  "label": "Counterpart email gets over 30% click rate and 60% notice rate.",
-                  "test": "Live emails to real attendees — measuring clicks, replies, sign-up intent",
-                  "type": "viral_receiving",
+                  "id": "intro-network-mutual-lkg",
+                  "label": "Users are frustrated that mutual connections are nominal and do not reveal which intro paths are real",
+                  "status": "validated",
+                  "type": "Need",
                   "children": [
                     {
-                      "id": "counterpart-intros-cta",
-                      "status": "active",
-                      "type": "viral_receiving",
-                      "label": "Over 20% of counterpart email recipients click the 'Get more intros from your meetings' button",
-                      "test": "MVT: Add 'Get more intros from your meetings' CTA button to counterpart emails. Measure click rate.",
-                      "gateType": "FINAL"
+                      "id": "option-b-smallorg",
+                      "label": "Small-org leaders describe facing many mutual connections and needing to narrow them to a few realistic intro paths",
+                      "status": "validated",
+                      "type": "Need",
+                      "test": "Mom test: how often do small-org front-people target a specific person for an intro?",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
                     },
                     {
-                      "id": "counterpart-stay-intouch-cta",
+                      "id": "mutual-ca",
+                      "label": "Job searchers look for first-degree connections who will actually answer and help with inside submissions",
                       "status": "active",
-                      "type": "viral_receiving",
-                      "label": "Over 10% of counterpart email recipients click the 'I want Gordy to help me stay in touch with this person' button",
-                      "test": "MVT: Add 'I want Gordy to help me stay in touch with {{counterpartFullName}}' CTA button to counterpart emails. Measure click rate and downstream sign-up intent.",
-                      "gateType": "FINAL"
+                      "type": "Segment",
+                      "test": "Interview: when looking for a job, do users search for inside-submission connections they believe will actually respond?",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
+                    },
+                    {
+                      "id": "mutual-ca-dup-1",
+                      "label": "Many mutual connections increase confidence before a reach-out by signaling acceptance odds",
+                      "status": "active",
+                      "type": "Need",
+                      "test": "Interview: when and why do users look at mutual connections before reaching out?",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
+                    },
+                    {
+                      "id": "mutual-cb",
+                      "label": "People check mutual connections to understand the target by seeing who they associate with",
+                      "status": "active",
+                      "type": "Need",
+                      "test": "Interview: do users inspect mutuals to understand the target socially before reaching out?",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
                     }
                   ],
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  },
+                  "gateType": "OR"
+                },
+                {
+                  "id": "intro-network-timing",
+                  "label": "Askers want to know when a giver makes a new relevant real-world connection so they can ask for an intro",
+                  "status": "active",
+                  "type": "Need",
+                  "test": "Mockup test: show new relevant connections and ask whether the user would want such timing alerts",
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  }
+                }
+              ],
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              },
+              "gateType": "OR"
+            },
+            {
+              "id": "intro-network-product-forms",
+              "label": "At least one product form for the network-truth wedge is adoptable",
+              "status": "active",
+              "type": "Adoption",
+              "children": [
+                {
+                  "id": "intro-network-cc-gordy-flow",
+                  "label": "A cc-Gordy warm-path workflow is adoptable",
+                  "status": "pending",
+                  "type": "Adoption",
+                  "children": [
+                    {
+                      "id": "intro-network-auto-compose",
+                      "label": "Users will use an auto-composed intro request and keep Gordy attribution in the message",
+                      "status": "pending",
+                      "type": "Adoption",
+                      "test": "Data from live experiments plus user interviews on attribution removal",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
+                    },
+                    {
+                      "id": "intro-network-copy-gordy-waterfall",
+                      "label": "Users will copy Gordy on outreach so he can manage a warm-path waterfall automatically",
+                      "status": "pending",
+                      "type": "Adoption",
+                      "test": "Mockup test: show the cc-Gordy flow and measure understanding plus willingness to use",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
+                    }
+                  ],
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  },
                   "gateType": "AND"
                 },
                 {
-                  "id": "counterpart-dup-1",
-                  "status": "pending",
-                  "label": "Auto compose intro request feature is used and users don't delete the attribution ",
-                  "test": "Data from live experiments + users interview",
-                  "type": "viral_sending",
-                  "gateType": "FINAL"
-                },
-                {
-                  "id": "gordy-loop",
+                  "id": "intro-network-self-map-flow",
+                  "label": "A self-map / reality-check product form is adoptable",
                   "status": "active",
-                  "label": "Post-meeting Gordy follow-up on counterpart gets 10% response rate.",
-                  "test": "Monitor response rates",
-                  "type": "viral_receiving",
-                  "gateType": "FINAL"
+                  "type": "Adoption",
+                  "children": [
+                    {
+                      "id": "network-self-map",
+                      "label": "Users want a real picture of their own network — active vs dormant connections, response likelihood, and intro balance — not a vanity count",
+                      "status": "active",
+                      "type": "Adoption",
+                      "test": "Demo/waitlist test: show a mockup of a network-health dashboard and measure strong pull / sign-up intent",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
+                    },
+                    {
+                      "id": "network-benchmark",
+                      "label": "Users want to benchmark their network health against peers",
+                      "status": "pending",
+                      "type": "Adoption",
+                      "test": "Only test after self-map demand is real: show peer-comparison mockups and ask whether this adds value",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
+                    },
+                    {
+                      "id": "new-1",
+                      "label": "Users will install a browser extension and connect their calendar to get a reality check on their network",
+                      "status": "active",
+                      "type": "Adoption",
+                      "test": "Mockup test: are they willing to install and connect data sources for this value prop?",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
+                    },
+                    {
+                      "id": "new-3",
+                      "label": "Users with the extension will invite friends to expand network truth coverage",
+                      "status": "pending",
+                      "type": "Growth",
+                      "test": "Mockup test: after showing the value, ask whether they would invite named friends / colleagues",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
+                    },
+                    {
+                      "id": "new-3-dup-4",
+                      "label": "Users who receive a request to install the extension and connect their calendar will do so",
+                      "status": "pending",
+                      "type": "Growth",
+                      "test": "MVT: send invite emails as if the flow exists and measure install / connect conversion",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
+                    }
+                  ],
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  },
+                  "gateType": "AND"
                 },
                 {
-                  "id": "gordy-loop-dup-4",
-                  "status": "pending",
-                  "label": "Post-meeting Gordy follow-up on user generates 2 intros per month.",
-                  "test": "Pending: automation not implemented",
-                  "type": "viral_sending",
-                  "gateType": "FINAL"
-                },
-                {
-                  "id": "new-1",
-                  "status": "active",
-                  "label": "Users will agree to ask the counterpart about a cool new way to do the intro using Gordy.",
-                  "type": "solution",
-                  "test": "Mockup test - show them the flow",
-                  "gateType": "FINAL"
+                  "id": "intro-network-open-book-flow",
+                  "label": "An open-the-book shared-map product form could work if the behavior is frequent enough",
+                  "status": "eliminated",
+                  "type": "Adoption",
+                  "children": [
+                    {
+                      "id": "option-a-dup-2",
+                      "label": "Askers and givers engage frequently enough in an \"open the book\" exercise that a shared-map tool would matter",
+                      "status": "eliminated",
+                      "type": "Need",
+                      "test": "Mom test: ask both sides about frequency of open-the-book behavior and current friction",
+                      "reason": "We couldn't find anyone doing it more than once per quarter.",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
+                    },
+                    {
+                      "id": "a-asker-dup-3",
+                      "label": "Askers see value in seeing which of a helper's connections are real and active before asking",
+                      "status": "pending",
+                      "type": "Adoption",
+                      "test": "Mockup test: pretend the shared map exists and ask who they would ask tomorrow",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
+                    },
+                    {
+                      "id": "a-giver-dup-4",
+                      "label": "Givers are willing to install a tool that shares a real map with the asker",
+                      "status": "pending",
+                      "type": "Adoption",
+                      "test": "Mockup test: pretend the shared-map flow is real and measure willingness to participate",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
+                    }
+                  ],
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  },
+                  "gateType": "AND"
                 }
               ],
-              "type": "viral_receiving",
-              "reason": "**VERDICT: STRONGLY SUPPORTED**\n17 intros made out of 20-25",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              },
+              "gateType": "OR"
+            },
+            {
+              "id": "intro-network-feasibility",
+              "label": "We can technically deliver useful real intro paths and warm-path management with current data sources",
+              "status": "pending",
+              "type": "Feasibility",
+              "children": [
+                {
+                  "id": "b-filter",
+                  "label": "We can filter 300+ mutual connections down to 3-5 realistic intro paths using active relationship signals",
+                  "status": "pending",
+                  "type": "Feasibility",
+                  "test": "Prototype / mockup test: produce filtered paths and ask whether users trust the shortlist enough to act",
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  }
+                },
+                {
+                  "id": "b-rank",
+                  "label": "We can rank connectors by likely responsiveness to both the user and the target",
+                  "status": "pending",
+                  "type": "Feasibility",
+                  "test": "Prototype / mockup test: show ranking rationale and ask whether users trust it",
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  }
+                },
+                {
+                  "id": "b-waterfall",
+                  "label": "We can automate a connector waterfall without double-asking",
+                  "status": "pending",
+                  "type": "Feasibility",
+                  "test": "Prototype: demonstrate waterfall sequencing and verify users understand the automation",
+                  "children": [
+                    {
+                      "id": "new-2",
+                      "label": "We can technically implement the waterfall flow",
+                      "status": "pending",
+                      "type": "Feasibility",
+                      "test": "Feasibility prototype: simulate connector sequencing, fallback, and double-ask prevention",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
+                    }
+                  ],
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  },
+                  "gateType": "AND"
+                }
+              ],
               "score": {
                 "Freq": 0,
                 "Intensity": 0,
@@ -641,133 +1191,208 @@
               "gateType": "AND"
             },
             {
-              "id": "new-3",
-              "status": "eliminated",
-              "label": "Behavioral: do people practice the idea of asking for 2-3 introductions in every meeting",
-              "type": "problem",
-              "test": "Mom test - ask them past behaviour",
-              "reason": "Only 3 people said they do it out of at least 10",
-              "gateType": "FINAL"
+              "id": "intro-network-growth",
+              "label": "There is a plausible repeated-use or growth loop once the network-truth workflow works",
+              "status": "pending",
+              "type": "Growth",
+              "test": "Measure whether one solved intro request leads to repeated reuse, sharing, or more warm-path requests over time",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
             }
           ],
-          "reason": "## VERDICT: SUPPORTED\n## NUMBERS\n\n**Total interviewees  55\n\n\n### Weekly or more — 16\nOr Biderman, Alon Shrier, Itay Hakuki (first interview), Yoav Naveh (~20 people, borderline), Meitar Tobal, Inbal Levy Horesh, Andres Prilloltensky, Oren Harnevo, Roee Adler, Liat Lachish Levy, Nate Levine, Moti Friedman, Angela Mekosh, Michael Giunta, Adi Perry, Enabel Harel\n\n### Monthly — 3\nBoaz Katz, Adrian Domenech, Rami Rozen\n\n### Quarterly or less — 11\nMatan Talmi, Mat | renn, Eran Savir, Di Wang, Yoav Vilner (current), Lior Livak, Guy Israeli, Chris Pfluger, Kyle Crabtree, Anthony Simola, Itay Hakuki (second interview — conflicts with first)\n\n### Never — 6\nBenjamin Tannenbaum, Anthony Rey, Justin \n(Yess), Ben Mizrachi, Lior Nachum, Marcelle Kaspi",
-          "score": {
-            "Freq": 0,
-            "Intensity": 0,
-            "Fit": 0
-          },
           "gateType": "AND"
         },
         {
-          "id": "namedrop",
+          "id": "intro-recipient-outbound-path",
+          "label": "Recipient-side intro outreach itself shows viral / acquisition signal",
           "status": "validated",
-          "label": "Requesting a name drop using Gordy algo produced high reply rate (25% for investors, 29% for founders) and confirmation rate (25% for investors, 29% for founders) ",
-          "test": "Predicting who will they know and reaching out to them asking for a name drop",
-          "type": "viral_receiving",
-          "reason": "Investors: 50 > 12 > 3\nFounders: 58 > 17 > 5",
-          "score": {
-            "Freq": 0,
-            "Intensity": 0,
-            "Fit": 0
-          },
-          "gateType": "FINAL"
-        },
-        {
-          "id": "namedrop-dup-1",
-          "status": "validated",
-          "label": "Requesting a name drop using Gordy algo produced high reply rate (38% for AEs, 35% for BD) and confirmation rate (69% for AEs, 47% for BD) ",
-          "test": "Predicting who will they know and reaching out to them asking for a name drop",
-          "type": "viral_receiving",
-          "reason": "AE/Sales: 67 > 26 > 18\nBD: 64 > 23 > 11",
-          "score": {
-            "Freq": 0,
-            "Intensity": 0,
-            "Fit": 0
-          },
-          "gateType": "FINAL"
-        },
-        {
-          "id": "gordy-asks",
-          "status": "validated",
-          "label": "Prospects respond to Gordy outbound offering intros. 5% human response and 3.23% said yes",
-          "test": "Live test: Gordy sends outbound messages offering intros to targeted prospects — measure response rate and yes/no ratio",
-          "type": "viral_receiving",
-          "reason": "Sent: 279 \nHuman response: 14\nSaid yes: 9",
-          "score": {
-            "Freq": 0,
-            "Intensity": 0,
-            "Fit": 0
-          },
-          "gateType": "FINAL"
+          "children": [
+            {
+              "id": "namedrop-investors-founders",
+              "label": "Recipients respond when Gordy asks for a name-drop or intro confirmation in investor/founder contexts",
+              "status": "validated",
+              "type": "Growth",
+              "test": "Predict who they know and reach out asking for a name-drop / confirmation",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
+            },
+            {
+              "id": "namedrop-ae-bd",
+              "label": "Recipients also respond to Gordy name-drop requests in AE / BD contexts",
+              "status": "validated",
+              "type": "Growth",
+              "test": "Predict who they know and reach out asking for a name-drop / confirmation",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
+            },
+            {
+              "id": "gordy-asks",
+              "label": "Prospects respond to Gordy outbound offers of intros",
+              "status": "validated",
+              "type": "Growth",
+              "test": "Live test: Gordy sends outbound messages offering intros to targeted prospects and we measure human response plus yes rate",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
+            }
+          ],
+          "gateType": "OR"
         }
       ],
-      "test": "Past successes",
-      "reason": "Calendly, zoom, Doodle (10M monthly users), Superhuman, Fathom, Firefly, Boardy, ...",
-      "score": {
-        "Freq": 0,
-        "Intensity": 0,
-        "Fit": 0
-      },
-      "gateType": "AND"
+      "gateType": "OR"
     },
     {
-      "id": "obs-d",
-      "status": "validated",
-      "type": "problem_space",
-      "label": "Personalizing cold outreach to the recipient's specific situation increases response rates by roughly a third.",
-      "test": "Online research",
+      "id": "root-intros-learnings",
+      "label": "Learnings and eliminated intro-space branches that still matter for interpretation",
+      "status": "active",
       "children": [
+        {
+          "id": "option-b",
+          "label": "Broad strategic-reach demand across everyone is too infrequent to be a standalone high-frequency wedge",
+          "status": "eliminated",
+          "type": "Need",
+          "test": "Mom tests: how often do users target a specific person for an intro across the broad market?",
+          "reason": "Frequency too low in the broad market, even though a narrower small-business segment still looks promising.",
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          }
+        },
+        {
+          "id": "intro-already-doing-it",
+          "label": "People do not already practice asking for 2-3 introductions in every meeting",
+          "status": "eliminated",
+          "type": "Need",
+          "test": "Mom test: ask for past behavior around routinely asking for 2-3 intros in meetings",
+          "reason": "Only a small minority already do this behavior.",
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          }
+        }
+      ],
+      "gateType": "OR"
+    },
+    {
+      "id": "root-outreach-intel",
+      "label": "There may be a business in outbound workflow and extra-intel products",
+      "status": "review",
+      "children": [
+        {
+          "id": "outreach-personalization-evidence",
+          "label": "Personalizing outreach to a recipient's specific situation improves response rates materially",
+          "status": "validated",
+          "type": "Need",
+          "test": "Landscape / research review on response-rate lift from personalization",
+          "reason": "Mapped from old obs-d root claim.",
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          }
+        },
         {
           "id": "market-smallorg-pokemon-cold",
+          "label": "Small-business leaders who do outbound spend meaningful time researching prospects manually",
           "status": "review",
-          "type": "market",
-          "label": "Exists a well defined group in business leaders in small orgs (<20) are researching prospect data manually - at least 1 hour / week total",
-          "test": "Analysis of past calls\ndo people research targets before cold outreach? How long does it take? ",
-          "reason": "**The hypothesis holds for a clear majority (17/32 who gave classifiable answers = 53%) but with important non-trivial minority who don't (15/32 = 47%).** The group that *does not* do it is real and meaningful.",
+          "type": "Segment",
+          "test": "Analysis of past calls: do people research targets before cold outreach, and how much time does it take?",
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          }
+        },
+        {
+          "id": "pokemon-cold-mine-common",
+          "label": "Users doing cold outreach have no scalable way to get public personal intel on targets today",
+          "status": "active",
+          "type": "Need",
+          "test": "Mom test: how much time does research take, what is frustrating, what have they tried to automate, and would they pay to improve it?",
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          }
+        },
+        {
+          "id": "outreach-workflow-angles",
+          "label": "At least one outbound / extra-intel workflow angle appears promising",
+          "status": "active",
+          "type": "Adoption",
           "children": [
             {
-              "id": "pokemon-cold-mine-common",
+              "id": "17",
+              "label": "Users want to delegate LinkedIn search and inbox/outbox work to an SDR or recruiter",
               "status": "active",
-              "type": "problem",
-              "label": "Users doing cold outreach have no scalable way to get public personal intel on targets today — they do it manually or skip it entirely",
-              "test": "Mom test: are people frustrated with the amount of time it takes them? Are they looking for solutions? Tried to automate? Willing to pay?",
-              "children": [
-                {
-                  "id": "pokemon-get-buy",
-                  "status": "pending",
-                  "type": "viral_receiving",
-                  "label": "Users will pay to access personal intel that others have collected about a target they've never met — fueling better cold outreach and first meetings",
-                  "test": "Interview: do they feel comfortable with the concept? Show them a mockup — do they want it?",
-                  "gateType": "FINAL"
-                }
-              ],
-              "gateType": "AND"
+              "type": "Adoption",
+              "test": "Mom test: when and why do users want to delegate LinkedIn / email communication, and what triggers the need?",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
+            },
+            {
+              "id": "pokemon-get-buy",
+              "label": "Users will pay to access personal intel that others have collected about a target they have never met",
+              "status": "pending",
+              "type": "Economics",
+              "test": "Interview + mockup: show the concept and ask whether they want it and whether they are comfortable paying for it",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
+            },
+            {
+              "id": "leave-linkedin-asap",
+              "label": "Users want to take messaging outside of LinkedIn as soon as possible",
+              "status": "active",
+              "type": "Adoption",
+              "test": "Interview: after an initial LinkedIn exchange, when and why do users try to move the conversation to email / phone / other channels?",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
+            },
+            {
+              "id": "li-inbox",
+              "label": "LinkedIn inbox is a poor networking tool because messages go unread and signal is buried in noise",
+              "status": "eliminated",
+              "type": "Need",
+              "test": "Mom tests across AEs, founders, and VCs about inbox usage and frustration",
+              "reason": "Most people didn't feel this was a primary problem; heavy users already use external tools.",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
             }
           ],
-          "gateType": "AND"
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          },
+          "gateType": "OR"
         }
       ],
-      "score": {
-        "Freq": 0,
-        "Intensity": 0,
-        "Fit": 0
-      },
-      "reason": "Backlinko's large-scale email outreach study found a 32.7% higher response rate for emails with customized message body content vs. generic templates",
       "gateType": "AND"
-    },
-    {
-      "id": "obs-f",
-      "status": "validated",
-      "type": "problem_space",
-      "label": "Users want to avoid ongoing data entry",
-      "test": "Validated by market: 25+ predecessor companies failed primarily due to manual data entry abandonment (Contactually, Highrise, Nimble, etc.). Confirmed independently across multiple founder, AE, and VC interviews.",
-      "reason": "Historical pattern across $300M+ in failed CRM attempts. Interviewees consistently report starting tools and abandoning them when upkeep becomes too heavy.",
-      "score": {
-        "Freq": 0,
-        "Intensity": 0,
-        "Fit": 0
-      },
-      "gateType": "FINAL"
     }
   ]
 }
