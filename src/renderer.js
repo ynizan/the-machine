@@ -44,10 +44,22 @@ function cardHeight(node){
     h += c.efs * 1.6;
   }
 
+  // Gate type badge height
+  if(node.data.gateType && node.data.gateType !== 'FINAL'){
+    h += c.efs * 1.6;
+  }
+
   const label = node.data.label || '';
   const lines = Math.ceil(label.length / cpl);
   h += Math.max(1, lines) * c.fs * c.lh;
   h += c.fs * 0.5;
+
+  if(node.data.test){
+    const tlines = Math.ceil(node.data.test.length / cpl);
+    h += c.efs * 0.5;
+    h += Math.max(1, tlines) * c.fs * 0.75 * c.lh;
+    h += c.fs * 0.2;
+  }
 
   if(node.data.reason){
     const rlines = Math.ceil(node.data.reason.length / cpl);
@@ -124,6 +136,58 @@ const TYPE_COLORS = {
 };
 
 const EDGE_WIDTHS = { 1:8, 2:4, 3:2, 4:1, 5:0.5 };
+
+// Gate type constants
+const GATE_TYPES = ['AND', 'OR', 'FINAL'];
+const GATE_COLORS = {
+  AND: { text:'#E0A050', bg:'rgba(224,160,80,.15)', border:'rgba(224,160,80,.30)' },
+  OR:  { text:'#50B0E0', bg:'rgba(80,176,224,.15)', border:'rgba(80,176,224,.30)' },
+  FINAL:{ text:'#999', bg:'rgba(255,255,255,.06)', border:'rgba(255,255,255,.12)' }
+};
+const GATE_VALIDATED_COLOR = '#7FBF95';
+const GATE_NOT_VALIDATED_COLOR = '#664430';
+
+// Propagate validation up the tree based on gate types
+// AND: validated iff ALL children are validated
+// OR: validated iff ANY child is validated
+// FINAL: keeps its own status (leaf node)
+function propagateValidation(node){
+  if(!node.children || !node.children.length) return;
+  node.children.forEach(c => propagateValidation(c));
+  if(node.gateType === 'AND'){
+    const allValidated = node.children.every(c => c.status === 'validated');
+    if(allValidated) node.status = 'validated';
+    else if(node.status === 'validated') node.status = 'active';
+  } else if(node.gateType === 'OR'){
+    const anyValidated = node.children.some(c => c.status === 'validated');
+    if(anyValidated) node.status = 'validated';
+    else if(node.status === 'validated') node.status = 'active';
+  }
+}
+
+// Check for missing gateType and show alert
+function checkMissingGateTypes(data){
+  const missing = [];
+  function walk(node){
+    if(node.id === '__root__'){ if(node.children) node.children.forEach(walk); return; }
+    if(!node.gateType) missing.push(node.id);
+    if(node.children) node.children.forEach(walk);
+  }
+  walk(data);
+  return missing;
+}
+
+function showGateTypeAlert(missingIds){
+  const existing = document.getElementById('gate-alert');
+  if(existing) existing.remove();
+  if(!missingIds.length) return;
+  const alert = document.createElement('div');
+  alert.id = 'gate-alert';
+  alert.style.cssText = 'position:fixed;top:60px;left:50%;transform:translateX(-50%);z-index:600;background:#2A1508;border:1px solid #D4A574;border-radius:6px;padding:10px 20px;font-family:"IBM Plex Mono",monospace;font-size:11px;color:#D4A574;max-width:600px;text-align:center;cursor:pointer;';
+  alert.textContent = `\u26A0 ${missingIds.length} node${missingIds.length>1?'s':''} missing gateType: ${missingIds.slice(0,5).join(', ')}${missingIds.length>5?'...':''}`;
+  alert.onclick = () => alert.remove();
+  document.body.appendChild(alert);
+}
 
 // Card HTML
 function cardHTML(d, c, h){
@@ -206,11 +270,45 @@ function cardHTML(d, c, h){
     ">${icon} ${TYPE_LABELS[type] || type}</div>`;
   }
 
+  // Gate type badge (AND/OR only — FINAL shown differently)
+  if(d.data.gateType && d.data.gateType !== 'FINAL'){
+    const gt = d.data.gateType;
+    const gc = GATE_COLORS[gt] || GATE_COLORS.AND;
+    // Check if gate condition is met
+    const kids = d.children || d._children || [];
+    const kidsData = kids.map(k => k.data || k);
+    let gateMet = false;
+    if(gt === 'AND') gateMet = kidsData.length > 0 && kidsData.every(k => k.status === 'validated');
+    else if(gt === 'OR') gateMet = kidsData.some(k => k.status === 'validated');
+    const gateStatusColor = gateMet ? GATE_VALIDATED_COLOR : GATE_NOT_VALIDATED_COLOR;
+    const gateIcon = gt === 'AND' ? '&amp;' : '|';
+    h2 += `<div style="
+      display:inline-flex;align-items:center;gap:${c.efs*0.3}px;
+      font-family:'IBM Plex Mono',monospace;font-size:${c.efs*0.72}px;
+      letter-spacing:.08em;text-transform:uppercase;
+      color:${gateStatusColor};background:${gc.bg};
+      border:1px solid ${gateMet ? 'rgba(127,191,149,.3)' : gc.border};
+      padding:${c.efs*0.15}px ${c.efs*0.4}px;border-radius:3px;
+      align-self:flex-start;flex-shrink:0;
+    "><span style="font-weight:700;">${gateIcon}</span> ${gt} Gate ${gateMet ? '\u2713' : '\u25CB'}</div>`;
+  }
+
   h2 += `<div style="
     font-family:'IBM Plex Serif',serif;font-size:${c.fs}px;line-height:${c.lh};
     color:${lc};${strike}
     word-wrap:break-word;overflow-wrap:break-word;hyphens:auto;flex-shrink:0;
   ">${label}</div>`;
+
+  // Test text inside the card
+  if(d.data.test){
+    h2 += `<div style="
+      font-family:'IBM Plex Mono',monospace;font-size:${c.fs*0.72}px;line-height:${c.lh};
+      color:#D4A574;
+      border-top:${Math.max(1,c.fs*0.015)}px solid rgba(212,165,116,.15);
+      padding-top:${c.fs*0.18}px;
+      word-wrap:break-word;overflow-wrap:break-word;flex-shrink:0;
+    ">\u2691 ${d.data.test}</div>`;
+  }
 
   if(reason){
     const reasonColor = st==='validated' ? '#5A9E6F' : st==='eliminated' ? '#8B2E20' : '#777';
@@ -381,12 +479,19 @@ function openNodeRight(nodeId, evt){
   const nodeData = NODE_MAP[nodeId];
   if(!nodeData) return;
 
+  // Prevent adding children to FINAL nodes
+  if(nodeData.gateType === 'FINAL'){
+    showToast('FINAL nodes cannot have children');
+    return;
+  }
+
   // Create a new child node
   const newId = _uniqueId('new');
   const newNode = {
     id: newId,
     status: 'active',
-    label: ''
+    label: '',
+    gateType: 'FINAL'
   };
 
   if(!nodeData.children) nodeData.children = [];
@@ -458,6 +563,8 @@ function initTree(DATA, opts){
     });
 
   function render(){
+    // Propagate validation status based on gate types
+    propagateValidation(DATA);
     treeLayout(root);
     root.descendants().forEach(d => { d.y = depthX(d.depth); });
     g.selectAll('*').remove();
@@ -489,84 +596,6 @@ function initTree(DATA, opts){
         .attr('stroke-width', EDGE_WIDTHS[l.target.depth] || 0.5)
         .attr('stroke-dasharray', dash)
         .attr('opacity', edgeDimmed ? baseOpacity * 0.15 : baseOpacity);
-
-      const test = l.target.data.test;
-      if(!test) return;
-
-      const efs  = edgeFontSize(l.source.depth, l.target.depth);
-      const gapW = cfg(l.source.depth).gap * 0.80;
-      const lx   = sx + (tx - sx) / 2 - gapW / 2;
-      const lh   = efs * 1.55;
-      const estLines = Math.ceil(test.length / Math.max(6, Math.floor(gapW / (efs * 0.56))));
-      const labelH = Math.max(1, estLines) * lh + efs * 0.5;
-      const ly   = ty - labelH / 2;
-
-      const bgPad = efs * 0.45;
-      edgeG.append('rect')
-        .attr('x', lx - bgPad).attr('y', ly - bgPad)
-        .attr('width', gapW + bgPad*2).attr('height', labelH + bgPad*2)
-        .attr('rx', efs * 0.28)
-        .attr('fill', '#060606').attr('opacity', 0.88);
-
-      // Use SVG <text> instead of foreignObject for iPad/iOS compatibility
-      const cpl = Math.max(6, Math.floor(gapW / (efs * 0.56)));
-      const words = test.split(/\s+/);
-      const textLines = [];
-      let curLine = '';
-      for(const word of words){
-        const tryLine = curLine ? curLine + ' ' + word : word;
-        if(tryLine.length <= cpl){ curLine = tryLine; }
-        else { if(curLine) textLines.push(curLine); curLine = word; }
-      }
-      if(curLine) textLines.push(curLine);
-
-      const centerX = sx + (tx - sx) / 2;
-      const totalH = textLines.length * lh;
-      const startY = ty - totalH / 2 + efs * 0.38;
-
-      const edgeTextG = edgeG.append('g')
-        .style('cursor','pointer')
-        .on('click', () => { openInlineEdit(l.target.data.id, null, 'test'); });
-
-      // Edge text color/opacity based on changelog state
-      const edgeTextDimmed = FILTER_UNCHANGED && !CHANGED_IDS.has(l.target.data.id);
-      const edgeTextColor = edgeTextDimmed ? '#D4A574' : (FILTER_UNCHANGED ? '#FFFFFF' : '#D4A574');
-      const edgeTextOpacity = edgeTextDimmed ? 0.10 : (FILTER_UNCHANGED ? 1 : 0.92);
-
-      textLines.forEach((line, i) => {
-        edgeTextG.append('text')
-          .attr('x', centerX)
-          .attr('y', startY + i * lh)
-          .attr('text-anchor', 'middle')
-          .attr('fill', edgeTextColor)
-          .attr('opacity', edgeTextOpacity)
-          .attr('font-family', "'IBM Plex Mono', monospace")
-          .attr('font-size', efs + 'px')
-          .text(line);
-      });
-
-      // Edit icon for edge text
-      const iconSz = Math.max(10, Math.round(efs * 0.85));
-      const iconsX = lx + gapW + bgPad - iconSz;
-      const iconsY = ly - bgPad - iconSz - efs * 0.3;
-
-      const edgeIconBaseOp = edgeTextDimmed ? 0.05 : 0.25;
-      const edgeEditG = edgeG.append('g')
-        .attr('transform', `translate(${iconsX},${iconsY})`)
-        .style('cursor','pointer')
-        .attr('opacity', edgeIconBaseOp)
-        .on('mouseenter', function(){ d3.select(this).attr('opacity', edgeTextDimmed ? 0.15 : 0.8); })
-        .on('mouseleave', function(){ d3.select(this).attr('opacity', edgeIconBaseOp); })
-        .on('click', (evt) => { evt.stopPropagation(); openInlineEdit(l.target.data.id, evt, 'test'); });
-      edgeEditG.append('svg')
-        .attr('width', iconSz).attr('height', iconSz)
-        .attr('viewBox', '0 0 24 24')
-        .attr('fill', 'none')
-        .attr('stroke', '#D4A574')
-        .attr('stroke-width', 2)
-        .attr('stroke-linecap', 'round')
-        .attr('stroke-linejoin', 'round')
-        .html('<path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/>');
     });
 
     const nodeG = g.append('g');
@@ -854,6 +883,10 @@ function openInlineEdit(nodeId, evt, focusField){
     `<option value="${t}" ${(nodeData.type||'')===t?'selected':''}>${t ? TYPE_LABELS[t] : '— None —'}</option>`
   ).join('');
 
+  const gateTypeOpts = GATE_TYPES.map(gt =>
+    `<option value="${gt}" ${(nodeData.gateType||'')===gt?'selected':''}>${gt}</option>`
+  ).join('');
+
   const showScore = nodeData.status === 'validated';
   const scoreObj = nodeData.score || { Freq: 0, Intensity: 0, Fit: 0 };
   const scoreHtml = showScore ? Object.entries(scoreObj).map(([k,v]) =>
@@ -882,6 +915,10 @@ function openInlineEdit(nodeId, evt, focusField){
         <div class="ief-field">
           <label>Type</label>
           <select id="ief-type">${typeOpts}</select>
+        </div>
+        <div class="ief-field">
+          <label>Gate Type</label>
+          <select id="ief-gatetype">${gateTypeOpts}</select>
         </div>
         <div class="ief-field">
           <label>Label</label>
@@ -934,6 +971,14 @@ function openInlineEdit(nodeId, evt, focusField){
     const typeVal   = document.getElementById('ief-type').value;
     nodeData.type   = typeVal || undefined;
     if(!nodeData.type) delete nodeData.type;
+    const gateTypeVal = document.getElementById('ief-gatetype').value;
+    nodeData.gateType = gateTypeVal;
+    // If switching to FINAL but node has children, warn
+    if(gateTypeVal === 'FINAL' && nodeData.children && nodeData.children.length){
+      if(!confirm('Setting gate type to FINAL will not remove existing children, but FINAL nodes should be leaf nodes. Continue?')){
+        return;
+      }
+    }
     nodeData.label  = document.getElementById('ief-label').value;
     nodeData.test   = document.getElementById('ief-test').value || undefined;
     const reasonVal = document.getElementById('ief-reason').value;
@@ -1239,7 +1284,7 @@ function openOldValuesDialog(nodeId){
 
   const FIELD_LABELS = {
     label: 'Label', status: 'Status', test: 'Test', reason: 'Data / Results',
-    type: 'Type', score: 'Score'
+    type: 'Type', score: 'Score', gateType: 'Gate Type'
   };
 
   const diffsHtml = change.diffs.map(diff => {
@@ -1296,6 +1341,11 @@ Promise.all([
 ]).then(([data]) => {
   CURRENT_DATA = data;
   buildNodeMap(data);
+  // Check for missing gateType and alert
+  const missingGateTypes = checkMissingGateTypes(data);
+  if(missingGateTypes.length) showGateTypeAlert(missingGateTypes);
+  // Propagate validation before first render
+  propagateValidation(data);
   initTree(data);
   initChangelogBar();
   setupEditor(data, (newData, opts) => {
