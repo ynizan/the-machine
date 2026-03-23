@@ -44,10 +44,7 @@ function cardHeight(node){
     h += c.efs * 1.6;
   }
 
-  // Gate type badge height
-  if(node.data.gateType){
-    h += c.efs * 1.6;
-  }
+  // Gate type is now rendered as SVG on the edge, not in the card
 
   const label = node.data.label || '';
   const lines = Math.ceil(label.length / cpl);
@@ -153,6 +150,31 @@ const GATE_COLORS = {
 };
 const GATE_VALIDATED_COLOR = '#7FBF95';
 const GATE_NOT_VALIDATED_COLOR = '#664430';
+
+// Gate SVG dimensions per depth — proportional to card sizing
+function gateSize(depth){
+  const c = cfg(depth);
+  const h = c.efs * 3.2;
+  const w = h * 0.8;
+  return { w, h };
+}
+// Gap between card right edge and gate left edge
+function gateGap(depth){ return cfg(depth).efs * 0.8; }
+// Total horizontal space a gate occupies (gap + gate width)
+function gateTotalW(depth){ return gateGap(depth) + gateSize(depth).w; }
+
+// SVG path for AND gate body (flat left, semicircle right), centered at (0,0)
+function andGatePath(w, h){
+  const hw = w/2, hh = h/2;
+  return `M${-hw},${-hh} L${0},${-hh} A${hh},${hh} 0 0 1 ${0},${hh} L${-hw},${hh} Z`;
+}
+// SVG path for OR gate body (concave left, convex pointed right), centered at (0,0)
+function orGatePath(w, h){
+  const hw = w/2, hh = h/2;
+  return `M${-hw},${-hh} Q${-hw*0.15},${0} ${-hw},${hh} `
+    + `Q${hw*0.3},${hh*0.7} ${hw},${0} `
+    + `Q${hw*0.3},${-hh*0.7} ${-hw},${-hh} Z`;
+}
 
 // Propagate validation up the tree based on gate types
 // AND: validated iff ALL children are validated
@@ -278,29 +300,6 @@ function cardHTML(d, c, h){
       padding:${c.efs*0.15}px ${c.efs*0.4}px;border-radius:3px;
       align-self:flex-start;flex-shrink:0;
     ">${icon} ${TYPE_LABELS[type] || type}</div>`;
-  }
-
-  // Gate type badge (AND/OR)
-  if(d.data.gateType){
-    const gt = d.data.gateType;
-    const gc = GATE_COLORS[gt] || GATE_COLORS.AND;
-    // Check if gate condition is met
-    const kids = d.children || d._children || [];
-    const kidsData = kids.map(k => k.data || k);
-    let gateMet = false;
-    if(gt === 'AND') gateMet = kidsData.length > 0 && kidsData.every(k => k.status === 'validated');
-    else if(gt === 'OR') gateMet = kidsData.some(k => k.status === 'validated');
-    const gateStatusColor = gateMet ? GATE_VALIDATED_COLOR : GATE_NOT_VALIDATED_COLOR;
-    const gateIcon = gt === 'AND' ? '&amp;' : '|';
-    h2 += `<div style="
-      display:inline-flex;align-items:center;gap:${c.efs*0.3}px;
-      font-family:'IBM Plex Mono',monospace;font-size:${c.efs*0.72}px;
-      letter-spacing:.08em;text-transform:uppercase;
-      color:${gateStatusColor};background:${gc.bg};
-      border:1px solid ${gateMet ? 'rgba(127,191,149,.3)' : gc.border};
-      padding:${c.efs*0.15}px ${c.efs*0.4}px;border-radius:3px;
-      align-self:flex-start;flex-shrink:0;
-    "><span style="font-weight:700;">${gateIcon}</span> ${gt} Gate ${gateMet ? '\u2713' : '\u25CB'}</div>`;
   }
 
   h2 += `<div style="
@@ -581,9 +580,11 @@ function initTree(DATA, opts){
       const st  = l.target.data.status;
       const dash= (st==='pending'||st==='eliminated'||st==='backlog') ? '8,5' : null;
       const srcC = cfg(l.source.depth);
-      const tgtC = cfg(l.target.depth);
 
-      const sx = l.source.y + srcC.w;
+      // If source has a gate, edges start from the gate's right side
+      const hasGate = l.source.data.gateType && (l.source.children || l.source._children);
+      const gateOff = hasGate ? gateTotalW(l.source.depth) : 0;
+      const sx = l.source.y + srcC.w + gateOff;
       const sy = l.source.x;
       const tx = l.target.y;
       const ty = l.target.x;
@@ -599,6 +600,108 @@ function initTree(DATA, opts){
         .attr('stroke-width', EDGE_WIDTHS[l.target.depth] || 0.5)
         .attr('stroke-dasharray', dash)
         .attr('opacity', edgeDimmed ? baseOpacity * 0.15 : baseOpacity);
+    });
+
+    // Draw gate symbols on edges (right exit of parent nodes)
+    const gateG = g.append('g');
+    const drawnGates = new Set();
+    nodes.forEach(d => {
+      if(!d.data.gateType || !(d.children || d._children)) return;
+      if(drawnGates.has(d.data.id)) return;
+      drawnGates.add(d.data.id);
+
+      const c = cfg(d.depth);
+      const gs = gateSize(d.depth);
+      const gap = gateGap(d.depth);
+
+      // Gate center: right of card + gap + half gate width, vertically centered on node
+      const cx = d.y + c.w + gap + gs.w / 2;
+      const cy = d.x;
+
+      const isDimmed = FILTER_UNCHANGED && !CHANGED_IDS.has(d.data.id);
+
+      // Determine if gate condition is met
+      const kids = d.children || d._children || [];
+      const kidsData = kids.map(k => k.data || k);
+      const gt = d.data.gateType;
+      let gateMet = false;
+      if(gt === 'AND') gateMet = kidsData.length > 0 && kidsData.every(k => k.status === 'validated');
+      else if(gt === 'OR') gateMet = kidsData.some(k => k.status === 'validated');
+
+      const gateColor = gateMet ? GATE_VALIDATED_COLOR : (GATE_COLORS[gt] || GATE_COLORS.AND).text;
+      const gateFill = gateMet ? 'rgba(127,191,149,.12)' : (GATE_COLORS[gt] || GATE_COLORS.AND).bg;
+      const gateBorder = gateMet ? 'rgba(127,191,149,.4)' : (GATE_COLORS[gt] || GATE_COLORS.AND).border;
+
+      const gg = gateG.append('g')
+        .attr('transform', `translate(${cx},${cy})`)
+        .attr('opacity', isDimmed ? 0.12 : 1);
+
+      // Gate body
+      const pathD = gt === 'AND' ? andGatePath(gs.w, gs.h) : orGatePath(gs.w, gs.h);
+      gg.append('path')
+        .attr('d', pathD)
+        .attr('fill', gateFill)
+        .attr('stroke', gateBorder)
+        .attr('stroke-width', Math.max(1, c.efs * 0.06));
+
+      // Input line (from card right edge to gate left)
+      gg.append('line')
+        .attr('x1', -gs.w/2 - gap).attr('y1', 0)
+        .attr('x2', -gs.w/2).attr('y2', 0)
+        .attr('stroke', gateBorder).attr('stroke-width', Math.max(1, c.efs * 0.08));
+
+      // Output stub (from gate right to where edges begin)
+      gg.append('line')
+        .attr('x1', gt === 'OR' ? gs.w/2 : gs.h/2)
+        .attr('y1', 0)
+        .attr('x2', gs.w/2 + gap * 0.3).attr('y2', 0)
+        .attr('stroke', gateBorder).attr('stroke-width', Math.max(1, c.efs * 0.08));
+
+      // Gate label
+      const fontSize = Math.max(6, c.efs * 0.65);
+      gg.append('text')
+        .attr('x', gt === 'OR' ? -gs.w * 0.05 : 0)
+        .attr('y', fontSize * 0.35)
+        .attr('text-anchor', 'middle')
+        .attr('font-family', "'IBM Plex Mono', monospace")
+        .attr('font-size', fontSize)
+        .attr('font-weight', '700')
+        .attr('letter-spacing', '.05em')
+        .attr('fill', gateColor)
+        .text(gt);
+
+      // Validated checkmark below label
+      if(gateMet){
+        gg.append('text')
+          .attr('x', gt === 'OR' ? -gs.w * 0.05 : 0)
+          .attr('y', fontSize * 0.35 + fontSize * 0.9)
+          .attr('text-anchor', 'middle')
+          .attr('font-size', fontSize * 0.8)
+          .attr('fill', GATE_VALIDATED_COLOR)
+          .text('\u2713');
+      }
+
+      // Input pins on left (multi-leg side) — one per child, capped at visible range
+      const numKids = kidsData.length;
+      if(numKids > 1){
+        const maxSpread = gs.h * 0.7;
+        const pinSpacing = Math.min(maxSpread / (numKids - 1), gs.h * 0.3);
+        const totalSpan = pinSpacing * (numKids - 1);
+        const startY = -totalSpan / 2;
+        const pinLen = gap * 0.25;
+        for(let i = 0; i < numKids; i++){
+          const py = startY + i * pinSpacing;
+          // Small tick marks on the gate right side
+          gg.append('line')
+            .attr('x1', gt === 'OR' ? gs.w/2 : gs.h/2)
+            .attr('y1', py)
+            .attr('x2', gs.w/2 + pinLen)
+            .attr('y2', py)
+            .attr('stroke', gateBorder)
+            .attr('stroke-width', Math.max(0.5, c.efs * 0.04))
+            .attr('opacity', 0.5);
+        }
+      }
     });
 
     const nodeG = g.append('g');
