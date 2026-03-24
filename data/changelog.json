@@ -1,6 +1,135 @@
 [
   {
     "date": "2026-03-24",
+    "commit": "11f772c",
+    "message": "Update hypothesis tree with validated test results",
+    "changedIds": [
+      "nurture-smallbiz-top-of-mind-mom-test",
+      "intro-smallbiz-segment-askbrief",
+      "intro-askbrief-need",
+      "intro-smallbiz-segment-network",
+      "option-b-smallorg",
+      "namedrop-investors-founders",
+      "namedrop-ae-bd",
+      "gordy-asks",
+      "outreach-personalization-evidence"
+    ],
+    "changes": [
+      {
+        "id": "nurture-smallbiz-top-of-mind-mom-test",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "validated"
+          },
+          {
+            "field": "reason",
+            "to": "Out of 41 that answered, 33 described top-of-mind behavior. Only 1 rejected directly."
+          }
+        ]
+      },
+      {
+        "id": "intro-smallbiz-segment-askbrief",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "reason",
+            "to": "Weekly+: 16 users. Monthly: 3. Quarterly or less: 11. Never: 6. Out of ~55 interviewees."
+          }
+        ]
+      },
+      {
+        "id": "intro-askbrief-need",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "reason",
+            "to": "17 intros made out of 20-25 pitched. Over 80% wanted the Ask Brief."
+          }
+        ]
+      },
+      {
+        "id": "intro-smallbiz-segment-network",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "reason",
+            "to": "Q5: 35 described this as a need out of 40 that were asked."
+          }
+        ]
+      },
+      {
+        "id": "option-b-smallorg",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "reason",
+            "to": "Q6: 31 described this as a need out of 33 that were asked."
+          }
+        ]
+      },
+      {
+        "id": "namedrop-investors-founders",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "validated"
+          },
+          {
+            "field": "reason",
+            "to": "Investors: 50 > 12 > 3 (25% reply rate). Founders: 58 > 17 > 5 (29% reply rate)."
+          }
+        ]
+      },
+      {
+        "id": "namedrop-ae-bd",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "validated"
+          },
+          {
+            "field": "reason",
+            "to": "AE/Sales: 67 > 26 > 18 (38% reply, 69% confirm). BD: 64 > 23 > 11 (35% reply, 47% confirm)."
+          }
+        ]
+      },
+      {
+        "id": "gordy-asks",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "validated"
+          },
+          {
+            "field": "reason",
+            "to": "Sent: 279. Human response: 14 (5%). Said yes: 9 (3.23%)."
+          }
+        ]
+      },
+      {
+        "id": "outreach-personalization-evidence",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "reason",
+            "from": "Mapped from old obs-d root claim.",
+            "to": "Backlinko large-scale study: 32.7% higher response rate for customized vs generic templates."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-03-24",
     "commit": "98f4fa4",
     "message": "Add CTA variants, eliminated follow-up loop, and learnings status update",
     "changedIds": [
