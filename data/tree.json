@@ -686,8 +686,8 @@
     },
     {
       "id": "root-intros-main",
-      "label": "There is at least one viral wedge in the introductions and intro-meetings space for small business owners who also do selling",
-      "status": "validated",
+      "label": "There is at least one explosive growth wedge in the introductions and intro-meetings space for small business owners who also do selling",
+      "status": "active",
       "children": [
         {
           "id": "intro-askbrief-smallbiz-path",
@@ -729,12 +729,7 @@
                   "label": "Users will agree to ask the counterpart about a new intro flow using Gordy",
                   "status": "active",
                   "type": "Adoption",
-                  "test": "Mockup test: show the flow and ask whether they would use it in a real meeting",
-                  "score": {
-                    "Freq": 0,
-                    "Intensity": 0,
-                    "Fit": 0
-                  }
+                  "test": "Mockup test: show the flow and ask whether they would use it in a real meeting"
                 },
                 {
                   "id": "intro-askbrief-auto-compose",
@@ -777,14 +772,9 @@
                         {
                           "id": "counterpart-attention-threshold",
                           "label": "Counterpart email gets over 30% click rate and 60% notice rate",
-                          "status": "active",
+                          "status": "eliminated",
                           "type": "Growth",
-                          "test": "Live emails to real attendees \u2014 measuring clicks, replies, and notice / recall",
-                          "score": {
-                            "Freq": 0,
-                            "Intensity": 0,
-                            "Fit": 0
-                          }
+                          "test": "Live emails to real attendees \u2014 measuring clicks, replies, and notice / recall"
                         },
                         {
                           "id": "counterpart-attention-downstream",
@@ -824,15 +814,10 @@
                     },
                     {
                       "id": "gordy-loop",
-                      "label": "Post-meeting follow-up to the counterpart produces responses",
+                      "label": "Post-meeting follow-up (outbound from Gordy) to the counterpart produces responses",
                       "status": "active",
                       "type": "Growth",
-                      "test": "Monitor response rates to post-meeting follow-up sent to the counterpart",
-                      "score": {
-                        "Freq": 0,
-                        "Intensity": 0,
-                        "Fit": 0
-                      }
+                      "test": "Monitor response rates to post-meeting follow-up sent to the counterpart"
                     }
                   ],
                   "gateType": "OR"
@@ -1252,43 +1237,28 @@
         {
           "id": "intro-recipient-outbound-path",
           "label": "Recipient-side intro outreach itself shows viral / acquisition signal",
-          "status": "validated",
+          "status": "active",
           "children": [
             {
               "id": "namedrop-investors-founders",
               "label": "Recipients respond when Gordy asks for a name-drop or intro confirmation in investor/founder contexts",
-              "status": "validated",
+              "status": "active",
               "type": "Growth",
-              "test": "Predict who they know and reach out asking for a name-drop / confirmation",
-              "score": {
-                "Freq": 0,
-                "Intensity": 0,
-                "Fit": 0
-              }
+              "test": "Predict who they know and reach out asking for a name-drop / confirmation"
             },
             {
               "id": "namedrop-ae-bd",
               "label": "Recipients also respond to Gordy name-drop requests in AE / BD contexts",
-              "status": "validated",
+              "status": "active",
               "type": "Growth",
-              "test": "Predict who they know and reach out asking for a name-drop / confirmation",
-              "score": {
-                "Freq": 0,
-                "Intensity": 0,
-                "Fit": 0
-              }
+              "test": "Predict who they know and reach out asking for a name-drop / confirmation"
             },
             {
               "id": "gordy-asks",
               "label": "Prospects respond to Gordy outbound offers of intros",
-              "status": "validated",
+              "status": "active",
               "type": "Growth",
-              "test": "Live test: Gordy sends outbound messages offering intros to targeted prospects and we measure human response plus yes rate",
-              "score": {
-                "Freq": 0,
-                "Intensity": 0,
-                "Fit": 0
-              }
+              "test": "Live test: Gordy sends outbound messages offering intros to targeted prospects and we measure human response plus yes rate"
             }
           ],
           "gateType": "OR"
