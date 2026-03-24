@@ -1,6 +1,297 @@
 [
   {
     "date": "2026-03-24",
+    "commit": "5b57a95",
+    "message": "Major tree status restructure: prioritize active paths, park inactive branches",
+    "changedIds": [
+      "17",
+      "nurture-smallbiz-persona",
+      "nurture-smallbiz-need-reason",
+      "nurture-smallbiz-no-playbook",
+      "nurture-smallbiz-travel-proximity-trigger",
+      "nurture-smallbiz-radar-drift-alert",
+      "nurture-smallbiz-calendar-connected-workflow",
+      "intro-askbrief-feasibility",
+      "intro-circle-cta-gets-ctr",
+      "get-intros-cta-gets-ctr",
+      "counterpart-stay-intouch-cta",
+      "intro-askbrief-paid-conversion",
+      "intro-askbrief-economics",
+      "mutual-ca",
+      "mutual-ca-dup-1",
+      "mutual-cb",
+      "intro-network-timing",
+      "network-self-map",
+      "root-outreach-intel",
+      "market-smallorg-pokemon-cold",
+      "pokemon-cold-mine-common",
+      "outreach-workflow-angles",
+      "pokemon-get-buy",
+      "leave-linkedin-asap",
+      "after-being-exposed-to-the-emails-from-g",
+      "hello-page-version-gets-ctr-dup",
+      "hello-page-version-gets-ctr-dup-dup"
+    ],
+    "changes": [
+      {
+        "id": "17",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "backlog"
+          }
+        ]
+      },
+      {
+        "id": "nurture-smallbiz-persona",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "review",
+            "to": "active"
+          }
+        ]
+      },
+      {
+        "id": "nurture-smallbiz-need-reason",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-no-playbook",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "pending"
+          }
+        ]
+      },
+      {
+        "id": "nurture-smallbiz-travel-proximity-trigger",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "pending"
+          }
+        ]
+      },
+      {
+        "id": "nurture-smallbiz-radar-drift-alert",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "pending"
+          }
+        ]
+      },
+      {
+        "id": "nurture-smallbiz-calendar-connected-workflow",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "pending"
+          }
+        ]
+      },
+      {
+        "id": "intro-askbrief-feasibility",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "pending"
+          }
+        ]
+      },
+      {
+        "id": "intro-circle-cta-gets-ctr",
+        "action": "added"
+      },
+      {
+        "id": "get-intros-cta-gets-ctr",
+        "action": "added"
+      },
+      {
+        "id": "counterpart-stay-intouch-cta",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "pending"
+          }
+        ]
+      },
+      {
+        "id": "intro-askbrief-paid-conversion",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "pending"
+          }
+        ]
+      },
+      {
+        "id": "intro-askbrief-economics",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "pending"
+          }
+        ]
+      },
+      {
+        "id": "mutual-ca",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "backlog"
+          }
+        ]
+      },
+      {
+        "id": "mutual-ca-dup-1",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "backlog"
+          }
+        ]
+      },
+      {
+        "id": "mutual-cb",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "backlog"
+          }
+        ]
+      },
+      {
+        "id": "intro-network-timing",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "pending"
+          }
+        ]
+      },
+      {
+        "id": "network-self-map",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "pending"
+          }
+        ]
+      },
+      {
+        "id": "root-outreach-intel",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "review",
+            "to": "backlog"
+          }
+        ]
+      },
+      {
+        "id": "market-smallorg-pokemon-cold",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "review",
+            "to": "backlog"
+          }
+        ]
+      },
+      {
+        "id": "pokemon-cold-mine-common",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "backlog"
+          }
+        ]
+      },
+      {
+        "id": "outreach-workflow-angles",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "backlog"
+          }
+        ]
+      },
+      {
+        "id": "pokemon-get-buy",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "pending",
+            "to": "backlog"
+          }
+        ]
+      },
+      {
+        "id": "leave-linkedin-asap",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "backlog"
+          }
+        ]
+      },
+      {
+        "id": "after-being-exposed-to-the-emails-from-g",
+        "action": "removed"
+      },
+      {
+        "id": "hello-page-version-gets-ctr-dup",
+        "action": "removed"
+      },
+      {
+        "id": "hello-page-version-gets-ctr-dup-dup",
+        "action": "removed"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-24",
     "commit": "11f772c",
     "message": "Update hypothesis tree with validated test results",
     "changedIds": [
