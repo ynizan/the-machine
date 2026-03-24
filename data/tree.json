@@ -37,9 +37,10 @@
                     {
                       "id": "nurture-smallbiz-top-of-mind-mom-test",
                       "label": "Users can describe concrete top-of-mind pain and missed opportunities",
-                      "status": "active",
+                      "status": "validated",
                       "type": "Need",
                       "test": "Mom test: ask for concrete examples where weak follow-up or weak top-of-mind presence caused a missed opportunity",
+                      "reason": "Out of 41 that answered, 33 described top-of-mind behavior. Only 1 rejected directly.",
                       "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
                     },
                     {
@@ -492,6 +493,7 @@
               "status": "validated",
               "type": "Segment",
               "test": "Analysis on past calls: frequency of asking for intros / relevant asks around meetings",
+              "reason": "Weekly+: 16 users. Monthly: 3. Quarterly or less: 11. Never: 6. Out of ~55 interviewees.",
               "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
             },
             {
@@ -500,6 +502,7 @@
               "status": "validated",
               "type": "Need",
               "test": "Pitch / mockup evidence: over 80% of pitched users wanted the tool and were willing to connect calendar access to get strategic ask briefs",
+              "reason": "17 intros made out of 20-25 pitched. Over 80% wanted the Ask Brief.",
               "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
             },
             {
@@ -858,6 +861,7 @@
               "status": "validated",
               "type": "Segment",
               "test": "Analysis on past calls: how often small-business leaders target a specific person through a warm path",
+              "reason": "Q5: 35 described this as a need out of 40 that were asked.",
               "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
             },
             {
@@ -878,6 +882,7 @@
                       "status": "validated",
                       "type": "Need",
                       "test": "Mom test: how often do small-org front-people target a specific person for an intro?",
+                      "reason": "Q6: 31 described this as a need out of 33 that were asked.",
                       "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
                     },
                     {
@@ -1104,23 +1109,26 @@
             {
               "id": "namedrop-investors-founders",
               "label": "Recipients respond when Gordy asks for a name-drop or intro confirmation in investor/founder contexts",
-              "status": "active",
+              "status": "validated",
               "type": "Growth",
-              "test": "Predict who they know and reach out asking for a name-drop / confirmation"
+              "test": "Predict who they know and reach out asking for a name-drop / confirmation",
+              "reason": "Investors: 50 > 12 > 3 (25% reply rate). Founders: 58 > 17 > 5 (29% reply rate)."
             },
             {
               "id": "namedrop-ae-bd",
               "label": "Recipients also respond to Gordy name-drop requests in AE / BD contexts",
-              "status": "active",
+              "status": "validated",
               "type": "Growth",
-              "test": "Predict who they know and reach out asking for a name-drop / confirmation"
+              "test": "Predict who they know and reach out asking for a name-drop / confirmation",
+              "reason": "AE/Sales: 67 > 26 > 18 (38% reply, 69% confirm). BD: 64 > 23 > 11 (35% reply, 47% confirm)."
             },
             {
               "id": "gordy-asks",
               "label": "Prospects respond to Gordy outbound offers of intros",
-              "status": "active",
+              "status": "validated",
               "type": "Growth",
-              "test": "Live test: Gordy sends outbound messages offering intros to targeted prospects and we measure human response plus yes rate"
+              "test": "Live test: Gordy sends outbound messages offering intros to targeted prospects and we measure human response plus yes rate",
+              "reason": "Sent: 279. Human response: 14 (5%). Said yes: 9 (3.23%)."
             }
           ],
           "gateType": "OR"
@@ -1165,7 +1173,7 @@
           "status": "validated",
           "type": "Need",
           "test": "Landscape / research review on response-rate lift from personalization",
-          "reason": "Mapped from old obs-d root claim.",
+          "reason": "Backlinko large-scale study: 32.7% higher response rate for customized vs generic templates.",
           "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
         },
         {
