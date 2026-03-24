@@ -97,7 +97,7 @@ const EYE_COLORS = {
   backlog:'#9A8AB8'
 };
 const LBL_COLORS = {
-  validated:'#E8E8E8', active:'#BBBBBB',
+  validated:'#7FBF95', active:'#BBBBBB',
   pending:'#8A7855', eliminated:'#3A3A3A', review:'#9AC8E0',
   backlog:'#8878A0'
 };
