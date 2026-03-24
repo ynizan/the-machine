@@ -167,21 +167,25 @@ function orGatePath(w, h){
     + `Q${hw*0.3},${-hh*0.7} ${-hw},${-hh} Z`;
 }
 
-// Propagate validation up the tree based on gate types
-// AND: validated iff ALL children are validated
-// OR: validated iff ANY child is validated
+// Propagate validation and elimination up the tree based on gate types
+// Validated:  AND = all validated,  OR = any validated
+// Eliminated: AND = any eliminated, OR = all eliminated
 // Leaf nodes (no children or no gateType): keep their own status
 function propagateValidation(node){
   if(!node.children || !node.children.length) return;
   node.children.forEach(c => propagateValidation(c));
   if(node.gateType === 'AND'){
     const allValidated = node.children.every(c => c.status === 'validated');
-    if(allValidated) node.status = 'validated';
-    else if(node.status === 'validated') node.status = 'active';
+    const anyEliminated = node.children.some(c => c.status === 'eliminated');
+    if(anyEliminated) node.status = 'eliminated';
+    else if(allValidated) node.status = 'validated';
+    else if(node.status === 'validated' || node.status === 'eliminated') node.status = 'active';
   } else if(node.gateType === 'OR'){
     const anyValidated = node.children.some(c => c.status === 'validated');
-    if(anyValidated) node.status = 'validated';
-    else if(node.status === 'validated') node.status = 'active';
+    const allEliminated = node.children.every(c => c.status === 'eliminated');
+    if(allEliminated) node.status = 'eliminated';
+    else if(anyValidated) node.status = 'validated';
+    else if(node.status === 'validated' || node.status === 'eliminated') node.status = 'active';
   }
 }
 
