@@ -20,7 +20,7 @@ function run(cmd) {
 // Flatten tree into { id: node } map
 function flattenTree(obj, map = {}) {
   if (!obj) return map;
-  if (obj.id && obj.id !== '__root__') {
+  if (obj.id && obj.id !== 'root') {
     const { children, ...rest } = obj;
     map[obj.id] = rest;
   }
