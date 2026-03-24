@@ -28,7 +28,7 @@ function depthX(depth){
 }
 
 function cardHeight(node){
-  if(node.data.id==='__root__') return 0;
+  if(node.data.id==='root') return 0;
   const c   = cfg(node.depth);
   const usable = c.w - c.pad * 2;
   const cpl = Math.max(6, Math.floor(usable / (c.fs * 0.54)));
@@ -113,11 +113,11 @@ const EYE_LABELS = {
 };
 
 const HYPOTHESIS_TYPES = [
-  'Segment', 'Need', 'Adoption', 'Growth', 'Feasibility', 'Economics',
+  'Segment', 'Need', 'Adoption', 'Growth', 'Feasibility', 'Economics', 'Alternative',
   'problem', 'problem_space', 'solution', 'hypothesis', 'viral_sending', 'viral_receiving', 'revenue', 'unit_economics', 'market'
 ];
 const TYPE_LABELS = {
-  Segment:'Segment', Need:'Need', Adoption:'Adoption', Growth:'Growth', Feasibility:'Feasibility', Economics:'Economics',
+  Segment:'Segment', Need:'Need', Adoption:'Adoption', Growth:'Growth', Feasibility:'Feasibility', Economics:'Economics', Alternative:'Alternative',
   problem:'Problem', problem_space:'Problem Space', solution:'Solution', hypothesis:'Hypothesis',
   viral_sending:'Viral Sending', viral_receiving:'Viral Receiving', revenue:'Revenue',
   unit_economics:'Unit Economics', market:'Market'
@@ -129,6 +129,7 @@ const TYPE_COLORS = {
   Growth:{ text:'#5AAFE0', bg:'rgba(90,175,224,.12)', border:'rgba(90,175,224,.25)' },
   Feasibility:{ text:'#B08AD6', bg:'rgba(176,138,214,.12)', border:'rgba(176,138,214,.25)' },
   Economics:{ text:'#C8A060', bg:'rgba(200,160,96,.12)', border:'rgba(200,160,96,.25)' },
+  Alternative:{ text:'#E0A050', bg:'rgba(224,160,80,.12)', border:'rgba(224,160,80,.25)' },
   problem:{ text:'#E07060', bg:'rgba(224,112,96,.12)', border:'rgba(224,112,96,.25)' },
   problem_space:{ text:'#C85A4A', bg:'rgba(200,90,74,.10)', border:'rgba(200,90,74,.20)' },
   solution:{ text:'#6ABF80', bg:'rgba(106,191,128,.12)', border:'rgba(106,191,128,.25)' },
@@ -198,7 +199,7 @@ function propagateValidation(node){
 function checkMissingGateTypes(data){
   const missing = [];
   function walk(node){
-    if(node.id === '__root__'){ if(node.children) node.children.forEach(walk); return; }
+    if(node.id === 'root'){ if(node.children) node.children.forEach(walk); return; }
     if(node.children && node.children.length > 0 && !node.gateType) missing.push(node.id);
     if(node.children) node.children.forEach(walk);
   }
@@ -288,6 +289,7 @@ function cardHTML(d, c, h){
     const icon = type === 'Segment' ? '\u25C6' : type === 'Need' ? '\u25CF' :
       type === 'Adoption' ? '\u2713' : type === 'Growth' ? '\u2192' :
       type === 'Feasibility' ? '\u2699' : type === 'Economics' ? '$' :
+      type === 'Alternative' ? '\u2194' :
       type === 'market' ? '\u25C6' : type === 'problem' || type === 'problem_space' ? '\u25CF' :
       type === 'solution' ? '\u2713' : type === 'hypothesis' ? '?' :
       type.startsWith('viral') ? '\u2192' : '\u25CB';
@@ -571,8 +573,8 @@ function initTree(DATA, opts){
     root.descendants().forEach(d => { d.y = depthX(d.depth); });
     g.selectAll('*').remove();
 
-    const nodes = root.descendants().filter(d => d.data.id !== '__root__');
-    const links = root.links().filter(l => l.source.data.id !== '__root__');
+    const nodes = root.descendants().filter(d => d.data.id !== 'root');
+    const links = root.links().filter(l => l.source.data.id !== 'root');
 
     const edgeG = g.append('g');
 
@@ -798,7 +800,7 @@ function initTree(DATA, opts){
   function resetView(){
     treeLayout(root);
     root.descendants().forEach(d => { d.y = depthX(d.depth); });
-    const nodes = root.descendants().filter(d => d.data.id !== '__root__');
+    const nodes = root.descendants().filter(d => d.data.id !== 'root');
     if(!nodes.length) return;
     const W = document.getElementById('canvas').clientWidth;
     const H = document.getElementById('canvas').clientHeight;
@@ -1148,7 +1150,7 @@ if(window.visualViewport){
 // --- Navigation: Moms, Mockups, Review ---
 function collectNodes(obj, predicate, results){
   if(!obj) return results;
-  if(obj.id && obj.id !== '__root__' && predicate(obj)) results.push(obj);
+  if(obj.id && obj.id !== 'root' && predicate(obj)) results.push(obj);
   if(obj.children) obj.children.forEach(c => collectNodes(c, predicate, results));
   return results;
 }

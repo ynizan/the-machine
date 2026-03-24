@@ -1,67 +1,31 @@
 {
-  "id": "__root__",
+  "id": "root",
   "label": "",
   "status": "root",
   "children": [
     {
       "id": "root-nurture-main",
-      "label": "There is a viable business around nurturing for small business owners at organizations under 20 who also do selling",
+      "label": "There is at least one persona with a viable nurturing business",
       "status": "active",
       "children": [
         {
-          "id": "nurture-smallbiz-segment",
-          "label": "Small business owners at organizations under 20 who also do selling are a concrete initial segment for nurturing",
+          "id": "nurture-smallbiz-persona",
+          "label": "Small business owners at organizations under 20 who also do selling are a concrete initial persona for nurturing",
           "status": "review",
           "type": "Segment",
-          "test": "Analysis on past calls + targeted interviews about time spent nurturing outside active deals",
-          "score": {
-            "Freq": 0,
-            "Intensity": 0,
-            "Fit": 0
-          }
-        },
-        {
-          "id": "nurture-smallbiz-need",
-          "label": "This segment has a recurring nurturing problem worth solving",
-          "status": "active",
-          "type": "Need",
           "children": [
             {
-              "id": "founders",
-              "label": "Founders in small companies wearing the sales hat feel they are losing deals because of poor nurturing",
-              "status": "active",
-              "type": "Need",
-              "test": "Mom test: ask for concrete lost-opportunity examples where weak follow-up or weak top-of-mind presence mattered",
-              "score": {
-                "Freq": 0,
-                "Intensity": 0,
-                "Fit": 0
-              }
-            },
-            {
-              "id": "nurture-top-of-mind",
-              "label": "Users want to stay top of mind so opportunities and in-market buyers come back to them",
-              "status": "validated",
-              "type": "Need",
-              "test": "Interview + transcript analysis: do users explicitly describe wanting to stay top of mind so opportunities come back to them?",
-              "score": {
-                "Freq": 0,
-                "Intensity": 0,
-                "Fit": 0
-              }
-            },
-            {
-              "id": "nurture-execution-gap-smallbiz",
-              "label": "Current ways of nurturing are weak, inconsistent, or too effortful",
+              "id": "nurture-smallbiz-need",
+              "label": "There is a recurring nurturing problem worth solving",
               "status": "active",
               "type": "Need",
               "children": [
                 {
-                  "id": "nurture-channel-fomo",
-                  "label": "Small business owners have tried and abandoned multiple nurturing channels and feel FOMO about what peers are doing",
+                  "id": "nurture-smallbiz-lost-opps",
+                  "label": "The persona feels it is losing opportunities because of poor nurturing",
                   "status": "active",
                   "type": "Need",
-                  "test": "Mom test across transcripts: channels tried and stopped, FOMO mentions, count and names",
+                  "test": "Mom test: ask for concrete lost-opportunity examples where weak follow-up or weak top-of-mind presence mattered",
                   "score": {
                     "Freq": 0,
                     "Intensity": 0,
@@ -69,29 +33,17 @@
                   }
                 },
                 {
-                  "id": "nurture-no-playbook",
-                  "label": "Even when users pick a nurturing channel, they do not know what to write, which medium to use, how often to reach out, or whether it works",
-                  "status": "active",
-                  "type": "Need",
-                  "test": "Mom test across transcripts: evidence of uncertainty about execution, abandoned attempts due to not knowing what good looks like",
-                  "score": {
-                    "Freq": 0,
-                    "Intensity": 0,
-                    "Fit": 0
-                  }
-                },
-                {
-                  "id": "channel-deepening-path",
-                  "label": "Users already try to deepen communication channels with important contacts, and may adopt help doing it",
+                  "id": "nurture-smallbiz-top-of-mind",
+                  "label": "Helping users stay top of mind is a viable nurturing angle",
                   "status": "active",
                   "type": "Need",
                   "children": [
                     {
-                      "id": "channel-deepening",
-                      "label": "Users actively try to increase communication channels with important contacts during existing conversations",
+                      "id": "nurture-smallbiz-top-of-mind-mom-test",
+                      "label": "Users can describe concrete top-of-mind pain and missed opportunities",
                       "status": "active",
                       "type": "Need",
-                      "test": "Mom test: when do users try to move a relationship to a deeper channel, and what examples can they recall?",
+                      "test": "Mom test: ask for concrete examples where weak follow-up or weak top-of-mind presence caused a missed opportunity",
                       "score": {
                         "Freq": 0,
                         "Intensity": 0,
@@ -99,11 +51,23 @@
                       }
                     },
                     {
-                      "id": "channel-deepening-mockup",
-                      "label": "Users prefer AI-drafted messages with natural channel upgrade versus plain versions and activate the feature",
+                      "id": "nurture-smallbiz-top-of-mind-mockup",
+                      "label": "Users react strongly to a mockup that helps them stay top of mind with important contacts",
                       "status": "pending",
                       "type": "Adoption",
-                      "test": "Mockup: show regular vs channel-deepening drafts and measure preference plus willingness to use",
+                      "test": "Mockup: show a stay-top-of-mind workflow and measure whether users want it for real contacts now",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
+                    },
+                    {
+                      "id": "nurture-smallbiz-top-of-mind-pay",
+                      "label": "Users are willing to pay for a top-of-mind solution if it proves value",
+                      "status": "pending",
+                      "type": "Economics",
+                      "test": "Pricing / commitment test tied specifically to the stay-top-of-mind value proposition",
                       "score": {
                         "Freq": 0,
                         "Intensity": 0,
@@ -119,16 +83,282 @@
                   "gateType": "AND"
                 },
                 {
-                  "id": "travel-proximity-trigger",
-                  "label": "Users manually research who to meet when traveling or track when contacts are visiting their city",
+                  "id": "nurture-smallbiz-weak-alternatives",
+                  "label": "Current alternatives for nurturing are weak, inconsistent, or too effortful",
+                  "status": "active",
+                  "type": "Alternative",
+                  "children": [
+                    {
+                      "id": "nurture-smallbiz-channel-fomo",
+                      "label": "Users have tried and abandoned multiple nurturing channels and feel they may be missing better ways",
+                      "status": "active",
+                      "type": "Alternative",
+                      "test": "Mom test across transcripts/interviews: channels tried and stopped, and evidence of uncertainty or FOMO",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
+                    },
+                    {
+                      "id": "nurture-smallbiz-no-playbook",
+                      "label": "Even when users pick a nurturing channel, they do not know what to write, which medium to use, how often to reach out, or whether it works",
+                      "status": "active",
+                      "type": "Alternative",
+                      "test": "Mom test: evidence of uncertainty about execution, abandoned attempts, or lack of a clear playbook",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
+                    }
+                  ],
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  },
+                  "gateType": "OR"
+                },
+                {
+                  "id": "nurture-smallbiz-need-patterns",
+                  "label": "There is at least one concrete behavioral pattern that points to a real nurturing need",
                   "status": "active",
                   "type": "Need",
-                  "test": "Mom test: ask for recent travel examples and whether they searched for people to meet or noticed visitors manually",
+                  "children": [
+                    {
+                      "id": "nurture-smallbiz-channel-deepening-path",
+                      "label": "Users already try to deepen communication channels with important contacts, and may adopt help doing it",
+                      "status": "active",
+                      "type": "Need",
+                      "children": [
+                        {
+                          "id": "nurture-smallbiz-channel-deepening",
+                          "label": "Users actively try to increase communication channels with important contacts during existing conversations",
+                          "status": "active",
+                          "type": "Need",
+                          "test": "Mom test: when do users try to move a relationship to a deeper channel, and what examples can they recall?",
+                          "score": {
+                            "Freq": 0,
+                            "Intensity": 0,
+                            "Fit": 0
+                          }
+                        },
+                        {
+                          "id": "nurture-smallbiz-channel-deepening-mockup",
+                          "label": "Users prefer AI-drafted messages with natural channel upgrade versus plain versions and activate the feature",
+                          "status": "pending",
+                          "type": "Adoption",
+                          "test": "Mockup: show regular vs channel-deepening drafts and measure preference plus willingness to use",
+                          "score": {
+                            "Freq": 0,
+                            "Intensity": 0,
+                            "Fit": 0
+                          }
+                        }
+                      ],
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      },
+                      "gateType": "AND"
+                    },
+                    {
+                      "id": "nurture-smallbiz-travel-proximity-trigger",
+                      "label": "Users manually research who to meet when traveling or track when contacts are visiting their city",
+                      "status": "active",
+                      "type": "Need",
+                      "test": "Mom test: ask for recent travel examples and whether they searched for people to meet or noticed visitors manually",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
+                    }
+                  ],
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  },
+                  "gateType": "OR"
+                }
+              ],
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              },
+              "gateType": "AND"
+            },
+            {
+              "id": "nurture-smallbiz-adoption",
+              "label": "Users will adopt a low-friction workflow to tell Gordy who to nurture and act on prompts",
+              "status": "active",
+              "type": "Adoption",
+              "children": [
+                {
+                  "id": "nurture-smallbiz-criteria-define",
+                  "label": "Users can define workable filtering criteria for who they want to nurture",
+                  "status": "active",
+                  "type": "Adoption",
+                  "children": [
+                    {
+                      "id": "nurture-smallbiz-pick-people",
+                      "label": "Users are willing to commit to a specific list of people to nurture",
+                      "status": "pending",
+                      "type": "Adoption",
+                      "test": "Mockup: when shown contacts matching their criteria, do they select specific people rather than deferring or saying 'everyone'?",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
+                    }
+                  ],
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  },
+                  "gateType": "AND"
+                },
+                {
+                  "id": "nurture-smallbiz-radar-drift-alert",
+                  "label": "Users respond to automated drift alerts and ask for help re-engaging a real contact",
+                  "status": "active",
+                  "type": "Adoption",
+                  "test": "MVT: send drift alerts when a user has not spoken to a contact in 3+ months and measure reply / action rate",
                   "score": {
                     "Freq": 0,
                     "Intensity": 0,
                     "Fit": 0
                   }
+                },
+                {
+                  "id": "nurture-smallbiz-advisor-gordy-engage",
+                  "label": "Users engage with Gordy when he offers networking strategy advice by email",
+                  "status": "pending",
+                  "type": "Adoption",
+                  "test": "MVT concierge: Gordy emails users offering strategic networking advice. Measure reply rate and engagement depth.",
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  }
+                }
+              ],
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              },
+              "gateType": "AND"
+            },
+            {
+              "id": "nurture-smallbiz-growth",
+              "label": "There is at least one credible growth path for the nurturing product",
+              "status": "active",
+              "type": "Growth",
+              "children": [
+                {
+                  "id": "nurture-smallbiz-nudge-path",
+                  "label": "Contact-based nudges can drive both usage and acquisition",
+                  "status": "active",
+                  "type": "Growth",
+                  "children": [
+                    {
+                      "id": "nurture-smallbiz-circles-exist",
+                      "label": "Users naturally think of their contacts in circles or clusters rather than only as one-off relationships",
+                      "status": "pending",
+                      "type": "Growth",
+                      "test": "Interview: ask users how they mentally organize important contacts and whether circles/clusters are already a natural model",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
+                    },
+                    {
+                      "id": "nurture-smallbiz-nudge-action",
+                      "label": "Users will send a suggested nudge message when shown a concrete example",
+                      "status": "pending",
+                      "type": "Growth",
+                      "test": "Mockup: show a suggested nudge on a real contact and measure send intent / actual send rate",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
+                    },
+                    {
+                      "id": "nurture-smallbiz-acq-interview",
+                      "label": "Users who say yes to the nudge want to try the service immediately",
+                      "status": "pending",
+                      "type": "Growth",
+                      "test": "During interviews, after a positive nudge reaction, ask whether they want to try the service now",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
+                    },
+                    {
+                      "id": "nurture-smallbiz-acq-outbound",
+                      "label": "Cold outbound offering these nurturing tips can get enough response to be a viable acquisition path",
+                      "status": "pending",
+                      "type": "Growth",
+                      "test": "Outbound campaign: email describing the value of concrete nurturing tips. Measure yes rate and response rate.",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
+                    },
+                    {
+                      "id": "nurture-smallbiz-acq-gordy-viral-tip",
+                      "label": "Recipients who receive a tip email from Gordy want the service for themselves",
+                      "status": "pending",
+                      "type": "Growth",
+                      "test": "Pilot: send Gordy tip emails and measure how many recipients ask for the service",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
+                    },
+                    {
+                      "id": "nurture-smallbiz-acq-gordy-viral-nudge",
+                      "label": "Users who receive a Gordy nudge email want the service for themselves",
+                      "status": "pending",
+                      "type": "Growth",
+                      "test": "Pilot: send Gordy nudge emails and measure how many recipients ask for the service",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
+                    },
+                    {
+                      "id": "nurture-smallbiz-exposed-via-intro-flow",
+                      "label": "Some users exposed through the intro-email flow ask Gordy for help staying in touch with a real contact",
+                      "status": "active",
+                      "type": "Growth",
+                      "test": "MVT: Add a stay-in-touch CTA to intro-flow emails and measure click-through plus creation of at least one tracking request",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
+                    }
+                  ],
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  },
+                  "gateType": "AND"
                 }
               ],
               "score": {
@@ -137,98 +367,20 @@
                 "Fit": 0
               },
               "gateType": "OR"
-            }
-          ],
-          "score": {
-            "Freq": 0,
-            "Intensity": 0,
-            "Fit": 0
-          },
-          "gateType": "AND"
-        },
-        {
-          "id": "nurture-smallbiz-adoption",
-          "label": "Users in this segment will adopt a low-friction workflow to tell Gordy who to nurture and act on prompts",
-          "status": "active",
-          "type": "Adoption",
-          "children": [
-            {
-              "id": "nurture-criteria-define",
-              "label": "Users can define a workable filtering criteria for who they want to nurture",
-              "status": "active",
-              "type": "Adoption",
-              "test": "Mockup: can users specify a scoped, actionable set instead of \"everyone\" or \"my whole network\"?",
-              "children": [
-                {
-                  "id": "nurture-pick-people",
-                  "label": "Users are willing to commit to a specific list of people to nurture",
-                  "status": "pending",
-                  "type": "Adoption",
-                  "test": "Mockup: when shown contacts matching their criteria, do they select specific people rather than deferring or saying 'everyone'?",
-                  "score": {
-                    "Freq": 0,
-                    "Intensity": 0,
-                    "Fit": 0
-                  }
-                }
-              ],
-              "score": {
-                "Freq": 0,
-                "Intensity": 0,
-                "Fit": 0
-              },
-              "gateType": "AND"
             },
             {
-              "id": "radar-drift-alert",
-              "label": "Users respond to automated drift alerts and ask for help re-engaging a real contact",
+              "id": "nurture-smallbiz-feasibility",
+              "label": "We can deliver the nurturing workflow with low ongoing user effort",
               "status": "active",
-              "type": "Adoption",
-              "test": "MVT: send drift alerts when a user has not spoken to a contact in 3+ months and measure reply / action rate",
-              "score": {
-                "Freq": 0,
-                "Intensity": 0,
-                "Fit": 0
-              }
-            },
-            {
-              "id": "advisor-gordy-engage",
-              "label": "Users engage with Gordy when he offers networking strategy advice by email",
-              "status": "pending",
-              "type": "Adoption",
-              "test": "MVT concierge: Gordy emails users offering strategic networking advice. Measure reply rate and engagement depth.",
-              "score": {
-                "Freq": 0,
-                "Intensity": 0,
-                "Fit": 0
-              }
-            }
-          ],
-          "score": {
-            "Freq": 0,
-            "Intensity": 0,
-            "Fit": 0
-          },
-          "gateType": "AND"
-        },
-        {
-          "id": "nurture-smallbiz-growth",
-          "label": "There is at least one credible growth path for the nurturing product in this segment",
-          "status": "active",
-          "type": "Growth",
-          "children": [
-            {
-              "id": "nudge-path",
-              "label": "Contact-based nudges can drive both usage and acquisition",
-              "status": "active",
-              "type": "Growth",
+              "type": "Feasibility",
               "children": [
                 {
-                  "id": "circles-exist",
-                  "label": "Users naturally think of their contacts in circles or clusters rather than only as one-off relationships",
+                  "id": "nurture-smallbiz-low-manual-entry",
+                  "label": "The product can work without ongoing manual data entry from users",
                   "status": "pending",
-                  "type": "Growth",
-                  "test": "Interview: ask users how they mentally organize important contacts and whether circles/clusters are already a natural model",
+                  "type": "Feasibility",
+                  "test": "Prototype test: does the workflow still produce useful outputs when users only connect existing data sources and avoid ongoing manual upkeep?",
+                  "reason": "Mapped from old cross-cutting hypothesis obs-f: users want to avoid ongoing data entry.",
                   "score": {
                     "Freq": 0,
                     "Intensity": 0,
@@ -236,71 +388,49 @@
                   }
                 },
                 {
-                  "id": "nudge-action",
-                  "label": "Users will send a suggested nudge message when shown a concrete example",
-                  "status": "pending",
-                  "type": "Growth",
-                  "test": "Mockup: show a suggested nudge on a real contact and measure send intent / actual send rate",
-                  "score": {
-                    "Freq": 0,
-                    "Intensity": 0,
-                    "Fit": 0
-                  }
-                },
-                {
-                  "id": "acq-interview",
-                  "label": "Users who say yes to the nudge want to try the service immediately",
-                  "status": "pending",
-                  "type": "Growth",
-                  "test": "During interviews, after a positive nudge reaction, ask whether they want to try the service now",
-                  "score": {
-                    "Freq": 0,
-                    "Intensity": 0,
-                    "Fit": 0
-                  }
-                },
-                {
-                  "id": "acq-outbound",
-                  "label": "Cold outbound offering these nurturing tips can get enough response to be a viable acquisition path",
-                  "status": "pending",
-                  "type": "Growth",
-                  "test": "Outbound campaign: email describing the value of concrete nurturing tips. Measure yes rate and response rate.",
-                  "score": {
-                    "Freq": 0,
-                    "Intensity": 0,
-                    "Fit": 0
-                  }
-                },
-                {
-                  "id": "acq-gordy-viral-tip",
-                  "label": "Recipients who receive a tip email from Gordy want the service for themselves",
-                  "status": "pending",
-                  "type": "Growth",
-                  "test": "Pilot: send Gordy tip emails and measure how many recipients ask for the service",
-                  "score": {
-                    "Freq": 0,
-                    "Intensity": 0,
-                    "Fit": 0
-                  }
-                },
-                {
-                  "id": "acq-gordy-viral-nudge",
-                  "label": "Users who receive a Gordy nudge email want the service for themselves",
-                  "status": "pending",
-                  "type": "Growth",
-                  "test": "Pilot: send Gordy nudge emails and measure how many recipients ask for the service",
-                  "score": {
-                    "Freq": 0,
-                    "Intensity": 0,
-                    "Fit": 0
-                  }
-                },
-                {
-                  "id": "nurture-exposed-via-intro-flow",
-                  "label": "Some users exposed through the intro-email flow ask Gordy for help staying in touch with a real contact",
+                  "id": "nurture-smallbiz-calendar-connected-workflow",
+                  "label": "A calendar-connected workflow is enough to trigger useful nurturing prompts",
                   "status": "active",
-                  "type": "Growth",
-                  "test": "MVT: Add a stay-in-touch CTA to intro-flow emails and measure click-through plus creation of at least one tracking request",
+                  "type": "Feasibility",
+                  "test": "Live prompt experiment on calendar-connected users: do pre/post-meeting signals generate prompts users find useful enough to act on?",
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  }
+                }
+              ],
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              },
+              "gateType": "AND"
+            },
+            {
+              "id": "nurture-smallbiz-economics",
+              "label": "There is a path to willingness to pay and retention",
+              "status": "pending",
+              "type": "Economics",
+              "children": [
+                {
+                  "id": "nurture-smallbiz-gordy-kpi-selection",
+                  "label": "Users can name the KPIs they would use to decide whether Gordy is worth paying for",
+                  "status": "pending",
+                  "type": "Economics",
+                  "test": "Mockup: present candidate KPIs and measure which ones users trust enough to decide whether to keep paying",
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  }
+                },
+                {
+                  "id": "nurture-smallbiz-nurture-pay",
+                  "label": "The persona will pay for ongoing help if value is proven",
+                  "status": "pending",
+                  "type": "Economics",
+                  "test": "Pricing / prepay / commitment test after a concrete value demo or concierge period",
                   "score": {
                     "Freq": 0,
                     "Intensity": 0,
@@ -321,96 +451,11 @@
             "Intensity": 0,
             "Fit": 0
           },
-          "gateType": "OR"
-        },
-        {
-          "id": "nurture-smallbiz-feasibility",
-          "label": "We can deliver the nurturing workflow for this segment with low ongoing user effort",
-          "status": "active",
-          "type": "Feasibility",
-          "children": [
-            {
-              "id": "low-manual-entry",
-              "label": "The product can work without ongoing manual data entry from users",
-              "status": "pending",
-              "type": "Feasibility",
-              "test": "Prototype test: does the workflow still produce useful outputs when users only connect existing data sources and avoid ongoing manual upkeep?",
-              "reason": "Mapped from old cross-cutting hypothesis obs-f: users want to avoid ongoing data entry.",
-              "score": {
-                "Freq": 0,
-                "Intensity": 0,
-                "Fit": 0
-              }
-            },
-            {
-              "id": "calendar-connected-workflow",
-              "label": "A calendar-connected workflow is enough to trigger useful nurturing prompts",
-              "status": "active",
-              "type": "Feasibility",
-              "test": "Live prompt experiment on calendar-connected users: do pre/post-meeting signals generate prompts users find useful enough to act on?",
-              "score": {
-                "Freq": 0,
-                "Intensity": 0,
-                "Fit": 0
-              }
-            }
-          ],
-          "score": {
-            "Freq": 0,
-            "Intensity": 0,
-            "Fit": 0
-          },
           "gateType": "AND"
         },
         {
-          "id": "nurture-smallbiz-economics",
-          "label": "There is a path to willingness to pay and retention in this segment",
-          "status": "pending",
-          "type": "Economics",
-          "children": [
-            {
-              "id": "gordy-kpi-selection",
-              "label": "Users can name the KPIs they would use to decide whether Gordy is worth paying for",
-              "status": "pending",
-              "type": "Economics",
-              "test": "Mockup: present candidate KPIs and measure which ones users trust enough to decide whether to keep paying",
-              "score": {
-                "Freq": 0,
-                "Intensity": 0,
-                "Fit": 0
-              }
-            },
-            {
-              "id": "nurture-pay",
-              "label": "The chosen nurturing segment will pay for ongoing help if value is proven",
-              "status": "pending",
-              "type": "Economics",
-              "test": "Pricing / prepay / commitment test after a concrete value demo or concierge period",
-              "score": {
-                "Freq": 0,
-                "Intensity": 0,
-                "Fit": 0
-              }
-            }
-          ],
-          "score": {
-            "Freq": 0,
-            "Intensity": 0,
-            "Fit": 0
-          },
-          "gateType": "AND"
-        }
-      ],
-      "gateType": "AND"
-    },
-    {
-      "id": "root-nurture-adjacent-segments",
-      "label": "Parallel nurturing segments that may have similar keep-in-touch problems",
-      "status": "backlog",
-      "children": [
-        {
-          "id": "nurture-vcs-segment",
-          "label": "VC principals may also face a similar keep-in-touch / top-of-mind problem",
+          "id": "nurture-vcs-persona",
+          "label": "VC principals may be a concrete initial persona for nurturing",
           "status": "pending",
           "type": "Segment",
           "test": "Mom test: what happens after an intro call when it is too early, and how do VCs try to stay top of mind over time?",
@@ -421,8 +466,8 @@
           }
         },
         {
-          "id": "nurture-csm-segment",
-          "label": "CSMs may also face a similar keep-in-touch / relationship-nurturing problem",
+          "id": "nurture-csms-persona",
+          "label": "CSMs may be a concrete initial persona for nurturing",
           "status": "backlog",
           "type": "Segment",
           "test": "Mom test: do CSMs keep relationship notes or seek relationship intelligence to prevent churn and surface expansion?",
@@ -433,8 +478,8 @@
           }
         },
         {
-          "id": "nurture-recruiters-segment",
-          "label": "Recruiters may also face a similar keep-in-touch / relationship-nurturing problem",
+          "id": "nurture-recruiters-persona",
+          "label": "Recruiters may be a concrete initial persona for nurturing",
           "status": "backlog",
           "type": "Segment",
           "test": "Adjacent-segment interviews with recruiters about keeping candidates and hiring managers warm",
@@ -492,7 +537,7 @@
         },
         {
           "id": "nurture-context-private-intel",
-          "label": "Deeper private contact context may create better warm actions",
+          "label": "There may be a viable product angle around deeper private contact context",
           "status": "pending",
           "type": "Need",
           "children": [
@@ -563,7 +608,7 @@
               "label": "A meaningful minority of users open an extended brief when it is offered",
               "status": "active",
               "type": "Growth",
-              "test": "Add an \"extended brief\" link to the email and measure click-through to the deeper brief",
+              "test": "Add an \u201cextended brief\u201d link to the email and measure click-through to the deeper brief",
               "score": {
                 "Freq": 0,
                 "Intensity": 0,
@@ -642,7 +687,7 @@
     {
       "id": "root-intros-main",
       "label": "There is at least one viral wedge in the introductions and intro-meetings space for small business owners who also do selling",
-      "status": "active",
+      "status": "validated",
       "children": [
         {
           "id": "intro-askbrief-smallbiz-path",
@@ -714,13 +759,13 @@
             {
               "id": "intro-askbrief-growth",
               "label": "The strategic ask brief flow has at least one working growth loop",
-              "status": "validated",
+              "status": "active",
               "type": "Growth",
               "children": [
                 {
                   "id": "intro-askbrief-receiving-loop",
                   "label": "The counterpart / recipient side of the loop works",
-                  "status": "validated",
+                  "status": "active",
                   "type": "Growth",
                   "children": [
                     {
@@ -734,7 +779,7 @@
                           "label": "Counterpart email gets over 30% click rate and 60% notice rate",
                           "status": "active",
                           "type": "Growth",
-                          "test": "Live emails to real attendees — measuring clicks, replies, and notice / recall",
+                          "test": "Live emails to real attendees \u2014 measuring clicks, replies, and notice / recall",
                           "score": {
                             "Freq": 0,
                             "Intensity": 0,
@@ -868,7 +913,7 @@
               "children": [
                 {
                   "id": "intro-network-mutual-lkg",
-                  "label": "Users are frustrated that mutual connections are nominal and do not reveal which intro paths are real",
+                  "label": "Mutual connections are often too nominal to reliably support warm-intro decisions",
                   "status": "validated",
                   "type": "Need",
                   "children": [
@@ -994,13 +1039,13 @@
                 },
                 {
                   "id": "intro-network-self-map-flow",
-                  "label": "A self-map / reality-check product form is adoptable",
+                  "label": "A self-map / reality-check product form can create value, be adopted, and expand network truth coverage",
                   "status": "active",
                   "type": "Adoption",
                   "children": [
                     {
                       "id": "network-self-map",
-                      "label": "Users want a real picture of their own network — active vs dormant connections, response likelihood, and intro balance — not a vanity count",
+                      "label": "Users want a real picture of their own network \u2014 active vs dormant connections, response likelihood, and intro balance \u2014 not a vanity count",
                       "status": "active",
                       "type": "Adoption",
                       "test": "Demo/waitlist test: show a mockup of a network-health dashboard and measure strong pull / sign-up intent",
@@ -1074,7 +1119,7 @@
                   "children": [
                     {
                       "id": "option-a-dup-2",
-                      "label": "Askers and givers engage frequently enough in an \"open the book\" exercise that a shared-map tool would matter",
+                      "label": "Askers and givers engage frequently enough in an \u201copen the book\u201d exercise that a shared-map tool would matter",
                       "status": "eliminated",
                       "type": "Need",
                       "test": "Mom test: ask both sides about frequency of open-the-book behavior and current friction",
@@ -1160,7 +1205,6 @@
                   "label": "We can automate a connector waterfall without double-asking",
                   "status": "pending",
                   "type": "Feasibility",
-                  "test": "Prototype: demonstrate waterfall sequencing and verify users understand the automation",
                   "children": [
                     {
                       "id": "new-2",
