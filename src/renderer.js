@@ -1,5 +1,5 @@
 // Depth config
-let MAX_DEPTH = 5;
+let MAX_DEPTH = 8;
 const CFG = {
   1: { fs:160, efs:52,  tfs:38,  w:2000, pad:64,  gap:2200, lh:1.35, dSz:22 },
   2: { fs:80,  efs:26,  tfs:19,  w:1100, pad:36,  gap:1100, lh:1.4,  dSz:13 },
