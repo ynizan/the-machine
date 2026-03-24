@@ -1,6 +1,84 @@
 [
   {
     "date": "2026-03-24",
+    "commit": "98f4fa4",
+    "message": "Add CTA variants, eliminated follow-up loop, and learnings status update",
+    "changedIds": [
+      "intro-askbrief-premeeting-notify-loop",
+      "counterpart-attention-threshold",
+      "hello-page-version-gets-ctr",
+      "hello-page-version-gets-ctr-dup",
+      "hello-page-version-gets-ctr-dup-dup",
+      "gordy-post-meeting-follow-up-to-the-user",
+      "gordy-initiated-follow-up-to-engaged-cou",
+      "root-intros-learnings"
+    ],
+    "changes": [
+      {
+        "id": "intro-askbrief-premeeting-notify-loop",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "pending",
+            "to": "active"
+          }
+        ]
+      },
+      {
+        "id": "counterpart-attention-threshold",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "eliminated",
+            "to": "active"
+          },
+          {
+            "field": "reason",
+            "to": "Only 17.5 (19 out of 109) clicked the hello page. None converted"
+          },
+          {
+            "field": "gateType",
+            "to": "OR"
+          }
+        ]
+      },
+      {
+        "id": "hello-page-version-gets-ctr",
+        "action": "added"
+      },
+      {
+        "id": "hello-page-version-gets-ctr-dup",
+        "action": "added"
+      },
+      {
+        "id": "hello-page-version-gets-ctr-dup-dup",
+        "action": "added"
+      },
+      {
+        "id": "gordy-post-meeting-follow-up-to-the-user",
+        "action": "added"
+      },
+      {
+        "id": "gordy-initiated-follow-up-to-engaged-cou",
+        "action": "added"
+      },
+      {
+        "id": "root-intros-learnings",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "eliminated"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-03-24",
     "commit": "4b26440",
     "message": "Major intros-askbrief restructure: growth loops, adoption, alternatives, economics",
     "changedIds": [
