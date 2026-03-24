@@ -1,5 +1,5 @@
 // Depth config
-let MAX_DEPTH = 8;
+let MAX_DEPTH = 9;
 const CFG = {
   1: { fs:160, efs:52,  tfs:38,  w:2000, pad:64,  gap:2200, lh:1.35, dSz:22 },
   2: { fs:80,  efs:26,  tfs:19,  w:1100, pad:36,  gap:1100, lh:1.4,  dSz:13 },
@@ -544,8 +544,17 @@ function initTree(DATA, opts){
       if(opts.collapsedIds.has(d.data.id)){ d._children = d.children; d.children = null; }
     });
   } else {
+    // Collapse by depth and auto-collapse branches with no active nodes
+    const ACTIVE_STATUSES = new Set(['active', 'review', 'validated']);
+    function hasActiveDescendant(node){
+      if(!node.children) return false;
+      return node.children.some(c => ACTIVE_STATUSES.has(c.data.status) || hasActiveDescendant(c));
+    }
     root.descendants().forEach(d => {
       if(d.depth >= MAX_DEPTH){ d._children = d.children; d.children = null; }
+      else if(d.children && d.children.length && !ACTIVE_STATUSES.has(d.data.status) && !hasActiveDescendant(d)){
+        d._children = d.children; d.children = null;
+      }
     });
   }
 
