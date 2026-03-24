@@ -1011,7 +1011,7 @@ function openInlineEdit(nodeId, evt, focusField){
       <div class="ief-body">
         <div class="ief-field">
           <label>Status</label>
-          <select id="ief-status">${statusOpts}</select>
+          ${nodeData.gateType ? `<span style="color:#888;font-size:12px;">${nodeData.status} <em>(auto from gate)</em></span><input type="hidden" id="ief-status" value="${nodeData.status}">` : `<select id="ief-status">${statusOpts}</select>`}
         </div>
         <div class="ief-field">
           <label>Type</label>
