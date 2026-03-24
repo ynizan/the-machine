@@ -11,7 +11,7 @@
         {
           "id": "nurture-smallbiz-persona",
           "label": "Small business owners at organizations under 20 who also do selling are a concrete initial persona for nurturing",
-          "status": "review",
+          "status": "active",
           "type": "Segment",
           "children": [
             {
@@ -21,47 +21,76 @@
               "type": "Need",
               "children": [
                 {
-                  "id": "nurture-smallbiz-lost-opps",
-                  "label": "The persona feels it is losing opportunities because of poor nurturing",
+                  "id": "nurture-smallbiz-need-reason",
+                  "label": "There is at least one concrete reason this persona needs better nurturing",
                   "status": "active",
                   "type": "Need",
-                  "test": "Mom test: ask for concrete lost-opportunity examples where weak follow-up or weak top-of-mind presence mattered",
-                  "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
-                },
-                {
-                  "id": "nurture-smallbiz-top-of-mind",
-                  "label": "Helping users stay top of mind is a viable nurturing angle",
-                  "status": "active",
-                  "type": "Need",
+                  "gateType": "OR",
                   "children": [
                     {
-                      "id": "nurture-smallbiz-top-of-mind-mom-test",
-                      "label": "Users can describe concrete top-of-mind pain and missed opportunities",
-                      "status": "validated",
+                      "id": "nurture-smallbiz-lost-opps",
+                      "label": "The persona feels it is losing opportunities because of poor nurturing",
+                      "status": "active",
                       "type": "Need",
-                      "test": "Mom test: ask for concrete examples where weak follow-up or weak top-of-mind presence caused a missed opportunity",
-                      "reason": "Out of 41 that answered, 33 described top-of-mind behavior. Only 1 rejected directly.",
-                      "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                      "test": "Mom test: ask for concrete lost-opportunity examples where weak follow-up or weak top-of-mind presence mattered",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
                     },
                     {
-                      "id": "nurture-smallbiz-top-of-mind-mockup",
-                      "label": "Users react strongly to a mockup that helps them stay top of mind with important contacts",
-                      "status": "pending",
-                      "type": "Adoption",
-                      "test": "Mockup: show a stay-top-of-mind workflow and measure whether users want it for real contacts now",
-                      "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
-                    },
-                    {
-                      "id": "nurture-smallbiz-top-of-mind-pay",
-                      "label": "Users are willing to pay for a top-of-mind solution if it proves value",
-                      "status": "pending",
-                      "type": "Economics",
-                      "test": "Pricing / commitment test tied specifically to the stay-top-of-mind value proposition",
-                      "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                      "id": "nurture-smallbiz-top-of-mind",
+                      "label": "Helping users stay top of mind is a viable nurturing angle",
+                      "status": "active",
+                      "type": "Need",
+                      "children": [
+                        {
+                          "id": "nurture-smallbiz-top-of-mind-mom-test",
+                          "label": "Users can describe concrete top-of-mind pain and missed opportunities",
+                          "status": "validated",
+                          "type": "Need",
+                          "test": "Mom test: ask for concrete examples where weak follow-up or weak top-of-mind presence caused a missed opportunity",
+                          "reason": "Out of 41 that answered, 33 described top-of-mind behavior. Only 1 rejected directly.",
+                          "score": {
+                            "Freq": 0,
+                            "Intensity": 0,
+                            "Fit": 0
+                          }
+                        },
+                        {
+                          "id": "nurture-smallbiz-top-of-mind-mockup",
+                          "label": "Users react strongly to a mockup that helps them stay top of mind with important contacts",
+                          "status": "pending",
+                          "type": "Adoption",
+                          "test": "Mockup: show a stay-top-of-mind workflow and measure whether users want it for real contacts now",
+                          "score": {
+                            "Freq": 0,
+                            "Intensity": 0,
+                            "Fit": 0
+                          }
+                        },
+                        {
+                          "id": "nurture-smallbiz-top-of-mind-pay",
+                          "label": "Users are willing to pay for a top-of-mind solution if it proves value",
+                          "status": "pending",
+                          "type": "Economics",
+                          "test": "Pricing / commitment test tied specifically to the stay-top-of-mind value proposition",
+                          "score": {
+                            "Freq": 0,
+                            "Intensity": 0,
+                            "Fit": 0
+                          }
+                        }
+                      ],
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      },
+                      "gateType": "AND"
                     }
-                  ],
-                  "score": { "Freq": 0, "Intensity": 0, "Fit": 0 },
-                  "gateType": "AND"
+                  ]
                 },
                 {
                   "id": "nurture-smallbiz-weak-alternatives",
@@ -75,18 +104,30 @@
                       "status": "active",
                       "type": "Alternative",
                       "test": "Mom test across transcripts/interviews: channels tried and stopped, and evidence of uncertainty or FOMO",
-                      "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
                     },
                     {
                       "id": "nurture-smallbiz-no-playbook",
                       "label": "Even when users pick a nurturing channel, they do not know what to write, which medium to use, how often to reach out, or whether it works",
-                      "status": "active",
+                      "status": "pending",
                       "type": "Alternative",
                       "test": "Mom test: evidence of uncertainty about execution, abandoned attempts, or lack of a clear playbook",
-                      "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
                     }
                   ],
-                  "score": { "Freq": 0, "Intensity": 0, "Fit": 0 },
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  },
                   "gateType": "OR"
                 },
                 {
@@ -107,7 +148,11 @@
                           "status": "active",
                           "type": "Need",
                           "test": "Mom test: when do users try to move a relationship to a deeper channel, and what examples can they recall?",
-                          "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                          "score": {
+                            "Freq": 0,
+                            "Intensity": 0,
+                            "Fit": 0
+                          }
                         },
                         {
                           "id": "nurture-smallbiz-channel-deepening-mockup",
@@ -115,26 +160,46 @@
                           "status": "pending",
                           "type": "Adoption",
                           "test": "Mockup: show regular vs channel-deepening drafts and measure preference plus willingness to use",
-                          "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                          "score": {
+                            "Freq": 0,
+                            "Intensity": 0,
+                            "Fit": 0
+                          }
                         }
                       ],
-                      "score": { "Freq": 0, "Intensity": 0, "Fit": 0 },
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      },
                       "gateType": "AND"
                     },
                     {
                       "id": "nurture-smallbiz-travel-proximity-trigger",
                       "label": "Users manually research who to meet when traveling or track when contacts are visiting their city",
-                      "status": "active",
+                      "status": "pending",
                       "type": "Need",
                       "test": "Mom test: ask for recent travel examples and whether they searched for people to meet or noticed visitors manually",
-                      "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
                     }
                   ],
-                  "score": { "Freq": 0, "Intensity": 0, "Fit": 0 },
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  },
                   "gateType": "OR"
                 }
               ],
-              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 },
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              },
               "gateType": "AND"
             },
             {
@@ -155,19 +220,31 @@
                       "status": "pending",
                       "type": "Adoption",
                       "test": "Mockup: when shown contacts matching their criteria, do they select specific people rather than deferring or saying 'everyone'?",
-                      "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
                     }
                   ],
-                  "score": { "Freq": 0, "Intensity": 0, "Fit": 0 },
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  },
                   "gateType": "AND"
                 },
                 {
                   "id": "nurture-smallbiz-radar-drift-alert",
                   "label": "Users respond to automated drift alerts and ask for help re-engaging a real contact",
-                  "status": "active",
+                  "status": "pending",
                   "type": "Adoption",
                   "test": "MVT: send drift alerts when a user has not spoken to a contact in 3+ months and measure reply / action rate",
-                  "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  }
                 },
                 {
                   "id": "nurture-smallbiz-advisor-gordy-engage",
@@ -175,10 +252,18 @@
                   "status": "pending",
                   "type": "Adoption",
                   "test": "MVT concierge: Gordy emails users offering strategic networking advice. Measure reply rate and engagement depth.",
-                  "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  }
                 }
               ],
-              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 },
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              },
               "gateType": "AND"
             },
             {
@@ -199,7 +284,11 @@
                       "status": "pending",
                       "type": "Growth",
                       "test": "Interview: ask users how they mentally organize important contacts and whether circles/clusters are already a natural model",
-                      "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
                     },
                     {
                       "id": "nurture-smallbiz-nudge-action",
@@ -207,7 +296,11 @@
                       "status": "pending",
                       "type": "Growth",
                       "test": "Mockup: show a suggested nudge on a real contact and measure send intent / actual send rate",
-                      "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
                     },
                     {
                       "id": "nurture-smallbiz-acq-interview",
@@ -215,7 +308,11 @@
                       "status": "pending",
                       "type": "Growth",
                       "test": "During interviews, after a positive nudge reaction, ask whether they want to try the service now",
-                      "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
                     },
                     {
                       "id": "nurture-smallbiz-acq-outbound",
@@ -223,7 +320,11 @@
                       "status": "pending",
                       "type": "Growth",
                       "test": "Outbound campaign: email describing the value of concrete nurturing tips. Measure yes rate and response rate.",
-                      "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
                     },
                     {
                       "id": "nurture-smallbiz-acq-gordy-viral-tip",
@@ -231,7 +332,11 @@
                       "status": "pending",
                       "type": "Growth",
                       "test": "Pilot: send Gordy tip emails and measure how many recipients ask for the service",
-                      "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
                     },
                     {
                       "id": "nurture-smallbiz-acq-gordy-viral-nudge",
@@ -239,7 +344,11 @@
                       "status": "pending",
                       "type": "Growth",
                       "test": "Pilot: send Gordy nudge emails and measure how many recipients ask for the service",
-                      "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
                     },
                     {
                       "id": "nurture-smallbiz-exposed-via-intro-flow",
@@ -247,14 +356,26 @@
                       "status": "active",
                       "type": "Growth",
                       "test": "MVT: Add a stay-in-touch CTA to intro-flow emails and measure click-through plus creation of at least one tracking request",
-                      "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
                     }
                   ],
-                  "score": { "Freq": 0, "Intensity": 0, "Fit": 0 },
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  },
                   "gateType": "AND"
                 }
               ],
-              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 },
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              },
               "gateType": "OR"
             },
             {
@@ -270,18 +391,30 @@
                   "type": "Feasibility",
                   "test": "Prototype test: does the workflow still produce useful outputs when users only connect existing data sources and avoid ongoing manual upkeep?",
                   "reason": "Mapped from old cross-cutting hypothesis obs-f: users want to avoid ongoing data entry.",
-                  "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  }
                 },
                 {
                   "id": "nurture-smallbiz-calendar-connected-workflow",
                   "label": "A calendar-connected workflow is enough to trigger useful nurturing prompts",
-                  "status": "active",
+                  "status": "pending",
                   "type": "Feasibility",
                   "test": "Live prompt experiment on calendar-connected users: do pre/post-meeting signals generate prompts users find useful enough to act on?",
-                  "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  }
                 }
               ],
-              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 },
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              },
               "gateType": "AND"
             },
             {
@@ -296,7 +429,11 @@
                   "status": "pending",
                   "type": "Economics",
                   "test": "Mockup: present candidate KPIs and measure which ones users trust enough to decide whether to keep paying",
-                  "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  }
                 },
                 {
                   "id": "nurture-smallbiz-nurture-pay",
@@ -304,14 +441,26 @@
                   "status": "pending",
                   "type": "Economics",
                   "test": "Pricing / prepay / commitment test after a concrete value demo or concierge period",
-                  "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  }
                 }
               ],
-              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 },
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              },
               "gateType": "AND"
             }
           ],
-          "score": { "Freq": 0, "Intensity": 0, "Fit": 0 },
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          },
           "gateType": "AND"
         },
         {
@@ -320,7 +469,11 @@
           "status": "pending",
           "type": "Segment",
           "test": "Mom test: what happens after an intro call when it is too early, and how do VCs try to stay top of mind over time?",
-          "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          }
         },
         {
           "id": "nurture-csms-persona",
@@ -328,7 +481,11 @@
           "status": "backlog",
           "type": "Segment",
           "test": "Mom test: do CSMs keep relationship notes or seek relationship intelligence to prevent churn and surface expansion?",
-          "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          }
         },
         {
           "id": "nurture-recruiters-persona",
@@ -336,7 +493,11 @@
           "status": "backlog",
           "type": "Segment",
           "test": "Adjacent-segment interviews with recruiters about keeping candidates and hiring managers warm",
-          "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          }
         }
       ],
       "gateType": "OR"
@@ -358,7 +519,11 @@
               "status": "pending",
               "type": "Need",
               "test": "Mom test: do users actually search for these triggers, set alerts, or follow companies/people to find reasons to reach out?",
-              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
             },
             {
               "id": "15",
@@ -366,10 +531,18 @@
               "status": "pending",
               "type": "Need",
               "test": "Mom test: do users currently track sports, news, or events about contacts, and do they ever act on it?",
-              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
             }
           ],
-          "score": { "Freq": 0, "Intensity": 0, "Fit": 0 },
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          },
           "gateType": "OR"
         },
         {
@@ -384,7 +557,11 @@
               "status": "pending",
               "type": "Need",
               "test": "Mom test: before asking for an intro, do users look for personal anecdotes or small-talk hooks about the connector?",
-              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
             },
             {
               "id": "pokemon-mine-rare",
@@ -392,7 +569,11 @@
               "status": "pending",
               "type": "Feasibility",
               "test": "Mockup test: offer mined personal context from private sources and measure willingness to connect data and try it",
-              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
             },
             {
               "id": "pokemon-share",
@@ -400,10 +581,18 @@
               "status": "pending",
               "type": "Growth",
               "test": "Interview: have users shared such intel before, what are they comfortable sharing, and with whom?",
-              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
             }
           ],
-          "score": { "Freq": 0, "Intensity": 0, "Fit": 0 },
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          },
           "gateType": "OR"
         },
         {
@@ -413,23 +602,23 @@
           "type": "Growth",
           "children": [
             {
-              "id": "after-being-exposed-to-the-emails-from-g",
-              "label": "After being exposed to Gordy emails, some users click stay-in-touch and create at least one tracking request",
-              "status": "active",
-              "type": "Growth",
-              "test": "MVT: implement the stay-in-touch button and measure creation of at least one tracking request within 30 days",
-              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
-            },
-            {
               "id": "over-20-of-users-go-to-the-extended-brie",
               "label": "A meaningful minority of users open an extended brief when it is offered",
               "status": "active",
               "type": "Growth",
-              "test": "Add an \u201cextended brief\u201d link to the email and measure click-through to the deeper brief",
-              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+              "test": "Add an “extended brief” link to the email and measure click-through to the deeper brief",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
             }
           ],
-          "score": { "Freq": 0, "Intensity": 0, "Fit": 0 },
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          },
           "gateType": "OR"
         }
       ],
@@ -452,7 +641,11 @@
               "status": "eliminated",
               "type": "Economics",
               "test": "Interviews plus willingness-to-pay checks with AEs at larger companies",
-              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
             },
             {
               "id": "ae-network-ownership",
@@ -460,7 +653,11 @@
               "status": "pending",
               "type": "Need",
               "test": "Mom test: ask whether reps see their network as a personal asset they want to carry across jobs",
-              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
             },
             {
               "id": "ae-attribution",
@@ -468,10 +665,18 @@
               "status": "pending",
               "type": "Need",
               "test": "Mom test: ask for examples where personal relationships influenced deals but attribution was unclear",
-              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
             }
           ],
-          "score": { "Freq": 0, "Intensity": 0, "Fit": 0 },
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          },
           "gateType": "AND"
         }
       ],
@@ -494,7 +699,11 @@
               "type": "Segment",
               "test": "Analysis on past calls: frequency of asking for intros / relevant asks around meetings",
               "reason": "Weekly+: 16 users. Monthly: 3. Quarterly or less: 11. Never: 6. Out of ~55 interviewees.",
-              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
             },
             {
               "id": "intro-askbrief-need",
@@ -503,7 +712,11 @@
               "type": "Need",
               "test": "Pitch / mockup evidence: over 80% of pitched users wanted the tool and were willing to connect calendar access to get strategic ask briefs",
               "reason": "17 intros made out of 20-25 pitched. Over 80% wanted the Ask Brief.",
-              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
             },
             {
               "id": "intro-askbrief-alternatives",
@@ -511,7 +724,11 @@
               "status": "active",
               "type": "Alternative",
               "test": "Interview follow-up plus diary / baseline measurement: quantify how often users do this manually today, what substitutes they use, and how often those substitutes actually lead to asking for intros or strategic asks",
-              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
             },
             {
               "id": "intro-askbrief-adoption",
@@ -541,19 +758,31 @@
                   "status": "active",
                   "type": "Adoption",
                   "test": "Retention analysis on early users: define thresholds and measure how long users stay active, how many relevant meetings they have while active, and whether they remain in the product long enough for growth exposures to occur",
-                  "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  }
                 }
               ],
-              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 },
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              },
               "gateType": "AND"
             },
             {
               "id": "intro-askbrief-feasibility",
               "label": "We can generate enough meaningful suggestions for enough meetings to support this wedge",
-              "status": "active",
+              "status": "pending",
               "type": "Feasibility",
               "test": "Live product / concierge evaluation: define coverage and quality thresholds, then measure what share of relevant meetings receive suggestions and what share of those suggestions users judge as meaningful enough to use",
-              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
             },
             {
               "id": "intro-askbrief-growth",
@@ -585,7 +814,11 @@
                               "status": "pending",
                               "type": "Growth",
                               "test": "Live experiment plus user interviews: measure whether users allow Gordy to send a pre-meeting counterpart-facing email and whether Gordy attribution remains intact",
-                              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                              "score": {
+                                "Freq": 0,
+                                "Intensity": 0,
+                                "Fit": 0
+                              }
                             },
                             {
                               "id": "intro-askbrief-counterpart-cta-frequency",
@@ -593,7 +826,11 @@
                               "status": "pending",
                               "type": "Growth",
                               "test": "Instrument the live flow and measure the share and absolute volume of eligible meetings that produce a pre-meeting counterpart notification email",
-                              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                              "score": {
+                                "Freq": 0,
+                                "Intensity": 0,
+                                "Fit": 0
+                              }
                             }
                           ],
                           "gateType": "AND"
@@ -609,28 +846,28 @@
                               "label": "Counterpart email gets over 30% click rate and 60% notice rate",
                               "status": "active",
                               "type": "Growth",
-                              "test": "Live emails to real attendees \u2014 measuring clicks, replies, and notice / recall",
+                              "test": "Live emails to real attendees — measuring clicks, replies, and notice / recall",
                               "reason": "Only 17.5 (19 out of 109) clicked the hello page. None converted",
                               "children": [
+                                {
+                                  "id": "intro-circle-cta-gets-ctr",
+                                  "status": "active",
+                                  "label": "Intro Circle CTA gets CTR",
+                                  "test": "Live emails to real attendees — measuring clicks, replies, and notice / recall",
+                                  "type": "Growth"
+                                },
                                 {
                                   "id": "hello-page-version-gets-ctr",
                                   "status": "eliminated",
                                   "label": "Hello page CTA gets CTR",
                                   "reason": "Only 17.5 (19 out of 109) clicked the hello page. None converted",
-                                  "test": "Live emails to real attendees \u2014 measuring clicks, replies, and notice / recall"
+                                  "test": "Live emails to real attendees — measuring clicks, replies, and notice / recall"
                                 },
                                 {
-                                  "id": "hello-page-version-gets-ctr-dup",
-                                  "status": "active",
+                                  "id": "get-intros-cta-gets-ctr",
+                                  "status": "pending",
                                   "label": "Get Intros CTA gets CTR",
-                                  "test": "Live emails to real attendees \u2014 measuring clicks, replies, and notice / recall",
-                                  "type": "Growth"
-                                },
-                                {
-                                  "id": "hello-page-version-gets-ctr-dup-dup",
-                                  "status": "active",
-                                  "label": "Intro Circle CTA gets CTR",
-                                  "test": "Live emails to real attendees \u2014 measuring clicks, replies, and notice / recall",
+                                  "test": "Live emails to real attendees — measuring clicks, replies, and notice / recall",
                                   "type": "Growth"
                                 }
                               ],
@@ -653,7 +890,11 @@
                                     {
                                       "id": "counterpart-intros-cta",
                                       "label": "Some recipients of the pre-meeting counterpart email click an 'Introduce me to someone' CTA",
-                                      "score": { "Fit": 0, "Freq": 0, "Intensity": 0 },
+                                      "score": {
+                                        "Fit": 0,
+                                        "Freq": 0,
+                                        "Intensity": 0
+                                      },
                                       "status": "active",
                                       "test": "MVT: Add an 'Introduce me to someone' CTA button to pre-meeting counterpart emails. Measure click rate and downstream intent.",
                                       "type": "Growth"
@@ -661,7 +902,11 @@
                                     {
                                       "id": "counterpart-intros-cta-flow",
                                       "label": "Recipients who click 'Introduce me to someone' reach a clear Gordy intro-request flow",
-                                      "score": { "Fit": 0, "Freq": 0, "Intensity": 0 },
+                                      "score": {
+                                        "Fit": 0,
+                                        "Freq": 0,
+                                        "Intensity": 0
+                                      },
                                       "status": "pending",
                                       "test": "Prototype the click destination for the 'Introduce me to someone' CTA and measure whether recipients understand the flow and reach the point where they can request an intro through Gordy.",
                                       "type": "Growth"
@@ -669,7 +914,11 @@
                                     {
                                       "id": "counterpart-intros-cta-activation",
                                       "label": "Enough recipients who enter the 'Introduce me to someone' flow sign up and activate as users",
-                                      "score": { "Fit": 0, "Freq": 0, "Intensity": 0 },
+                                      "score": {
+                                        "Fit": 0,
+                                        "Freq": 0,
+                                        "Intensity": 0
+                                      },
                                       "status": "pending",
                                       "test": "Measure the signup and activation rate of recipients who click the 'Introduce me to someone' CTA and enter the Gordy flow.",
                                       "type": "Growth"
@@ -686,15 +935,23 @@
                                     {
                                       "id": "counterpart-stay-intouch-cta",
                                       "label": "Some recipients of the pre-meeting counterpart email click a 'Help me stay in touch' CTA for a real contact",
-                                      "score": { "Fit": 0, "Freq": 0, "Intensity": 0 },
-                                      "status": "active",
+                                      "score": {
+                                        "Fit": 0,
+                                        "Freq": 0,
+                                        "Intensity": 0
+                                      },
+                                      "status": "pending",
                                       "test": "MVT: Add a stay-in-touch CTA to pre-meeting counterpart emails. Measure click rate and downstream tracking-request creation.",
                                       "type": "Growth"
                                     },
                                     {
                                       "id": "counterpart-stay-intouch-cta-flow",
                                       "label": "Recipients who click 'Help me stay in touch' reach a clear Gordy contact-tracking flow",
-                                      "score": { "Fit": 0, "Freq": 0, "Intensity": 0 },
+                                      "score": {
+                                        "Fit": 0,
+                                        "Freq": 0,
+                                        "Intensity": 0
+                                      },
                                       "status": "pending",
                                       "test": "Prototype the click destination for the 'Help me stay in touch' CTA and measure whether recipients understand the flow and reach the point where they can set up tracking through Gordy.",
                                       "type": "Growth"
@@ -702,7 +959,11 @@
                                     {
                                       "id": "counterpart-stay-intouch-cta-activation",
                                       "label": "Enough recipients who enter the 'Help me stay in touch' flow sign up and activate as users",
-                                      "score": { "Fit": 0, "Freq": 0, "Intensity": 0 },
+                                      "score": {
+                                        "Fit": 0,
+                                        "Freq": 0,
+                                        "Intensity": 0
+                                      },
                                       "status": "pending",
                                       "test": "Measure the signup and activation rate of recipients who click the 'Help me stay in touch' CTA and enter the Gordy flow.",
                                       "type": "Growth"
@@ -735,7 +996,11 @@
                               "status": "pending",
                               "type": "Growth",
                               "test": "Live experiment plus user interviews: measure whether users allow post-meeting follow-up to be sent to the counterpart by Gordy",
-                              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                              "score": {
+                                "Freq": 0,
+                                "Intensity": 0,
+                                "Fit": 0
+                              }
                             },
                             {
                               "id": "intro-askbrief-counterpart-followup-frequency",
@@ -743,7 +1008,11 @@
                               "status": "pending",
                               "type": "Growth",
                               "test": "Instrument the live flow and measure the share and absolute volume of eligible meetings that produce Gordy-sent counterpart follow-up",
-                              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                              "score": {
+                                "Freq": 0,
+                                "Intensity": 0,
+                                "Fit": 0
+                              }
                             }
                           ],
                           "gateType": "AND"
@@ -801,7 +1070,11 @@
                               "status": "pending",
                               "type": "Growth",
                               "test": "Live experiment plus user interviews: measure whether users send a Gordy-drafted post-meeting reminder to the counterpart and keep the Gordy mention intact",
-                              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                              "score": {
+                                "Freq": 0,
+                                "Intensity": 0,
+                                "Fit": 0
+                              }
                             },
                             {
                               "id": "intro-askbrief-user-sent-reminder-frequency",
@@ -809,7 +1082,11 @@
                               "status": "pending",
                               "type": "Growth",
                               "test": "Instrument the live flow and measure the share and absolute volume of eligible meetings that produce a user-sent Gordy-drafted post-meeting reminder",
-                              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                              "score": {
+                                "Freq": 0,
+                                "Intensity": 0,
+                                "Fit": 0
+                              }
                             }
                           ],
                           "gateType": "AND"
@@ -820,7 +1097,11 @@
                           "status": "pending",
                           "type": "Growth",
                           "test": "Live test: offer one-click drafting of post-meeting reminder emails and measure send rate, response rate, and whether recipients ask about or activate Gordy",
-                          "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                          "score": {
+                            "Freq": 0,
+                            "Intensity": 0,
+                            "Fit": 0
+                          }
                         }
                       ],
                       "gateType": "AND"
@@ -834,18 +1115,26 @@
             {
               "id": "intro-askbrief-paid-conversion",
               "label": "Enough wedge users convert from the strategic ask brief flow into the paid nurture product",
-              "status": "active",
+              "status": "pending",
               "type": "Economics",
               "test": "Follow-on product test with retained wedge users: measure what share have a real nurture need, want the paid nurture workflow after experiencing the wedge, and are willing to move into that product path",
-              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
             },
             {
               "id": "intro-askbrief-economics",
               "label": "The amortized cost per converted paid user is low enough to justify this wedge",
-              "status": "active",
+              "status": "pending",
               "type": "Economics",
               "test": "Model and then measure the amortized cost per converted paid user, including acquisition, service, and wedge usage costs through paid conversion",
-              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
             }
           ],
           "gateType": "AND"
@@ -862,7 +1151,11 @@
               "type": "Segment",
               "test": "Analysis on past calls: how often small-business leaders target a specific person through a warm path",
               "reason": "Q5: 35 described this as a need out of 40 that were asked.",
-              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
             },
             {
               "id": "intro-network-need",
@@ -883,46 +1176,74 @@
                       "type": "Need",
                       "test": "Mom test: how often do small-org front-people target a specific person for an intro?",
                       "reason": "Q6: 31 described this as a need out of 33 that were asked.",
-                      "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
                     },
                     {
                       "id": "mutual-ca",
                       "label": "Job searchers look for first-degree connections who will actually answer and help with inside submissions",
-                      "status": "active",
+                      "status": "backlog",
                       "type": "Segment",
                       "test": "Interview: when looking for a job, do users search for inside-submission connections they believe will actually respond?",
-                      "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
                     },
                     {
                       "id": "mutual-ca-dup-1",
                       "label": "Many mutual connections increase confidence before a reach-out by signaling acceptance odds",
-                      "status": "active",
+                      "status": "backlog",
                       "type": "Need",
                       "test": "Interview: when and why do users look at mutual connections before reaching out?",
-                      "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
                     },
                     {
                       "id": "mutual-cb",
                       "label": "People check mutual connections to understand the target by seeing who they associate with",
-                      "status": "active",
+                      "status": "backlog",
                       "type": "Need",
                       "test": "Interview: do users inspect mutuals to understand the target socially before reaching out?",
-                      "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
                     }
                   ],
-                  "score": { "Freq": 0, "Intensity": 0, "Fit": 0 },
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  },
                   "gateType": "OR"
                 },
                 {
                   "id": "intro-network-timing",
                   "label": "Askers want to know when a giver makes a new relevant real-world connection so they can ask for an intro",
-                  "status": "active",
+                  "status": "pending",
                   "type": "Need",
                   "test": "Mockup test: show new relevant connections and ask whether the user would want such timing alerts",
-                  "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  }
                 }
               ],
-              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 },
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              },
               "gateType": "OR"
             },
             {
@@ -943,7 +1264,11 @@
                       "status": "pending",
                       "type": "Adoption",
                       "test": "Data from live experiments plus user interviews on attribution removal",
-                      "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
                     },
                     {
                       "id": "intro-network-copy-gordy-waterfall",
@@ -951,10 +1276,18 @@
                       "status": "pending",
                       "type": "Adoption",
                       "test": "Mockup test: show the cc-Gordy flow and measure understanding plus willingness to use",
-                      "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
                     }
                   ],
-                  "score": { "Freq": 0, "Intensity": 0, "Fit": 0 },
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  },
                   "gateType": "AND"
                 },
                 {
@@ -964,12 +1297,28 @@
                   "type": "Adoption",
                   "children": [
                     {
-                      "id": "network-self-map",
-                      "label": "Users want a real picture of their own network \u2014 active vs dormant connections, response likelihood, and intro balance \u2014 not a vanity count",
+                      "id": "new-1",
+                      "label": "Users will install a browser extension and connect their calendar to get a reality check on their network",
                       "status": "active",
                       "type": "Adoption",
+                      "test": "Mockup test: are they willing to install and connect data sources for this value prop?",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
+                    },
+                    {
+                      "id": "network-self-map",
+                      "label": "Users want a real picture of their own network — active vs dormant connections, response likelihood, and intro balance — not a vanity count",
+                      "status": "pending",
+                      "type": "Adoption",
                       "test": "Demo/waitlist test: show a mockup of a network-health dashboard and measure strong pull / sign-up intent",
-                      "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
                     },
                     {
                       "id": "network-benchmark",
@@ -977,15 +1326,11 @@
                       "status": "pending",
                       "type": "Adoption",
                       "test": "Only test after self-map demand is real: show peer-comparison mockups and ask whether this adds value",
-                      "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
-                    },
-                    {
-                      "id": "new-1",
-                      "label": "Users will install a browser extension and connect their calendar to get a reality check on their network",
-                      "status": "active",
-                      "type": "Adoption",
-                      "test": "Mockup test: are they willing to install and connect data sources for this value prop?",
-                      "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
                     },
                     {
                       "id": "new-3",
@@ -993,7 +1338,11 @@
                       "status": "pending",
                       "type": "Growth",
                       "test": "Mockup test: after showing the value, ask whether they would invite named friends / colleagues",
-                      "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
                     },
                     {
                       "id": "new-3-dup-4",
@@ -1001,10 +1350,18 @@
                       "status": "pending",
                       "type": "Growth",
                       "test": "MVT: send invite emails as if the flow exists and measure install / connect conversion",
-                      "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
                     }
                   ],
-                  "score": { "Freq": 0, "Intensity": 0, "Fit": 0 },
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  },
                   "gateType": "AND"
                 },
                 {
@@ -1015,12 +1372,16 @@
                   "children": [
                     {
                       "id": "option-a-dup-2",
-                      "label": "Askers and givers engage frequently enough in an \u201copen the book\u201d exercise that a shared-map tool would matter",
+                      "label": "Askers and givers engage frequently enough in an “open the book” exercise that a shared-map tool would matter",
                       "status": "eliminated",
                       "type": "Need",
                       "test": "Mom test: ask both sides about frequency of open-the-book behavior and current friction",
                       "reason": "We couldn't find anyone doing it more than once per quarter.",
-                      "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
                     },
                     {
                       "id": "a-asker-dup-3",
@@ -1028,7 +1389,11 @@
                       "status": "pending",
                       "type": "Adoption",
                       "test": "Mockup test: pretend the shared map exists and ask who they would ask tomorrow",
-                      "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
                     },
                     {
                       "id": "a-giver-dup-4",
@@ -1036,14 +1401,26 @@
                       "status": "pending",
                       "type": "Adoption",
                       "test": "Mockup test: pretend the shared-map flow is real and measure willingness to participate",
-                      "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
                     }
                   ],
-                  "score": { "Freq": 0, "Intensity": 0, "Fit": 0 },
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  },
                   "gateType": "AND"
                 }
               ],
-              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 },
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              },
               "gateType": "OR"
             },
             {
@@ -1058,7 +1435,11 @@
                   "status": "pending",
                   "type": "Feasibility",
                   "test": "Prototype / mockup test: produce filtered paths and ask whether users trust the shortlist enough to act",
-                  "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  }
                 },
                 {
                   "id": "b-rank",
@@ -1066,7 +1447,11 @@
                   "status": "pending",
                   "type": "Feasibility",
                   "test": "Prototype / mockup test: show ranking rationale and ask whether users trust it",
-                  "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  }
                 },
                 {
                   "id": "b-waterfall",
@@ -1080,14 +1465,26 @@
                       "status": "pending",
                       "type": "Feasibility",
                       "test": "Feasibility prototype: simulate connector sequencing, fallback, and double-ask prevention",
-                      "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
                     }
                   ],
-                  "score": { "Freq": 0, "Intensity": 0, "Fit": 0 },
+                  "score": {
+                    "Freq": 0,
+                    "Intensity": 0,
+                    "Fit": 0
+                  },
                   "gateType": "AND"
                 }
               ],
-              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 },
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              },
               "gateType": "AND"
             },
             {
@@ -1096,7 +1493,11 @@
               "status": "pending",
               "type": "Growth",
               "test": "Measure whether one solved intro request leads to repeated reuse, sharing, or more warm-path requests over time",
-              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
             }
           ],
           "gateType": "AND"
@@ -1148,7 +1549,11 @@
           "type": "Need",
           "test": "Mom tests: how often do users target a specific person for an intro across the broad market?",
           "reason": "Frequency too low in the broad market, even though a narrower small-business segment still looks promising.",
-          "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          }
         },
         {
           "id": "intro-already-doing-it",
@@ -1157,7 +1562,11 @@
           "type": "Need",
           "test": "Mom test: ask for past behavior around routinely asking for 2-3 intros in meetings",
           "reason": "Only a small minority already do this behavior.",
-          "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          }
         }
       ],
       "gateType": "OR"
@@ -1165,7 +1574,7 @@
     {
       "id": "root-outreach-intel",
       "label": "There may be a business in outbound workflow and extra-intel products",
-      "status": "review",
+      "status": "backlog",
       "children": [
         {
           "id": "outreach-personalization-evidence",
@@ -1174,53 +1583,77 @@
           "type": "Need",
           "test": "Landscape / research review on response-rate lift from personalization",
           "reason": "Backlinko large-scale study: 32.7% higher response rate for customized vs generic templates.",
-          "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          }
         },
         {
           "id": "market-smallorg-pokemon-cold",
           "label": "Small-business leaders who do outbound spend meaningful time researching prospects manually",
-          "status": "review",
+          "status": "backlog",
           "type": "Segment",
           "test": "Analysis of past calls: do people research targets before cold outreach, and how much time does it take?",
-          "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          }
         },
         {
           "id": "pokemon-cold-mine-common",
           "label": "Users doing cold outreach have no scalable way to get public personal intel on targets today",
-          "status": "active",
+          "status": "backlog",
           "type": "Need",
           "test": "Mom test: how much time does research take, what is frustrating, what have they tried to automate, and would they pay to improve it?",
-          "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          }
         },
         {
           "id": "outreach-workflow-angles",
           "label": "At least one outbound / extra-intel workflow angle appears promising",
-          "status": "active",
+          "status": "backlog",
           "type": "Adoption",
           "children": [
             {
               "id": "17",
               "label": "Users want to delegate LinkedIn search and inbox/outbox work to an SDR or recruiter",
-              "status": "active",
+              "status": "backlog",
               "type": "Adoption",
               "test": "Mom test: when and why do users want to delegate LinkedIn / email communication, and what triggers the need?",
-              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
             },
             {
               "id": "pokemon-get-buy",
               "label": "Users will pay to access personal intel that others have collected about a target they have never met",
-              "status": "pending",
+              "status": "backlog",
               "type": "Economics",
               "test": "Interview + mockup: show the concept and ask whether they want it and whether they are comfortable paying for it",
-              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
             },
             {
               "id": "leave-linkedin-asap",
               "label": "Users want to take messaging outside of LinkedIn as soon as possible",
-              "status": "active",
+              "status": "backlog",
               "type": "Adoption",
               "test": "Interview: after an initial LinkedIn exchange, when and why do users try to move the conversation to email / phone / other channels?",
-              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
             },
             {
               "id": "li-inbox",
@@ -1229,10 +1662,18 @@
               "type": "Need",
               "test": "Mom tests across AEs, founders, and VCs about inbox usage and frustration",
               "reason": "Most people didn't feel this was a primary problem; heavy users already use external tools.",
-              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
             }
           ],
-          "score": { "Freq": 0, "Intensity": 0, "Fit": 0 },
+          "score": {
+            "Freq": 0,
+            "Intensity": 0,
+            "Fit": 0
+          },
           "gateType": "OR"
         }
       ],
