@@ -567,7 +567,7 @@
                     {
                       "id": "intro-askbrief-premeeting-notify-loop",
                       "label": "The pre-meeting counterpart notification loop works",
-                      "status": "pending",
+                      "status": "active",
                       "type": "Growth",
                       "children": [
                         {
@@ -604,9 +604,34 @@
                             {
                               "id": "counterpart-attention-threshold",
                               "label": "Counterpart email gets over 30% click rate and 60% notice rate",
-                              "status": "eliminated",
+                              "status": "active",
                               "type": "Growth",
-                              "test": "Live emails to real attendees \u2014 measuring clicks, replies, and notice / recall"
+                              "test": "Live emails to real attendees \u2014 measuring clicks, replies, and notice / recall",
+                              "reason": "Only 17.5 (19 out of 109) clicked the hello page. None converted",
+                              "children": [
+                                {
+                                  "id": "hello-page-version-gets-ctr",
+                                  "status": "eliminated",
+                                  "label": "Hello page CTA gets CTR",
+                                  "reason": "Only 17.5 (19 out of 109) clicked the hello page. None converted",
+                                  "test": "Live emails to real attendees \u2014 measuring clicks, replies, and notice / recall"
+                                },
+                                {
+                                  "id": "hello-page-version-gets-ctr-dup",
+                                  "status": "active",
+                                  "label": "Get Intros CTA gets CTR",
+                                  "test": "Live emails to real attendees \u2014 measuring clicks, replies, and notice / recall",
+                                  "type": "Growth"
+                                },
+                                {
+                                  "id": "hello-page-version-gets-ctr-dup-dup",
+                                  "status": "active",
+                                  "label": "Intro Circle CTA gets CTR",
+                                  "test": "Live emails to real attendees \u2014 measuring clicks, replies, and notice / recall",
+                                  "type": "Growth"
+                                }
+                              ],
+                              "gateType": "OR"
                             },
                             {
                               "id": "counterpart-attention-downstream",
@@ -729,6 +754,22 @@
                         }
                       ],
                       "gateType": "AND"
+                    },
+                    {
+                      "id": "gordy-post-meeting-follow-up-to-the-user",
+                      "status": "eliminated",
+                      "label": "Gordy post meeting follow up to the user leads to counterpart intros",
+                      "type": "Growth",
+                      "gateType": "OR",
+                      "children": [
+                        {
+                          "id": "gordy-initiated-follow-up-to-engaged-cou",
+                          "status": "eliminated",
+                          "label": "Gordy-initiated follow-up to engaged counterparts gets intro",
+                          "test": "When a counterpart views the hello page 3+ times, Gordy sends a follow-up asking for an intro. ",
+                          "reason": "Sent intro requests about 14 counterparts to 8 users - didn't get one intro. Most of them resented the ask."
+                        }
+                      ]
                     }
                   ],
                   "gateType": "OR"
@@ -1090,7 +1131,7 @@
     {
       "id": "root-intros-learnings",
       "label": "Learnings and eliminated intro-space branches that still matter for interpretation",
-      "status": "active",
+      "status": "eliminated",
       "children": [
         {
           "id": "option-b",

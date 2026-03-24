@@ -1,6 +1,346 @@
 [
   {
     "date": "2026-03-24",
+    "commit": "4b26440",
+    "message": "Major intros-askbrief restructure: growth loops, adoption, alternatives, economics",
+    "changedIds": [
+      "intro-askbrief-need",
+      "intro-askbrief-alternatives",
+      "intro-askbrief-adoption",
+      "intro-askbrief-initial-adoption",
+      "intro-askbrief-user-asks-counterpart",
+      "intro-askbrief-retention",
+      "intro-askbrief-feasibility",
+      "intro-askbrief-gordy-sent-counterpart-loops",
+      "intro-askbrief-premeeting-notify-loop",
+      "intro-askbrief-premeeting-notify-exposure",
+      "intro-askbrief-auto-compose",
+      "intro-askbrief-counterpart-cta-frequency",
+      "counterpart-attention",
+      "counterpart-attention-downstream",
+      "counterpart-intros-cta-conversion",
+      "counterpart-intros-cta",
+      "counterpart-intros-cta-flow",
+      "counterpart-intros-cta-activation",
+      "counterpart-stay-intouch-cta-conversion",
+      "counterpart-stay-intouch-cta",
+      "counterpart-stay-intouch-cta-flow",
+      "counterpart-stay-intouch-cta-activation",
+      "intro-askbrief-counterpart-followup-loop",
+      "intro-askbrief-counterpart-followup-exposure",
+      "intro-askbrief-counterpart-followup-enabled",
+      "intro-askbrief-counterpart-followup-frequency",
+      "gordy-loop",
+      "intro-askbrief-user-sent-counterpart-loops",
+      "intro-askbrief-user-sent-reminder-loop",
+      "intro-askbrief-user-sent-reminder-exposure",
+      "intro-askbrief-user-sent-reminder-enabled",
+      "intro-askbrief-user-sent-reminder-frequency",
+      "intro-askbrief-user-sent-reminder-conversion",
+      "intro-askbrief-paid-conversion",
+      "intro-askbrief-economics",
+      "intro-askbrief-receiving-loop",
+      "intro-askbrief-sending-loop",
+      "gordy-loop-user",
+      "gordy-brief-share"
+    ],
+    "changes": [
+      {
+        "id": "intro-askbrief-need",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Users want a strategic ask brief before relevant meetings",
+            "to": "Users have a real enough pre-meeting intro / strategic-ask need that they want the tool and will connect calendar for it"
+          },
+          {
+            "field": "test",
+            "from": "Mockup test: do users want Gordy sending them ideas for 2-3 introductions or strategic asks before each meeting?",
+            "to": "Pitch / mockup evidence: over 80% of pitched users wanted the tool and were willing to connect calendar access to get strategic ask briefs"
+          }
+        ]
+      },
+      {
+        "id": "intro-askbrief-alternatives",
+        "action": "added"
+      },
+      {
+        "id": "intro-askbrief-adoption",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Users will use the strategic ask brief flow in live meetings and keep Gordy in the workflow",
+            "to": "Initial adoption and retention are strong enough for this wedge"
+          }
+        ]
+      },
+      {
+        "id": "intro-askbrief-initial-adoption",
+        "action": "added"
+      },
+      {
+        "id": "intro-askbrief-user-asks-counterpart",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Users will agree to ask the counterpart about a new intro flow using Gordy",
+            "to": "Users will ask the counterpart for intros in a real meeting when Gordy suggests it"
+          },
+          {
+            "field": "test",
+            "from": "Mockup test: show the flow and ask whether they would use it in a real meeting",
+            "to": "Mockup or concierge test: show the strategic ask brief flow, then observe whether users actually ask for the intro in a live or simulated meeting"
+          }
+        ]
+      },
+      {
+        "id": "intro-askbrief-retention",
+        "action": "added"
+      },
+      {
+        "id": "intro-askbrief-feasibility",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "We can deliver the strategic ask brief flow with the current calendar-connected product and email workflow",
+            "to": "We can generate enough meaningful suggestions for enough meetings to support this wedge"
+          },
+          {
+            "field": "test",
+            "from": "Run the current calendar + email workflow live and verify that briefs can be generated and delivered reliably enough to support usage",
+            "to": "Live product / concierge evaluation: define coverage and quality thresholds, then measure what share of relevant meetings receive suggestions and what share of those suggestions users judge as meaningful enough to use"
+          }
+        ]
+      },
+      {
+        "id": "intro-askbrief-gordy-sent-counterpart-loops",
+        "action": "added"
+      },
+      {
+        "id": "intro-askbrief-premeeting-notify-loop",
+        "action": "added"
+      },
+      {
+        "id": "intro-askbrief-premeeting-notify-exposure",
+        "action": "added"
+      },
+      {
+        "id": "intro-askbrief-auto-compose",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Users will use an auto-composed intro request and keep Gordy attribution in the message",
+            "to": "Users will let Gordy send a pre-meeting counterpart notification email and keep Gordy attribution in the message"
+          },
+          {
+            "field": "type",
+            "from": "Adoption",
+            "to": "Growth"
+          },
+          {
+            "field": "test",
+            "from": "Data from live experiments plus user interviews about whether attribution is deleted",
+            "to": "Live experiment plus user interviews: measure whether users allow Gordy to send a pre-meeting counterpart-facing email and whether Gordy attribution remains intact"
+          }
+        ]
+      },
+      {
+        "id": "intro-askbrief-counterpart-cta-frequency",
+        "action": "added"
+      },
+      {
+        "id": "counterpart-attention",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Counterpart-facing emails get enough attention to drive downstream actions",
+            "to": "Pre-meeting counterpart notification emails get enough attention to drive counterpart user conversion"
+          }
+        ]
+      },
+      {
+        "id": "counterpart-attention-downstream",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "At least one counterpart CTA gets meaningful engagement",
+            "to": "At least one pre-meeting counterpart CTA converts recipients into activated users"
+          }
+        ]
+      },
+      {
+        "id": "counterpart-intros-cta-conversion",
+        "action": "added"
+      },
+      {
+        "id": "counterpart-intros-cta",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Some counterpart email recipients click an 'Introduce me to someone' CTA",
+            "to": "Some recipients of the pre-meeting counterpart email click an 'Introduce me to someone' CTA"
+          },
+          {
+            "field": "score",
+            "from": {
+              "Freq": 0,
+              "Intensity": 0,
+              "Fit": 0
+            },
+            "to": {
+              "Fit": 0,
+              "Freq": 0,
+              "Intensity": 0
+            }
+          },
+          {
+            "field": "test",
+            "from": "MVT: Add 'Introduce me to someone' CTA button to counterpart emails. Measure click rate and downstream intent.",
+            "to": "MVT: Add an 'Introduce me to someone' CTA button to pre-meeting counterpart emails. Measure click rate and downstream intent."
+          }
+        ]
+      },
+      {
+        "id": "counterpart-intros-cta-flow",
+        "action": "added"
+      },
+      {
+        "id": "counterpart-intros-cta-activation",
+        "action": "added"
+      },
+      {
+        "id": "counterpart-stay-intouch-cta-conversion",
+        "action": "added"
+      },
+      {
+        "id": "counterpart-stay-intouch-cta",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Some counterpart email recipients click an 'Help me stay in touch' CTA for a real contact",
+            "to": "Some recipients of the pre-meeting counterpart email click a 'Help me stay in touch' CTA for a real contact"
+          },
+          {
+            "field": "score",
+            "from": {
+              "Freq": 0,
+              "Intensity": 0,
+              "Fit": 0
+            },
+            "to": {
+              "Fit": 0,
+              "Freq": 0,
+              "Intensity": 0
+            }
+          },
+          {
+            "field": "test",
+            "from": "MVT: Add a stay-in-touch CTA to counterpart emails. Measure click rate and downstream tracking-request creation.",
+            "to": "MVT: Add a stay-in-touch CTA to pre-meeting counterpart emails. Measure click rate and downstream tracking-request creation."
+          }
+        ]
+      },
+      {
+        "id": "counterpart-stay-intouch-cta-flow",
+        "action": "added"
+      },
+      {
+        "id": "counterpart-stay-intouch-cta-activation",
+        "action": "added"
+      },
+      {
+        "id": "intro-askbrief-counterpart-followup-loop",
+        "action": "added"
+      },
+      {
+        "id": "intro-askbrief-counterpart-followup-exposure",
+        "action": "added"
+      },
+      {
+        "id": "intro-askbrief-counterpart-followup-enabled",
+        "action": "added"
+      },
+      {
+        "id": "intro-askbrief-counterpart-followup-frequency",
+        "action": "added"
+      },
+      {
+        "id": "gordy-loop",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Post-meeting follow-up (outbound from Gordy) to the counterpart produces responses",
+            "to": "Gordy-sent post-meeting follow-up to the counterpart produces responses"
+          },
+          {
+            "field": "test",
+            "from": "Monitor response rates to post-meeting follow-up sent to the counterpart",
+            "to": "Monitor response rates to Gordy-sent post-meeting follow-up sent to the counterpart"
+          }
+        ]
+      },
+      {
+        "id": "intro-askbrief-user-sent-counterpart-loops",
+        "action": "added"
+      },
+      {
+        "id": "intro-askbrief-user-sent-reminder-loop",
+        "action": "added"
+      },
+      {
+        "id": "intro-askbrief-user-sent-reminder-exposure",
+        "action": "added"
+      },
+      {
+        "id": "intro-askbrief-user-sent-reminder-enabled",
+        "action": "added"
+      },
+      {
+        "id": "intro-askbrief-user-sent-reminder-frequency",
+        "action": "added"
+      },
+      {
+        "id": "intro-askbrief-user-sent-reminder-conversion",
+        "action": "added"
+      },
+      {
+        "id": "intro-askbrief-paid-conversion",
+        "action": "added"
+      },
+      {
+        "id": "intro-askbrief-economics",
+        "action": "added"
+      },
+      {
+        "id": "intro-askbrief-receiving-loop",
+        "action": "removed"
+      },
+      {
+        "id": "intro-askbrief-sending-loop",
+        "action": "removed"
+      },
+      {
+        "id": "gordy-loop-user",
+        "action": "removed"
+      },
+      {
+        "id": "gordy-brief-share",
+        "action": "removed"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-24",
     "commit": "8d466c7",
     "message": "Update tree: intros-main to active, counterpart-attention-threshold eliminated, remove scores from some leaf nodes",
     "changedIds": [
