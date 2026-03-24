@@ -1,6 +1,159 @@
 [
   {
     "date": "2026-03-24",
+    "commit": "8d466c7",
+    "message": "Update tree: intros-main to active, counterpart-attention-threshold eliminated, remove scores from some leaf nodes",
+    "changedIds": [
+      "root-intros-main",
+      "intro-askbrief-user-asks-counterpart",
+      "counterpart-attention-threshold",
+      "gordy-loop",
+      "intro-recipient-outbound-path",
+      "namedrop-investors-founders",
+      "namedrop-ae-bd",
+      "gordy-asks"
+    ],
+    "changes": [
+      {
+        "id": "root-intros-main",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "There is at least one viral wedge in the introductions and intro-meetings space for small business owners who also do selling",
+            "to": "There is at least one explosive growth wedge in the introductions and intro-meetings space for small business owners who also do selling"
+          },
+          {
+            "field": "status",
+            "from": "validated",
+            "to": "active"
+          }
+        ]
+      },
+      {
+        "id": "intro-askbrief-user-asks-counterpart",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "score",
+            "from": {
+              "Freq": 0,
+              "Intensity": 0,
+              "Fit": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "counterpart-attention-threshold",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "eliminated"
+          },
+          {
+            "field": "score",
+            "from": {
+              "Freq": 0,
+              "Intensity": 0,
+              "Fit": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "gordy-loop",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Post-meeting follow-up to the counterpart produces responses",
+            "to": "Post-meeting follow-up (outbound from Gordy) to the counterpart produces responses"
+          },
+          {
+            "field": "score",
+            "from": {
+              "Freq": 0,
+              "Intensity": 0,
+              "Fit": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "intro-recipient-outbound-path",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "validated",
+            "to": "active"
+          }
+        ]
+      },
+      {
+        "id": "namedrop-investors-founders",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "validated",
+            "to": "active"
+          },
+          {
+            "field": "score",
+            "from": {
+              "Freq": 0,
+              "Intensity": 0,
+              "Fit": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "namedrop-ae-bd",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "validated",
+            "to": "active"
+          },
+          {
+            "field": "score",
+            "from": {
+              "Freq": 0,
+              "Intensity": 0,
+              "Fit": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "gordy-asks",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "validated",
+            "to": "active"
+          },
+          {
+            "field": "score",
+            "from": {
+              "Freq": 0,
+              "Intensity": 0,
+              "Fit": 0
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-03-24",
     "commit": "2fa11f4",
     "message": "Restructure tree with persona-based nurturing subtrees",
     "changedIds": [
