@@ -11,7 +11,7 @@ const MAX_COMMITS = 50;
 
 // Tree was fully restructured in this commit — treat it as the first version.
 // Only generate changelog entries for commits after this one.
-const EPOCH_COMMIT = '2fa11f4';
+const EPOCH_COMMIT = 'e5a69d7';
 
 function run(cmd) {
   return execSync(cmd, { cwd: REPO, encoding: 'utf-8', maxBuffer: 10 * 1024 * 1024 }).trim();

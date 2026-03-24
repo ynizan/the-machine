@@ -1,1 +1,515 @@
-[]
+[
+  {
+    "date": "2026-03-24",
+    "commit": "2fa11f4",
+    "message": "Restructure tree with persona-based nurturing subtrees",
+    "changedIds": [
+      "root-nurture-main",
+      "nurture-smallbiz-persona",
+      "nurture-smallbiz-need",
+      "nurture-smallbiz-lost-opps",
+      "nurture-smallbiz-top-of-mind",
+      "nurture-smallbiz-top-of-mind-mom-test",
+      "nurture-smallbiz-top-of-mind-mockup",
+      "nurture-smallbiz-top-of-mind-pay",
+      "nurture-smallbiz-weak-alternatives",
+      "nurture-smallbiz-channel-fomo",
+      "nurture-smallbiz-no-playbook",
+      "nurture-smallbiz-need-patterns",
+      "nurture-smallbiz-channel-deepening-path",
+      "nurture-smallbiz-channel-deepening",
+      "nurture-smallbiz-channel-deepening-mockup",
+      "nurture-smallbiz-travel-proximity-trigger",
+      "nurture-smallbiz-adoption",
+      "nurture-smallbiz-criteria-define",
+      "nurture-smallbiz-pick-people",
+      "nurture-smallbiz-radar-drift-alert",
+      "nurture-smallbiz-advisor-gordy-engage",
+      "nurture-smallbiz-growth",
+      "nurture-smallbiz-nudge-path",
+      "nurture-smallbiz-circles-exist",
+      "nurture-smallbiz-nudge-action",
+      "nurture-smallbiz-acq-interview",
+      "nurture-smallbiz-acq-outbound",
+      "nurture-smallbiz-acq-gordy-viral-tip",
+      "nurture-smallbiz-acq-gordy-viral-nudge",
+      "nurture-smallbiz-exposed-via-intro-flow",
+      "nurture-smallbiz-feasibility",
+      "nurture-smallbiz-low-manual-entry",
+      "nurture-smallbiz-calendar-connected-workflow",
+      "nurture-smallbiz-economics",
+      "nurture-smallbiz-gordy-kpi-selection",
+      "nurture-smallbiz-nurture-pay",
+      "nurture-vcs-persona",
+      "nurture-csms-persona",
+      "nurture-recruiters-persona",
+      "nurture-context-private-intel",
+      "over-20-of-users-go-to-the-extended-brie",
+      "root-intros-main",
+      "intro-askbrief-growth",
+      "intro-askbrief-receiving-loop",
+      "intro-network-mutual-lkg",
+      "intro-network-self-map-flow",
+      "option-a-dup-2",
+      "b-waterfall",
+      "__root__",
+      "nurture-smallbiz-segment",
+      "founders",
+      "nurture-top-of-mind",
+      "nurture-execution-gap-smallbiz",
+      "nurture-channel-fomo",
+      "nurture-no-playbook",
+      "channel-deepening-path",
+      "channel-deepening",
+      "channel-deepening-mockup",
+      "travel-proximity-trigger",
+      "nurture-criteria-define",
+      "nurture-pick-people",
+      "radar-drift-alert",
+      "advisor-gordy-engage",
+      "nudge-path",
+      "circles-exist",
+      "nudge-action",
+      "acq-interview",
+      "acq-outbound",
+      "acq-gordy-viral-tip",
+      "acq-gordy-viral-nudge",
+      "nurture-exposed-via-intro-flow",
+      "low-manual-entry",
+      "calendar-connected-workflow",
+      "gordy-kpi-selection",
+      "nurture-pay",
+      "root-nurture-adjacent-segments",
+      "nurture-vcs-segment",
+      "nurture-csm-segment",
+      "nurture-recruiters-segment"
+    ],
+    "changes": [
+      {
+        "id": "root-nurture-main",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "There is a viable business around nurturing for small business owners at organizations under 20 who also do selling",
+            "to": "There is at least one persona with a viable nurturing business"
+          },
+          {
+            "field": "gateType",
+            "from": "AND",
+            "to": "OR"
+          }
+        ]
+      },
+      {
+        "id": "nurture-smallbiz-persona",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-need",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "This segment has a recurring nurturing problem worth solving",
+            "to": "There is a recurring nurturing problem worth solving"
+          }
+        ]
+      },
+      {
+        "id": "nurture-smallbiz-lost-opps",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-top-of-mind",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-top-of-mind-mom-test",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-top-of-mind-mockup",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-top-of-mind-pay",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-weak-alternatives",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-channel-fomo",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-no-playbook",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-need-patterns",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-channel-deepening-path",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-channel-deepening",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-channel-deepening-mockup",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-travel-proximity-trigger",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-adoption",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Users in this segment will adopt a low-friction workflow to tell Gordy who to nurture and act on prompts",
+            "to": "Users will adopt a low-friction workflow to tell Gordy who to nurture and act on prompts"
+          }
+        ]
+      },
+      {
+        "id": "nurture-smallbiz-criteria-define",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-pick-people",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-radar-drift-alert",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-advisor-gordy-engage",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-growth",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "There is at least one credible growth path for the nurturing product in this segment",
+            "to": "There is at least one credible growth path for the nurturing product"
+          }
+        ]
+      },
+      {
+        "id": "nurture-smallbiz-nudge-path",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-circles-exist",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-nudge-action",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-acq-interview",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-acq-outbound",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-acq-gordy-viral-tip",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-acq-gordy-viral-nudge",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-exposed-via-intro-flow",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-feasibility",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "We can deliver the nurturing workflow for this segment with low ongoing user effort",
+            "to": "We can deliver the nurturing workflow with low ongoing user effort"
+          }
+        ]
+      },
+      {
+        "id": "nurture-smallbiz-low-manual-entry",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-calendar-connected-workflow",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-economics",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "There is a path to willingness to pay and retention in this segment",
+            "to": "There is a path to willingness to pay and retention"
+          }
+        ]
+      },
+      {
+        "id": "nurture-smallbiz-gordy-kpi-selection",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-nurture-pay",
+        "action": "added"
+      },
+      {
+        "id": "nurture-vcs-persona",
+        "action": "added"
+      },
+      {
+        "id": "nurture-csms-persona",
+        "action": "added"
+      },
+      {
+        "id": "nurture-recruiters-persona",
+        "action": "added"
+      },
+      {
+        "id": "nurture-context-private-intel",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Deeper private contact context may create better warm actions",
+            "to": "There may be a viable product angle around deeper private contact context"
+          }
+        ]
+      },
+      {
+        "id": "over-20-of-users-go-to-the-extended-brie",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "test",
+            "from": "Add an \"extended brief\" link to the email and measure click-through to the deeper brief",
+            "to": "Add an “extended brief” link to the email and measure click-through to the deeper brief"
+          }
+        ]
+      },
+      {
+        "id": "root-intros-main",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "validated"
+          }
+        ]
+      },
+      {
+        "id": "intro-askbrief-growth",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "validated",
+            "to": "active"
+          }
+        ]
+      },
+      {
+        "id": "intro-askbrief-receiving-loop",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "validated",
+            "to": "active"
+          }
+        ]
+      },
+      {
+        "id": "intro-network-mutual-lkg",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Users are frustrated that mutual connections are nominal and do not reveal which intro paths are real",
+            "to": "Mutual connections are often too nominal to reliably support warm-intro decisions"
+          }
+        ]
+      },
+      {
+        "id": "intro-network-self-map-flow",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "A self-map / reality-check product form is adoptable",
+            "to": "A self-map / reality-check product form can create value, be adopted, and expand network truth coverage"
+          }
+        ]
+      },
+      {
+        "id": "option-a-dup-2",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Askers and givers engage frequently enough in an \"open the book\" exercise that a shared-map tool would matter",
+            "to": "Askers and givers engage frequently enough in an “open the book” exercise that a shared-map tool would matter"
+          }
+        ]
+      },
+      {
+        "id": "b-waterfall",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "test",
+            "from": "Prototype: demonstrate waterfall sequencing and verify users understand the automation"
+          }
+        ]
+      },
+      {
+        "id": "__root__",
+        "action": "removed"
+      },
+      {
+        "id": "nurture-smallbiz-segment",
+        "action": "removed"
+      },
+      {
+        "id": "founders",
+        "action": "removed"
+      },
+      {
+        "id": "nurture-top-of-mind",
+        "action": "removed"
+      },
+      {
+        "id": "nurture-execution-gap-smallbiz",
+        "action": "removed"
+      },
+      {
+        "id": "nurture-channel-fomo",
+        "action": "removed"
+      },
+      {
+        "id": "nurture-no-playbook",
+        "action": "removed"
+      },
+      {
+        "id": "channel-deepening-path",
+        "action": "removed"
+      },
+      {
+        "id": "channel-deepening",
+        "action": "removed"
+      },
+      {
+        "id": "channel-deepening-mockup",
+        "action": "removed"
+      },
+      {
+        "id": "travel-proximity-trigger",
+        "action": "removed"
+      },
+      {
+        "id": "nurture-criteria-define",
+        "action": "removed"
+      },
+      {
+        "id": "nurture-pick-people",
+        "action": "removed"
+      },
+      {
+        "id": "radar-drift-alert",
+        "action": "removed"
+      },
+      {
+        "id": "advisor-gordy-engage",
+        "action": "removed"
+      },
+      {
+        "id": "nudge-path",
+        "action": "removed"
+      },
+      {
+        "id": "circles-exist",
+        "action": "removed"
+      },
+      {
+        "id": "nudge-action",
+        "action": "removed"
+      },
+      {
+        "id": "acq-interview",
+        "action": "removed"
+      },
+      {
+        "id": "acq-outbound",
+        "action": "removed"
+      },
+      {
+        "id": "acq-gordy-viral-tip",
+        "action": "removed"
+      },
+      {
+        "id": "acq-gordy-viral-nudge",
+        "action": "removed"
+      },
+      {
+        "id": "nurture-exposed-via-intro-flow",
+        "action": "removed"
+      },
+      {
+        "id": "low-manual-entry",
+        "action": "removed"
+      },
+      {
+        "id": "calendar-connected-workflow",
+        "action": "removed"
+      },
+      {
+        "id": "gordy-kpi-selection",
+        "action": "removed"
+      },
+      {
+        "id": "nurture-pay",
+        "action": "removed"
+      },
+      {
+        "id": "root-nurture-adjacent-segments",
+        "action": "removed"
+      },
+      {
+        "id": "nurture-vcs-segment",
+        "action": "removed"
+      },
+      {
+        "id": "nurture-csm-segment",
+        "action": "removed"
+      },
+      {
+        "id": "nurture-recruiters-segment",
+        "action": "removed"
+      }
+    ]
+  }
+]
