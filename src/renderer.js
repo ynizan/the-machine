@@ -113,14 +113,12 @@ const EYE_LABELS = {
 };
 
 const HYPOTHESIS_TYPES = [
-  'Segment', 'Need', 'Adoption', 'Growth', 'Feasibility', 'Economics', 'Alternative',
-  'problem', 'problem_space', 'solution', 'hypothesis', 'viral_sending', 'viral_receiving', 'revenue', 'unit_economics', 'market'
+  'Segment', 'Need', 'Adoption', 'Growth', 'Feasibility', 'Economics', 'Alternative', 'solution'
 ];
 const TYPE_LABELS = {
-  Segment:'Segment', Need:'Need', Adoption:'Adoption', Growth:'Growth', Feasibility:'Feasibility', Economics:'Economics', Alternative:'Alternative',
-  problem:'Problem', problem_space:'Problem Space', solution:'Solution', hypothesis:'Hypothesis',
-  viral_sending:'Viral Sending', viral_receiving:'Viral Receiving', revenue:'Revenue',
-  unit_economics:'Unit Economics', market:'Market'
+  Segment:'Segment', Need:'Need', Adoption:'Adoption', Growth:'Growth',
+  Feasibility:'Feasibility', Economics:'Economics', Alternative:'Alternative',
+  solution:'Solution'
 };
 const TYPE_COLORS = {
   Segment:{ text:'#D4A574', bg:'rgba(212,165,116,.12)', border:'rgba(212,165,116,.25)' },
@@ -130,15 +128,7 @@ const TYPE_COLORS = {
   Feasibility:{ text:'#B08AD6', bg:'rgba(176,138,214,.12)', border:'rgba(176,138,214,.25)' },
   Economics:{ text:'#C8A060', bg:'rgba(200,160,96,.12)', border:'rgba(200,160,96,.25)' },
   Alternative:{ text:'#E0A050', bg:'rgba(224,160,80,.12)', border:'rgba(224,160,80,.25)' },
-  problem:{ text:'#E07060', bg:'rgba(224,112,96,.12)', border:'rgba(224,112,96,.25)' },
-  problem_space:{ text:'#C85A4A', bg:'rgba(200,90,74,.10)', border:'rgba(200,90,74,.20)' },
-  solution:{ text:'#6ABF80', bg:'rgba(106,191,128,.12)', border:'rgba(106,191,128,.25)' },
-  hypothesis:{ text:'#B08AD6', bg:'rgba(176,138,214,.12)', border:'rgba(176,138,214,.25)' },
-  viral_sending:{ text:'#5AAFE0', bg:'rgba(90,175,224,.12)', border:'rgba(90,175,224,.25)' },
-  viral_receiving:{ text:'#4A9ACE', bg:'rgba(74,154,206,.10)', border:'rgba(74,154,206,.20)' },
-  revenue:{ text:'#D4A574', bg:'rgba(212,165,116,.12)', border:'rgba(212,165,116,.25)' },
-  unit_economics:{ text:'#C8A060', bg:'rgba(200,160,96,.12)', border:'rgba(200,160,96,.25)' },
-  market:{ text:'#D4A574', bg:'rgba(212,165,116,.12)', border:'rgba(212,165,116,.25)' }
+  solution:{ text:'#6ABF80', bg:'rgba(106,191,128,.12)', border:'rgba(106,191,128,.25)' }
 };
 
 const EDGE_WIDTHS = { 1:8, 2:4, 3:2, 4:1, 5:0.5 };
@@ -290,9 +280,7 @@ function cardHTML(d, c, h){
       type === 'Adoption' ? '\u2713' : type === 'Growth' ? '\u2192' :
       type === 'Feasibility' ? '\u2699' : type === 'Economics' ? '$' :
       type === 'Alternative' ? '\u2194' :
-      type === 'market' ? '\u25C6' : type === 'problem' || type === 'problem_space' ? '\u25CF' :
-      type === 'solution' ? '\u2713' : type === 'hypothesis' ? '?' :
-      type.startsWith('viral') ? '\u2192' : '\u25CB';
+      type === 'solution' ? '\u2713' : '\u25CB';
     h2 += `<div style="
       display:inline-flex;align-items:center;gap:${c.efs*0.25}px;
       font-family:'IBM Plex Mono',monospace;font-size:${c.efs*0.72}px;
