@@ -1,5 +1,5 @@
 // Depth config
-let MAX_DEPTH = 5;
+let MAX_DEPTH = 8;
 const CFG = {
   1: { fs:160, efs:52,  tfs:38,  w:2000, pad:64,  gap:2200, lh:1.35, dSz:22 },
   2: { fs:80,  efs:26,  tfs:19,  w:1100, pad:36,  gap:1100, lh:1.4,  dSz:13 },
@@ -113,14 +113,12 @@ const EYE_LABELS = {
 };
 
 const HYPOTHESIS_TYPES = [
-  'Segment', 'Need', 'Adoption', 'Growth', 'Feasibility', 'Economics', 'Alternative',
-  'problem', 'problem_space', 'solution', 'hypothesis', 'viral_sending', 'viral_receiving', 'revenue', 'unit_economics', 'market'
+  'Segment', 'Need', 'Adoption', 'Growth', 'Feasibility', 'Economics', 'Alternative', 'solution'
 ];
 const TYPE_LABELS = {
-  Segment:'Segment', Need:'Need', Adoption:'Adoption', Growth:'Growth', Feasibility:'Feasibility', Economics:'Economics', Alternative:'Alternative',
-  problem:'Problem', problem_space:'Problem Space', solution:'Solution', hypothesis:'Hypothesis',
-  viral_sending:'Viral Sending', viral_receiving:'Viral Receiving', revenue:'Revenue',
-  unit_economics:'Unit Economics', market:'Market'
+  Segment:'Segment', Need:'Need', Adoption:'Adoption', Growth:'Growth',
+  Feasibility:'Feasibility', Economics:'Economics', Alternative:'Alternative',
+  solution:'Solution'
 };
 const TYPE_COLORS = {
   Segment:{ text:'#D4A574', bg:'rgba(212,165,116,.12)', border:'rgba(212,165,116,.25)' },
@@ -130,15 +128,7 @@ const TYPE_COLORS = {
   Feasibility:{ text:'#B08AD6', bg:'rgba(176,138,214,.12)', border:'rgba(176,138,214,.25)' },
   Economics:{ text:'#C8A060', bg:'rgba(200,160,96,.12)', border:'rgba(200,160,96,.25)' },
   Alternative:{ text:'#E0A050', bg:'rgba(224,160,80,.12)', border:'rgba(224,160,80,.25)' },
-  problem:{ text:'#E07060', bg:'rgba(224,112,96,.12)', border:'rgba(224,112,96,.25)' },
-  problem_space:{ text:'#C85A4A', bg:'rgba(200,90,74,.10)', border:'rgba(200,90,74,.20)' },
-  solution:{ text:'#6ABF80', bg:'rgba(106,191,128,.12)', border:'rgba(106,191,128,.25)' },
-  hypothesis:{ text:'#B08AD6', bg:'rgba(176,138,214,.12)', border:'rgba(176,138,214,.25)' },
-  viral_sending:{ text:'#5AAFE0', bg:'rgba(90,175,224,.12)', border:'rgba(90,175,224,.25)' },
-  viral_receiving:{ text:'#4A9ACE', bg:'rgba(74,154,206,.10)', border:'rgba(74,154,206,.20)' },
-  revenue:{ text:'#D4A574', bg:'rgba(212,165,116,.12)', border:'rgba(212,165,116,.25)' },
-  unit_economics:{ text:'#C8A060', bg:'rgba(200,160,96,.12)', border:'rgba(200,160,96,.25)' },
-  market:{ text:'#D4A574', bg:'rgba(212,165,116,.12)', border:'rgba(212,165,116,.25)' }
+  solution:{ text:'#6ABF80', bg:'rgba(106,191,128,.12)', border:'rgba(106,191,128,.25)' }
 };
 
 const EDGE_WIDTHS = { 1:8, 2:4, 3:2, 4:1, 5:0.5 };
@@ -177,21 +167,25 @@ function orGatePath(w, h){
     + `Q${hw*0.3},${-hh*0.7} ${-hw},${-hh} Z`;
 }
 
-// Propagate validation up the tree based on gate types
-// AND: validated iff ALL children are validated
-// OR: validated iff ANY child is validated
+// Propagate validation and elimination up the tree based on gate types
+// Validated:  AND = all validated,  OR = any validated
+// Eliminated: AND = any eliminated, OR = all eliminated
 // Leaf nodes (no children or no gateType): keep their own status
 function propagateValidation(node){
   if(!node.children || !node.children.length) return;
   node.children.forEach(c => propagateValidation(c));
   if(node.gateType === 'AND'){
     const allValidated = node.children.every(c => c.status === 'validated');
-    if(allValidated) node.status = 'validated';
-    else if(node.status === 'validated') node.status = 'active';
+    const anyEliminated = node.children.some(c => c.status === 'eliminated');
+    if(anyEliminated) node.status = 'eliminated';
+    else if(allValidated) node.status = 'validated';
+    else if(node.status === 'validated' || node.status === 'eliminated') node.status = 'active';
   } else if(node.gateType === 'OR'){
     const anyValidated = node.children.some(c => c.status === 'validated');
-    if(anyValidated) node.status = 'validated';
-    else if(node.status === 'validated') node.status = 'active';
+    const allEliminated = node.children.every(c => c.status === 'eliminated');
+    if(allEliminated) node.status = 'eliminated';
+    else if(anyValidated) node.status = 'validated';
+    else if(node.status === 'validated' || node.status === 'eliminated') node.status = 'active';
   }
 }
 
@@ -290,9 +284,7 @@ function cardHTML(d, c, h){
       type === 'Adoption' ? '\u2713' : type === 'Growth' ? '\u2192' :
       type === 'Feasibility' ? '\u2699' : type === 'Economics' ? '$' :
       type === 'Alternative' ? '\u2194' :
-      type === 'market' ? '\u25C6' : type === 'problem' || type === 'problem_space' ? '\u25CF' :
-      type === 'solution' ? '\u2713' : type === 'hypothesis' ? '?' :
-      type.startsWith('viral') ? '\u2192' : '\u25CB';
+      type === 'solution' ? '\u2713' : '\u25CB';
     h2 += `<div style="
       display:inline-flex;align-items:center;gap:${c.efs*0.25}px;
       font-family:'IBM Plex Mono',monospace;font-size:${c.efs*0.72}px;
@@ -1023,7 +1015,7 @@ function openInlineEdit(nodeId, evt, focusField){
       <div class="ief-body">
         <div class="ief-field">
           <label>Status</label>
-          <select id="ief-status">${statusOpts}</select>
+          ${nodeData.gateType ? `<span style="color:#888;font-size:12px;">${nodeData.status} <em>(auto from gate)</em></span><input type="hidden" id="ief-status" value="${nodeData.status}">` : `<select id="ief-status">${statusOpts}</select>`}
         </div>
         <div class="ief-field">
           <label>Type</label>
