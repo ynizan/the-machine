@@ -255,7 +255,7 @@
                     },
                     {
                       "id": "nurture-smallbiz-feed-engage",
-                      "status": "active",
+                      "status": "pending",
                       "type": "Adoption",
                       "label": "Users who see highlighted posts from nurture contacts in their LinkedIn feed engage at higher rates — commenting or tagging a second contact",
                       "test": "Chrome extension MVP: highlight nurture-list posts for 20 beta users. Measure engagement rate on highlighted vs non-highlighted posts and whether tagged contacts find it relevant.",
@@ -267,7 +267,7 @@
                     },
                     {
                       "id": "nurture-smallbiz-proactive-tag",
-                      "status": "active",
+                      "status": "pending",
                       "type": "Adoption",
                       "label": "When prompted with relevant content to tag a dormant contact in, users act on the suggestion and the contact perceives it as genuine",
                       "test": "Extension suggests tag-in-post for dormant contacts. Measure action rate on suggestions and whether tagged contacts engage. Also test input-request variant: asking a dormant contact for input on a post topic.",

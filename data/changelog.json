@@ -1,5 +1,29 @@
 [
   {
+    "date": "2026-03-25",
+    "commit": "cca8bb8",
+    "message": "Add trigger-nudge parent node with feed-engage and proactive-tag hypotheses",
+    "changedIds": [
+      "nurture-smallbiz-trigger-nudge",
+      "nurture-smallbiz-feed-engage",
+      "nurture-smallbiz-proactive-tag"
+    ],
+    "changes": [
+      {
+        "id": "nurture-smallbiz-trigger-nudge",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-feed-engage",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-proactive-tag",
+        "action": "added"
+      }
+    ]
+  },
+  {
     "date": "2026-03-24",
     "commit": "5b57a95",
     "message": "Major tree status restructure: prioritize active paths, park inactive branches",
