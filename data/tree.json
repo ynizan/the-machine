@@ -1083,7 +1083,26 @@
                           "label": "Gordy-sent post-meeting follow-up to the counterpart produces responses",
                           "status": "active",
                           "type": "Growth",
-                          "test": "Monitor response rates to Gordy-sent post-meeting follow-up sent to the counterpart"
+                          "test": "Monitor response rates to Gordy-sent post-meeting follow-up sent to the counterpart",
+                          "gateType": "OR",
+                          "children": [
+                            {
+                              "id": "gordy-followup-how-do-you-know",
+                              "label": "A 'how do you know [User]?' email with no CTA gets enough replies to open a conversion conversation",
+                              "status": "active",
+                              "type": "Growth",
+                              "test": "A/B test: Gordy sends 'how do you know [User first name] [User last name]?' to counterparts post-meeting with no link or pitch. Measure reply rate and whether the reply thread converts to signup.",
+                              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                            },
+                            {
+                              "id": "gordy-followup-network-fomo",
+                              "label": "A 'people in your network use Gordy — sign up to see who' email gets CTR and signups",
+                              "status": "active",
+                              "type": "Growth",
+                              "test": "A/B test: Gordy sends 'a few people in your network use me for pre-meeting research and warm intros — sign up and I'll show you who' with link to hello page. Measure CTR and signup rate.",
+                              "score": { "Freq": 0, "Intensity": 0, "Fit": 0 }
+                            }
+                          ]
                         }
                       ],
                       "gateType": "AND"
