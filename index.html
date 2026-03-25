@@ -24,17 +24,21 @@
     <button class="nav-btn" onclick="openMockups()">Mockups</button>
     <button class="nav-btn nav-btn-review" onclick="openReview()">Review</button>
     <button class="nav-btn nav-btn-changelog" id="cl-toggle-btn" onclick="toggleChangelogBar()">Changelog</button>
+    <button class="nav-btn" id="legend-toggle-btn" onclick="toggleLegend()">Legend</button>
+    <div class="nav-type-filter" id="type-filter-dropdown">
+      <button class="nav-btn" id="type-filter-btn" onclick="toggleTypeFilter()">Types <span id="type-filter-count"></span></button>
+      <div class="type-filter-menu" id="type-filter-menu"></div>
+    </div>
   </div>
-  <div class="legend">
-    <div class="leg"><div class="leg-sw" style="background:#0F1710;border:1px solid #2A2A2A;border-top:2px solid #D4A574"></div><span style="color:#7FBF95">Validated</span> <span class="leg-color">green</span></div>
-    <div class="leg"><div class="leg-sw" style="background:#0E1418;border:1px solid #28607A"></div><span style="color:#6AB0D2">Review</span> <span class="leg-color">blue</span></div>
-    <div class="leg"><div class="leg-sw" style="background:#111;border:1px solid #252525"></div><span style="color:#BBBBBB">Active</span> <span class="leg-color">white</span></div>
-    <div class="leg"><div class="leg-sw" style="background:#100E0A;border:1.5px dashed #7A5828"></div><span style="color:#A07840">Pending</span> <span class="leg-color">gold</span></div>
-    <div class="leg"><div class="leg-sw" style="background:#0E0E0E;border:1.5px dashed #222;opacity:.5"></div><span style="color:#666">Eliminated</span> <span class="leg-color">red</span></div>
-    <div class="leg" style="margin-left:4px"><div class="leg-sw" style="background:rgba(224,160,80,.15);border:1px solid rgba(224,160,80,.30);font-size:6px;display:flex;align-items:center;justify-content:center;color:#E0A050;font-weight:700">&amp;</div><span style="color:#E0A050">AND</span></div>
-    <div class="leg"><div class="leg-sw" style="background:rgba(80,176,224,.15);border:1px solid rgba(80,176,224,.30);font-size:6px;display:flex;align-items:center;justify-content:center;color:#50B0E0;font-weight:700">|</div><span style="color:#50B0E0">OR</span></div>
-    <div class="leg"><div class="leg-sw" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)"></div><span style="color:#999">FINAL</span></div>
-    <div class="leg depth-ctrl-header" style="margin-left:8px">
+  <div class="hdr-right">
+    <div class="search-bar" id="search-bar">
+      <input type="text" id="search-input" placeholder="Search nodes..." autocomplete="off">
+      <button class="search-nav-btn" id="search-prev" onclick="searchNav(-1)" title="Previous result">&lsaquo;</button>
+      <span class="search-count" id="search-count"></span>
+      <button class="search-nav-btn" id="search-next" onclick="searchNav(1)" title="Next result">&rsaquo;</button>
+      <button class="search-clear" id="search-clear" onclick="clearSearch()">&times;</button>
+    </div>
+    <div class="depth-ctrl-header">
       <span class="depth-label">Depth</span>
       <button class="depth-hdr-btn" onclick="setMaxDepth(MAX_DEPTH-1)">&minus;</button>
       <span id="depth-val">9</span>
@@ -57,6 +61,22 @@
     <input type="checkbox" id="cl-filter-modified" onchange="toggleChangelogFilter()">
     <span>Modified</span>
   </label>
+</div>
+
+<div id="legend-panel" class="legend-panel">
+  <div class="legend-header"><span>Legend</span><button class="legend-close" onclick="toggleLegend()">&times;</button></div>
+  <div class="legend-body">
+    <div class="legend-section-title">Status</div>
+    <div class="leg"><div class="leg-sw" style="background:#0F1710;border:1px solid #2A2A2A;border-top:2px solid #D4A574"></div><span style="color:#7FBF95">Validated</span></div>
+    <div class="leg"><div class="leg-sw" style="background:#0E1418;border:1px solid #28607A"></div><span style="color:#6AB0D2">Review</span></div>
+    <div class="leg"><div class="leg-sw" style="background:#111;border:1px solid #252525"></div><span style="color:#BBBBBB">Active</span></div>
+    <div class="leg"><div class="leg-sw" style="background:#100E0A;border:1.5px dashed #7A5828"></div><span style="color:#A07840">Pending</span></div>
+    <div class="leg"><div class="leg-sw" style="background:#0F0E10;border:1.5px dashed #3A2E4A"></div><span style="color:#8878A0">Backlog</span></div>
+    <div class="leg"><div class="leg-sw" style="background:#0E0E0E;border:1.5px dashed #222;opacity:.5"></div><span style="color:#666">Eliminated</span></div>
+    <div class="legend-section-title" style="margin-top:10px">Gate Types</div>
+    <div class="leg"><div class="leg-sw" style="background:rgba(224,160,80,.15);border:1px solid rgba(224,160,80,.30);font-size:6px;display:flex;align-items:center;justify-content:center;color:#E0A050;font-weight:700">&amp;</div><span style="color:#E0A050">AND</span> <span class="leg-desc">all children must pass</span></div>
+    <div class="leg"><div class="leg-sw" style="background:rgba(80,176,224,.15);border:1px solid rgba(80,176,224,.30);font-size:6px;display:flex;align-items:center;justify-content:center;color:#50B0E0;font-weight:700">|</div><span style="color:#50B0E0">OR</span> <span class="leg-desc">any child can pass</span></div>
+  </div>
 </div>
 
 <div id="canvas"><svg id="tree"><g id="G"></g></svg></div>

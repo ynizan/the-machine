@@ -1445,6 +1445,192 @@ function openOldValuesDialog(nodeId){
   return true;
 }
 
+// --- Search ---
+let SEARCH_RESULTS = [];
+let SEARCH_INDEX = -1;
+
+function runSearch(){
+  const q = document.getElementById('search-input').value.trim().toLowerCase();
+  if(!q){ clearSearch(); return; }
+  SEARCH_RESULTS = [];
+  SEARCH_INDEX = -1;
+  function walk(node){
+    const matchId = (node.id || '').toLowerCase().includes(q);
+    const matchLabel = (node.label || '').toLowerCase().includes(q);
+    if(matchId || matchLabel) SEARCH_RESULTS.push(node.id);
+    if(node.children) node.children.forEach(walk);
+  }
+  walk(CURRENT_DATA);
+  if(SEARCH_RESULTS.length){
+    SEARCH_INDEX = 0;
+    showSearchResult();
+  }
+  updateSearchCount();
+}
+
+function searchNav(dir){
+  if(!SEARCH_RESULTS.length) return;
+  SEARCH_INDEX = (SEARCH_INDEX + dir + SEARCH_RESULTS.length) % SEARCH_RESULTS.length;
+  showSearchResult();
+  updateSearchCount();
+}
+
+function clearSearch(){
+  SEARCH_RESULTS = [];
+  SEARCH_INDEX = -1;
+  document.getElementById('search-input').value = '';
+  document.getElementById('search-count').textContent = '';
+}
+
+function updateSearchCount(){
+  const el = document.getElementById('search-count');
+  if(!SEARCH_RESULTS.length){ el.textContent = 'no match'; return; }
+  el.textContent = `${SEARCH_INDEX + 1}/${SEARCH_RESULTS.length}`;
+}
+
+function showSearchResult(){
+  if(SEARCH_INDEX < 0 || !SEARCH_RESULTS.length) return;
+  const nodeId = SEARCH_RESULTS[SEARCH_INDEX];
+  // Expand ancestors if collapsed
+  expandPathTo(nodeId);
+  zoomToNode(nodeId);
+}
+
+function expandPathTo(nodeId){
+  function findPath(node, path){
+    path.push(node.id);
+    if(node.id === nodeId) return true;
+    for(const c of (node.children || [])){
+      if(findPath(c, path)) return true;
+    }
+    path.pop();
+    return false;
+  }
+  const path = [];
+  findPath(CURRENT_DATA, path);
+  if(!path.length) return;
+
+  let changed = false;
+  if(CURRENT_ROOT){
+    for(const id of path){
+      const d3node = CURRENT_ROOT.descendants().find(d => d.data.id === id);
+      if(d3node && d3node._children){
+        d3node.children = d3node._children;
+        d3node._children = null;
+        changed = true;
+      }
+    }
+  }
+  if(changed){
+    const collapsedIds = getCollapsedIds(CURRENT_ROOT);
+    document.getElementById('G').innerHTML = '';
+    initTree(CURRENT_DATA, { skipResetView: true, collapsedIds });
+  }
+}
+
+function zoomToNode(nodeId){
+  if(!CURRENT_ROOT) return;
+  const d3node = CURRENT_ROOT.descendants().find(d => d.data.id === nodeId);
+  if(!d3node) return;
+
+  const svgEl = document.getElementById('tree');
+  const svg = d3.select(svgEl);
+  const gEl = document.getElementById('G');
+  const c = cfg(d3node.depth);
+
+  const W = document.getElementById('canvas').clientWidth;
+  const H = document.getElementById('canvas').clientHeight;
+  const scale = Math.min(0.5, W / (c.w * 3));
+  const tx = W/2 - (d3node.y + c.w/2) * scale;
+  const ty = H/2 - d3node.x * scale;
+
+  const zoom = d3.zoom().scaleExtent([0.008, 3])
+    .on('zoom', e => d3.select(gEl).attr('transform', e.transform));
+  svg.call(zoom);
+  svg.transition().duration(600)
+    .call(zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(scale));
+
+  // Open the node after zoom completes
+  setTimeout(() => openInlineEdit(nodeId), 650);
+}
+
+// --- Legend Toggle ---
+function toggleLegend(){
+  document.getElementById('legend-panel').classList.toggle('open');
+}
+
+// --- Type Filter ---
+let ACTIVE_TYPE_FILTERS = new Set();
+
+function initTypeFilter(){
+  const menu = document.getElementById('type-filter-menu');
+  menu.innerHTML = `
+    <div class="type-filter-item" onclick="toggleAllTypes(event)">
+      <input type="checkbox" checked id="type-filter-all">
+      <span style="color:#ccc;">All Types</span>
+    </div>
+  ` + HYPOTHESIS_TYPES.map(t => `
+    <div class="type-filter-item" onclick="toggleTypeFilterItem('${t}', event)">
+      <input type="checkbox" checked data-type="${t}">
+      <span style="color:${(TYPE_COLORS[t]||{}).text || '#999'}">${TYPE_LABELS[t] || t}</span>
+    </div>
+  `).join('');
+  ACTIVE_TYPE_FILTERS = new Set(HYPOTHESIS_TYPES);
+}
+
+function toggleTypeFilter(){ document.getElementById('type-filter-menu').classList.toggle('open'); }
+
+function toggleTypeFilterItem(type, evt){
+  evt.stopPropagation();
+  const cb = evt.currentTarget.querySelector('input');
+  cb.checked = !cb.checked;
+  if(cb.checked) ACTIVE_TYPE_FILTERS.add(type);
+  else ACTIVE_TYPE_FILTERS.delete(type);
+  document.getElementById('type-filter-all').checked = ACTIVE_TYPE_FILTERS.size === HYPOTHESIS_TYPES.length;
+  updateTypeFilterCount();
+  applyTypeFilter();
+}
+
+function toggleAllTypes(evt){
+  evt.stopPropagation();
+  const cb = document.getElementById('type-filter-all');
+  cb.checked = !cb.checked;
+  document.querySelectorAll('#type-filter-menu input[data-type]').forEach(c => { c.checked = cb.checked; });
+  if(cb.checked) ACTIVE_TYPE_FILTERS = new Set(HYPOTHESIS_TYPES);
+  else ACTIVE_TYPE_FILTERS.clear();
+  updateTypeFilterCount();
+  applyTypeFilter();
+}
+
+function updateTypeFilterCount(){
+  const el = document.getElementById('type-filter-count');
+  el.textContent = ACTIVE_TYPE_FILTERS.size === HYPOTHESIS_TYPES.length ? '' : ACTIVE_TYPE_FILTERS.size;
+}
+
+function applyTypeFilter(){
+  if(!CURRENT_ROOT) return;
+  const gEl = document.getElementById('G');
+  const nodeG = gEl.children[2] || gEl.children[1];
+  if(!nodeG) return;
+  const allOn = ACTIVE_TYPE_FILTERS.size === HYPOTHESIS_TYPES.length;
+  const nodes = CURRENT_ROOT.descendants().filter(d => d.data.id !== 'root');
+  nodes.forEach((d, i) => {
+    const grp = nodeG.children[i];
+    if(!grp) return;
+    const t = d.data.type;
+    grp.style.opacity = (allOn || !t || ACTIVE_TYPE_FILTERS.has(t)) ? '' : '0.12';
+  });
+}
+
+// Close type filter dropdown when clicking outside
+document.addEventListener('click', e => {
+  const menu = document.getElementById('type-filter-menu');
+  const btn = document.getElementById('type-filter-btn');
+  if(menu && !menu.contains(e.target) && e.target !== btn && !btn.contains(e.target)){
+    menu.classList.remove('open');
+  }
+});
+
 // Fetch data and boot
 Promise.all([
   fetch('data/tree.json').then(r => r.json()),
@@ -1452,20 +1638,23 @@ Promise.all([
 ]).then(([data]) => {
   CURRENT_DATA = data;
   buildNodeMap(data);
-  // Check for missing gateType and alert
   const missingGateTypes = checkMissingGateTypes(data);
   if(missingGateTypes.length) showGateTypeAlert(missingGateTypes);
-  // Propagate validation before first render
   propagateValidation(data);
   initTree(data);
   initChangelogBar();
+  initTypeFilter();
   setupEditor(data, (newData, opts) => {
     CURRENT_DATA = newData;
     NODE_MAP = {};
     buildNodeMap(newData);
-    // Save collapse state before re-render
     const collapsedIds = CURRENT_ROOT ? getCollapsedIds(CURRENT_ROOT) : undefined;
     document.getElementById('G').innerHTML = '';
     initTree(newData, { ...opts, collapsedIds });
+  });
+
+  document.getElementById('search-input').addEventListener('keydown', e => {
+    if(e.key === 'Enter'){ e.preventDefault(); runSearch(); }
+    else if(e.key === 'Escape'){ clearSearch(); e.target.blur(); }
   });
 });
