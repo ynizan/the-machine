@@ -11,7 +11,7 @@
         {
           "id": "nurture-smallbiz-persona",
           "label": "Small business owners at organizations under 20 who also do selling are a concrete initial persona for nurturing",
-          "status": "review",
+          "status": "active",
           "type": "Segment",
           "children": [
             {
@@ -21,29 +21,18 @@
               "type": "Need",
               "children": [
                 {
-                  "id": "nurture-smallbiz-lost-opps",
-                  "label": "The persona feels it is losing opportunities because of poor nurturing",
+                  "id": "nurture-smallbiz-need-reason",
+                  "label": "There is at least one concrete reason this persona needs better nurturing",
                   "status": "active",
                   "type": "Need",
-                  "test": "Mom test: ask for concrete lost-opportunity examples where weak follow-up or weak top-of-mind presence mattered",
-                  "score": {
-                    "Freq": 0,
-                    "Intensity": 0,
-                    "Fit": 0
-                  }
-                },
-                {
-                  "id": "nurture-smallbiz-top-of-mind",
-                  "label": "Helping users stay top of mind is a viable nurturing angle",
-                  "status": "active",
-                  "type": "Need",
+                  "gateType": "OR",
                   "children": [
                     {
-                      "id": "nurture-smallbiz-top-of-mind-mom-test",
-                      "label": "Users can describe concrete top-of-mind pain and missed opportunities",
+                      "id": "nurture-smallbiz-lost-opps",
+                      "label": "The persona feels it is losing opportunities because of poor nurturing",
                       "status": "active",
                       "type": "Need",
-                      "test": "Mom test: ask for concrete examples where weak follow-up or weak top-of-mind presence caused a missed opportunity",
+                      "test": "Mom test: ask for concrete lost-opportunity examples where weak follow-up or weak top-of-mind presence mattered",
                       "score": {
                         "Freq": 0,
                         "Intensity": 0,
@@ -51,36 +40,57 @@
                       }
                     },
                     {
-                      "id": "nurture-smallbiz-top-of-mind-mockup",
-                      "label": "Users react strongly to a mockup that helps them stay top of mind with important contacts",
-                      "status": "pending",
-                      "type": "Adoption",
-                      "test": "Mockup: show a stay-top-of-mind workflow and measure whether users want it for real contacts now",
+                      "id": "nurture-smallbiz-top-of-mind",
+                      "label": "Helping users stay top of mind is a viable nurturing angle",
+                      "status": "active",
+                      "type": "Need",
+                      "children": [
+                        {
+                          "id": "nurture-smallbiz-top-of-mind-mom-test",
+                          "label": "Users can describe concrete top-of-mind pain and missed opportunities",
+                          "status": "validated",
+                          "type": "Need",
+                          "test": "Mom test: ask for concrete examples where weak follow-up or weak top-of-mind presence caused a missed opportunity",
+                          "reason": "Out of 41 that answered, 33 described top-of-mind behavior. Only 1 rejected directly.",
+                          "score": {
+                            "Freq": 0,
+                            "Intensity": 0,
+                            "Fit": 0
+                          }
+                        },
+                        {
+                          "id": "nurture-smallbiz-top-of-mind-mockup",
+                          "label": "Users react strongly to a mockup that helps them stay top of mind with important contacts",
+                          "status": "pending",
+                          "type": "Adoption",
+                          "test": "Mockup: show a stay-top-of-mind workflow and measure whether users want it for real contacts now",
+                          "score": {
+                            "Freq": 0,
+                            "Intensity": 0,
+                            "Fit": 0
+                          }
+                        },
+                        {
+                          "id": "nurture-smallbiz-top-of-mind-pay",
+                          "label": "Users are willing to pay for a top-of-mind solution if it proves value",
+                          "status": "pending",
+                          "type": "Economics",
+                          "test": "Pricing / commitment test tied specifically to the stay-top-of-mind value proposition",
+                          "score": {
+                            "Freq": 0,
+                            "Intensity": 0,
+                            "Fit": 0
+                          }
+                        }
+                      ],
                       "score": {
                         "Freq": 0,
                         "Intensity": 0,
                         "Fit": 0
-                      }
-                    },
-                    {
-                      "id": "nurture-smallbiz-top-of-mind-pay",
-                      "label": "Users are willing to pay for a top-of-mind solution if it proves value",
-                      "status": "pending",
-                      "type": "Economics",
-                      "test": "Pricing / commitment test tied specifically to the stay-top-of-mind value proposition",
-                      "score": {
-                        "Freq": 0,
-                        "Intensity": 0,
-                        "Fit": 0
-                      }
+                      },
+                      "gateType": "AND"
                     }
-                  ],
-                  "score": {
-                    "Freq": 0,
-                    "Intensity": 0,
-                    "Fit": 0
-                  },
-                  "gateType": "AND"
+                  ]
                 },
                 {
                   "id": "nurture-smallbiz-weak-alternatives",
@@ -103,7 +113,7 @@
                     {
                       "id": "nurture-smallbiz-no-playbook",
                       "label": "Even when users pick a nurturing channel, they do not know what to write, which medium to use, how often to reach out, or whether it works",
-                      "status": "active",
+                      "status": "pending",
                       "type": "Alternative",
                       "test": "Mom test: evidence of uncertainty about execution, abandoned attempts, or lack of a clear playbook",
                       "score": {
@@ -167,7 +177,7 @@
                     {
                       "id": "nurture-smallbiz-travel-proximity-trigger",
                       "label": "Users manually research who to meet when traveling or track when contacts are visiting their city",
-                      "status": "active",
+                      "status": "pending",
                       "type": "Need",
                       "test": "Mom test: ask for recent travel examples and whether they searched for people to meet or noticed visitors manually",
                       "score": {
@@ -227,7 +237,7 @@
                 {
                   "id": "nurture-smallbiz-radar-drift-alert",
                   "label": "Users respond to automated drift alerts and ask for help re-engaging a real contact",
-                  "status": "active",
+                  "status": "pending",
                   "type": "Adoption",
                   "test": "MVT: send drift alerts when a user has not spoken to a contact in 3+ months and measure reply / action rate",
                   "score": {
@@ -390,7 +400,7 @@
                 {
                   "id": "nurture-smallbiz-calendar-connected-workflow",
                   "label": "A calendar-connected workflow is enough to trigger useful nurturing prompts",
-                  "status": "active",
+                  "status": "pending",
                   "type": "Feasibility",
                   "test": "Live prompt experiment on calendar-connected users: do pre/post-meeting signals generate prompts users find useful enough to act on?",
                   "score": {
@@ -592,18 +602,6 @@
           "type": "Growth",
           "children": [
             {
-              "id": "after-being-exposed-to-the-emails-from-g",
-              "label": "After being exposed to Gordy emails, some users click stay-in-touch and create at least one tracking request",
-              "status": "active",
-              "type": "Growth",
-              "test": "MVT: implement the stay-in-touch button and measure creation of at least one tracking request within 30 days",
-              "score": {
-                "Freq": 0,
-                "Intensity": 0,
-                "Fit": 0
-              }
-            },
-            {
               "id": "over-20-of-users-go-to-the-extended-brie",
               "label": "A meaningful minority of users open an extended brief when it is offered",
               "status": "active",
@@ -686,7 +684,7 @@
     },
     {
       "id": "root-intros-main",
-      "label": "There is at least one viral wedge in the introductions and intro-meetings space for small business owners who also do selling",
+      "label": "There is at least one explosive growth wedge in the introductions and intro-meetings space for small business owners who also do selling",
       "status": "validated",
       "children": [
         {
@@ -700,6 +698,7 @@
               "status": "validated",
               "type": "Segment",
               "test": "Analysis on past calls: frequency of asking for intros / relevant asks around meetings",
+              "reason": "Weekly+: 16 users. Monthly: 3. Quarterly or less: 11. Never: 6. Out of ~55 interviewees.",
               "score": {
                 "Freq": 0,
                 "Intensity": 0,
@@ -708,10 +707,23 @@
             },
             {
               "id": "intro-askbrief-need",
-              "label": "Users want a strategic ask brief before relevant meetings",
+              "label": "Users have a real enough pre-meeting intro / strategic-ask need that they want the tool and will connect calendar for it",
               "status": "validated",
               "type": "Need",
-              "test": "Mockup test: do users want Gordy sending them ideas for 2-3 introductions or strategic asks before each meeting?",
+              "test": "Pitch / mockup evidence: over 80% of pitched users wanted the tool and were willing to connect calendar access to get strategic ask briefs",
+              "reason": "17 intros made out of 20-25 pitched. Over 80% wanted the Ask Brief.",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
+            },
+            {
+              "id": "intro-askbrief-alternatives",
+              "label": "Current alternatives are weak enough: manual pre-meeting intro / ask preparation is rare, inconsistent, or too effortful",
+              "status": "active",
+              "type": "Alternative",
+              "test": "Interview plus diary / baseline study with target users over 1 week. Pass if at least 70% either do no deliberate pre-meeting intro preparation for most relevant meetings, or spend more than 10 minutes preparing and still ask for intros in fewer than 25% of those meetings.",
               "score": {
                 "Freq": 0,
                 "Intensity": 0,
@@ -720,28 +732,32 @@
             },
             {
               "id": "intro-askbrief-adoption",
-              "label": "Users will use the strategic ask brief flow in live meetings and keep Gordy in the workflow",
+              "label": "Initial adoption and retention are strong enough for this wedge",
               "status": "active",
               "type": "Adoption",
               "children": [
                 {
-                  "id": "intro-askbrief-user-asks-counterpart",
-                  "label": "Users will agree to ask the counterpart about a new intro flow using Gordy",
+                  "id": "intro-askbrief-initial-adoption",
+                  "label": "Initial adoption works",
                   "status": "active",
                   "type": "Adoption",
-                  "test": "Mockup test: show the flow and ask whether they would use it in a real meeting",
-                  "score": {
-                    "Freq": 0,
-                    "Intensity": 0,
-                    "Fit": 0
-                  }
+                  "children": [
+                    {
+                      "id": "intro-askbrief-user-asks-counterpart",
+                      "label": "Users will ask the counterpart for intros in a real meeting when Gordy suggests it",
+                      "status": "active",
+                      "type": "Adoption",
+                      "test": "User follow-up on real meetings where Gordy offered intros. After each meeting, ask the user whether they used one of the suggested intros in the conversation. Pass if at least 30% of meetings with a relevant suggestion lead to the user reporting that they asked for at least one intro."
+                    }
+                  ],
+                  "gateType": "AND"
                 },
                 {
-                  "id": "intro-askbrief-auto-compose",
-                  "label": "Users will use an auto-composed intro request and keep Gordy attribution in the message",
-                  "status": "pending",
+                  "id": "intro-askbrief-retention",
+                  "label": "Users retain the product for long enough, and across enough relevant meetings, for growth loops to fire",
+                  "status": "active",
                   "type": "Adoption",
-                  "test": "Data from live experiments plus user interviews about whether attribution is deleted",
+                  "test": "Retention analysis on early users. Pass if at least 40% of activated users are still active 30 days after first use and, during that period, each retained user has at least 2 meetings where Gordy can surface an intro suggestion.",
                   "score": {
                     "Freq": 0,
                     "Intensity": 0,
@@ -757,47 +773,47 @@
               "gateType": "AND"
             },
             {
+              "id": "intro-askbrief-feasibility",
+              "label": "We can generate enough meaningful suggestions for enough meetings to support this wedge",
+              "status": "pending",
+              "type": "Feasibility",
+              "test": "Live product or concierge evaluation on real upcoming meetings. Pass if Gordy produces at least 1 meaningful intro suggestion for at least 60% of relevant meetings, and users rate at least 50% of surfaced suggestions as realistic enough to use.",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
+            },
+            {
               "id": "intro-askbrief-growth",
               "label": "The strategic ask brief flow has at least one working growth loop",
               "status": "active",
               "type": "Growth",
               "children": [
                 {
-                  "id": "intro-askbrief-receiving-loop",
-                  "label": "The counterpart / recipient side of the loop works",
+                  "id": "intro-askbrief-gordy-sent-counterpart-loops",
+                  "label": "At least one Gordy-sent counterpart email loop works",
                   "status": "active",
                   "type": "Growth",
                   "children": [
                     {
-                      "id": "counterpart-attention",
-                      "label": "Counterpart-facing emails get enough attention to drive downstream actions",
+                      "id": "intro-askbrief-premeeting-notify-loop",
+                      "label": "The pre-meeting counterpart notification loop works",
                       "status": "active",
                       "type": "Growth",
                       "children": [
                         {
-                          "id": "counterpart-attention-threshold",
-                          "label": "Counterpart email gets over 30% click rate and 60% notice rate",
-                          "status": "active",
-                          "type": "Growth",
-                          "test": "Live emails to real attendees \u2014 measuring clicks, replies, and notice / recall",
-                          "score": {
-                            "Freq": 0,
-                            "Intensity": 0,
-                            "Fit": 0
-                          }
-                        },
-                        {
-                          "id": "counterpart-attention-downstream",
-                          "label": "At least one counterpart CTA gets meaningful engagement",
-                          "status": "active",
+                          "id": "intro-askbrief-premeeting-notify-exposure",
+                          "label": "Pre-meeting counterpart notification emails are allowed and generated often enough from normal product usage",
+                          "status": "pending",
                           "type": "Growth",
                           "children": [
                             {
-                              "id": "counterpart-intros-cta",
-                              "label": "Some counterpart email recipients click an 'Introduce me to someone' CTA",
-                              "status": "active",
+                              "id": "intro-askbrief-auto-compose",
+                              "label": "Users will let Gordy send a pre-meeting counterpart notification email and keep Gordy attribution in the message",
+                              "status": "pending",
                               "type": "Growth",
-                              "test": "MVT: Add 'Introduce me to someone' CTA button to counterpart emails. Measure click rate and downstream intent.",
+                              "test": "Live experiment plus user interviews: measure whether users allow Gordy to send a pre-meeting counterpart-facing email and whether Gordy attribution remains intact",
                               "score": {
                                 "Freq": 0,
                                 "Intensity": 0,
@@ -805,11 +821,11 @@
                               }
                             },
                             {
-                              "id": "counterpart-stay-intouch-cta",
-                              "label": "Some counterpart email recipients click an 'Help me stay in touch' CTA for a real contact",
-                              "status": "active",
+                              "id": "intro-askbrief-counterpart-cta-frequency",
+                              "label": "Enough eligible meetings result in a pre-meeting counterpart notification email being sent",
+                              "status": "pending",
                               "type": "Growth",
-                              "test": "MVT: Add a stay-in-touch CTA to counterpart emails. Measure click rate and downstream tracking-request creation.",
+                              "test": "Instrument the live flow and measure the share and absolute volume of eligible meetings that produce a pre-meeting counterpart notification email",
                               "score": {
                                 "Freq": 0,
                                 "Intensity": 0,
@@ -817,55 +833,330 @@
                               }
                             }
                           ],
-                          "gateType": "OR"
+                          "gateType": "AND"
+                        },
+                        {
+                          "id": "counterpart-attention",
+                          "label": "Pre-meeting counterpart notification emails get enough attention to drive counterpart user conversion",
+                          "status": "active",
+                          "type": "Growth",
+                          "children": [
+                            {
+                              "id": "counterpart-attention-threshold",
+                              "label": "Counterpart email gets over 30% click rate and 60% notice rate",
+                              "status": "active",
+                              "type": "Growth",
+                              "test": "Live emails to real attendees \u2014 measuring clicks, replies, and notice / recall",
+                              "reason": "Only 17.5 (19 out of 109) clicked the hello page. None converted",
+                              "children": [
+                                {
+                                  "id": "intro-circle-cta-gets-ctr",
+                                  "status": "active",
+                                  "label": "Intro Circle CTA gets CTR",
+                                  "test": "Live emails to real attendees \u2014 measuring clicks, replies, and notice / recall",
+                                  "type": "Growth"
+                                },
+                                {
+                                  "id": "hello-page-version-gets-ctr",
+                                  "status": "eliminated",
+                                  "label": "Hello page CTA gets CTR",
+                                  "reason": "Only 17.5 (19 out of 109) clicked the hello page. None converted",
+                                  "test": "Live emails to real attendees \u2014 measuring clicks, replies, and notice / recall"
+                                },
+                                {
+                                  "id": "get-intros-cta-gets-ctr",
+                                  "status": "pending",
+                                  "label": "Get Intros CTA gets CTR",
+                                  "test": "Live emails to real attendees \u2014 measuring clicks, replies, and notice / recall",
+                                  "type": "Growth"
+                                }
+                              ],
+                              "gateType": "OR"
+                            },
+                            {
+                              "id": "counterpart-attention-downstream",
+                              "label": "At least one pre-meeting counterpart CTA converts recipients into activated users",
+                              "status": "active",
+                              "type": "Growth",
+                              "gateType": "OR",
+                              "children": [
+                                {
+                                  "id": "counterpart-intros-cta-conversion",
+                                  "label": "The 'Introduce me to someone' CTA converts recipients into activated users",
+                                  "status": "active",
+                                  "type": "Growth",
+                                  "gateType": "AND",
+                                  "children": [
+                                    {
+                                      "id": "counterpart-intros-cta",
+                                      "label": "Some recipients of the pre-meeting counterpart email click an 'Introduce me to someone' CTA",
+                                      "score": {
+                                        "Fit": 0,
+                                        "Freq": 0,
+                                        "Intensity": 0
+                                      },
+                                      "status": "active",
+                                      "test": "MVT: Add an 'Introduce me to someone' CTA button to pre-meeting counterpart emails. Measure click rate and downstream intent.",
+                                      "type": "Growth"
+                                    },
+                                    {
+                                      "id": "counterpart-intros-cta-flow",
+                                      "label": "Recipients who click 'Introduce me to someone' reach a clear Gordy intro-request flow",
+                                      "score": {
+                                        "Fit": 0,
+                                        "Freq": 0,
+                                        "Intensity": 0
+                                      },
+                                      "status": "pending",
+                                      "test": "Prototype the click destination for the 'Introduce me to someone' CTA and measure whether recipients understand the flow and reach the point where they can request an intro through Gordy.",
+                                      "type": "Growth"
+                                    },
+                                    {
+                                      "id": "counterpart-intros-cta-activation",
+                                      "label": "Enough recipients who enter the 'Introduce me to someone' flow sign up and activate as users",
+                                      "score": {
+                                        "Fit": 0,
+                                        "Freq": 0,
+                                        "Intensity": 0
+                                      },
+                                      "status": "pending",
+                                      "test": "Measure the signup and activation rate of recipients who click the 'Introduce me to someone' CTA and enter the Gordy flow.",
+                                      "type": "Growth"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "counterpart-stay-intouch-cta-conversion",
+                                  "label": "The 'Help me stay in touch' CTA converts recipients into activated users",
+                                  "status": "active",
+                                  "type": "Growth",
+                                  "gateType": "AND",
+                                  "children": [
+                                    {
+                                      "id": "counterpart-stay-intouch-cta",
+                                      "label": "Some recipients of the pre-meeting counterpart email click a 'Help me stay in touch' CTA for a real contact",
+                                      "score": {
+                                        "Fit": 0,
+                                        "Freq": 0,
+                                        "Intensity": 0
+                                      },
+                                      "status": "pending",
+                                      "test": "MVT: Add a stay-in-touch CTA to pre-meeting counterpart emails. Measure click rate and downstream tracking-request creation.",
+                                      "type": "Growth"
+                                    },
+                                    {
+                                      "id": "counterpart-stay-intouch-cta-flow",
+                                      "label": "Recipients who click 'Help me stay in touch' reach a clear Gordy contact-tracking flow",
+                                      "score": {
+                                        "Fit": 0,
+                                        "Freq": 0,
+                                        "Intensity": 0
+                                      },
+                                      "status": "pending",
+                                      "test": "Prototype the click destination for the 'Help me stay in touch' CTA and measure whether recipients understand the flow and reach the point where they can set up tracking through Gordy.",
+                                      "type": "Growth"
+                                    },
+                                    {
+                                      "id": "counterpart-stay-intouch-cta-activation",
+                                      "label": "Enough recipients who enter the 'Help me stay in touch' flow sign up and activate as users",
+                                      "score": {
+                                        "Fit": 0,
+                                        "Freq": 0,
+                                        "Intensity": 0
+                                      },
+                                      "status": "pending",
+                                      "test": "Measure the signup and activation rate of recipients who click the 'Help me stay in touch' CTA and enter the Gordy flow.",
+                                      "type": "Growth"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ],
+                          "gateType": "AND"
                         }
                       ],
                       "gateType": "AND"
                     },
                     {
-                      "id": "gordy-loop",
-                      "label": "Post-meeting follow-up to the counterpart produces responses",
+                      "id": "intro-askbrief-counterpart-followup-loop",
+                      "label": "The Gordy-sent post-meeting counterpart follow-up loop works",
                       "status": "active",
                       "type": "Growth",
-                      "test": "Monitor response rates to post-meeting follow-up sent to the counterpart",
-                      "score": {
-                        "Freq": 0,
-                        "Intensity": 0,
-                        "Fit": 0
-                      }
+                      "children": [
+                        {
+                          "id": "intro-askbrief-counterpart-followup-exposure",
+                          "label": "Gordy-sent post-meeting follow-up to counterparts is generated often enough from normal product usage",
+                          "status": "pending",
+                          "type": "Growth",
+                          "children": [
+                            {
+                              "id": "intro-askbrief-counterpart-followup-enabled",
+                              "label": "Users are willing to let Gordy send post-meeting follow-up to the counterpart",
+                              "status": "pending",
+                              "type": "Growth",
+                              "test": "Live experiment plus user interviews: measure whether users allow post-meeting follow-up to be sent to the counterpart by Gordy",
+                              "score": {
+                                "Freq": 0,
+                                "Intensity": 0,
+                                "Fit": 0
+                              }
+                            },
+                            {
+                              "id": "intro-askbrief-counterpart-followup-frequency",
+                              "label": "Enough eligible meetings result in Gordy-sent post-meeting follow-up being sent to the counterpart",
+                              "status": "pending",
+                              "type": "Growth",
+                              "test": "Instrument the live flow and measure the share and absolute volume of eligible meetings that produce Gordy-sent counterpart follow-up",
+                              "score": {
+                                "Freq": 0,
+                                "Intensity": 0,
+                                "Fit": 0
+                              }
+                            }
+                          ],
+                          "gateType": "AND"
+                        },
+                        {
+                          "id": "gordy-loop",
+                          "label": "Gordy-sent post-meeting follow-up to the counterpart produces responses",
+                          "status": "active",
+                          "type": "Growth",
+                          "test": "Monitor response rates to Gordy-sent post-meeting follow-up sent to the counterpart",
+                          "gateType": "OR",
+                          "children": [
+                            {
+                              "id": "gordy-followup-how-do-you-know",
+                              "label": "The 'how do you know [User]?' email with no CTA is a viable post-meeting conversion mechanic",
+                              "status": "active",
+                              "children": [
+                                {
+                                  "id": "gordy-followup-how-do-you-know-replies",
+                                  "label": "The email gets enough replies to start a conversion conversation",
+                                  "status": "active",
+                                  "type": "Growth",
+                                  "test": "Live test: send the 'how do you know [User first name] [User last name]?' email to real counterparts after meetings. Pass if at least 30% reply and at least 20% of all sends become a real back-and-forth conversation.",
+                                  "score": {
+                                    "Freq": 0,
+                                    "Intensity": 0,
+                                    "Fit": 0
+                                  }
+                                },
+                                {
+                                  "id": "gordy-followup-how-do-you-know-conversion",
+                                  "label": "Those conversations convert to signup often enough",
+                                  "status": "active",
+                                  "type": "Growth",
+                                  "test": "Live test on the same cohort: measure signup from reply threads started by the email. Pass if at least 15% of conversations and at least 5% of all email recipients sign up.",
+                                  "score": {
+                                    "Freq": 0,
+                                    "Intensity": 0,
+                                    "Fit": 0
+                                  }
+                                }
+                              ],
+                              "score": {
+                                "Freq": 0,
+                                "Intensity": 0,
+                                "Fit": 0
+                              },
+                              "gateType": "AND"
+                            },
+                            {
+                              "id": "gordy-followup-network-fomo",
+                              "label": "A 'people in your network use Gordy \u2014 sign up to see who' email gets CTR and signups",
+                              "status": "active",
+                              "type": "Growth",
+                              "test": "A/B test: Gordy sends 'a few people in your network use me for pre-meeting research and warm intros \u2014 sign up and I'll show you who' with link to hello page. Measure CTR and signup rate.",
+                              "score": {
+                                "Freq": 0,
+                                "Intensity": 0,
+                                "Fit": 0
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "gateType": "AND"
+                    },
+                    {
+                      "id": "gordy-post-meeting-follow-up-to-the-user",
+                      "status": "eliminated",
+                      "label": "Gordy post meeting follow up to the user leads to counterpart intros",
+                      "type": "Growth",
+                      "gateType": "OR",
+                      "children": [
+                        {
+                          "id": "gordy-initiated-follow-up-to-engaged-cou",
+                          "status": "eliminated",
+                          "label": "Gordy-initiated follow-up to engaged counterparts gets intro",
+                          "test": "When a counterpart views the hello page 3+ times, Gordy sends a follow-up asking for an intro. ",
+                          "reason": "Sent intro requests about 14 counterparts to 8 users - didn't get one intro. Most of them resented the ask."
+                        }
+                      ]
                     }
                   ],
                   "gateType": "OR"
                 },
                 {
-                  "id": "intro-askbrief-sending-loop",
-                  "label": "The user / sender side of the loop works",
+                  "id": "intro-askbrief-user-sent-counterpart-loops",
+                  "label": "At least one user-sent counterpart email loop with Gordy attribution works",
                   "status": "pending",
                   "type": "Growth",
                   "children": [
                     {
-                      "id": "gordy-loop-user",
-                      "label": "Post-meeting follow-up to the user generates repeated intro requests",
+                      "id": "intro-askbrief-user-sent-reminder-loop",
+                      "label": "The user-sent post-meeting reminder loop works",
                       "status": "pending",
                       "type": "Growth",
-                      "test": "Automation / concierge: measure intros generated per user per month from post-meeting follow-up",
-                      "score": {
-                        "Freq": 0,
-                        "Intensity": 0,
-                        "Fit": 0
-                      }
-                    },
-                    {
-                      "id": "gordy-brief-share",
-                      "label": "Users share the strategic ask brief internally with colleagues",
-                      "status": "pending",
-                      "type": "Growth",
-                      "test": "Internal pilot with companies that have multiple employees: measure forwarding / sharing behavior",
-                      "score": {
-                        "Freq": 0,
-                        "Intensity": 0,
-                        "Fit": 0
-                      }
+                      "children": [
+                        {
+                          "id": "intro-askbrief-user-sent-reminder-exposure",
+                          "label": "User-sent Gordy-drafted post-meeting reminder emails are generated often enough from normal product usage",
+                          "status": "pending",
+                          "type": "Growth",
+                          "children": [
+                            {
+                              "id": "intro-askbrief-user-sent-reminder-enabled",
+                              "label": "Users will send a Gordy-drafted post-meeting reminder to the counterpart and keep Gordy attribution in the message",
+                              "status": "pending",
+                              "type": "Growth",
+                              "test": "Live experiment plus user interviews: measure whether users send a Gordy-drafted post-meeting reminder to the counterpart and keep the Gordy mention intact",
+                              "score": {
+                                "Freq": 0,
+                                "Intensity": 0,
+                                "Fit": 0
+                              }
+                            },
+                            {
+                              "id": "intro-askbrief-user-sent-reminder-frequency",
+                              "label": "Enough eligible meetings result in a user-sent Gordy-drafted post-meeting reminder being sent to the counterpart",
+                              "status": "pending",
+                              "type": "Growth",
+                              "test": "Instrument the live flow and measure the share and absolute volume of eligible meetings that produce a user-sent Gordy-drafted post-meeting reminder",
+                              "score": {
+                                "Freq": 0,
+                                "Intensity": 0,
+                                "Fit": 0
+                              }
+                            }
+                          ],
+                          "gateType": "AND"
+                        },
+                        {
+                          "id": "intro-askbrief-user-sent-reminder-conversion",
+                          "label": "User-sent Gordy-attributed post-meeting reminders to counterparts produce downstream interest or action",
+                          "status": "pending",
+                          "type": "Growth",
+                          "test": "Live test: offer one-click drafting of post-meeting reminder emails and measure send rate, response rate, and whether recipients ask about or activate Gordy",
+                          "score": {
+                            "Freq": 0,
+                            "Intensity": 0,
+                            "Fit": 0
+                          }
+                        }
+                      ],
+                      "gateType": "AND"
                     }
                   ],
                   "gateType": "OR"
@@ -874,11 +1165,23 @@
               "gateType": "OR"
             },
             {
-              "id": "intro-askbrief-feasibility",
-              "label": "We can deliver the strategic ask brief flow with the current calendar-connected product and email workflow",
-              "status": "active",
-              "type": "Feasibility",
-              "test": "Run the current calendar + email workflow live and verify that briefs can be generated and delivered reliably enough to support usage",
+              "id": "intro-askbrief-paid-conversion",
+              "label": "Enough wedge users convert from the strategic ask brief flow into the paid nurture product",
+              "status": "pending",
+              "type": "Economics",
+              "test": "Follow-on product test with retained wedge users: measure what share have a real nurture need, want the paid nurture workflow after experiencing the wedge, and are willing to move into that product path",
+              "score": {
+                "Freq": 0,
+                "Intensity": 0,
+                "Fit": 0
+              }
+            },
+            {
+              "id": "intro-askbrief-economics",
+              "label": "The amortized cost per converted paid user is low enough to justify this wedge",
+              "status": "pending",
+              "type": "Economics",
+              "test": "Model and then measure the amortized cost per converted paid user, including acquisition, service, and wedge usage costs through paid conversion",
               "score": {
                 "Freq": 0,
                 "Intensity": 0,
@@ -899,6 +1202,7 @@
               "status": "validated",
               "type": "Segment",
               "test": "Analysis on past calls: how often small-business leaders target a specific person through a warm path",
+              "reason": "Q5: 35 described this as a need out of 40 that were asked.",
               "score": {
                 "Freq": 0,
                 "Intensity": 0,
@@ -912,17 +1216,16 @@
               "type": "Need",
               "children": [
                 {
-                  "id": "intro-network-mutual-lkg",
-                  "label": "Mutual connections are often too nominal to reliably support warm-intro decisions",
-                  "status": "validated",
-                  "type": "Need",
+                  "id": "intro-network-mutual-wedge",
+                  "label": "Mutual connections are a useful wedge",
+                  "status": "active",
                   "children": [
                     {
-                      "id": "option-b-smallorg",
-                      "label": "Small-org leaders describe facing many mutual connections and needing to narrow them to a few realistic intro paths",
-                      "status": "validated",
+                      "id": "intro-network-mutual-wedge-need",
+                      "label": "There is a real need for help using mutual connections to find viable intro paths",
+                      "status": "active",
                       "type": "Need",
-                      "test": "Mom test: how often do small-org front-people target a specific person for an intro?",
+                      "test": "Mom test: when users want a warm intro, do they start from mutual connections and feel a real need to narrow to a few realistic paths?",
                       "score": {
                         "Freq": 0,
                         "Intensity": 0,
@@ -930,11 +1233,11 @@
                       }
                     },
                     {
-                      "id": "mutual-ca",
-                      "label": "Job searchers look for first-degree connections who will actually answer and help with inside submissions",
+                      "id": "intro-network-mutual-wedge-weak-alternative",
+                      "label": "The current mutual-connections workflow is not good enough because it is noisy, nominal, or too broad",
                       "status": "active",
-                      "type": "Segment",
-                      "test": "Interview: when looking for a job, do users search for inside-submission connections they believe will actually respond?",
+                      "type": "Alternative",
+                      "test": "Workflow interview or mock task: ask users to use current mutual lists for a real target and observe whether they get too many weak or nominal options",
                       "score": {
                         "Freq": 0,
                         "Intensity": 0,
@@ -942,23 +1245,11 @@
                       }
                     },
                     {
-                      "id": "mutual-ca-dup-1",
-                      "label": "Many mutual connections increase confidence before a reach-out by signaling acceptance odds",
-                      "status": "active",
-                      "type": "Need",
-                      "test": "Interview: when and why do users look at mutual connections before reaching out?",
-                      "score": {
-                        "Freq": 0,
-                        "Intensity": 0,
-                        "Fit": 0
-                      }
-                    },
-                    {
-                      "id": "mutual-cb",
-                      "label": "People check mutual connections to understand the target by seeing who they associate with",
-                      "status": "active",
-                      "type": "Need",
-                      "test": "Interview: do users inspect mutuals to understand the target socially before reaching out?",
+                      "id": "intro-network-mutual-wedge-better-solution",
+                      "label": "We can provide a meaningfully better way to narrow mutual connections into a few realistic intro paths",
+                      "status": "pending",
+                      "type": "Feasibility",
+                      "test": "Concierge or prototype test: compare our narrowed or ranked mutual-path output against the raw mutual list for a real target and measure whether users prefer it and would act on it",
                       "score": {
                         "Freq": 0,
                         "Intensity": 0,
@@ -971,12 +1262,12 @@
                     "Intensity": 0,
                     "Fit": 0
                   },
-                  "gateType": "OR"
+                  "gateType": "AND"
                 },
                 {
                   "id": "intro-network-timing",
                   "label": "Askers want to know when a giver makes a new relevant real-world connection so they can ask for an intro",
-                  "status": "active",
+                  "status": "pending",
                   "type": "Need",
                   "test": "Mockup test: show new relevant connections and ask whether the user would want such timing alerts",
                   "score": {
@@ -1044,9 +1335,21 @@
                   "type": "Adoption",
                   "children": [
                     {
+                      "id": "new-1",
+                      "label": "Users will install a browser extension and connect their calendar to get a reality check on their network",
+                      "status": "active",
+                      "type": "Adoption",
+                      "test": "Mockup test: are they willing to install and connect data sources for this value prop?",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
+                    },
+                    {
                       "id": "network-self-map",
                       "label": "Users want a real picture of their own network \u2014 active vs dormant connections, response likelihood, and intro balance \u2014 not a vanity count",
-                      "status": "active",
+                      "status": "pending",
                       "type": "Adoption",
                       "test": "Demo/waitlist test: show a mockup of a network-health dashboard and measure strong pull / sign-up intent",
                       "score": {
@@ -1061,18 +1364,6 @@
                       "status": "pending",
                       "type": "Adoption",
                       "test": "Only test after self-map demand is real: show peer-comparison mockups and ask whether this adds value",
-                      "score": {
-                        "Freq": 0,
-                        "Intensity": 0,
-                        "Fit": 0
-                      }
-                    },
-                    {
-                      "id": "new-1",
-                      "label": "Users will install a browser extension and connect their calendar to get a reality check on their network",
-                      "status": "active",
-                      "type": "Adoption",
-                      "test": "Mockup test: are they willing to install and connect data sources for this value prop?",
                       "score": {
                         "Freq": 0,
                         "Intensity": 0,
@@ -1239,7 +1530,7 @@
               "label": "There is a plausible repeated-use or growth loop once the network-truth workflow works",
               "status": "pending",
               "type": "Growth",
-              "test": "Measure whether one solved intro request leads to repeated reuse, sharing, or more warm-path requests over time",
+              "test": "Track solved intro-path requests over time. Pass if at least 30% of users who get one useful network-truth result return for another request within 30 days, or at least 15% share or invite another user as part of the workflow.",
               "score": {
                 "Freq": 0,
                 "Intensity": 0,
@@ -1260,11 +1551,7 @@
               "status": "validated",
               "type": "Growth",
               "test": "Predict who they know and reach out asking for a name-drop / confirmation",
-              "score": {
-                "Freq": 0,
-                "Intensity": 0,
-                "Fit": 0
-              }
+              "reason": "Investors: 50 > 12 > 3 (25% reply rate). Founders: 58 > 17 > 5 (29% reply rate)."
             },
             {
               "id": "namedrop-ae-bd",
@@ -1272,11 +1559,7 @@
               "status": "validated",
               "type": "Growth",
               "test": "Predict who they know and reach out asking for a name-drop / confirmation",
-              "score": {
-                "Freq": 0,
-                "Intensity": 0,
-                "Fit": 0
-              }
+              "reason": "AE/Sales: 67 > 26 > 18 (38% reply, 69% confirm). BD: 64 > 23 > 11 (35% reply, 47% confirm)."
             },
             {
               "id": "gordy-asks",
@@ -1284,11 +1567,7 @@
               "status": "validated",
               "type": "Growth",
               "test": "Live test: Gordy sends outbound messages offering intros to targeted prospects and we measure human response plus yes rate",
-              "score": {
-                "Freq": 0,
-                "Intensity": 0,
-                "Fit": 0
-              }
+              "reason": "Sent: 279. Human response: 14 (5%). Said yes: 9 (3.23%)."
             }
           ],
           "gateType": "OR"
@@ -1299,7 +1578,7 @@
     {
       "id": "root-intros-learnings",
       "label": "Learnings and eliminated intro-space branches that still matter for interpretation",
-      "status": "active",
+      "status": "eliminated",
       "children": [
         {
           "id": "option-b",
@@ -1333,7 +1612,7 @@
     {
       "id": "root-outreach-intel",
       "label": "There may be a business in outbound workflow and extra-intel products",
-      "status": "review",
+      "status": "backlog",
       "children": [
         {
           "id": "outreach-personalization-evidence",
@@ -1341,7 +1620,7 @@
           "status": "validated",
           "type": "Need",
           "test": "Landscape / research review on response-rate lift from personalization",
-          "reason": "Mapped from old obs-d root claim.",
+          "reason": "Backlinko large-scale study: 32.7% higher response rate for customized vs generic templates.",
           "score": {
             "Freq": 0,
             "Intensity": 0,
@@ -1351,7 +1630,7 @@
         {
           "id": "market-smallorg-pokemon-cold",
           "label": "Small-business leaders who do outbound spend meaningful time researching prospects manually",
-          "status": "review",
+          "status": "backlog",
           "type": "Segment",
           "test": "Analysis of past calls: do people research targets before cold outreach, and how much time does it take?",
           "score": {
@@ -1363,7 +1642,7 @@
         {
           "id": "pokemon-cold-mine-common",
           "label": "Users doing cold outreach have no scalable way to get public personal intel on targets today",
-          "status": "active",
+          "status": "backlog",
           "type": "Need",
           "test": "Mom test: how much time does research take, what is frustrating, what have they tried to automate, and would they pay to improve it?",
           "score": {
@@ -1375,13 +1654,13 @@
         {
           "id": "outreach-workflow-angles",
           "label": "At least one outbound / extra-intel workflow angle appears promising",
-          "status": "active",
+          "status": "backlog",
           "type": "Adoption",
           "children": [
             {
               "id": "17",
               "label": "Users want to delegate LinkedIn search and inbox/outbox work to an SDR or recruiter",
-              "status": "active",
+              "status": "backlog",
               "type": "Adoption",
               "test": "Mom test: when and why do users want to delegate LinkedIn / email communication, and what triggers the need?",
               "score": {
@@ -1393,7 +1672,7 @@
             {
               "id": "pokemon-get-buy",
               "label": "Users will pay to access personal intel that others have collected about a target they have never met",
-              "status": "pending",
+              "status": "backlog",
               "type": "Economics",
               "test": "Interview + mockup: show the concept and ask whether they want it and whether they are comfortable paying for it",
               "score": {
@@ -1405,7 +1684,7 @@
             {
               "id": "leave-linkedin-asap",
               "label": "Users want to take messaging outside of LinkedIn as soon as possible",
-              "status": "active",
+              "status": "backlog",
               "type": "Adoption",
               "test": "Interview: after an initial LinkedIn exchange, when and why do users try to move the conversation to email / phone / other channels?",
               "score": {
