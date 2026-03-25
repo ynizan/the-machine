@@ -1,6 +1,25 @@
 [
   {
     "date": "2026-03-25",
+    "commit": "cca8bb8",
+    "message": "Add trigger-nudge parent node with feed-engage and proactive-tag hypotheses",
+    "changedIds": [
+      "nurture-smallbiz-trigger-nudge",
+      "nurture-smallbiz-feed-engage",
+      "nurture-smallbiz-proactive-tag"
+    ],
+    "changes": [
+      {
+        "id": "nurture-smallbiz-trigger-nudge",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-feed-engage",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-proactive-tag",
+        "action": "added"
     "commit": "beccb33",
     "message": "Merge pull request #83 from ynizan/claude/add-adoption-and-cta-nodes",
     "changedIds": [

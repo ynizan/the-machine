@@ -235,16 +235,49 @@
                   "gateType": "AND"
                 },
                 {
-                  "id": "nurture-smallbiz-radar-drift-alert",
-                  "label": "Users respond to automated drift alerts and ask for help re-engaging a real contact",
-                  "status": "pending",
+                  "id": "nurture-smallbiz-trigger-nudge",
+                  "label": "Users act on trigger-based nudges that surface concrete opportunities to engage with nurtured contacts",
+                  "status": "active",
                   "type": "Adoption",
-                  "test": "MVT: send drift alerts when a user has not spoken to a contact in 3+ months and measure reply / action rate",
-                  "score": {
-                    "Freq": 0,
-                    "Intensity": 0,
-                    "Fit": 0
-                  }
+                  "gateType": "OR",
+                  "children": [
+                    {
+                      "id": "nurture-smallbiz-radar-drift-alert",
+                      "label": "Users respond to automated drift alerts and ask for help re-engaging a real contact",
+                      "status": "pending",
+                      "type": "Adoption",
+                      "test": "MVT: send drift alerts when a user has not spoken to a contact in 3+ months and measure reply / action rate",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
+                    },
+                    {
+                      "id": "nurture-smallbiz-feed-engage",
+                      "status": "pending",
+                      "type": "Adoption",
+                      "label": "Users who see highlighted posts from nurture contacts in their LinkedIn feed engage at higher rates — commenting or tagging a second contact",
+                      "test": "Chrome extension MVP: highlight nurture-list posts for 20 beta users. Measure engagement rate on highlighted vs non-highlighted posts and whether tagged contacts find it relevant.",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
+                    },
+                    {
+                      "id": "nurture-smallbiz-proactive-tag",
+                      "status": "pending",
+                      "type": "Adoption",
+                      "label": "When prompted with relevant content to tag a dormant contact in, users act on the suggestion and the contact perceives it as genuine",
+                      "test": "Extension suggests tag-in-post for dormant contacts. Measure action rate on suggestions and whether tagged contacts engage. Also test input-request variant: asking a dormant contact for input on a post topic.",
+                      "score": {
+                        "Freq": 0,
+                        "Intensity": 0,
+                        "Fit": 0
+                      }
+                    }
+                  ]
                 },
                 {
                   "id": "nurture-smallbiz-advisor-gordy-engage",
