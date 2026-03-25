@@ -10,12 +10,93 @@ html,body{width:100%;height:100%;overflow:hidden;background:#080808;font-family:
 .logo-name{font-weight:800;font-size:17px;color:#fff;letter-spacing:-.02em}
 .logo-sub{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;
   text-transform:uppercase;color:#444;margin-left:8px}
-.legend{display:flex;gap:14px;align-items:center}
+.hdr-right{display:flex;align-items:center;gap:12px;}
 .leg{display:flex;align-items:center;gap:6px;
   font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.07em;
   text-transform:uppercase;color:#444}
 .leg-sw{width:11px;height:11px;border-radius:2px;flex-shrink:0}
 .leg-color{font-size:7px;color:#333;letter-spacing:.06em;}
+.leg-desc{font-size:7px;color:#333;text-transform:none;letter-spacing:.02em;}
+
+/* Legend floating panel */
+.legend-panel{
+  position:fixed;top:64px;left:16px;z-index:400;
+  background:#0C0C0C;border:1px solid #1E1E1E;border-radius:8px;
+  box-shadow:0 8px 32px rgba(0,0,0,.5);
+  display:none;min-width:180px;
+}
+.legend-panel.open{display:block;}
+.legend-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 14px;border-bottom:1px solid #1E1E1E;
+  font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:#888;
+}
+.legend-close{
+  background:none;border:none;color:#555;cursor:pointer;font-size:16px;
+  width:24px;height:24px;display:flex;align-items:center;justify-content:center;
+  border-radius:4px;transition:all .12s;
+}
+.legend-close:hover{color:#fff;background:rgba(255,255,255,.08);}
+.legend-body{padding:10px 14px;display:flex;flex-direction:column;gap:6px;}
+.legend-section-title{
+  font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.12em;
+  text-transform:uppercase;color:#555;margin-bottom:2px;
+}
+
+/* Search bar */
+.search-bar{
+  display:flex;align-items:center;gap:4px;
+  background:#111;border:1px solid #1E1E1E;border-radius:4px;
+  padding:0 4px 0 8px;height:28px;
+}
+.search-bar:focus-within{border-color:#D4A574;}
+#search-input{
+  background:none;border:none;outline:none;color:#ccc;
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  width:180px;
+}
+#search-input::placeholder{color:#444;}
+.search-nav-btn{
+  background:none;border:none;color:#555;cursor:pointer;font-size:16px;
+  width:20px;height:20px;display:flex;align-items:center;justify-content:center;
+  border-radius:3px;transition:all .12s;
+}
+.search-nav-btn:hover{color:#fff;background:rgba(255,255,255,.08);}
+.search-count{
+  font-family:'IBM Plex Mono',monospace;font-size:9px;color:#888;
+  min-width:36px;text-align:center;white-space:nowrap;
+}
+.search-clear{
+  background:none;border:none;color:#444;cursor:pointer;font-size:14px;
+  width:20px;height:20px;display:flex;align-items:center;justify-content:center;
+  border-radius:3px;transition:all .12s;
+}
+.search-clear:hover{color:#fff;}
+
+/* Type filter dropdown */
+.nav-type-filter{position:relative;}
+.type-filter-menu{
+  display:none;position:absolute;top:100%;left:0;margin-top:4px;
+  background:#0C0C0C;border:1px solid #1E1E1E;border-radius:6px;
+  box-shadow:0 8px 24px rgba(0,0,0,.5);padding:6px 0;min-width:160px;
+  z-index:500;max-height:300px;overflow-y:auto;
+}
+.type-filter-menu.open{display:block;}
+.type-filter-item{
+  display:flex;align-items:center;gap:8px;padding:6px 14px;cursor:pointer;
+  font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.04em;
+  color:#999;transition:background .1s;
+}
+.type-filter-item:hover{background:rgba(255,255,255,.04);}
+.type-filter-item input{accent-color:#D4A574;width:13px;height:13px;cursor:pointer;}
+#type-filter-count{
+  font-size:8px;background:rgba(212,165,116,.2);color:#D4A574;
+  padding:1px 5px;border-radius:8px;margin-left:2px;
+}
+
+/* Search highlight on node */
+.search-highlight rect.card-border{stroke:#D4A574 !important;stroke-width:3px !important;}
 
 #canvas{position:fixed;top:56px;left:0;right:0;bottom:0;cursor:grab;touch-action:none;transition:top .2s ease}
 #canvas.with-changelog{top:88px;}
