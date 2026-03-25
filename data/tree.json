@@ -737,11 +737,32 @@
               "type": "Adoption",
               "children": [
                 {
+                  "id": "intro-askbrief-initial-acquisition",
+                  "label": "Users will try and sign up for the strategic ask brief at a viable acquisition rate and cost",
+                  "status": "active",
+                  "type": "Adoption",
+                  "test": "Measure signup/activation rate and cost per activated user across acquisition channels. Define thresholds for viable rate and cost."
+                },
+                {
                   "id": "intro-askbrief-initial-adoption",
                   "label": "Initial adoption works",
                   "status": "active",
                   "type": "Adoption",
                   "children": [
+                    {
+                      "id": "intro-askbrief-user-brief-engagement",
+                      "label": "Users open and read the pre-meeting user brief before most relevant meetings",
+                      "status": "active",
+                      "type": "Adoption",
+                      "test": "Measure open rate and read-through rate of user briefs across active users. Define threshold for what 'most relevant meetings' means."
+                    },
+                    {
+                      "id": "intro-askbrief-user-brief-mutual-connections",
+                      "label": "Showing mutual connections in the user brief increases perceived value and preparation behavior",
+                      "status": "active",
+                      "type": "Adoption",
+                      "test": "MVT: add '3 people you both know' section to user briefs. Measure whether briefs with mutual connections get higher open rates, longer read times, or more reported usefulness vs. briefs without."
+                    },
                     {
                       "id": "intro-askbrief-user-asks-counterpart",
                       "label": "Users will ask the counterpart for intros in a real meeting when Gordy suggests it",
@@ -855,6 +876,13 @@
                                   "label": "Intro Circle CTA gets CTR",
                                   "test": "Live emails to real attendees — measuring clicks, replies, and notice / recall",
                                   "type": "Growth"
+                                },
+                                {
+                                  "id": "mutual-connections-content-gets-ctr",
+                                  "label": "Showing 3 mutual connections in the counterpart email gets meaningful CTR",
+                                  "status": "active",
+                                  "type": "Growth",
+                                  "test": "MVT: replace current CTA with '3 people you both know' content in counterpart emails. Measure open rate, CTR, and qualitative feedback on whether counterparts found it valuable."
                                 },
                                 {
                                   "id": "hello-page-version-gets-ctr",
