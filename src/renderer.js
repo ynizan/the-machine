@@ -1583,12 +1583,12 @@ function initTypeFilter(){
   const menu = document.getElementById('type-filter-menu');
   menu.innerHTML = `
     <div class="type-filter-item" onclick="toggleAllTypes(event)">
-      <input type="checkbox" checked id="type-filter-all">
+      <input type="checkbox" checked id="type-filter-all" onclick="event.stopPropagation();toggleAllTypes(event)">
       <span style="color:#ccc;">All Types</span>
     </div>
   ` + HYPOTHESIS_TYPES.map(t => `
     <div class="type-filter-item" onclick="toggleTypeFilterItem('${t}', event)">
-      <input type="checkbox" checked data-type="${t}">
+      <input type="checkbox" checked data-type="${t}" onclick="event.stopPropagation();toggleTypeFilterItem('${t}', event)">
       <span style="color:${(TYPE_COLORS[t]||{}).text || '#999'}">${TYPE_LABELS[t] || t}</span>
     </div>
   `).join('');
@@ -1599,8 +1599,9 @@ function toggleTypeFilter(){ document.getElementById('type-filter-menu').classLi
 
 function toggleTypeFilterItem(type, evt){
   evt.stopPropagation();
-  const cb = evt.currentTarget.querySelector('input');
-  cb.checked = !cb.checked;
+  const cb = evt.currentTarget.querySelector ? evt.currentTarget.querySelector('input') : evt.target;
+  // If clicked on the div (not checkbox), toggle manually
+  if(evt.target.tagName !== 'INPUT') cb.checked = !cb.checked;
   if(cb.checked) ACTIVE_TYPE_FILTERS.add(type);
   else ACTIVE_TYPE_FILTERS.delete(type);
   document.getElementById('type-filter-all').checked = ACTIVE_TYPE_FILTERS.size === HYPOTHESIS_TYPES.length;
@@ -1611,7 +1612,8 @@ function toggleTypeFilterItem(type, evt){
 function toggleAllTypes(evt){
   evt.stopPropagation();
   const cb = document.getElementById('type-filter-all');
-  cb.checked = !cb.checked;
+  // If clicked on the div (not checkbox), toggle manually
+  if(evt.target.tagName !== 'INPUT') cb.checked = !cb.checked;
   document.querySelectorAll('#type-filter-menu input[data-type]').forEach(c => { c.checked = cb.checked; });
   if(cb.checked) ACTIVE_TYPE_FILTERS = new Set(HYPOTHESIS_TYPES);
   else ACTIVE_TYPE_FILTERS.clear();
