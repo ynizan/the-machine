@@ -1,6 +1,99 @@
 [
   {
     "date": "2026-03-25",
+    "commit": "2507ee8",
+    "message": "Merge pull request #82 from ynizan/claude/add-growth-model-nodes",
+    "changedIds": [
+      "intro-askbrief-user-asks-counterpart",
+      "new-1"
+    ],
+    "changes": [
+      {
+        "id": "intro-askbrief-user-asks-counterpart",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "test",
+            "from": "Mockup or concierge test: show the strategic ask brief flow, then observe whether users actually ask for the intro in a live or simulated meeting",
+            "to": "Post-meeting debrief with active users: after receiving Gordy's strategic ask brief, did the user actually raise the intro ask in the meeting? Measure ask rate and outcome."
+          }
+        ]
+      },
+      {
+        "id": "new-1",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "test",
+            "from": "Mockup test: are they willing to install and connect data sources for this value prop?",
+            "to": "MVT: provide a real minimal Chrome extension during interviews. Measure whether users actually complete the install and connect their calendar when given the opportunity."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-03-25",
+    "commit": "0ba22cf",
+    "message": "Add growth model nodes and Model type support",
+    "changedIds": [
+      "intro-askbrief-user-asks-counterpart",
+      "intro-askbrief-growth-model",
+      "new-1",
+      "intro-network-growth-model",
+      "intro-network-growth"
+    ],
+    "changes": [
+      {
+        "id": "intro-askbrief-user-asks-counterpart",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "test",
+            "from": "Post-meeting debrief with active users: after receiving Gordy's strategic ask brief, did the user actually raise the intro ask in the meeting? Measure ask rate and outcome.",
+            "to": "Mockup or concierge test: show the strategic ask brief flow, then observe whether users actually ask for the intro in a live or simulated meeting"
+          }
+        ]
+      },
+      {
+        "id": "intro-askbrief-growth-model",
+        "action": "added"
+      },
+      {
+        "id": "new-1",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "test",
+            "from": "MVT: provide a real minimal Chrome extension during interviews. Measure whether users actually complete the install and connect their calendar when given the opportunity.",
+            "to": "Mockup test: are they willing to install and connect data sources for this value prop?"
+          }
+        ]
+      },
+      {
+        "id": "intro-network-growth-model",
+        "action": "added"
+      },
+      {
+        "id": "intro-network-growth",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "type",
+            "from": "Growth",
+            "to": "Economics"
+          },
+          {
+            "field": "test",
+            "from": "Measure whether one solved intro request leads to repeated reuse, sharing, or more warm-path requests over time",
+            "to": "Measure whether the actual viral coefficient K > 1: does one acquired user through the network-truth path generate more than one new acquired user through repeated reuse, sharing, or invitations over a defined time window?"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-03-25",
     "commit": "7827069",
     "message": "Update test descriptions for askbrief-user-asks-counterpart and new-1",
     "changedIds": [
