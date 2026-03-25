@@ -1583,12 +1583,12 @@ function initTypeFilter(){
   const menu = document.getElementById('type-filter-menu');
   menu.innerHTML = `
     <div class="type-filter-item" onclick="toggleAllTypes(event)">
-      <input type="checkbox" checked id="type-filter-all" onclick="event.stopPropagation();toggleAllTypes(event)">
+      <input type="checkbox" checked id="type-filter-all">
       <span style="color:#ccc;">All Types</span>
     </div>
   ` + HYPOTHESIS_TYPES.map(t => `
     <div class="type-filter-item" onclick="toggleTypeFilterItem('${t}', event)">
-      <input type="checkbox" checked data-type="${t}" onclick="event.stopPropagation();toggleTypeFilterItem('${t}', event)">
+      <input type="checkbox" checked data-type="${t}">
       <span style="color:${(TYPE_COLORS[t]||{}).text || '#999'}">${TYPE_LABELS[t] || t}</span>
     </div>
   `).join('');
