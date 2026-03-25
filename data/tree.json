@@ -1113,6 +1113,13 @@
               "gateType": "OR"
             },
             {
+              "id": "intro-askbrief-growth-model",
+              "label": "The counterpart email growth loop can theoretically achieve K > 1 given realistic assumptions",
+              "status": "active",
+              "type": "Model",
+              "test": "Spreadsheet model: plug in known values (meetings/month, eligible meeting %, send rate, open rate, CTR, conversion rate) and solve for what remaining unknowns must be. Determine whether the required values at each step are realistic enough to produce K > 1."
+            },
+            {
               "id": "intro-askbrief-paid-conversion",
               "label": "Enough wedge users convert from the strategic ask brief flow into the paid nurture product",
               "status": "pending",
@@ -1424,6 +1431,13 @@
               "gateType": "OR"
             },
             {
+              "id": "intro-network-growth-model",
+              "label": "The network-truth growth loop can theoretically achieve K > 1 given realistic assumptions",
+              "status": "active",
+              "type": "Model",
+              "test": "Spreadsheet model: plug in realistic values for extension install rate, calendar connect rate, invite rate, and invite accept rate. Determine whether the required values at each step can produce K > 1."
+            },
+            {
               "id": "intro-network-feasibility",
               "label": "We can technically deliver useful real intro paths and warm-path management with current data sources",
               "status": "pending",
@@ -1491,8 +1505,8 @@
               "id": "intro-network-growth",
               "label": "There is a plausible repeated-use or growth loop once the network-truth workflow works",
               "status": "pending",
-              "type": "Growth",
-              "test": "Measure whether one solved intro request leads to repeated reuse, sharing, or more warm-path requests over time",
+              "type": "Economics",
+              "test": "Measure whether the actual viral coefficient K > 1: does one acquired user through the network-truth path generate more than one new acquired user through repeated reuse, sharing, or invitations over a defined time window?",
               "score": {
                 "Freq": 0,
                 "Intensity": 0,
