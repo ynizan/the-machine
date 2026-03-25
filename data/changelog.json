@@ -1,6 +1,36 @@
 [
   {
     "date": "2026-03-25",
+    "commit": "ab1c44f",
+    "message": "Merge pull request #85 from ynizan/claude/update-gordy-loop-tree-I4tfs",
+    "changedIds": [
+      "gordy-loop",
+      "gordy-followup-how-do-you-know",
+      "gordy-followup-network-fomo"
+    ],
+    "changes": [
+      {
+        "id": "gordy-loop",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "gateType",
+            "to": "OR"
+          }
+        ]
+      },
+      {
+        "id": "gordy-followup-how-do-you-know",
+        "action": "added"
+      },
+      {
+        "id": "gordy-followup-network-fomo",
+        "action": "added"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-25",
     "commit": "c6723fa",
     "message": "Merge branch 'main' into add-trigger-nudge-nodes",
     "changedIds": [
@@ -209,13 +239,13 @@
     "message": "Merge pull request #82 from ynizan/claude/add-growth-model-nodes",
     "changedIds": [
       "intro-askbrief-user-asks-counterpart",
+      "gordy-loop",
       "intro-askbrief-growth-model",
       "new-1",
       "intro-network-growth-model",
       "intro-network-growth",
-      "nurture-smallbiz-trigger-nudge",
-      "nurture-smallbiz-feed-engage",
-      "nurture-smallbiz-proactive-tag"
+      "gordy-followup-how-do-you-know",
+      "gordy-followup-network-fomo"
     ],
     "changes": [
       {
@@ -226,6 +256,16 @@
             "field": "test",
             "from": "Mockup or concierge test: show the strategic ask brief flow, then observe whether users actually ask for the intro in a live or simulated meeting",
             "to": "Post-meeting debrief with active users: after receiving Gordy's strategic ask brief, did the user actually raise the intro ask in the meeting? Measure ask rate and outcome."
+          }
+        ]
+      },
+      {
+        "id": "gordy-loop",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "gateType",
+            "from": "OR"
           }
         ]
       },
@@ -263,6 +303,47 @@
             "to": "Measure whether the actual viral coefficient K > 1: does one acquired user through the network-truth path generate more than one new acquired user through repeated reuse, sharing, or invitations over a defined time window?"
           }
         ]
+      },
+      {
+        "id": "gordy-followup-how-do-you-know",
+        "action": "removed"
+      },
+      {
+        "id": "gordy-followup-network-fomo",
+        "action": "removed"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-25",
+    "commit": "1febca4",
+    "message": "Add children to gordy-loop node with two follow-up hypotheses",
+    "changedIds": [
+      "gordy-loop",
+      "gordy-followup-how-do-you-know",
+      "gordy-followup-network-fomo",
+      "nurture-smallbiz-trigger-nudge",
+      "nurture-smallbiz-feed-engage",
+      "nurture-smallbiz-proactive-tag"
+    ],
+    "changes": [
+      {
+        "id": "gordy-loop",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "gateType",
+            "to": "OR"
+          }
+        ]
+      },
+      {
+        "id": "gordy-followup-how-do-you-know",
+        "action": "added"
+      },
+      {
+        "id": "gordy-followup-network-fomo",
+        "action": "added"
       },
       {
         "id": "nurture-smallbiz-trigger-nudge",
