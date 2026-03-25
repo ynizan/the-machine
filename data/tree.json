@@ -747,7 +747,7 @@
                       "label": "Users will ask the counterpart for intros in a real meeting when Gordy suggests it",
                       "status": "active",
                       "type": "Adoption",
-                      "test": "Mockup or concierge test: show the strategic ask brief flow, then observe whether users actually ask for the intro in a live or simulated meeting"
+                      "test": "Post-meeting debrief with active users: after receiving Gordy's strategic ask brief, did the user actually raise the intro ask in the meeting? Measure ask rate and outcome."
                     }
                   ],
                   "gateType": "AND"
@@ -1301,7 +1301,7 @@
                       "label": "Users will install a browser extension and connect their calendar to get a reality check on their network",
                       "status": "active",
                       "type": "Adoption",
-                      "test": "Mockup test: are they willing to install and connect data sources for this value prop?",
+                      "test": "MVT: provide a real minimal Chrome extension during interviews. Measure whether users actually complete the install and connect their calendar when given the opportunity.",
                       "score": {
                         "Freq": 0,
                         "Intensity": 0,
