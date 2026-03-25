@@ -729,6 +729,7 @@ function initTree(DATA, opts){
 
       let _clickTimer = null;
       const grp = nodeG.append('g')
+        .attr('data-node-id', d.data.id)
         .attr('transform', `translate(${xp},${yp})`)
         .attr('opacity', isDimmed ? 0.12 : 1)
         .style('cursor','pointer')
@@ -1533,6 +1534,10 @@ function zoomToNode(nodeId){
   const d3node = CURRENT_ROOT.descendants().find(d => d.data.id === nodeId);
   if(!d3node) return;
 
+  // Remove any open inline edit overlay so search stays visible
+  const existingOverlay = document.querySelector('.inline-edit-overlay');
+  if(existingOverlay) existingOverlay.remove();
+
   const svgEl = document.getElementById('tree');
   const svg = d3.select(svgEl);
   const gEl = document.getElementById('G');
@@ -1550,8 +1555,20 @@ function zoomToNode(nodeId){
   svg.transition().duration(600)
     .call(zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(scale));
 
-  // Open the node after zoom completes
-  setTimeout(() => openInlineEdit(nodeId), 650);
+  // Highlight the node with a visible pulse
+  setTimeout(() => {
+    gEl.querySelectorAll('g[data-node-id]').forEach(grp => {
+      grp.querySelectorAll('rect').forEach(r => r.style.filter = '');
+    });
+    const grp = gEl.querySelector(`g[data-node-id="${nodeId}"]`);
+    if(grp){
+      grp.querySelectorAll('rect').forEach(r => { r.style.filter = 'brightness(1.6)'; });
+      // Auto-reset highlight after a few seconds
+      setTimeout(() => {
+        grp.querySelectorAll('rect').forEach(r => { r.style.filter = ''; });
+      }, 2000);
+    }
+  }, 620);
 }
 
 // --- Legend Toggle ---
@@ -1609,15 +1626,13 @@ function updateTypeFilterCount(){
 
 function applyTypeFilter(){
   if(!CURRENT_ROOT) return;
-  const gEl = document.getElementById('G');
-  const nodeG = gEl.children[2] || gEl.children[1];
-  if(!nodeG) return;
   const allOn = ACTIVE_TYPE_FILTERS.size === HYPOTHESIS_TYPES.length;
-  const nodes = CURRENT_ROOT.descendants().filter(d => d.data.id !== 'root');
-  nodes.forEach((d, i) => {
-    const grp = nodeG.children[i];
-    if(!grp) return;
-    const t = d.data.type;
+  const gEl = document.getElementById('G');
+  gEl.querySelectorAll('g[data-node-id]').forEach(grp => {
+    const nodeId = grp.getAttribute('data-node-id');
+    const nodeData = NODE_MAP[nodeId];
+    if(!nodeData) return;
+    const t = nodeData.type;
     grp.style.opacity = (allOn || !t || ACTIVE_TYPE_FILTERS.has(t)) ? '' : '0.12';
   });
 }
