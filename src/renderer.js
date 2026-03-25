@@ -1581,43 +1581,44 @@ let ACTIVE_TYPE_FILTERS = new Set();
 
 function initTypeFilter(){
   const menu = document.getElementById('type-filter-menu');
-  menu.innerHTML = '';
-  // All Types row
-  const allRow = document.createElement('div');
-  allRow.className = 'type-filter-item';
-  allRow.innerHTML = '<input type="checkbox" checked id="type-filter-all"><span style="color:#ccc;">All Types</span>';
-  allRow.addEventListener('click', e => {
-    e.stopPropagation();
-    const cb = document.getElementById('type-filter-all');
-    if(e.target !== cb) cb.checked = !cb.checked;
-    document.querySelectorAll('#type-filter-menu input[data-type]').forEach(c => { c.checked = cb.checked; });
-    if(cb.checked) ACTIVE_TYPE_FILTERS = new Set(HYPOTHESIS_TYPES);
-    else ACTIVE_TYPE_FILTERS.clear();
-    updateTypeFilterCount();
-    applyTypeFilter();
-  });
-  menu.appendChild(allRow);
-  // Individual type rows
-  HYPOTHESIS_TYPES.forEach(t => {
-    const row = document.createElement('div');
-    row.className = 'type-filter-item';
-    row.innerHTML = `<input type="checkbox" checked data-type="${t}"><span style="color:${(TYPE_COLORS[t]||{}).text || '#999'}">${TYPE_LABELS[t] || t}</span>`;
-    row.addEventListener('click', e => {
-      e.stopPropagation();
-      const cb = row.querySelector('input');
-      if(e.target !== cb) cb.checked = !cb.checked;
-      if(cb.checked) ACTIVE_TYPE_FILTERS.add(t);
-      else ACTIVE_TYPE_FILTERS.delete(t);
-      document.getElementById('type-filter-all').checked = ACTIVE_TYPE_FILTERS.size === HYPOTHESIS_TYPES.length;
-      updateTypeFilterCount();
-      applyTypeFilter();
-    });
-    menu.appendChild(row);
-  });
+  menu.innerHTML = `
+    <div class="type-filter-item" onclick="toggleAllTypes(event)">
+      <input type="checkbox" checked id="type-filter-all" onclick="event.stopPropagation();toggleAllTypes(event)">
+      <span style="color:#ccc;">All Types</span>
+    </div>
+  ` + HYPOTHESIS_TYPES.map(t => `
+    <div class="type-filter-item" onclick="toggleTypeFilterItem('${t}', event)">
+      <input type="checkbox" checked data-type="${t}" onclick="event.stopPropagation();toggleTypeFilterItem('${t}', event)">
+      <span style="color:${(TYPE_COLORS[t]||{}).text || '#999'}">${TYPE_LABELS[t] || t}</span>
+    </div>
+  `).join('');
   ACTIVE_TYPE_FILTERS = new Set(HYPOTHESIS_TYPES);
 }
 
 function toggleTypeFilter(){ document.getElementById('type-filter-menu').classList.toggle('open'); }
+
+function toggleTypeFilterItem(type, evt){
+  evt.stopPropagation();
+  const cb = evt.currentTarget.querySelector ? evt.currentTarget.querySelector('input') : evt.target;
+  // If clicked on the div (not checkbox), toggle manually
+  if(evt.target.tagName !== 'INPUT') cb.checked = !cb.checked;
+  if(cb.checked) ACTIVE_TYPE_FILTERS.add(type);
+  else ACTIVE_TYPE_FILTERS.delete(type);
+  document.getElementById('type-filter-all').checked = ACTIVE_TYPE_FILTERS.size === HYPOTHESIS_TYPES.length;
+  updateTypeFilterCount();
+  applyTypeFilter();
+}
+
+function toggleAllTypes(evt){
+  evt.stopPropagation();
+  const cb = document.getElementById('type-filter-all');
+  // If clicked on the div (not checkbox), toggle manually
+  if(evt.target.tagName !== 'INPUT') cb.checked = !cb.checked;
+  document.querySelectorAll('#type-filter-menu input[data-type]').forEach(c => { c.checked = cb.checked; });
+  if(cb.checked) ACTIVE_TYPE_FILTERS = new Set(HYPOTHESIS_TYPES);
+  else ACTIVE_TYPE_FILTERS.clear();
+  updateTypeFilterCount();
+  applyTypeFilter();
 }
 
 function updateTypeFilterCount(){
