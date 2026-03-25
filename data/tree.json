@@ -770,17 +770,38 @@
               "type": "Adoption",
               "children": [
                 {
+                  "id": "intro-askbrief-initial-acquisition",
+                  "label": "Users will try and sign up for the strategic ask brief at a viable acquisition rate and cost",
+                  "status": "active",
+                  "type": "Adoption",
+                  "test": "Measure signup/activation rate and cost per activated user across acquisition channels. Define thresholds for viable rate and cost."
+                },
+                {
                   "id": "intro-askbrief-initial-adoption",
                   "label": "Initial adoption works",
                   "status": "active",
                   "type": "Adoption",
                   "children": [
                     {
+                      "id": "intro-askbrief-user-brief-engagement",
+                      "label": "Users open and read the pre-meeting user brief before most relevant meetings",
+                      "status": "active",
+                      "type": "Adoption",
+                      "test": "Measure open rate and read-through rate of user briefs across active users. Define threshold for what 'most relevant meetings' means."
+                    },
+                    {
+                      "id": "intro-askbrief-user-brief-mutual-connections",
+                      "label": "Showing mutual connections in the user brief increases perceived value and preparation behavior",
+                      "status": "active",
+                      "type": "Adoption",
+                      "test": "MVT: add '3 people you both know' section to user briefs. Measure whether briefs with mutual connections get higher open rates, longer read times, or more reported usefulness vs. briefs without."
+                    },
+                    {
                       "id": "intro-askbrief-user-asks-counterpart",
                       "label": "Users will ask the counterpart for intros in a real meeting when Gordy suggests it",
                       "status": "active",
                       "type": "Adoption",
-                      "test": "Mockup or concierge test: show the strategic ask brief flow, then observe whether users actually ask for the intro in a live or simulated meeting"
+                      "test": "Post-meeting debrief with active users: after receiving Gordy's strategic ask brief, did the user actually raise the intro ask in the meeting? Measure ask rate and outcome."
                     }
                   ],
                   "gateType": "AND"
@@ -888,6 +909,13 @@
                                   "label": "Intro Circle CTA gets CTR",
                                   "test": "Live emails to real attendees — measuring clicks, replies, and notice / recall",
                                   "type": "Growth"
+                                },
+                                {
+                                  "id": "mutual-connections-content-gets-ctr",
+                                  "label": "Showing 3 mutual connections in the counterpart email gets meaningful CTR",
+                                  "status": "active",
+                                  "type": "Growth",
+                                  "test": "MVT: replace current CTA with '3 people you both know' content in counterpart emails. Measure open rate, CTR, and qualitative feedback on whether counterparts found it valuable."
                                 },
                                 {
                                   "id": "hello-page-version-gets-ctr",
@@ -1146,6 +1174,13 @@
               "gateType": "OR"
             },
             {
+              "id": "intro-askbrief-growth-model",
+              "label": "The counterpart email growth loop can theoretically achieve K > 1 given realistic assumptions",
+              "status": "active",
+              "type": "Model",
+              "test": "Spreadsheet model: plug in known values (meetings/month, eligible meeting %, send rate, open rate, CTR, conversion rate) and solve for what remaining unknowns must be. Determine whether the required values at each step are realistic enough to produce K > 1."
+            },
+            {
               "id": "intro-askbrief-paid-conversion",
               "label": "Enough wedge users convert from the strategic ask brief flow into the paid nurture product",
               "status": "pending",
@@ -1334,7 +1369,7 @@
                       "label": "Users will install a browser extension and connect their calendar to get a reality check on their network",
                       "status": "active",
                       "type": "Adoption",
-                      "test": "Mockup test: are they willing to install and connect data sources for this value prop?",
+                      "test": "MVT: provide a real minimal Chrome extension during interviews. Measure whether users actually complete the install and connect their calendar when given the opportunity.",
                       "score": {
                         "Freq": 0,
                         "Intensity": 0,
@@ -1457,6 +1492,13 @@
               "gateType": "OR"
             },
             {
+              "id": "intro-network-growth-model",
+              "label": "The network-truth growth loop can theoretically achieve K > 1 given realistic assumptions",
+              "status": "active",
+              "type": "Model",
+              "test": "Spreadsheet model: plug in realistic values for extension install rate, calendar connect rate, invite rate, and invite accept rate. Determine whether the required values at each step can produce K > 1."
+            },
+            {
               "id": "intro-network-feasibility",
               "label": "We can technically deliver useful real intro paths and warm-path management with current data sources",
               "status": "pending",
@@ -1524,8 +1566,8 @@
               "id": "intro-network-growth",
               "label": "There is a plausible repeated-use or growth loop once the network-truth workflow works",
               "status": "pending",
-              "type": "Growth",
-              "test": "Measure whether one solved intro request leads to repeated reuse, sharing, or more warm-path requests over time",
+              "type": "Economics",
+              "test": "Measure whether the actual viral coefficient K > 1: does one acquired user through the network-truth path generate more than one new acquired user through repeated reuse, sharing, or invitations over a defined time window?",
               "score": {
                 "Freq": 0,
                 "Intensity": 0,

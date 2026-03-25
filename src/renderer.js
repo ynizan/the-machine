@@ -113,11 +113,11 @@ const EYE_LABELS = {
 };
 
 const HYPOTHESIS_TYPES = [
-  'Segment', 'Need', 'Adoption', 'Growth', 'Feasibility', 'Economics', 'Alternative', 'solution'
+  'Segment', 'Need', 'Adoption', 'Growth', 'Feasibility', 'Economics', 'Alternative', 'Model', 'solution'
 ];
 const TYPE_LABELS = {
   Segment:'Segment', Need:'Need', Adoption:'Adoption', Growth:'Growth',
-  Feasibility:'Feasibility', Economics:'Economics', Alternative:'Alternative',
+  Feasibility:'Feasibility', Economics:'Economics', Alternative:'Alternative', Model:'Model',
   solution:'Solution'
 };
 const TYPE_COLORS = {
@@ -128,6 +128,7 @@ const TYPE_COLORS = {
   Feasibility:{ text:'#B08AD6', bg:'rgba(176,138,214,.12)', border:'rgba(176,138,214,.25)' },
   Economics:{ text:'#C8A060', bg:'rgba(200,160,96,.12)', border:'rgba(200,160,96,.25)' },
   Alternative:{ text:'#E0A050', bg:'rgba(224,160,80,.12)', border:'rgba(224,160,80,.25)' },
+  Model:{ text:'#9AC8E0', bg:'rgba(154,200,224,.12)', border:'rgba(154,200,224,.25)' },
   solution:{ text:'#6ABF80', bg:'rgba(106,191,128,.12)', border:'rgba(106,191,128,.25)' }
 };
 
@@ -284,6 +285,7 @@ function cardHTML(d, c, h){
       type === 'Adoption' ? '\u2713' : type === 'Growth' ? '\u2192' :
       type === 'Feasibility' ? '\u2699' : type === 'Economics' ? '$' :
       type === 'Alternative' ? '\u2194' :
+      type === 'Model' ? '\u0394' :
       type === 'solution' ? '\u2713' : '\u25CB';
     h2 += `<div style="
       display:inline-flex;align-items:center;gap:${c.efs*0.25}px;
