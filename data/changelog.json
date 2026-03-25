@@ -1,5 +1,38 @@
 [
   {
+    "date": "2026-03-25",
+    "commit": "7827069",
+    "message": "Update test descriptions for askbrief-user-asks-counterpart and new-1",
+    "changedIds": [
+      "intro-askbrief-user-asks-counterpart",
+      "new-1"
+    ],
+    "changes": [
+      {
+        "id": "intro-askbrief-user-asks-counterpart",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "test",
+            "from": "Mockup or concierge test: show the strategic ask brief flow, then observe whether users actually ask for the intro in a live or simulated meeting",
+            "to": "Post-meeting debrief with active users: after receiving Gordy's strategic ask brief, did the user actually raise the intro ask in the meeting? Measure ask rate and outcome."
+          }
+        ]
+      },
+      {
+        "id": "new-1",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "test",
+            "from": "Mockup test: are they willing to install and connect data sources for this value prop?",
+            "to": "MVT: provide a real minimal Chrome extension during interviews. Measure whether users actually complete the install and connect their calendar when given the opportunity."
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-03-24",
     "commit": "5b57a95",
     "message": "Major tree status restructure: prioritize active paths, park inactive branches",
