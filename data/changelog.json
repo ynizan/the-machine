@@ -1,11 +1,47 @@
 [
   {
     "date": "2026-03-25",
+    "commit": "beccb33",
+    "message": "Merge pull request #83 from ynizan/claude/add-adoption-and-cta-nodes",
+    "changedIds": [
+      "intro-askbrief-initial-acquisition",
+      "intro-askbrief-user-brief-engagement",
+      "intro-askbrief-user-brief-mutual-connections",
+      "mutual-connections-content-gets-ctr"
+    ],
+    "changes": [
+      {
+        "id": "intro-askbrief-initial-acquisition",
+        "action": "added"
+      },
+      {
+        "id": "intro-askbrief-user-brief-engagement",
+        "action": "added"
+      },
+      {
+        "id": "intro-askbrief-user-brief-mutual-connections",
+        "action": "added"
+      },
+      {
+        "id": "mutual-connections-content-gets-ctr",
+        "action": "added"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-25",
     "commit": "2507ee8",
     "message": "Merge pull request #82 from ynizan/claude/add-growth-model-nodes",
     "changedIds": [
       "intro-askbrief-user-asks-counterpart",
-      "new-1"
+      "intro-askbrief-growth-model",
+      "new-1",
+      "intro-network-growth-model",
+      "intro-network-growth",
+      "intro-askbrief-initial-acquisition",
+      "intro-askbrief-user-brief-engagement",
+      "intro-askbrief-user-brief-mutual-connections",
+      "mutual-connections-content-gets-ctr"
     ],
     "changes": [
       {
@@ -20,6 +56,10 @@
         ]
       },
       {
+        "id": "intro-askbrief-growth-model",
+        "action": "added"
+      },
+      {
         "id": "new-1",
         "action": "modified",
         "diffs": [
@@ -29,6 +69,98 @@
             "to": "MVT: provide a real minimal Chrome extension during interviews. Measure whether users actually complete the install and connect their calendar when given the opportunity."
           }
         ]
+      },
+      {
+        "id": "intro-network-growth-model",
+        "action": "added"
+      },
+      {
+        "id": "intro-network-growth",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "type",
+            "from": "Growth",
+            "to": "Economics"
+          },
+          {
+            "field": "test",
+            "from": "Measure whether one solved intro request leads to repeated reuse, sharing, or more warm-path requests over time",
+            "to": "Measure whether the actual viral coefficient K > 1: does one acquired user through the network-truth path generate more than one new acquired user through repeated reuse, sharing, or invitations over a defined time window?"
+          }
+        ]
+      },
+      {
+        "id": "intro-askbrief-initial-acquisition",
+        "action": "removed"
+      },
+      {
+        "id": "intro-askbrief-user-brief-engagement",
+        "action": "removed"
+      },
+      {
+        "id": "intro-askbrief-user-brief-mutual-connections",
+        "action": "removed"
+      },
+      {
+        "id": "mutual-connections-content-gets-ctr",
+        "action": "removed"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-25",
+    "commit": "6b1714d",
+    "message": "Add mutual connections CTA, brief engagement, and acquisition nodes",
+    "changedIds": [
+      "intro-askbrief-initial-acquisition",
+      "intro-askbrief-user-brief-engagement",
+      "intro-askbrief-user-brief-mutual-connections",
+      "mutual-connections-content-gets-ctr",
+      "intro-network-growth",
+      "intro-askbrief-growth-model",
+      "intro-network-growth-model"
+    ],
+    "changes": [
+      {
+        "id": "intro-askbrief-initial-acquisition",
+        "action": "added"
+      },
+      {
+        "id": "intro-askbrief-user-brief-engagement",
+        "action": "added"
+      },
+      {
+        "id": "intro-askbrief-user-brief-mutual-connections",
+        "action": "added"
+      },
+      {
+        "id": "mutual-connections-content-gets-ctr",
+        "action": "added"
+      },
+      {
+        "id": "intro-network-growth",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "type",
+            "from": "Economics",
+            "to": "Growth"
+          },
+          {
+            "field": "test",
+            "from": "Measure whether the actual viral coefficient K > 1: does one acquired user through the network-truth path generate more than one new acquired user through repeated reuse, sharing, or invitations over a defined time window?",
+            "to": "Measure whether one solved intro request leads to repeated reuse, sharing, or more warm-path requests over time"
+          }
+        ]
+      },
+      {
+        "id": "intro-askbrief-growth-model",
+        "action": "removed"
+      },
+      {
+        "id": "intro-network-growth-model",
+        "action": "removed"
       }
     ]
   },
