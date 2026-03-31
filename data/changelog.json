@@ -1,6 +1,240 @@
 [
   {
     "date": "2026-03-25",
+    "commit": "485b242",
+    "message": "Restructure intro hypotheses and tighten validation tests",
+    "changedIds": [
+      "root-intros-main",
+      "intro-askbrief-alternatives",
+      "intro-askbrief-user-asks-counterpart",
+      "intro-askbrief-retention",
+      "intro-askbrief-feasibility",
+      "gordy-followup-how-do-you-know",
+      "gordy-followup-how-do-you-know-replies",
+      "gordy-followup-how-do-you-know-conversion",
+      "intro-network-mutual-wedge",
+      "intro-network-mutual-wedge-need",
+      "intro-network-mutual-wedge-weak-alternative",
+      "intro-network-mutual-wedge-better-solution",
+      "new-1",
+      "intro-network-growth",
+      "intro-recipient-outbound-path",
+      "nurture-smallbiz-trigger-nudge",
+      "nurture-smallbiz-feed-engage",
+      "nurture-smallbiz-proactive-tag",
+      "intro-askbrief-initial-acquisition",
+      "intro-askbrief-user-brief-engagement",
+      "intro-askbrief-user-brief-mutual-connections",
+      "mutual-connections-content-gets-ctr",
+      "intro-askbrief-growth-model",
+      "intro-network-mutual-lkg",
+      "option-b-smallorg",
+      "mutual-ca",
+      "mutual-ca-dup-1",
+      "mutual-cb",
+      "intro-network-growth-model"
+    ],
+    "changes": [
+      {
+        "id": "root-intros-main",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "validated"
+          }
+        ]
+      },
+      {
+        "id": "intro-askbrief-alternatives",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "test",
+            "from": "Interview follow-up plus diary / baseline measurement: quantify how often users do this manually today, what substitutes they use, and how often those substitutes actually lead to asking for intros or strategic asks",
+            "to": "Interview plus diary / baseline study with target users over 1 week. Pass if at least 70% either do no deliberate pre-meeting intro preparation for most relevant meetings, or spend more than 10 minutes preparing and still ask for intros in fewer than 25% of those meetings."
+          }
+        ]
+      },
+      {
+        "id": "intro-askbrief-user-asks-counterpart",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "test",
+            "from": "Post-meeting debrief with active users: after receiving Gordy's strategic ask brief, did the user actually raise the intro ask in the meeting? Measure ask rate and outcome.",
+            "to": "User follow-up on real meetings where Gordy offered intros. After each meeting, ask the user whether they used one of the suggested intros in the conversation. Pass if at least 30% of meetings with a relevant suggestion lead to the user reporting that they asked for at least one intro."
+          }
+        ]
+      },
+      {
+        "id": "intro-askbrief-retention",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "test",
+            "from": "Retention analysis on early users: define thresholds and measure how long users stay active, how many relevant meetings they have while active, and whether they remain in the product long enough for growth exposures to occur",
+            "to": "Retention analysis on early users. Pass if at least 40% of activated users are still active 30 days after first use and, during that period, each retained user has at least 2 meetings where Gordy can surface an intro suggestion."
+          }
+        ]
+      },
+      {
+        "id": "intro-askbrief-feasibility",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "test",
+            "from": "Live product / concierge evaluation: define coverage and quality thresholds, then measure what share of relevant meetings receive suggestions and what share of those suggestions users judge as meaningful enough to use",
+            "to": "Live product or concierge evaluation on real upcoming meetings. Pass if Gordy produces at least 1 meaningful intro suggestion for at least 60% of relevant meetings, and users rate at least 50% of surfaced suggestions as realistic enough to use."
+          }
+        ]
+      },
+      {
+        "id": "gordy-followup-how-do-you-know",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "A 'how do you know [User]?' email with no CTA gets enough replies to open a conversion conversation",
+            "to": "The 'how do you know [User]?' email with no CTA is a viable post-meeting conversion mechanic"
+          },
+          {
+            "field": "gateType",
+            "to": "AND"
+          },
+          {
+            "field": "type",
+            "from": "Growth"
+          },
+          {
+            "field": "test",
+            "from": "A/B test: Gordy sends 'how do you know [User first name] [User last name]?' to counterparts post-meeting with no link or pitch. Measure reply rate and whether the reply thread converts to signup."
+          }
+        ]
+      },
+      {
+        "id": "gordy-followup-how-do-you-know-replies",
+        "action": "added"
+      },
+      {
+        "id": "gordy-followup-how-do-you-know-conversion",
+        "action": "added"
+      },
+      {
+        "id": "intro-network-mutual-wedge",
+        "action": "added"
+      },
+      {
+        "id": "intro-network-mutual-wedge-need",
+        "action": "added"
+      },
+      {
+        "id": "intro-network-mutual-wedge-weak-alternative",
+        "action": "added"
+      },
+      {
+        "id": "intro-network-mutual-wedge-better-solution",
+        "action": "added"
+      },
+      {
+        "id": "new-1",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "test",
+            "from": "MVT: provide a real minimal Chrome extension during interviews. Measure whether users actually complete the install and connect their calendar when given the opportunity.",
+            "to": "Mockup test: are they willing to install and connect data sources for this value prop?"
+          }
+        ]
+      },
+      {
+        "id": "intro-network-growth",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "type",
+            "from": "Economics",
+            "to": "Growth"
+          },
+          {
+            "field": "test",
+            "from": "Measure whether the actual viral coefficient K > 1: does one acquired user through the network-truth path generate more than one new acquired user through repeated reuse, sharing, or invitations over a defined time window?",
+            "to": "Track solved intro-path requests over time. Pass if at least 30% of users who get one useful network-truth result return for another request within 30 days, or at least 15% share or invite another user as part of the workflow."
+          }
+        ]
+      },
+      {
+        "id": "intro-recipient-outbound-path",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "active",
+            "to": "validated"
+          }
+        ]
+      },
+      {
+        "id": "nurture-smallbiz-trigger-nudge",
+        "action": "removed"
+      },
+      {
+        "id": "nurture-smallbiz-feed-engage",
+        "action": "removed"
+      },
+      {
+        "id": "nurture-smallbiz-proactive-tag",
+        "action": "removed"
+      },
+      {
+        "id": "intro-askbrief-initial-acquisition",
+        "action": "removed"
+      },
+      {
+        "id": "intro-askbrief-user-brief-engagement",
+        "action": "removed"
+      },
+      {
+        "id": "intro-askbrief-user-brief-mutual-connections",
+        "action": "removed"
+      },
+      {
+        "id": "mutual-connections-content-gets-ctr",
+        "action": "removed"
+      },
+      {
+        "id": "intro-askbrief-growth-model",
+        "action": "removed"
+      },
+      {
+        "id": "intro-network-mutual-lkg",
+        "action": "removed"
+      },
+      {
+        "id": "option-b-smallorg",
+        "action": "removed"
+      },
+      {
+        "id": "mutual-ca",
+        "action": "removed"
+      },
+      {
+        "id": "mutual-ca-dup-1",
+        "action": "removed"
+      },
+      {
+        "id": "mutual-cb",
+        "action": "removed"
+      },
+      {
+        "id": "intro-network-growth-model",
+        "action": "removed"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-25",
     "commit": "ab1c44f",
     "message": "Merge pull request #85 from ynizan/claude/update-gordy-loop-tree-I4tfs",
     "changedIds": [
