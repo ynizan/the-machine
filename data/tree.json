@@ -204,7 +204,7 @@
             },
             {
               "id": "nurture-smallbiz-adoption",
-              "label": "Users will adopt a low-friction workflow to tell Gordy who to nurture and act on prompts",
+              "label": "At least one low-friction nurturing workflow is adoptable",
               "status": "active",
               "type": "Adoption",
               "children": [
@@ -264,7 +264,7 @@
                 "Intensity": 0,
                 "Fit": 0
               },
-              "gateType": "AND"
+              "gateType": "OR"
             },
             {
               "id": "nurture-smallbiz-growth",
@@ -274,93 +274,111 @@
               "children": [
                 {
                   "id": "nurture-smallbiz-nudge-path",
-                  "label": "Contact-based nudges can drive both usage and acquisition",
+                  "label": "Contact-based nudges can drive usage and acquisition",
                   "status": "active",
                   "type": "Growth",
                   "children": [
                     {
-                      "id": "nurture-smallbiz-circles-exist",
-                      "label": "Users naturally think of their contacts in circles or clusters rather than only as one-off relationships",
+                      "id": "nurture-smallbiz-nudge-usage",
+                      "label": "Contact-based nudges can drive usage",
                       "status": "pending",
                       "type": "Growth",
-                      "test": "Interview: ask users how they mentally organize important contacts and whether circles/clusters are already a natural model",
-                      "score": {
-                        "Freq": 0,
-                        "Intensity": 0,
-                        "Fit": 0
-                      }
+                      "children": [
+                        {
+                          "id": "nurture-smallbiz-circles-exist",
+                          "label": "Users naturally think of their contacts in circles or clusters rather than only as one-off relationships",
+                          "status": "pending",
+                          "type": "Growth",
+                          "test": "Interview: ask users how they mentally organize important contacts and whether circles/clusters are already a natural model",
+                          "score": {
+                            "Freq": 0,
+                            "Intensity": 0,
+                            "Fit": 0
+                          }
+                        },
+                        {
+                          "id": "nurture-smallbiz-nudge-action",
+                          "label": "Users will send a suggested nudge message when shown a concrete example",
+                          "status": "pending",
+                          "type": "Growth",
+                          "test": "Mockup: show a suggested nudge on a real contact and measure send intent / actual send rate",
+                          "score": {
+                            "Freq": 0,
+                            "Intensity": 0,
+                            "Fit": 0
+                          }
+                        }
+                      ],
+                      "gateType": "AND"
                     },
                     {
-                      "id": "nurture-smallbiz-nudge-action",
-                      "label": "Users will send a suggested nudge message when shown a concrete example",
+                      "id": "nurture-smallbiz-nudge-acquisition",
+                      "label": "At least one nudge-based acquisition path works",
                       "status": "pending",
                       "type": "Growth",
-                      "test": "Mockup: show a suggested nudge on a real contact and measure send intent / actual send rate",
-                      "score": {
-                        "Freq": 0,
-                        "Intensity": 0,
-                        "Fit": 0
-                      }
-                    },
-                    {
-                      "id": "nurture-smallbiz-acq-interview",
-                      "label": "Users who say yes to the nudge want to try the service immediately",
-                      "status": "pending",
-                      "type": "Growth",
-                      "test": "During interviews, after a positive nudge reaction, ask whether they want to try the service now",
-                      "score": {
-                        "Freq": 0,
-                        "Intensity": 0,
-                        "Fit": 0
-                      }
-                    },
-                    {
-                      "id": "nurture-smallbiz-acq-outbound",
-                      "label": "Cold outbound offering these nurturing tips can get enough response to be a viable acquisition path",
-                      "status": "pending",
-                      "type": "Growth",
-                      "test": "Outbound campaign: email describing the value of concrete nurturing tips. Measure yes rate and response rate.",
-                      "score": {
-                        "Freq": 0,
-                        "Intensity": 0,
-                        "Fit": 0
-                      }
-                    },
-                    {
-                      "id": "nurture-smallbiz-acq-gordy-viral-tip",
-                      "label": "Recipients who receive a tip email from Gordy want the service for themselves",
-                      "status": "pending",
-                      "type": "Growth",
-                      "test": "Pilot: send Gordy tip emails and measure how many recipients ask for the service",
-                      "score": {
-                        "Freq": 0,
-                        "Intensity": 0,
-                        "Fit": 0
-                      }
-                    },
-                    {
-                      "id": "nurture-smallbiz-acq-gordy-viral-nudge",
-                      "label": "Users who receive a Gordy nudge email want the service for themselves",
-                      "status": "pending",
-                      "type": "Growth",
-                      "test": "Pilot: send Gordy nudge emails and measure how many recipients ask for the service",
-                      "score": {
-                        "Freq": 0,
-                        "Intensity": 0,
-                        "Fit": 0
-                      }
-                    },
-                    {
-                      "id": "nurture-smallbiz-exposed-via-intro-flow",
-                      "label": "Some users exposed through the intro-email flow ask Gordy for help staying in touch with a real contact",
-                      "status": "active",
-                      "type": "Growth",
-                      "test": "MVT: Add a stay-in-touch CTA to intro-flow emails and measure click-through plus creation of at least one tracking request",
-                      "score": {
-                        "Freq": 0,
-                        "Intensity": 0,
-                        "Fit": 0
-                      }
+                      "children": [
+                        {
+                          "id": "nurture-smallbiz-acq-interview",
+                          "label": "Users who say yes to the nudge want to try the service immediately",
+                          "status": "pending",
+                          "type": "Growth",
+                          "test": "During interviews, after a positive nudge reaction, ask whether they want to try the service now",
+                          "score": {
+                            "Freq": 0,
+                            "Intensity": 0,
+                            "Fit": 0
+                          }
+                        },
+                        {
+                          "id": "nurture-smallbiz-acq-outbound",
+                          "label": "Cold outbound offering these nurturing tips can get enough response to be a viable acquisition path",
+                          "status": "pending",
+                          "type": "Growth",
+                          "test": "Outbound campaign: email describing the value of concrete nurturing tips. Measure yes rate and response rate.",
+                          "score": {
+                            "Freq": 0,
+                            "Intensity": 0,
+                            "Fit": 0
+                          }
+                        },
+                        {
+                          "id": "nurture-smallbiz-acq-gordy-viral-tip",
+                          "label": "Recipients who receive a tip email from Gordy want the service for themselves",
+                          "status": "pending",
+                          "type": "Growth",
+                          "test": "Pilot: send Gordy tip emails and measure how many recipients ask for the service",
+                          "score": {
+                            "Freq": 0,
+                            "Intensity": 0,
+                            "Fit": 0
+                          }
+                        },
+                        {
+                          "id": "nurture-smallbiz-acq-gordy-viral-nudge",
+                          "label": "Users who receive a Gordy nudge email want the service for themselves",
+                          "status": "pending",
+                          "type": "Growth",
+                          "test": "Pilot: send Gordy nudge emails and measure how many recipients ask for the service",
+                          "score": {
+                            "Freq": 0,
+                            "Intensity": 0,
+                            "Fit": 0
+                          }
+                        },
+                        {
+                          "id": "nurture-smallbiz-exposed-via-intro-flow",
+                          "label": "Some users exposed through the intro-email flow ask Gordy for help staying in touch with a real contact",
+                          "status": "active",
+                          "type": "Growth",
+                          "test": "MVT: Add a stay-in-touch CTA to intro-flow emails and measure click-through plus creation of at least one tracking request",
+                          "score": {
+                            "Freq": 0,
+                            "Intensity": 0,
+                            "Fit": 0
+                          }
+                        }
+                      ],
+                      "gateType": "OR"
                     }
                   ],
                   "score": {
@@ -504,7 +522,7 @@
     },
     {
       "id": "root-nurture-richer-context",
-      "label": "Richer personal contact context may create better reasons to follow up",
+      "label": "Richer context can create useful follow-up triggers",
       "status": "backlog",
       "children": [
         {
@@ -514,7 +532,7 @@
           "type": "Need",
           "children": [
             {
-              "id": "14b",
+              "id": "nurture-context-life-career-trigger-alerts",
               "label": "Users want alerts about life or career trigger events for contacts as reasons to reach out",
               "status": "pending",
               "type": "Need",
@@ -526,7 +544,7 @@
               }
             },
             {
-              "id": "15",
+              "id": "nurture-context-dynamic-external-trigger-alerts",
               "label": "Users want alerts about dynamic external data tied to contacts as a zero-effort reason to reach out",
               "status": "pending",
               "type": "Need",
@@ -544,7 +562,16 @@
             "Fit": 0
           },
           "gateType": "OR"
-        },
+        }
+      ],
+      "gateType": "OR",
+      "type": "Need"
+    },
+    {
+      "id": "root-nurture-private-context-angle",
+      "label": "There may be a viable private-context product angle",
+      "status": "pending",
+      "children": [
         {
           "id": "nurture-context-private-intel",
           "label": "There may be a viable product angle around deeper private contact context",
@@ -552,7 +579,7 @@
           "type": "Need",
           "children": [
             {
-              "id": "pokemon-intros",
+              "id": "nurture-context-connector-anecdotes-for-intros",
               "label": "Users want to leverage personal anecdotes on connectors so they can ask more intros",
               "status": "pending",
               "type": "Need",
@@ -564,7 +591,7 @@
               }
             },
             {
-              "id": "pokemon-mine-rare",
+              "id": "nurture-context-private-data-mining-pay",
               "label": "Users will pay to mine personal intel from their own emails, call transcripts, and WhatsApp to fuel warm relationship actions",
               "status": "pending",
               "type": "Feasibility",
@@ -576,7 +603,7 @@
               }
             },
             {
-              "id": "pokemon-share",
+              "id": "nurture-context-private-intel-sharing",
               "label": "Users who have gathered deep personal intel about contacts are willing to share or trade it with others",
               "status": "pending",
               "type": "Growth",
@@ -594,7 +621,16 @@
             "Fit": 0
           },
           "gateType": "OR"
-        },
+        }
+      ],
+      "gateType": "OR"
+    },
+    {
+      "id": "root-nurture-deeper-context-interest",
+      "label": "Users show behavioral interest in deeper context",
+      "status": "active",
+      "type": "Growth",
+      "children": [
         {
           "id": "nurture-context-engagement-signals",
           "label": "Users show behavioral interest in richer context and deeper briefs",
@@ -602,11 +638,11 @@
           "type": "Growth",
           "children": [
             {
-              "id": "over-20-of-users-go-to-the-extended-brie",
+              "id": "nurture-context-extended-brief-ctr",
               "label": "A meaningful minority of users open an extended brief when it is offered",
               "status": "active",
               "type": "Growth",
-              "test": "Add an \u201cextended brief\u201d link to the email and measure click-through to the deeper brief",
+              "test": "Add an “extended brief” link to the email and measure click-through to the deeper brief",
               "score": {
                 "Freq": 0,
                 "Intensity": 0,
@@ -636,7 +672,7 @@
           "type": "Economics",
           "children": [
             {
-              "id": "aes",
+              "id": "nurture-ae-out-of-pocket-pay",
               "label": "AEs in companies over 20 will pay out of pocket for a personal network CRM",
               "status": "eliminated",
               "type": "Economics",
@@ -843,31 +879,31 @@
                           "children": [
                             {
                               "id": "counterpart-attention-threshold",
-                              "label": "Counterpart email gets over 30% click rate and 60% notice rate",
+                              "label": "At least one pre-meeting counterpart CTA variant gets enough attention",
                               "status": "active",
                               "type": "Growth",
-                              "test": "Live emails to real attendees \u2014 measuring clicks, replies, and notice / recall",
                               "reason": "Only 17.5 (19 out of 109) clicked the hello page. None converted",
                               "children": [
                                 {
                                   "id": "intro-circle-cta-gets-ctr",
                                   "status": "active",
-                                  "label": "Intro Circle CTA gets CTR",
-                                  "test": "Live emails to real attendees \u2014 measuring clicks, replies, and notice / recall",
+                                  "label": "The Intro Circle CTA gets enough attention from recipients",
+                                  "test": "Live emails to real attendees — measuring clicks, replies, and notice / recall",
                                   "type": "Growth"
                                 },
                                 {
                                   "id": "hello-page-version-gets-ctr",
                                   "status": "eliminated",
-                                  "label": "Hello page CTA gets CTR",
+                                  "label": "The hello page CTA gets enough attention from recipients",
                                   "reason": "Only 17.5 (19 out of 109) clicked the hello page. None converted",
-                                  "test": "Live emails to real attendees \u2014 measuring clicks, replies, and notice / recall"
+                                  "test": "Live emails to real attendees — measuring clicks, replies, and notice / recall",
+                                  "type": "Growth"
                                 },
                                 {
                                   "id": "get-intros-cta-gets-ctr",
                                   "status": "pending",
-                                  "label": "Get Intros CTA gets CTR",
-                                  "test": "Live emails to real attendees \u2014 measuring clicks, replies, and notice / recall",
+                                  "label": "The Get Intros CTA gets enough attention from recipients",
+                                  "test": "Live emails to real attendees — measuring clicks, replies, and notice / recall",
                                   "type": "Growth"
                                 }
                               ],
@@ -1022,7 +1058,6 @@
                           "label": "Gordy-sent post-meeting follow-up to the counterpart produces responses",
                           "status": "active",
                           "type": "Growth",
-                          "test": "Monitor response rates to Gordy-sent post-meeting follow-up sent to the counterpart",
                           "gateType": "OR",
                           "children": [
                             {
@@ -1060,14 +1095,15 @@
                                 "Intensity": 0,
                                 "Fit": 0
                               },
-                              "gateType": "AND"
+                              "gateType": "AND",
+                              "type": "Growth"
                             },
                             {
                               "id": "gordy-followup-network-fomo",
-                              "label": "A 'people in your network use Gordy \u2014 sign up to see who' email gets CTR and signups",
+                              "label": "A 'people in your network use Gordy — sign up to see who' email gets CTR and signups",
                               "status": "active",
                               "type": "Growth",
-                              "test": "A/B test: Gordy sends 'a few people in your network use me for pre-meeting research and warm intros \u2014 sign up and I'll show you who' with link to hello page. Measure CTR and signup rate.",
+                              "test": "A/B test: Gordy sends 'a few people in your network use me for pre-meeting research and warm intros — sign up and I'll show you who' with link to hello page. Measure CTR and signup rate.",
                               "score": {
                                 "Freq": 0,
                                 "Intensity": 0,
@@ -1087,11 +1123,12 @@
                       "gateType": "OR",
                       "children": [
                         {
-                          "id": "gordy-initiated-follow-up-to-engaged-cou",
+                          "id": "intro-askbrief-engaged-counterpart-followup-ask",
                           "status": "eliminated",
                           "label": "Gordy-initiated follow-up to engaged counterparts gets intro",
                           "test": "When a counterpart views the hello page 3+ times, Gordy sends a follow-up asking for an intro. ",
-                          "reason": "Sent intro requests about 14 counterparts to 8 users - didn't get one intro. Most of them resented the ask."
+                          "reason": "Sent intro requests about 14 counterparts to 8 users - didn't get one intro. Most of them resented the ask.",
+                          "type": "Growth"
                         }
                       ]
                     }
@@ -1212,7 +1249,7 @@
             {
               "id": "intro-network-need",
               "label": "Users need better help finding or timing warm introductions",
-              "status": "validated",
+              "status": "active",
               "type": "Need",
               "children": [
                 {
@@ -1335,64 +1372,91 @@
                   "type": "Adoption",
                   "children": [
                     {
-                      "id": "new-1",
-                      "label": "Users will install a browser extension and connect their calendar to get a reality check on their network",
+                      "id": "intro-network-self-map-core-adoption",
+                      "label": "The core self-map / reality-check flow creates enough value to be adopted",
                       "status": "active",
                       "type": "Adoption",
-                      "test": "Mockup test: are they willing to install and connect data sources for this value prop?",
-                      "score": {
-                        "Freq": 0,
-                        "Intensity": 0,
-                        "Fit": 0
-                      }
+                      "children": [
+                        {
+                          "id": "intro-network-self-map-install-and-connect",
+                          "label": "Users will install a browser extension and connect their calendar to get a reality check on their network",
+                          "status": "active",
+                          "type": "Adoption",
+                          "test": "Mockup test: are they willing to install and connect data sources for this value prop?",
+                          "score": {
+                            "Freq": 0,
+                            "Intensity": 0,
+                            "Fit": 0
+                          }
+                        },
+                        {
+                          "id": "intro-network-self-map-core-value",
+                          "label": "At least one core self-map value proposition creates pull",
+                          "status": "pending",
+                          "type": "Adoption",
+                          "children": [
+                            {
+                              "id": "network-self-map",
+                              "label": "Users want a real picture of their own network — active vs dormant connections, response likelihood, and intro balance — not a vanity count",
+                              "status": "pending",
+                              "type": "Adoption",
+                              "test": "Demo/waitlist test: show a mockup of a network-health dashboard and measure strong pull / sign-up intent",
+                              "score": {
+                                "Freq": 0,
+                                "Intensity": 0,
+                                "Fit": 0
+                              }
+                            },
+                            {
+                              "id": "network-benchmark",
+                              "label": "Users want to benchmark their network health against peers",
+                              "status": "pending",
+                              "type": "Adoption",
+                              "test": "Only test after self-map demand is real: show peer-comparison mockups and ask whether this adds value",
+                              "score": {
+                                "Freq": 0,
+                                "Intensity": 0,
+                                "Fit": 0
+                              }
+                            }
+                          ],
+                          "gateType": "OR"
+                        }
+                      ],
+                      "gateType": "AND"
                     },
                     {
-                      "id": "network-self-map",
-                      "label": "Users want a real picture of their own network \u2014 active vs dormant connections, response likelihood, and intro balance \u2014 not a vanity count",
-                      "status": "pending",
-                      "type": "Adoption",
-                      "test": "Demo/waitlist test: show a mockup of a network-health dashboard and measure strong pull / sign-up intent",
-                      "score": {
-                        "Freq": 0,
-                        "Intensity": 0,
-                        "Fit": 0
-                      }
-                    },
-                    {
-                      "id": "network-benchmark",
-                      "label": "Users want to benchmark their network health against peers",
-                      "status": "pending",
-                      "type": "Adoption",
-                      "test": "Only test after self-map demand is real: show peer-comparison mockups and ask whether this adds value",
-                      "score": {
-                        "Freq": 0,
-                        "Intensity": 0,
-                        "Fit": 0
-                      }
-                    },
-                    {
-                      "id": "new-3",
-                      "label": "Users with the extension will invite friends to expand network truth coverage",
+                      "id": "intro-network-self-map-coverage-growth",
+                      "label": "The self-map flow can expand network truth coverage",
                       "status": "pending",
                       "type": "Growth",
-                      "test": "Mockup test: after showing the value, ask whether they would invite named friends / colleagues",
-                      "score": {
-                        "Freq": 0,
-                        "Intensity": 0,
-                        "Fit": 0
-                      }
-                    },
-                    {
-                      "id": "new-3-dup-4",
-                      "label": "Users who receive a request to install the extension and connect their calendar will do so",
-                      "status": "pending",
-                      "type": "Growth",
-                      "test": "MVT: send invite emails as if the flow exists and measure install / connect conversion",
-                      "score": {
-                        "Freq": 0,
-                        "Intensity": 0,
-                        "Fit": 0
-                      }
+                      "children": [
+                        {
+                          "id": "intro-network-self-map-invite-friends",
+                          "label": "Users with the extension will invite friends to expand network truth coverage",
+                          "status": "pending",
+                          "type": "Growth",
+                          "test": "Mockup test: after showing the value, ask whether they would invite named friends / colleagues",
+                          "score": {
+                            "Freq": 0,
+                            "Intensity": 0,
+                            "Fit": 0
+                          }
+                        },
+                        {
+                          "id": "intro-network-self-map-invitee-install-connect",
+                          "label": "Users who receive a request to install the extension and connect their calendar will do so",
+                          "status": "pending",
+                          "type": "Growth",
+                          "test": "MVT: send invite emails as if the flow exists and measure install / connect conversion",
+                          "score": {
+                            "Freq": 0,
+                            "Intensity": 0,
+                            "Fit": 0
+                          }
+                        }
+                      ],
+                      "gateType": "AND"
                     }
                   ],
                   "score": {
@@ -1409,8 +1473,8 @@
                   "type": "Adoption",
                   "children": [
                     {
-                      "id": "option-a-dup-2",
-                      "label": "Askers and givers engage frequently enough in an \u201copen the book\u201d exercise that a shared-map tool would matter",
+                      "id": "intro-network-open-book-frequency",
+                      "label": "Askers and givers engage frequently enough in an “open the book” exercise that a shared-map tool would matter",
                       "status": "eliminated",
                       "type": "Need",
                       "test": "Mom test: ask both sides about frequency of open-the-book behavior and current friction",
@@ -1422,7 +1486,7 @@
                       }
                     },
                     {
-                      "id": "a-asker-dup-3",
+                      "id": "intro-network-open-book-asker-value",
                       "label": "Askers see value in seeing which of a helper's connections are real and active before asking",
                       "status": "pending",
                       "type": "Adoption",
@@ -1434,7 +1498,7 @@
                       }
                     },
                     {
-                      "id": "a-giver-dup-4",
+                      "id": "intro-network-open-book-giver-participation",
                       "label": "Givers are willing to install a tool that shares a real map with the asker",
                       "status": "pending",
                       "type": "Adoption",
@@ -1468,7 +1532,7 @@
               "type": "Feasibility",
               "children": [
                 {
-                  "id": "b-filter",
+                  "id": "intro-network-filter-realistic-paths",
                   "label": "We can filter 300+ mutual connections down to 3-5 realistic intro paths using active relationship signals",
                   "status": "pending",
                   "type": "Feasibility",
@@ -1480,7 +1544,7 @@
                   }
                 },
                 {
-                  "id": "b-rank",
+                  "id": "intro-network-rank-connector-responsiveness",
                   "label": "We can rank connectors by likely responsiveness to both the user and the target",
                   "status": "pending",
                   "type": "Feasibility",
@@ -1492,13 +1556,13 @@
                   }
                 },
                 {
-                  "id": "b-waterfall",
+                  "id": "intro-network-automate-waterfall",
                   "label": "We can automate a connector waterfall without double-asking",
                   "status": "pending",
                   "type": "Feasibility",
                   "children": [
                     {
-                      "id": "new-2",
+                      "id": "intro-network-waterfall-technical-implementation",
                       "label": "We can technically implement the waterfall flow",
                       "status": "pending",
                       "type": "Feasibility",
@@ -1570,7 +1634,8 @@
               "reason": "Sent: 279. Human response: 14 (5%). Said yes: 9 (3.23%)."
             }
           ],
-          "gateType": "OR"
+          "gateType": "OR",
+          "type": "Growth"
         }
       ],
       "gateType": "OR"
@@ -1581,7 +1646,7 @@
       "status": "eliminated",
       "children": [
         {
-          "id": "option-b",
+          "id": "intro-broad-market-frequency-too-low",
           "label": "Broad strategic-reach demand across everyone is too infrequent to be a standalone high-frequency wedge",
           "status": "eliminated",
           "type": "Need",
@@ -1658,7 +1723,7 @@
           "type": "Adoption",
           "children": [
             {
-              "id": "17",
+              "id": "outreach-delegate-linkedin-and-inbox",
               "label": "Users want to delegate LinkedIn search and inbox/outbox work to an SDR or recruiter",
               "status": "backlog",
               "type": "Adoption",
@@ -1670,7 +1735,7 @@
               }
             },
             {
-              "id": "pokemon-get-buy",
+              "id": "outreach-pay-for-third-party-personal-intel",
               "label": "Users will pay to access personal intel that others have collected about a target they have never met",
               "status": "backlog",
               "type": "Economics",
