@@ -1,5 +1,405 @@
 [
   {
+    "date": "2026-04-01",
+    "commit": "8e94dc2",
+    "message": "Update tree content JSON",
+    "changedIds": [
+      "nurture-smallbiz-adoption",
+      "nurture-smallbiz-nudge-path",
+      "nurture-smallbiz-nudge-usage",
+      "nurture-smallbiz-nudge-acquisition",
+      "root-nurture-richer-context",
+      "nurture-context-life-career-trigger-alerts",
+      "nurture-context-dynamic-external-trigger-alerts",
+      "root-nurture-private-context-angle",
+      "nurture-context-connector-anecdotes-for-intros",
+      "nurture-context-private-data-mining-pay",
+      "nurture-context-private-intel-sharing",
+      "root-nurture-deeper-context-interest",
+      "nurture-context-extended-brief-ctr",
+      "nurture-ae-out-of-pocket-pay",
+      "counterpart-attention-threshold",
+      "intro-circle-cta-gets-ctr",
+      "hello-page-version-gets-ctr",
+      "get-intros-cta-gets-ctr",
+      "gordy-loop",
+      "gordy-followup-how-do-you-know",
+      "intro-askbrief-engaged-counterpart-followup-ask",
+      "intro-network-need",
+      "intro-network-self-map-core-adoption",
+      "intro-network-self-map-install-and-connect",
+      "intro-network-self-map-core-value",
+      "intro-network-self-map-coverage-growth",
+      "intro-network-self-map-invite-friends",
+      "intro-network-self-map-invitee-install-connect",
+      "intro-network-open-book-frequency",
+      "intro-network-open-book-asker-value",
+      "intro-network-open-book-giver-participation",
+      "intro-network-filter-realistic-paths",
+      "intro-network-rank-connector-responsiveness",
+      "intro-network-automate-waterfall",
+      "intro-network-waterfall-technical-implementation",
+      "intro-recipient-outbound-path",
+      "intro-broad-market-frequency-too-low",
+      "outreach-delegate-linkedin-and-inbox",
+      "outreach-pay-for-third-party-personal-intel",
+      "15",
+      "17",
+      "14b",
+      "pokemon-intros",
+      "pokemon-mine-rare",
+      "pokemon-share",
+      "over-20-of-users-go-to-the-extended-brie",
+      "aes",
+      "gordy-initiated-follow-up-to-engaged-cou",
+      "new-1",
+      "new-3",
+      "new-3-dup-4",
+      "option-a-dup-2",
+      "a-asker-dup-3",
+      "a-giver-dup-4",
+      "b-filter",
+      "b-rank",
+      "b-waterfall",
+      "new-2",
+      "option-b",
+      "pokemon-get-buy"
+    ],
+    "changes": [
+      {
+        "id": "nurture-smallbiz-adoption",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Users will adopt a low-friction workflow to tell Gordy who to nurture and act on prompts",
+            "to": "At least one low-friction nurturing workflow is adoptable"
+          },
+          {
+            "field": "gateType",
+            "from": "AND",
+            "to": "OR"
+          }
+        ]
+      },
+      {
+        "id": "nurture-smallbiz-nudge-path",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Contact-based nudges can drive both usage and acquisition",
+            "to": "Contact-based nudges can drive usage and acquisition"
+          }
+        ]
+      },
+      {
+        "id": "nurture-smallbiz-nudge-usage",
+        "action": "added"
+      },
+      {
+        "id": "nurture-smallbiz-nudge-acquisition",
+        "action": "added"
+      },
+      {
+        "id": "root-nurture-richer-context",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Richer personal contact context may create better reasons to follow up",
+            "to": "Richer context can create useful follow-up triggers"
+          },
+          {
+            "field": "type",
+            "to": "Need"
+          }
+        ]
+      },
+      {
+        "id": "nurture-context-life-career-trigger-alerts",
+        "action": "added"
+      },
+      {
+        "id": "nurture-context-dynamic-external-trigger-alerts",
+        "action": "added"
+      },
+      {
+        "id": "root-nurture-private-context-angle",
+        "action": "added"
+      },
+      {
+        "id": "nurture-context-connector-anecdotes-for-intros",
+        "action": "added"
+      },
+      {
+        "id": "nurture-context-private-data-mining-pay",
+        "action": "added"
+      },
+      {
+        "id": "nurture-context-private-intel-sharing",
+        "action": "added"
+      },
+      {
+        "id": "root-nurture-deeper-context-interest",
+        "action": "added"
+      },
+      {
+        "id": "nurture-context-extended-brief-ctr",
+        "action": "added"
+      },
+      {
+        "id": "nurture-ae-out-of-pocket-pay",
+        "action": "added"
+      },
+      {
+        "id": "counterpart-attention-threshold",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Counterpart email gets over 30% click rate and 60% notice rate",
+            "to": "At least one pre-meeting counterpart CTA variant gets enough attention"
+          },
+          {
+            "field": "test",
+            "from": "Live emails to real attendees — measuring clicks, replies, and notice / recall"
+          }
+        ]
+      },
+      {
+        "id": "intro-circle-cta-gets-ctr",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Intro Circle CTA gets CTR",
+            "to": "The Intro Circle CTA gets enough attention from recipients"
+          }
+        ]
+      },
+      {
+        "id": "hello-page-version-gets-ctr",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Hello page CTA gets CTR",
+            "to": "The hello page CTA gets enough attention from recipients"
+          },
+          {
+            "field": "type",
+            "to": "Growth"
+          }
+        ]
+      },
+      {
+        "id": "get-intros-cta-gets-ctr",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "label",
+            "from": "Get Intros CTA gets CTR",
+            "to": "The Get Intros CTA gets enough attention from recipients"
+          }
+        ]
+      },
+      {
+        "id": "gordy-loop",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "test",
+            "from": "Monitor response rates to Gordy-sent post-meeting follow-up sent to the counterpart"
+          }
+        ]
+      },
+      {
+        "id": "gordy-followup-how-do-you-know",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "type",
+            "to": "Growth"
+          }
+        ]
+      },
+      {
+        "id": "intro-askbrief-engaged-counterpart-followup-ask",
+        "action": "added"
+      },
+      {
+        "id": "intro-network-need",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "status",
+            "from": "validated",
+            "to": "active"
+          }
+        ]
+      },
+      {
+        "id": "intro-network-self-map-core-adoption",
+        "action": "added"
+      },
+      {
+        "id": "intro-network-self-map-install-and-connect",
+        "action": "added"
+      },
+      {
+        "id": "intro-network-self-map-core-value",
+        "action": "added"
+      },
+      {
+        "id": "intro-network-self-map-coverage-growth",
+        "action": "added"
+      },
+      {
+        "id": "intro-network-self-map-invite-friends",
+        "action": "added"
+      },
+      {
+        "id": "intro-network-self-map-invitee-install-connect",
+        "action": "added"
+      },
+      {
+        "id": "intro-network-open-book-frequency",
+        "action": "added"
+      },
+      {
+        "id": "intro-network-open-book-asker-value",
+        "action": "added"
+      },
+      {
+        "id": "intro-network-open-book-giver-participation",
+        "action": "added"
+      },
+      {
+        "id": "intro-network-filter-realistic-paths",
+        "action": "added"
+      },
+      {
+        "id": "intro-network-rank-connector-responsiveness",
+        "action": "added"
+      },
+      {
+        "id": "intro-network-automate-waterfall",
+        "action": "added"
+      },
+      {
+        "id": "intro-network-waterfall-technical-implementation",
+        "action": "added"
+      },
+      {
+        "id": "intro-recipient-outbound-path",
+        "action": "modified",
+        "diffs": [
+          {
+            "field": "type",
+            "to": "Growth"
+          }
+        ]
+      },
+      {
+        "id": "intro-broad-market-frequency-too-low",
+        "action": "added"
+      },
+      {
+        "id": "outreach-delegate-linkedin-and-inbox",
+        "action": "added"
+      },
+      {
+        "id": "outreach-pay-for-third-party-personal-intel",
+        "action": "added"
+      },
+      {
+        "id": "15",
+        "action": "removed"
+      },
+      {
+        "id": "17",
+        "action": "removed"
+      },
+      {
+        "id": "14b",
+        "action": "removed"
+      },
+      {
+        "id": "pokemon-intros",
+        "action": "removed"
+      },
+      {
+        "id": "pokemon-mine-rare",
+        "action": "removed"
+      },
+      {
+        "id": "pokemon-share",
+        "action": "removed"
+      },
+      {
+        "id": "over-20-of-users-go-to-the-extended-brie",
+        "action": "removed"
+      },
+      {
+        "id": "aes",
+        "action": "removed"
+      },
+      {
+        "id": "gordy-initiated-follow-up-to-engaged-cou",
+        "action": "removed"
+      },
+      {
+        "id": "new-1",
+        "action": "removed"
+      },
+      {
+        "id": "new-3",
+        "action": "removed"
+      },
+      {
+        "id": "new-3-dup-4",
+        "action": "removed"
+      },
+      {
+        "id": "option-a-dup-2",
+        "action": "removed"
+      },
+      {
+        "id": "a-asker-dup-3",
+        "action": "removed"
+      },
+      {
+        "id": "a-giver-dup-4",
+        "action": "removed"
+      },
+      {
+        "id": "b-filter",
+        "action": "removed"
+      },
+      {
+        "id": "b-rank",
+        "action": "removed"
+      },
+      {
+        "id": "b-waterfall",
+        "action": "removed"
+      },
+      {
+        "id": "new-2",
+        "action": "removed"
+      },
+      {
+        "id": "option-b",
+        "action": "removed"
+      },
+      {
+        "id": "pokemon-get-buy",
+        "action": "removed"
+      }
+    ]
+  },
+  {
     "date": "2026-03-25",
     "commit": "485b242",
     "message": "Restructure intro hypotheses and tighten validation tests",
