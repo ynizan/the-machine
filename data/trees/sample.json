@@ -1,0 +1,42 @@
+{
+  "id": "root",
+  "label": "",
+  "status": "root",
+  "children": [
+    {
+      "id": "sample-root",
+      "label": "Sample hypothesis tree",
+      "status": "active",
+      "gateType": "AND",
+      "children": [
+        {
+          "id": "sample-need",
+          "label": "Users have a real need for this",
+          "status": "active",
+          "type": "Need",
+          "test": "5 user interviews showing unmet need",
+          "reason": "",
+          "children": []
+        },
+        {
+          "id": "sample-feasibility",
+          "label": "We can build it in reasonable time",
+          "status": "pending",
+          "type": "Feasibility",
+          "test": "Technical spike — 1 week",
+          "reason": "",
+          "children": []
+        },
+        {
+          "id": "sample-economics",
+          "label": "Unit economics work at scale",
+          "status": "backlog",
+          "type": "Economics",
+          "test": "Model with 3 pricing scenarios",
+          "reason": "",
+          "children": []
+        }
+      ]
+    }
+  ]
+}
