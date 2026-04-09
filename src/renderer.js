@@ -833,6 +833,10 @@ let ORIGINAL_JSON = null;
 let _dirty = false;
 let CURRENT_ROOT = null;
 
+// Multi-tree support
+let TREES_INDEX = [];
+let CURRENT_TREE_ID = null;
+
 function getCollapsedIds(root){
   const ids = new Set();
   if(!root) return ids;
@@ -1261,8 +1265,9 @@ let FILTER_NEW = false;        // show only new nodes
 let FILTER_MODIFIED = false;   // show only modified nodes
 let CL_BAR_OPEN = false;
 
-function loadChangelog(){
-  return fetch('data/changelog.json')
+function loadChangelog(clPath){
+  const src = clPath || 'data/changelog.json';
+  return fetch(src)
     .then(r => r.ok ? r.json() : [])
     .then(data => { CHANGELOG = data; })
     .catch(() => { CHANGELOG = []; });
@@ -1648,30 +1653,104 @@ document.addEventListener('click', e => {
   }
 });
 
-// Fetch data and boot
-Promise.all([
-  fetch('data/tree.json').then(r => r.json()),
-  loadChangelog()
-]).then(([data]) => {
-  CURRENT_DATA = data;
-  buildNodeMap(data);
-  const missingGateTypes = checkMissingGateTypes(data);
-  if(missingGateTypes.length) showGateTypeAlert(missingGateTypes);
-  propagateValidation(data);
-  initTree(data);
-  initChangelogBar();
-  initTypeFilter();
-  setupEditor(data, (newData, opts) => {
+// --- Multi-tree ---
+
+function _makeRenderFn(){
+  return (newData, opts) => {
     CURRENT_DATA = newData;
     NODE_MAP = {};
     buildNodeMap(newData);
     const collapsedIds = CURRENT_ROOT ? getCollapsedIds(CURRENT_ROOT) : undefined;
     document.getElementById('G').innerHTML = '';
     initTree(newData, { ...opts, collapsedIds });
-  });
+  };
+}
 
-  document.getElementById('search-input').addEventListener('keydown', e => {
-    if(e.key === 'Enter'){ e.preventDefault(); runSearch(); }
-    else if(e.key === 'Escape'){ clearSearch(); e.target.blur(); }
+function renderTreeSelector(){
+  const sel = document.getElementById('tree-selector');
+  if(!sel) return;
+  if(TREES_INDEX.length <= 1){ sel.style.display = 'none'; return; }
+  sel.innerHTML = TREES_INDEX.map(t =>
+    `<option value="${t.id}" ${t.id === CURRENT_TREE_ID ? 'selected' : ''}>${t.label}</option>`
+  ).join('');
+  sel.style.display = '';
+}
+
+function loadTree(treeId){
+  const entry = TREES_INDEX.find(t => t.id === treeId);
+  if(!entry) return;
+
+  if(_dirty && !confirm('You have unsaved changes. Switch trees anyway?')){
+    const sel = document.getElementById('tree-selector');
+    if(sel) sel.value = CURRENT_TREE_ID;
+    return;
+  }
+  clearDirty();
+  CURRENT_TREE_ID = treeId;
+  renderTreeSelector();
+
+  if(CL_BAR_OPEN) toggleChangelogBar();
+  clearSearch();
+
+  Promise.all([
+    fetch(entry.dataPath).then(r => r.json()),
+    loadChangelog(entry.changelogPath)
+  ]).then(([data]) => {
+    CURRENT_DATA = data;
+    ORIGINAL_JSON = JSON.stringify(data);
+    NODE_MAP = {};
+    buildNodeMap(data);
+    const missing = checkMissingGateTypes(data);
+    if(missing.length) showGateTypeAlert(missing);
+    propagateValidation(data);
+    CURRENT_ROOT = null;
+    RENDER_FN = _makeRenderFn();
+
+    // Refresh editor if open
+    const panel = document.getElementById('editor-panel');
+    if(panel && panel.classList.contains('open')){
+      document.getElementById('ep-textarea').value = JSON.stringify(data, null, 2);
+    }
+    const epTitle = document.querySelector('#editor-panel .ep-header h3');
+    if(epTitle) epTitle.textContent = entry.label || treeId;
+
+    document.getElementById('G').innerHTML = '';
+    initTree(data);
+    initChangelogBar();
+    initTypeFilter();
   });
-});
+}
+
+// Fetch data and boot
+fetch('data/trees/index.json')
+  .then(r => r.ok ? r.json() : null)
+  .catch(() => null)
+  .then(index => {
+    TREES_INDEX = (index && Array.isArray(index) && index.length)
+      ? index
+      : [{ id: 'main', label: 'Tree', dataPath: 'data/tree.json', changelogPath: 'data/changelog.json' }];
+    CURRENT_TREE_ID = TREES_INDEX[0].id;
+    renderTreeSelector();
+    const first = TREES_INDEX[0];
+    return Promise.all([
+      fetch(first.dataPath).then(r => r.json()),
+      loadChangelog(first.changelogPath)
+    ]);
+  })
+  .then(([data]) => {
+    CURRENT_DATA = data;
+    ORIGINAL_JSON = JSON.stringify(data);
+    buildNodeMap(data);
+    const missingGateTypes = checkMissingGateTypes(data);
+    if(missingGateTypes.length) showGateTypeAlert(missingGateTypes);
+    propagateValidation(data);
+    initTree(data);
+    initChangelogBar();
+    initTypeFilter();
+    setupEditor(data, _makeRenderFn());
+
+    document.getElementById('search-input').addEventListener('keydown', e => {
+      if(e.key === 'Enter'){ e.preventDefault(); runSearch(); }
+      else if(e.key === 'Escape'){ clearSearch(); e.target.blur(); }
+    });
+  });

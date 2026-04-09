@@ -1,13 +1,24 @@
 #!/usr/bin/env node
-// Generates data/changelog.json from git history of data/tree.json
-// Each entry lists which node IDs had fields changed in that commit.
+// Generates a changelog JSON from git history of a tree JSON file.
+// Usage: node gen-changelog.js [--tree=<name>]
+//   --tree=<name>  Use data/trees/<name>.json as source and write to
+//                  data/changelogs/<name>.json. Defaults to the legacy
+//                  data/tree.json -> data/changelog.json paths.
 
 const { execSync } = require('child_process');
 const path = require('path');
 
 const REPO = path.resolve(__dirname, '..');
-const FILE = 'data/tree.json';
 const MAX_COMMITS = 50;
+
+// Parse --tree=<name> argument
+const treeArg = process.argv.slice(2).find(a => a.startsWith('--tree='));
+const treeName = treeArg ? treeArg.split('=')[1] : null;
+
+const FILE = treeName ? `data/trees/${treeName}.json` : 'data/tree.json';
+const OUT_PATH = treeName
+  ? path.join(REPO, 'data', 'changelogs', `${treeName}.json`)
+  : path.join(REPO, 'data', 'changelog.json');
 
 // Tree was fully restructured in this commit — treat it as the first version.
 // Only generate changelog entries for commits after this one.
@@ -108,6 +119,6 @@ for (let i = 0; i < logLines.length; i++) {
 }
 
 const fs = require('fs');
-const outPath = path.join(REPO, 'data', 'changelog.json');
-fs.writeFileSync(outPath, JSON.stringify(changelog, null, 2));
-console.log(`Generated ${changelog.length} changelog entries -> ${outPath}`);
+if(treeName) fs.mkdirSync(path.dirname(OUT_PATH), { recursive: true });
+fs.writeFileSync(OUT_PATH, JSON.stringify(changelog, null, 2));
+console.log(`Generated ${changelog.length} changelog entries -> ${OUT_PATH}`);
