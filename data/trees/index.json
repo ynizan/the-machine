@@ -1,0 +1,8 @@
+[
+  {
+    "id": "main",
+    "label": "InTouch123",
+    "dataPath": "data/tree.json",
+    "changelogPath": "data/changelog.json"
+  }
+]
