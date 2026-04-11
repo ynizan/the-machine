@@ -1,0 +1,299 @@
+{
+  "id": "root",
+  "label": "",
+  "status": "root",
+  "children": [
+    {
+      "id": "intro-circles-main",
+      "label": "Intro Circles can create enough user value and business viability to justify further investment",
+      "status": "active",
+      "gateType": "AND",
+      "children": [
+        {
+          "id": "intro-circles-onboarding",
+          "label": "Onboarding creates enough expected or immediate value that target users grant the required access and build a useful Intro Circle",
+          "status": "active",
+          "type": "Adoption",
+          "gateType": "AND",
+          "children": [
+            {
+              "id": "intro-circles-onboarding-grant-access",
+              "label": "The promised Intro Circles value is strong and trusted enough that target users grant the required access",
+              "status": "active",
+              "type": "Adoption",
+              "test": "In live onboarding, measure the share of target users who grant the required access after seeing the value proposition and candidate circle flow. Pass if at least 60% of target users who start onboarding grant the required access."
+            },
+            {
+              "id": "intro-circles-onboarding-build-useful-circle",
+              "label": "Onboarding reveals enough expected or immediate value that target users add or invite enough relevant people to build a useful Intro Circle",
+              "status": "active",
+              "type": "Adoption",
+              "gateType": "AND",
+              "children": [
+                {
+                  "id": "intro-circles-onboarding-suggest-relevant-people",
+                  "label": "The system surfaces enough relevant people for the user to build a useful Intro Circle during onboarding",
+                  "status": "active",
+                  "type": "Adoption",
+                  "test": "In live onboarding, show suggested people from user data and measure how many suggested people are selected into the Intro Circle. Pass if at least 50% of users who reach the suggestion step select at least 3 suggested people."
+                },
+                {
+                  "id": "intro-circles-onboarding-add-or-invite-enough-people",
+                  "label": "Users are willing to add or invite enough relevant people during onboarding",
+                  "status": "active",
+                  "type": "Adoption",
+                  "test": "In live onboarding, measure how many users actually add or invite enough people to form an initial Intro Circle. Pass if at least 40% of users who granted access add or invite at least 5 people."
+                },
+                {
+                  "id": "intro-circles-onboarding-circle-is-useful",
+                  "label": "A circle built this way is large and relevant enough to generate useful intro opportunities",
+                  "status": "active",
+                  "type": "Adoption",
+                  "test": "In live onboarding, measure how many users build a circle that reaches the predefined usable-circle threshold. Pass if at least 35% of users who complete onboarding build a circle that meets the usable-circle threshold."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "intro-circles-retention",
+          "label": "Users retain Intro Circles for long enough for value to deepen over time",
+          "status": "active",
+          "type": "Adoption",
+          "gateType": "OR",
+          "children": [
+            {
+              "id": "intro-circles-ongoing-value-paths",
+              "label": "The main ongoing value paths together provide enough recurring value across user situations to support retention",
+              "status": "active",
+              "type": "Adoption",
+              "gateType": "AND",
+              "children": [
+                {
+                  "id": "intro-circles-core-intro-flow",
+                  "label": "For enough users, the core intro workflow reliably turns circle-member meetings into successful intro opportunities often enough to create recurring value",
+                  "status": "active",
+                  "type": "Adoption",
+                  "gateType": "AND",
+                  "children": [
+                    {
+                      "id": "intro-circles-core-workflow-detect-opportunities",
+                      "label": "The system can identify relevant meeting-triggered intro opportunities inside the circle",
+                      "status": "active",
+                      "type": "Feasibility",
+                      "test": "Run automated opportunity detection on live user data and measure how often surfaced opportunities lead to entry into the opportunity flow. Pass if at least 20% of surfaced opportunities lead to a user opening the opportunity flow, and at least 25% of active users receive at least 1 surfaced opportunity in a 30-day period."
+                    },
+                    {
+                      "id": "intro-circles-core-workflow-user-asks-for-intros",
+                      "label": "Users ask for introductions often enough when Intro Circles surfaces relevant opportunities",
+                      "status": "active",
+                      "type": "Adoption",
+                      "gateType": "AND",
+                      "children": [
+                        {
+                          "id": "intro-circles-core-workflow-user-engages-with-intro-email",
+                          "label": "Users engage with the surfaced intro opportunities email enough to enter the opportunity flow",
+                          "status": "active",
+                          "type": "Adoption",
+                          "test": "Live intro-opportunity emails: measure the share of delivered emails that produce a click into the opportunity flow. Pass if at least 25% of delivered intro-opportunity emails produce a click into the opportunity flow."
+                        },
+                        {
+                          "id": "intro-circles-core-workflow-user-selects-and-requests-intros",
+                          "label": "Users select surfaced intro opportunities and send actual intro requests often enough",
+                          "status": "active",
+                          "type": "Adoption",
+                          "test": "Live surfaced opportunities: measure the share of surfaced opportunities that are selected by the user and result in a real intro request being sent. Pass if at least 20% of surfaced opportunities lead to a real intro request being sent."
+                        }
+                      ]
+                    },
+                    {
+                      "id": "intro-circles-core-workflow-middleperson-completes-intros",
+                      "label": "Circle members complete enough requested introductions for the core workflow to create value",
+                      "status": "active",
+                      "type": "Adoption",
+                      "gateType": "AND",
+                      "children": [
+                        {
+                          "id": "intro-circles-core-workflow-middleperson-notices-request",
+                          "label": "Circle members notice and understand the intro request email",
+                          "status": "active",
+                          "type": "Adoption",
+                          "test": "Measure how often middle people respond to, acknowledge, or act on the intro request email. Pass if at least 50% of intro-request emails receive any response or explicit acknowledgement."
+                        },
+                        {
+                          "id": "intro-circles-core-workflow-middleperson-agrees",
+                          "label": "Circle members agree to make the intro often enough when asked",
+                          "status": "active",
+                          "type": "Adoption",
+                          "test": "For real intro requests sent to circle members, measure how often the middle person agrees to help. Pass if at least 30% of intro requests sent to middle people get a positive agreement to make the intro."
+                        },
+                        {
+                          "id": "intro-circles-core-workflow-middleperson-completes-approved-intros",
+                          "label": "Agreed intro requests turn into actual completed introductions often enough",
+                          "status": "active",
+                          "type": "Adoption",
+                          "test": "Among intro requests where the middle person agreed, measure how often a real intro is completed. Pass if at least 70% of agreed intro requests become completed intros within 14 days."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "intro-circles-complementary-email-value",
+                  "label": "For enough users or meetings where intro opportunities are not the main value, at least one complementary email workflow provides enough positive value",
+                  "status": "active",
+                  "type": "Adoption",
+                  "gateType": "OR",
+                  "children": [
+                    {
+                      "id": "intro-circles-email-value-premeeting-brief",
+                      "label": "The pre-meeting brief email provides enough positive value in meetings where intro opportunities are not relevant or not the main reason to use the product",
+                      "status": "active",
+                      "type": "Adoption",
+                      "test": "In live operation, measure how often users take a downstream action from the brief. Pass if at least 20% of delivered brief emails lead to a downstream action such as clicking through or using a suggested action."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "intro-circles-value-deepens-over-time",
+              "label": "For retained users, Intro Circles has at least one credible way for value to deepen over time",
+              "status": "active",
+              "type": "Adoption",
+              "gateType": "OR",
+              "children": [
+                {
+                  "id": "intro-circles-circle-expansion",
+                  "label": "The product can expand already-usable Intro Circles over time enough to materially deepen value",
+                  "status": "active",
+                  "type": "Adoption",
+                  "gateType": "AND",
+                  "children": [
+                    {
+                      "id": "intro-circles-circle-expansion-suggest-relevant-people",
+                      "label": "The product surfaces enough relevant additional people after onboarding for users to expand an already-usable Intro Circle",
+                      "status": "active",
+                      "type": "Adoption",
+                      "test": "In normal post-onboarding prompts, measure how many suggested people users select as additions to their circle. Pass if at least 30% of prompted users select at least 1 suggested person."
+                    },
+                    {
+                      "id": "intro-circles-circle-expansion-add-or-invite-later",
+                      "label": "Users add or invite enough relevant people after onboarding to expand an already-usable Intro Circle",
+                      "status": "active",
+                      "type": "Adoption",
+                      "test": "In normal post-onboarding use, measure how many users actually add or invite suggested people after receiving expansion prompts. Pass if at least 20% of prompted users add or invite at least 1 person."
+                    },
+                    {
+                      "id": "intro-circles-circle-expansion-improves-value",
+                      "label": "Later circle expansion materially increases value for users who already have a usable Intro Circle",
+                      "status": "active",
+                      "type": "Adoption",
+                      "test": "Compare downstream opportunity generation before vs. after users expand their circle. Pass if users who expand their circle increase surfaced opportunities per active month by at least 50%."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "intro-circles-distribution-economics",
+          "label": "Distribution economics can work for Intro Circles",
+          "status": "active",
+          "type": "Economics",
+          "gateType": "OR",
+          "children": [
+            {
+              "id": "intro-circles-dist-onboarding-circle-invites",
+              "label": "Onboarding-stage circle invitations can economically acquire activated users",
+              "status": "active",
+              "type": "Economics"
+            },
+            {
+              "id": "intro-circles-dist-repeat-meeting-circle-invites",
+              "label": "Repeat-meeting circle invitations can economically acquire activated users",
+              "status": "active",
+              "type": "Economics"
+            },
+            {
+              "id": "intro-circles-dist-direct-outbound-campaigns",
+              "label": "Direct outbound intro campaigns can economically acquire activated users",
+              "status": "active",
+              "type": "Economics"
+            }
+          ]
+        },
+        {
+          "id": "intro-circles-service-economics",
+          "label": "Service economics can work for Intro Circles",
+          "status": "pending",
+          "type": "Economics",
+          "gateType": "AND",
+          "children": [
+            {
+              "id": "intro-circles-service-economics-delivery-cost",
+              "label": "The ongoing cost to deliver Intro Circles value can stay low enough per active user",
+              "status": "pending",
+              "type": "Economics"
+            },
+            {
+              "id": "intro-circles-service-economics-heavy-users",
+              "label": "Heavier Intro Circles users do not break the service economics",
+              "status": "pending",
+              "type": "Economics"
+            }
+          ]
+        },
+        {
+          "id": "intro-circles-value-capture",
+          "label": "Value capture can work for Intro Circles",
+          "status": "pending",
+          "type": "Economics",
+          "gateType": "OR",
+          "children": [
+            {
+              "id": "intro-circles-value-capture-focused-intro-product",
+              "label": "A focused Intro Circles product can capture enough value from users",
+              "status": "pending",
+              "type": "Economics"
+            },
+            {
+              "id": "intro-circles-value-capture-broader-relationship-product",
+              "label": "Intro Circles can lead enough users into a broader paid relationship product",
+              "status": "pending",
+              "type": "Economics"
+            }
+          ]
+        },
+        {
+          "id": "intro-circles-reachable-market",
+          "label": "The reachable market can support a business around Intro Circles",
+          "status": "pending",
+          "type": "Segment",
+          "gateType": "AND",
+          "children": [
+            {
+              "id": "intro-circles-reachable-market-size",
+              "label": "There are enough reachable target users for the initial Intro Circles wedge",
+              "status": "pending",
+              "type": "Segment"
+            },
+            {
+              "id": "intro-circles-reachable-market-frequency",
+              "label": "The reachable target users have enough relevant meeting and intro frequency for Intro Circles to matter",
+              "status": "pending",
+              "type": "Need"
+            },
+            {
+              "id": "intro-circles-reachable-market-density",
+              "label": "The reachable target users are network-dense enough for Intro Circles to spread and deliver value",
+              "status": "pending",
+              "type": "Growth"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
