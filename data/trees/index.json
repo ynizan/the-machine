@@ -10,5 +10,11 @@
     "label": "Sample Tree",
     "dataPath": "data/trees/sample.json",
     "changelogPath": "data/changelogs/sample.json"
+  },
+  {
+    "id": "intro-circles",
+    "label": "Intro Circles",
+    "dataPath": "data/trees/intro_circles_tree.json",
+    "changelogPath": "data/changelogs/intro_circles_tree.json"
   }
 ]
