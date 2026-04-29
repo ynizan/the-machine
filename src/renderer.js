@@ -13,6 +13,17 @@ function edgeFontSize(srcDepth, tgtDepth){
 }
 function cfg(d){ return CFG[Math.min(d,5)] || CFG[5]; }
 
+function normalizeNodeTitle(raw){
+  if(!raw) return '';
+  const words = String(raw)
+    .trim()
+    .replace(/[^A-Za-z0-9\s'-]+/g, ' ')
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2);
+  return words.join(' ');
+}
+
 function setMaxDepth(n){
   MAX_DEPTH = Math.max(1, Math.min(n, 99));
   const el = document.getElementById('depth-val');
@@ -32,6 +43,8 @@ function cardHeight(node){
   const c   = cfg(node.depth);
   const usable = c.w - c.pad * 2;
   const cpl = Math.max(6, Math.floor(usable / (c.fs * 0.54)));
+  const titleFs = c.fs * 1.08;
+  const titleCpl = Math.max(4, Math.floor(usable / (titleFs * 0.58)));
 
   let h = c.pad * 2;
 
@@ -45,6 +58,13 @@ function cardHeight(node){
   }
 
   // Gate type is now rendered as SVG on the edge, not in the card
+
+  const title = normalizeNodeTitle(node.data.title || node.data.label || node.data.id || '');
+  if(title){
+    const titleLines = Math.ceil(title.length / titleCpl);
+    h += Math.max(1, titleLines) * titleFs * c.lh;
+    h += c.fs * 0.16;
+  }
 
   const label = node.data.label || '';
   const lines = Math.ceil(label.length / cpl);
@@ -217,6 +237,7 @@ function showGateTypeAlert(missingIds){
 // Card HTML
 function cardHTML(d, c, h){
   const { status:st, label, reason, score, type } = d.data;
+  const title = normalizeNodeTitle(d.data.title || d.data.label || d.data.id || '');
   const hasKids = !!(d._children && d._children.length);
   const ec = EYE_COLORS[st] || '#555';
   const lc = LBL_COLORS[st] || '#999';
@@ -298,8 +319,16 @@ function cardHTML(d, c, h){
     ">${icon} ${TYPE_LABELS[type] || type}</div>`;
   }
 
+  if(title){
+    h2 += `<div style="
+      font-family:'IBM Plex Serif',serif;font-size:${c.fs*1.08}px;line-height:${c.lh};
+      color:#E8E2D7;font-weight:700;letter-spacing:.01em;
+      word-wrap:break-word;overflow-wrap:break-word;hyphens:auto;flex-shrink:0;
+    ">${title}</div>`;
+  }
+
   h2 += `<div style="
-    font-family:'IBM Plex Serif',serif;font-size:${c.fs}px;line-height:${c.lh};
+    font-family:'IBM Plex Serif',serif;font-size:${c.fs*0.92}px;line-height:${c.lh};
     color:${lc};${strike}
     word-wrap:break-word;overflow-wrap:break-word;hyphens:auto;flex-shrink:0;
   ">${label}</div>`;
@@ -489,6 +518,7 @@ function openNodeRight(nodeId, evt){
   const newNode = {
     id: newId,
     status: 'active',
+    title: 'New Node',
     label: ''
   };
 
@@ -1042,6 +1072,10 @@ function openInlineEdit(nodeId, evt, focusField){
           <select id="ief-gatetype">${gateTypeOpts}</select>
         </div>
         <div class="ief-field">
+          <label>Title (max 2 words)</label>
+          <input id="ief-title" type="text" value="${(nodeData.title||'').replace(/"/g,'&quot;')}">
+        </div>
+        <div class="ief-field">
           <label>Label</label>
           <textarea id="ief-label" rows="3">${(nodeData.label||'').replace(/"/g,'&quot;')}</textarea>
         </div>
@@ -1096,6 +1130,10 @@ function openInlineEdit(nodeId, evt, focusField){
     if(gateTypeVal) nodeData.gateType = gateTypeVal;
     else delete nodeData.gateType;
     nodeData.label  = document.getElementById('ief-label').value;
+    const titleVal = normalizeNodeTitle(document.getElementById('ief-title').value);
+    const fallbackTitle = normalizeNodeTitle(titleVal || nodeData.label || nodeData.id);
+    if(fallbackTitle) nodeData.title = fallbackTitle;
+    else delete nodeData.title;
     nodeData.test   = document.getElementById('ief-test').value || undefined;
     const reasonVal = document.getElementById('ief-reason').value;
     nodeData.reason = reasonVal || undefined;
