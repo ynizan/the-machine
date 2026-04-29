@@ -29,38 +29,38 @@
                   "label": "Newly founded or recently funded startups have clustered needs for multiple external services with an overlap in the time window of various services",
                   "status": "pending",
                   "type": "Segment",
-                  "title": "Startup Buying"
+                  "title": "Clustered Needs"
                 },
                 {
                   "id": "multiple-provider-types-sell-to-same-startup-moment",
                   "label": "Multiple complementary service-provider types repeatedly sell at a moment which falls into a service window of another provider.",
                   "status": "pending",
                   "type": "Segment",
-                  "title": "Multiple Provider"
+                  "title": "Shared Moment"
                 },
                 {
                   "id": "providers-encounter-cross-referral-situations",
                   "label": "(P0) These providers encounter situations where their customers need another circle member’s service.",
                   "status": "pending",
                   "type": "Need",
-                  "title": "Providers Encounter"
+                  "title": "Referral Situations"
                 },
                 {
                   "id": "provider-types-are-noncompetitive-enough",
                   "label": "The provider types are non-competitive enough to collaborate without threatening each other’s business.",
                   "status": "pending",
                   "type": "Segment",
-                  "title": "Provider Types"
+                  "title": "Low Competition"
                 },
                 {
                   "id": "startup-referral-value-is-high-enough",
                   "label": "The expected referral value in the startup wedge is high enough for providers to care about improving referral flow.",
                   "status": "pending",
                   "type": "Economics",
-                  "title": "Startup Referral"
+                  "title": "Economic Value"
                 }
               ],
-              "title": "Startup Customer"
+              "title": "Right Segment"
             },
             {
               "id": "startup-providers-lack-efficient-referral-lead-source",
@@ -74,24 +74,24 @@
                   "label": "(P0) Many providers in the startup wedge do not already have enough complementary providers who can refer them relevant startup customers.",
                   "status": "pending",
                   "type": "Need",
-                  "title": "Startup Providers"
+                  "title": "Referrer Shortage"
                 },
                 {
                   "id": "startup-referral-networking-options-are-too-costly",
                   "label": "(P0) Existing referral-networking options for startup-focused providers require too much work/skill/risk-loving relative to the lead value they produce.",
                   "status": "pending",
                   "type": "Alternative",
-                  "title": "Startup Referral"
+                  "title": "Costly Alternatives"
                 },
                 {
                   "id": "startup-complementary-providers-are-credible-lead-source",
                   "label": "(P0) Complementary providers are a credible source of qualified startup leads because they encounter relevant customer needs before or during their own sales or service work.",
                   "status": "pending",
                   "type": "Need",
-                  "title": "Startup Complementary"
+                  "title": "Credible Source"
                 }
               ],
-              "title": "Startup Providers"
+              "title": "No Source"
             },
             {
               "id": "value-mechanism-works-in-startup-wedge",
@@ -105,31 +105,31 @@
                   "label": "(P0) Curated circle formation creates enough value by helping startup-focused providers join a better referral group than they could form themselves.",
                   "status": "pending",
                   "type": "Need",
-                  "title": "Startup Curated"
+                  "title": "Curated Matching"
                 },
                 {
                   "id": "startup-managed-referral-generation-creates-value",
                   "label": "(P0) Managed referral circles create enough value by generating qualified startup referral leads that would not have happened otherwise.",
                   "status": "pending",
                   "type": "Need",
-                  "title": "Startup Managed"
+                  "title": "Managed Generation"
                 },
                 {
                   "id": "startup-referral-opportunity-surfacing-creates-value",
                   "label": "Referral opportunity surfacing creates enough value by helping startup-focused providers notice valuable intro moments they would otherwise miss.",
                   "status": "pending",
                   "type": "Need",
-                  "title": "Startup Referral"
+                  "title": "Opportunity Surfacing"
                 },
                 {
                   "id": "startup-referral-coordination-accountability-creates-value",
                   "label": "Referral coordination and accountability creates enough value by increasing follow-through after a startup referral opportunity is identified.",
                   "status": "pending",
                   "type": "Need",
-                  "title": "Startup Referral"
+                  "title": "Coordinated Followthrough"
                 }
               ],
-              "title": "Value Mechanism"
+              "title": "Mechanism Works"
             },
             {
               "id": "selected-mechanism-deliverable-in-startup-wedge",
@@ -143,31 +143,31 @@
                   "label": "InTouch can identify promising startup-focused circle compositions with enough accuracy.",
                   "status": "pending",
                   "type": "Feasibility",
-                  "title": "Startup Circle"
+                  "title": "Find Composition"
                 },
                 {
                   "id": "startup-qualified-referrals-can-be-generated",
                   "label": "InTouch can help startup-focused circles generate qualified referral opportunities that members would not reliably create on their own.",
                   "status": "pending",
                   "type": "Feasibility",
-                  "title": "Startup Qualified"
+                  "title": "Generate Qualified"
                 },
                 {
                   "id": "startup-referral-opportunities-can-be-surfaced",
                   "label": "InTouch can surface relevant startup referral opportunities with enough accuracy and context.",
                   "status": "pending",
                   "type": "Feasibility",
-                  "title": "Startup Referral"
+                  "title": "Surface Opportunities"
                 },
                 {
                   "id": "startup-referral-coordination-can-be-supported",
                   "label": "InTouch can support startup referral coordination without requiring too much manual effort from members.",
                   "status": "pending",
                   "type": "Feasibility",
-                  "title": "Startup Referral"
+                  "title": "Support Coordination"
                 }
               ],
-              "title": "Selected Mechanism"
+              "title": "Can Execute"
             },
             {
               "id": "startup-providers-adopt-and-retain-circle-behaviors",
@@ -181,38 +181,38 @@
                   "label": "Providers complete the initial circle setup steps needed to make matching and referrals useful.",
                   "status": "pending",
                   "type": "Adoption",
-                  "title": "Startup Providers"
+                  "title": "Complete Setup"
                 },
                 {
                   "id": "startup-providers-share-enough-context",
                   "label": "Providers share enough customer and relationship context for referral opportunities to be identified.",
                   "status": "pending",
                   "type": "Adoption",
-                  "title": "Startup Providers"
+                  "title": "Share Context"
                 },
                 {
                   "id": "startup-providers-act-on-credible-referral-opportunities",
                   "label": "(P0) Providers act on credible referral opportunities when surfaced.",
                   "status": "pending",
                   "type": "Adoption",
-                  "title": "Startup Providers"
+                  "title": "Act Quickly"
                 },
                 {
                   "id": "startup-providers-report-enough-referral-outcomes",
                   "label": "Providers report enough referral outcomes to maintain accountability and learning.",
                   "status": "pending",
                   "type": "Adoption",
-                  "title": "Startup Providers"
+                  "title": "Report Outcomes"
                 },
                 {
                   "id": "startup-circles-remain-active-across-repeated-interactions",
                   "label": "(P0) Referral circles remain active across repeated startup customer interactions, not just onboarding.",
                   "status": "pending",
                   "type": "Adoption",
-                  "title": "Startup Circles"
+                  "title": "Stay Active"
                 }
               ],
-              "title": "Startup Providers"
+              "title": "Behavior Adoption"
             },
             {
               "id": "startup-wedge-growth-engine-exists",
@@ -226,38 +226,38 @@
                   "label": "Repeatable channels can reach providers who sell to newly founded or recently funded startups.",
                   "status": "pending",
                   "type": "Growth",
-                  "title": "Startup Channels"
+                  "title": "Reach Channels"
                 },
                 {
                   "id": "startup-value-proposition-generates-multi-provider-interest",
                   "label": "The startup-wedge value proposition generates qualified interest from multiple complementary provider types.",
                   "status": "pending",
                   "type": "Growth",
-                  "title": "Startup Value"
+                  "title": "Compelling Proposition"
                 },
                 {
                   "id": "startup-interested-providers-convert-to-circle-participation",
                   "label": "(P0) Interested startup-focused providers convert into actual circle participation.",
                   "status": "pending",
                   "type": "Growth",
-                  "title": "Startup Interested"
+                  "title": "Interest Conversion"
                 },
                 {
                   "id": "startup-circle-formation-does-not-rely-on-founder-network",
                   "label": "Startup-focused circle formation can be repeated without relying on founder-only personal networks.",
                   "status": "pending",
                   "type": "Growth",
-                  "title": "Startup Circle"
+                  "title": "Independent Formation"
                 },
                 {
                   "id": "startup-members-create-path-to-more-qualified-members",
                   "label": "Existing startup-focused members create a credible path to additional qualified members or adjacent circles.",
                   "status": "pending",
                   "type": "Growth",
-                  "title": "Startup Members"
+                  "title": "Member Expansion"
                 }
               ],
-              "title": "Startup Wedge"
+              "title": "Repeatable Growth"
             },
             {
               "id": "startup-wedge-economics-work",
@@ -271,34 +271,34 @@
                   "label": "Startup-focused providers will pay enough for circle formation, referral value, or workflow improvement.",
                   "status": "pending",
                   "type": "Economics",
-                  "title": "Startup Providers"
+                  "title": "Will Pay"
                 },
                 {
                   "id": "startup-circle-acquisition-economics-work",
                   "label": "The cost of identifying, recruiting, and assembling startup-focused circles can support attractive acquisition economics.",
                   "status": "pending",
                   "type": "Economics",
-                  "title": "Startup Circle"
+                  "title": "Acquisition Economics"
                 },
                 {
                   "id": "startup-managed-operating-model-economics-work",
                   "label": "The managed operating model can deliver startup-wedge referral value without requiring too much manual work per circle.",
                   "status": "pending",
                   "type": "Economics",
-                  "title": "Startup Managed"
+                  "title": "Operating Economics"
                 },
                 {
                   "id": "startup-pricing-preserves-trust-and-neutrality",
                   "label": "Pricing does not damage trust, referral behavior, or perceived neutrality in startup-focused circles.",
                   "status": "pending",
                   "type": "Economics",
-                  "title": "Startup Pricing"
+                  "title": "Trusted Pricing"
                 }
               ],
-              "title": "Startup Wedge"
+              "title": "Economic Viability"
             }
           ],
-          "title": "Startup Wedge"
+          "title": "Viable Wedge"
         },
         {
           "id": "startup-wedge-creates-path-to-meaningful-business",
@@ -312,21 +312,21 @@
               "label": "The startup wedge is large and economically attractive enough to support a meaningful business on its own.",
               "status": "pending",
               "type": "Economics",
-              "title": "Startup Wedge"
+              "title": "Standalone Potential"
             },
             {
               "id": "startup-wedge-can-scale-within-similar-startup-segments",
               "label": "The startup wedge can expand across similar startup segments, provider clusters, or geographies.",
               "status": "pending",
               "type": "Growth",
-              "title": "Startup Wedge"
+              "title": "Segment Scalability"
             },
             {
               "id": "startup-wedge-leads-to-adjacent-wedges",
               "label": "The startup wedge creates a credible path into adjacent customer-profile wedges.",
               "status": "pending",
               "type": "Growth",
-              "title": "Startup Wedge"
+              "title": "Adjacent Expansion"
             },
             {
               "id": "startup-wedge-model-can-be-replicated-beyond-startups",
@@ -340,34 +340,34 @@
                   "label": "Other customer profiles also create clustered needs for multiple complementary service providers.",
                   "status": "pending",
                   "type": "Segment",
-                  "title": "Other Customer"
+                  "title": "Clustered Needs"
                 },
                 {
                   "id": "other-provider-groups-have-referral-lead-supply-problem",
                   "label": "Providers serving other customer profiles also lack efficient, reliable sources of qualified referral leads from complementary providers.",
                   "status": "pending",
                   "type": "Need",
-                  "title": "Other Provider"
+                  "title": "Supply Gap"
                 },
                 {
                   "id": "selected-value-mechanism-portable-beyond-startups",
                   "label": "The selected InTouch value mechanism can create referral-network value outside the startup wedge.",
                   "status": "pending",
                   "type": "Need",
-                  "title": "Selected Value"
+                  "title": "Mechanism Portability"
                 },
                 {
                   "id": "circle-formation-method-portable-beyond-startups",
                   "label": "The method for identifying and assembling promising circles can work beyond startup-focused providers.",
                   "status": "pending",
                   "type": "Growth",
-                  "title": "Circle Formation"
+                  "title": "Formation Portability"
                 }
               ],
-              "title": "Startup Wedge"
+              "title": "Model Portability"
             }
           ],
-          "title": "Startup Wedge"
+          "title": "Business Path"
         },
         {
           "id": "cross-wedge-privacy-and-trust-friction-manageable",
@@ -381,27 +381,27 @@
               "label": "Providers can share enough customer and relationship context for InTouch to work without unacceptable privacy concerns.",
               "status": "pending",
               "type": "Feasibility",
-              "title": "Providers Share"
+              "title": "Privacy Manageable"
             },
             {
               "id": "customers-are-not-exposed-to-unwanted-referral-behavior",
               "label": "Customers are not exposed to referral behavior that damages provider trust or customer relationships.",
               "status": "pending",
               "type": "Feasibility",
-              "title": "Customers Not"
+              "title": "Customer Safety"
             },
             {
               "id": "circle-members-trust-data-use-and-neutrality",
               "label": "Circle members trust how InTouch uses shared data and maintains neutrality between members.",
               "status": "pending",
               "type": "Feasibility",
-              "title": "Circle Members"
+              "title": "Member Trust"
             }
           ],
-          "title": "Cross Wedge"
+          "title": "Trust Friction"
         }
       ],
-      "title": "InTouch Viable"
+      "title": "Viable Network"
     }
   ],
   "title": "Root"
