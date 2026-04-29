@@ -1,20 +1,26 @@
-[
-  {
-    "id": "main",
-    "label": "InTouch123",
-    "dataPath": "data/tree.json",
-    "changelogPath": "data/changelog.json"
-  },
-  {
-    "id": "sample",
-    "label": "Sample Tree",
-    "dataPath": "data/trees/sample.json",
-    "changelogPath": "data/changelogs/sample.json"
-  },
-  {
-    "id": "intro-circles",
-    "label": "Intro Circles",
-    "dataPath": "data/trees/intro_circles_tree.json",
-    "changelogPath": "data/changelogs/intro_circles_tree.json"
-  }
+﻿[
+    {
+        "id":  "main",
+        "label":  "InTouch123",
+        "dataPath":  "data/tree.json",
+        "changelogPath":  "data/changelog.json"
+    },
+    {
+        "id":  "sample",
+        "label":  "Sample Tree",
+        "dataPath":  "data/trees/sample.json",
+        "changelogPath":  "data/changelogs/sample.json"
+    },
+    {
+        "id":  "intro-circles",
+        "label":  "Intro Circles",
+        "dataPath":  "data/trees/intro_circles_tree.json",
+        "changelogPath":  "data/changelogs/intro_circles_tree.json"
+    },
+    {
+        "id":  "referal-circle-v1",
+        "label":  "Referal Circle V1",
+        "dataPath":  "data/trees/referal_circle_v1.json",
+        "changelogPath":  "data/changelogs/referal_circle_v1.json"
+    }
 ]
